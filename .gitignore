@@ -1,0 +1,40 @@
+# ==============================================================================
+# ROOT GITIGNORE - FILATELIA BOLIVIA
+# ==============================================================================
+
+# Scratch scripts & temporary notes
+scratch/
+implementation_plan.md
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.log
+
+# Environment variables (Never commit real credentials)
+.env
+.env.*
+!.env.example
+!backend/.env.example
+!frontend/.env.example
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Build outputs & dependencies (in case executed at root)
+node_modules/
+vendor/
+.next/
+dist/
+build/

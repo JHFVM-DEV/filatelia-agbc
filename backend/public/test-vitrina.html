@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probador Interactivo de API — Vitrina Filatélica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen text-slate-800">
+
+    <!-- Barra Superior -->
+    <header class="bg-[#002B5B] text-white border-b-4 border-[#F4C400] shadow-md">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-[#F4C400] rounded-xl flex items-center justify-center text-[#002B5B] font-black text-xl shadow">
+                    ✉
+                </div>
+                <div>
+                    <h1 class="text-lg font-black tracking-tight leading-tight">BANCO DE PRUEBAS DE INTEGRACIÓN API</h1>
+                    <p class="text-xs text-slate-300 font-semibold">Correos de Bolivia &bull; Vitrina Postal para Portales Externos</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Servidor en Línea: localhost:8000
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+
+        <!-- Panel de Configuración de la Solicitud -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 mb-8">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-5">
+                <div>
+                    <span class="text-[11px] font-black uppercase text-amber-600 tracking-wider">Parámetros de Prueba</span>
+                    <h2 class="text-base font-black text-[#002B5B] mt-0.5">Configurar Petición HTTP al Endpoint de Catálogo</h2>
+                </div>
+                <span class="text-xs text-slate-400">Scope Requerido: <code class="font-mono bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-bold">catalogo:read</code></span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-end">
+                <div class="lg:col-span-4">
+                    <label class="block text-xs font-black text-slate-700 mb-1">Endpoint a Consultar</label>
+                    <select id="endpointSelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#002B5B]">
+                        <option value="/api/external/products?featured=true&limit=4">GET /api/external/products?featured=true&limit=4 (Vitrina Externa)</option>
+                        <option value="/api/external/products?limit=8">GET /api/external/products?limit=8 (Todo el Catálogo)</option>
+                        <option value="/api/external/products?category=historia-postal">GET /api/external/products?category=historia-postal</option>
+                        <option value="/api/products">GET /api/products (Endpoint Estándar)</option>
+                    </select>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <label class="block text-xs font-black text-slate-700 mb-1">
+                        API Token de Acceso (<span class="font-mono text-amber-600">Bearer Token</span>)
+                    </label>
+                    <input 
+                        type="text" 
+                        id="tokenInput" 
+                        value="50|os1ABM7ehVd6GmOXagI8PiWtJdAqmZHJKOSxzolRa658782a" 
+                        placeholder="Pega aquí tu API Key generada..."
+                        class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-mono font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#002B5B]"
+                    />
+                </div>
+
+                <div class="lg:col-span-2">
+                    <button 
+                        id="btnFetch" 
+                        onclick="ejecutarPrueba()"
+                        class="w-full bg-gradient-to-r from-[#002B5B] to-[#0A3B73] hover:from-[#0A3B73] hover:to-[#002B5B] text-white py-2.5 px-4 rounded-xl text-xs font-black transition-all shadow-md shadow-[#002B5B]/20 flex items-center justify-center gap-2"
+                    >
+                        <span>▶ Probar API</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Resumen de Estado -->
+            <div id="statusAlert" class="mt-4 hidden p-3 rounded-xl text-xs font-bold flex items-center justify-between">
+                <span id="statusText"></span>
+                <span id="timingText" class="text-[11px] opacity-80"></span>
+            </div>
+        </div>
+
+        <!-- Pestañas de Resultados -->
+        <div class="flex border-b border-slate-200 gap-2 mb-6">
+            <button 
+                onclick="cambiarPestana('cards')" 
+                id="tabBtnCards"
+                class="pb-3 px-4 text-xs font-black transition-all border-b-2 border-[#002B5B] text-[#002B5B] flex items-center gap-2"
+            >
+                🖼 Vista de Tarjetas (Como en la Página Principal)
+            </button>
+            <button 
+                onclick="cambiarPestana('json')" 
+                id="tabBtnJson"
+                class="pb-3 px-4 text-xs font-black transition-all border-b-2 border-transparent text-slate-400 hover:text-slate-700 flex items-center gap-2"
+            >
+                { } Respuesta JSON en Crudo
+            </button>
+            <button 
+                onclick="cambiarPestana('code')" 
+                id="tabBtnCode"
+                class="pb-3 px-4 text-xs font-black transition-all border-b-2 border-transparent text-slate-400 hover:text-slate-700 flex items-center gap-2"
+            >
+                &lt;/&gt; Comandos cURL & Snippet JS
+            </button>
+        </div>
+
+        <!-- CONTENIDO PESTAÑA 1: VISTA DE TARJETAS -->
+        <div id="viewCards" class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="text-sm font-black text-[#002B5B] uppercase tracking-wider">
+                        Simulación de la Vitrina en la Página Principal
+                    </h3>
+                    <p class="text-xs text-slate-500">
+                        Así es exactamente como se visualizarán las tarjetas alimentadas por tu API en cualquier portal externo.
+                    </p>
+                </div>
+                <span id="cardsCountBadge" class="text-xs font-bold text-slate-500 bg-slate-200/80 px-2.5 py-1 rounded-full">
+                    Cargando...
+                </span>
+            </div>
+
+            <!-- Contenedor Grilla de Tarjetas -->
+            <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Se inyectan con JavaScript -->
+            </div>
+        </div>
+
+        <!-- CONTENIDO PESTAÑA 2: RESPUESTA JSON -->
+        <div id="viewJson" class="hidden">
+            <div class="bg-slate-900 rounded-2xl p-5 border border-slate-800 shadow-inner">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 text-xs">
+                    <span class="text-slate-400 font-mono">Payload de Respuesta JSON Oficial</span>
+                    <button onclick="copiarJson()" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-bold">
+                        Copiar JSON
+                    </button>
+                </div>
+                <pre id="jsonPre" class="text-sky-300 font-mono text-xs overflow-x-auto max-h-[500px] leading-relaxed select-all">Cargando respuesta...</pre>
+            </div>
+        </div>
+
+        <!-- CONTENIDO PESTAÑA 3: CÓDIGO & CURL -->
+        <div id="viewCode" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h4 class="text-xs font-black uppercase text-slate-400 tracking-wider mb-2">Comando cURL para Terminal (PowerShell / Linux / Mac)</h4>
+                <div class="bg-slate-900 text-slate-100 rounded-xl p-4 font-mono text-xs overflow-x-auto relative">
+                    <pre id="curlBox" class="text-amber-300 select-all whitespace-pre-wrap"></pre>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h4 class="text-xs font-black uppercase text-slate-400 tracking-wider mb-2">Código Fetch JavaScript para tu Página Principal</h4>
+                <div class="bg-slate-900 text-slate-100 rounded-xl p-4 font-mono text-xs overflow-x-auto relative">
+                    <pre id="jsBox" class="text-emerald-300 select-all whitespace-pre-wrap"></pre>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        let ultimoJson = null;
+
+        async function ejecutarPrueba() {
+            const btn = document.getElementById('btnFetch');
+            const endpoint = document.getElementById('endpointSelect').value;
+            const token = document.getElementById('tokenInput').value.trim();
+            const alertBox = document.getElementById('statusAlert');
+            const alertText = document.getElementById('statusText');
+            const alertTiming = document.getElementById('timingText');
+
+            btn.disabled = true;
+            btn.innerHTML = '<span>⏳ Consultando...</span>';
+
+            const urlCompleta = window.location.origin + endpoint;
+            const start = performance.now();
+
+            actualizarSnippets(urlCompleta, token);
+
+            try {
+                const headers = { 'Accept': 'application/json' };
+                if (token) {
+                    headers['Authorization'] = `Bearer ${token}`;
+                }
+
+                const res = await fetch(urlCompleta, { headers });
+                const duracion = Math.round(performance.now() - start);
+                const data = await res.json();
+                ultimoJson = data;
+
+                alertBox.classList.remove('hidden', 'bg-rose-50', 'text-rose-800', 'border-rose-200', 'bg-emerald-50', 'text-emerald-800', 'border-emerald-200');
+
+                if (res.ok) {
+                    alertBox.classList.add('bg-emerald-50', 'text-emerald-800', 'border', 'border-emerald-200');
+                    alertText.innerHTML = `✔ <strong>HTTP ${res.status} OK:</strong> Respuesta recibida exitosamente con ${data.count || (data.data ? data.data.length : 1)} pieza(s).`;
+                    alertTiming.innerText = `${duracion} ms`;
+                    renderizarTarjetas(data.data || []);
+                } else {
+                    alertBox.classList.add('bg-rose-50', 'text-rose-800', 'border', 'border-rose-200');
+                    alertText.innerHTML = `✖ <strong>HTTP ${res.status} ${res.statusText}:</strong> ${data.message || 'Error en la consulta'}`;
+                    alertTiming.innerText = `${duracion} ms`;
+                    document.getElementById('cardsGrid').innerHTML = `
+                        <div class="col-span-full p-8 text-center bg-white rounded-2xl border border-rose-200">
+                            <span class="text-3xl">⚠️</span>
+                            <h4 class="font-bold text-rose-800 text-sm mt-2">Error de Autorización o Validación</h4>
+                            <p class="text-xs text-rose-600 mt-1">${data.message || 'No se pudo autorizar la consulta.'}</p>
+                        </div>
+                    `;
+                }
+
+                document.getElementById('jsonPre').innerText = JSON.stringify(data, null, 2);
+            } catch (err) {
+                alertBox.classList.remove('hidden');
+                alertBox.classList.add('bg-rose-50', 'text-rose-800', 'border', 'border-rose-200');
+                alertText.innerHTML = `✖ <strong>Error de Conexión:</strong> ${err.message}`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>▶ Probar API</span>';
+            }
+        }
+
+        function renderizarTarjetas(piezas) {
+            const grid = document.getElementById('cardsGrid');
+            const countBadge = document.getElementById('cardsCountBadge');
+            countBadge.innerText = `${piezas.length} Sellos Exhibidos`;
+
+            if (!piezas || piezas.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center py-8 text-slate-400">No se encontraron piezas filatélicas.</div>';
+                return;
+            }
+
+            grid.innerHTML = piezas.map(p => {
+                const img = p.image_url || p.front_image_url || '/images/hero-philately.jpg';
+                const badge = p.badge || (p.category ? p.category.name : 'FILATELIA OFICIAL');
+                const price = p.price_formatted || `Bs. ${p.price}`;
+                const desc = p.short_description || p.description || 'Pieza postal histórica garantizada por Correos de Bolivia.';
+                const storeUrl = p.store_url || `http://localhost:3000/catalogo/${p.slug}`;
+
+                return `
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <!-- Insignia y Contenedor de Imagen -->
+                            <div class="p-4 bg-slate-50/80 border-b border-slate-100 relative">
+                                <span class="text-[9px] font-black uppercase tracking-wider text-[#002B5B] bg-white border border-slate-200 px-2.5 py-1 rounded-full shadow-xs inline-block mb-3">
+                                    ${badge}
+                                </span>
+                                <div class="w-full h-44 bg-white rounded-xl flex items-center justify-center p-3 shadow-inner border border-slate-100 overflow-hidden">
+                                    <img 
+                                        src="${img}" 
+                                        alt="${p.name}" 
+                                        class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300 filter drop-shadow-md"
+                                        onerror="this.src='/images/hero-philately.jpg'"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Ficha Descriptiva -->
+                            <div class="p-5">
+                                <h3 class="text-sm font-black text-slate-900 group-hover:text-[#002B5B] transition-colors leading-snug line-clamp-2">
+                                    ${p.name}
+                                </h3>
+                                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed line-clamp-3">
+                                    ${desc}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Precio y Botón de Redirección -->
+                        <div class="p-5 pt-0">
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between mb-3">
+                                <span class="text-[10px] uppercase font-bold text-slate-400">Precio Oficial</span>
+                                <span class="text-base font-black text-[#002B5B]">${price}</span>
+                            </div>
+
+                            <a 
+                                href="${storeUrl}" 
+                                target="_blank"
+                                class="w-full py-2.5 px-3 bg-[#002B5B] hover:bg-[#0A3B73] text-white rounded-xl text-xs font-black transition-colors flex items-center justify-center gap-1.5 shadow-md shadow-[#002B5B]/15 text-center"
+                            >
+                                <svg class="w-3.5 h-3.5 text-[#F4C400]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                Añadir al carrito
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function actualizarSnippets(url, token) {
+            const curl = `curl -X GET "${url}" \\
+  -H "Accept: application/json" \\
+  -H "Authorization: Bearer ${token || '<TU_API_TOKEN>'}"`;
+            document.getElementById('curlBox').innerText = curl;
+
+            const js = `// Consumo desde la página principal externa
+async function cargarSellos() {
+    const respuesta = await fetch("${url}", {
+        method: "GET",
+        headers: {
+            "Accept": "application/json",
+            "Authorization": "Bearer ${token || '<TU_API_TOKEN>'}"
+        }
+    });
+
+    const resultado = await respuesta.json();
+    console.log("Sellos recibidos:", resultado.data);
+}`;
+            document.getElementById('jsBox').innerText = js;
+        }
+
+        function cambiarPestana(tab) {
+            const tabs = ['cards', 'json', 'code'];
+            tabs.forEach(t => {
+                document.getElementById('view' + t.charAt(0).toUpperCase() + t.slice(1)).classList.add('hidden');
+                document.getElementById('tabBtn' + t.charAt(0).toUpperCase() + t.slice(1)).classList.remove('border-[#002B5B]', 'text-[#002B5B]');
+                document.getElementById('tabBtn' + t.charAt(0).toUpperCase() + t.slice(1)).classList.add('border-transparent', 'text-slate-400');
+            });
+
+            document.getElementById('view' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.remove('hidden');
+            document.getElementById('tabBtn' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('border-[#002B5B]', 'text-[#002B5B]');
+            document.getElementById('tabBtn' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.remove('border-transparent', 'text-slate-400');
+        }
+
+        function copiarJson() {
+            if (ultimoJson) {
+                navigator.clipboard.writeText(JSON.stringify(ultimoJson, null, 2));
+                alert('¡Respuesta JSON copiada al portapapeles!');
+            }
+        }
+
+        // Ejecución automática al cargar
+        document.addEventListener('DOMContentLoaded', ejecutarPrueba);
+    </script>
+</body>
+</html>
