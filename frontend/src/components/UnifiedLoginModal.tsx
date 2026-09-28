@@ -3,7 +3,7 @@ import { API_BASE_URL } from '@/config/api';
 
 import React, { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { X, Lock, Mail, KeyRound, ArrowRight, Loader2, CheckCircle2, Shield, ShieldCheck, ExternalLink } from 'lucide-react';
+import { X, Lock, Mail, KeyRound, ArrowRight, Loader2, CheckCircle2, Shield, ShieldCheck, ExternalLink, Eye, EyeOff } from 'lucide-react';
 
 interface UnifiedLoginModalProps {
   isOpen: boolean;
@@ -20,6 +20,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
   const pathname = usePathname();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -197,13 +198,22 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
               <div className="relative">
                 <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   required
-                  placeholder="••••••••"
+                  placeholder={showPassword ? 'Ingrese su contraseña' : '••••••••'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
+                  className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#002B5B] transition p-1 cursor-pointer"
+                  title={showPassword ? 'Ocultar contraseña' : 'Ver contraseña'}
+                  tabIndex={-1}
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4 text-slate-500" />}
+                </button>
               </div>
             </div>
 

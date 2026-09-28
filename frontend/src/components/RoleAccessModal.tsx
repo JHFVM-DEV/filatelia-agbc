@@ -1,8 +1,8 @@
 'use client';
 import { API_BASE_URL } from '@/config/api';
 
-import React from 'react';
-import { X, Shield, KeyRound, ExternalLink, Package, User, Crown, Check, Sparkles, Headphones } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, Shield, KeyRound, ExternalLink, Package, User, Crown, Check, Sparkles, Headphones, Eye, EyeOff } from 'lucide-react';
 
 interface RoleAccessModalProps {
   isOpen: boolean;
@@ -17,7 +17,13 @@ export const RoleAccessModal: React.FC<RoleAccessModalProps> = ({
   activeRole,
   onSelectRole,
 }) => {
+  const [visiblePasswords, setVisiblePasswords] = useState<Record<string, boolean>>({});
+
   if (!isOpen) return null;
+
+  const togglePasswordVisibility = (roleId: string) => {
+    setVisiblePasswords(prev => ({ ...prev, [roleId]: !prev[roleId] }));
+  };
 
   const roles = [
     {
@@ -148,8 +154,20 @@ export const RoleAccessModal: React.FC<RoleAccessModalProps> = ({
 
                 {/* Credentials & Access Buttons */}
                 <div className="mt-4 pt-3 border-t border-[#E2DDD5] flex flex-wrap items-center justify-between gap-3 text-xs">
-                  <div className="text-slate-600 font-mono text-[11px] bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200">
-                    <span>{role.credentials.email}</span> / <span className="text-slate-400">••••••••</span>
+                  <div className="flex items-center gap-1.5 text-slate-600 font-mono text-[11px] bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200">
+                    <span>{role.credentials.email}</span>
+                    <span className="text-slate-400">/</span>
+                    <span className={visiblePasswords[role.id] ? "text-[#002B5B] font-bold" : "text-slate-400"}>
+                      {visiblePasswords[role.id] ? role.credentials.pass : '••••••••'}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => togglePasswordVisibility(role.id)}
+                      className="text-slate-400 hover:text-[#002B5B] transition p-0.5 ml-0.5 cursor-pointer"
+                      title={visiblePasswords[role.id] ? "Ocultar contraseña" : "Ver contraseña"}
+                    >
+                      {visiblePasswords[role.id] ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                    </button>
                   </div>
 
                   <div className="flex items-center gap-2">

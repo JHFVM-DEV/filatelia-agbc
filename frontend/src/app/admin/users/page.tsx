@@ -18,6 +18,8 @@ import {
   X,
   Lock,
   UserCheck,
+  Eye,
+  EyeOff,
 } from 'lucide-react';
 import { useStore } from '@/context/StoreContext';
 
@@ -43,6 +45,7 @@ export default function AdminUsersPage() {
 
   // Modal states
   const [showModal, setShowModal] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [editingUser, setEditingUser] = useState<UserData | null>(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -94,6 +97,7 @@ export default function AdminUsersPage() {
 
   const handleOpenCreate = () => {
     setEditingUser(null);
+    setShowPassword(false);
     setFormData({
       name: '',
       email: '',
@@ -105,6 +109,7 @@ export default function AdminUsersPage() {
 
   const handleOpenEdit = (user: UserData) => {
     setEditingUser(user);
+    setShowPassword(false);
     setFormData({
       name: user.name,
       email: user.email,
@@ -451,13 +456,22 @@ export default function AdminUsersPage() {
                 <div className="relative">
                   <Lock className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     required={!editingUser}
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     placeholder={editingUser ? 'Dejar en blanco para mantener' : 'Mínimo 6 caracteres'}
-                    className="w-full pl-9 pr-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
+                    className="w-full pl-9 pr-10 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition p-1 cursor-pointer"
+                    title={showPassword ? 'Ocultar contraseña' : 'Ver contraseña'}
+                    tabIndex={-1}
+                  >
+                    {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                  </button>
                 </div>
               </div>
 
