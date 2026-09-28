@@ -168,6 +168,16 @@ server {
 
 ---
 
+## 🖼️ Gestión y Visualización de Imágenes Catalogadas
+
+* **Imágenes Oficiales Precargadas:** El repositorio incluye las **43 fotografías oficiales de alta resolución** de los sellos postales, logos oficiales de la AGBC y banners en:
+  * `frontend/public/images/stamps/`
+  * `backend/public/images/stamps/`
+* **Carga en PostgreSQL:** Al ejecutar `php artisan db:seed --force`, todas las piezas quedan registradas en la base de datos con sus rutas de imagen correspondientes (`/images/stamps/...`), visibles de forma instantánea en el catálogo público, el visor con lupa 10x y el modo pantalla completa 100% HD.
+* **Nuevas imágenes subidas desde el panel:** El comando `php artisan storage:link` crea el enlace simbólico al disco público, permitiendo que cualquier imagen que el personal agregue desde el panel de administración (`/admin/piezas`) se almacene de forma persistente.
+
+---
+
 ## 🔐 Credenciales y Roles Administrativos
 
 El sistema incluye seeders oficiales con los siguientes roles precargados:
