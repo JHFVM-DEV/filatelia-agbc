@@ -40,7 +40,7 @@ export default function AdminProductsPage() {
     certified: true,
     face_value: '10.00 BOB',
     perforation: '13.5 x 13.5',
-    front_image: '/images/cat-limited.jpg',
+    front_image: '/images/stamps/sello-150-anos-primer-sello-postal-boliviano-2017.png',
     description: '',
   });
 
@@ -173,7 +173,7 @@ export default function AdminProductsPage() {
           certified: true,
           face_value: '10.00 BOB',
           perforation: '13.5 x 13.5',
-          front_image: '/images/cat-limited.jpg',
+          front_image: '/images/stamps/sello-150-anos-primer-sello-postal-boliviano-2017.png',
           description: '',
         });
       }
@@ -334,9 +334,10 @@ export default function AdminProductsPage() {
                       <div className="flex items-center gap-3">
                         <div className="w-11 h-11 rounded-lg bg-slate-900 border border-white/10 overflow-hidden relative shrink-0">
                           <Image
-                            src={product.front_image || '/images/hero-philately.jpg'}
+                            src={product.front_image || '/images/stamps/sello-150-anos-primer-sello-postal-boliviano-2017.png'}
                             alt={product.name}
                             fill
+                            sizes="44px"
                             className="object-cover"
                             unoptimized
                           />

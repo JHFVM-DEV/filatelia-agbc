@@ -15,7 +15,9 @@ import {
   ChevronDown, 
   ChevronRight, 
   Award,
-  TrendingUp
+  TrendingUp,
+  User,
+  Truck
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -24,7 +26,9 @@ interface NavbarProps {
   onOpenCart: () => void;
   onOpenWishlist: () => void;
   onOpenOrders: () => void;
+  onOpenTracking?: (code?: string) => void;
   onOpenLoginModal: () => void;
+  onOpenProfile?: () => void;
   currentUser: any;
   onLogout: () => void;
 }
@@ -35,7 +39,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenCart,
   onOpenWishlist,
   onOpenOrders,
+  onOpenTracking,
   onOpenLoginModal,
+  onOpenProfile,
   currentUser,
   onLogout,
 }) => {
@@ -65,9 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     if (
       user.primary_role === 'SUPER_ADMIN' ||
       user.primary_role === 'ADMIN_PRODUCTOS_ALMACEN' ||
-      user.primary_role === 'ADMIN_FILATELIA' ||
-      user.primary_role === 'ALMACEN' ||
-      user.primary_role === 'ATENCION'
+      user.primary_role === 'ALMACEN'
     ) {
       return true;
     }
@@ -77,9 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         return (
           roleName === 'SUPER_ADMIN' ||
           roleName === 'ADMIN_PRODUCTOS_ALMACEN' ||
-          roleName === 'ADMIN_FILATELIA' ||
-          roleName === 'ALMACEN' ||
-          roleName === 'ATENCION'
+          roleName === 'ALMACEN'
         );
       });
     }
@@ -97,8 +99,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         : '');
     if (role === 'SUPER_ADMIN') return 'Super Administrador';
     if (role === 'ADMIN_PRODUCTOS_ALMACEN' || role === 'ALMACEN') return 'Almacén y Productos';
-    if (role === 'ADMIN_FILATELIA') return 'Curaduría & Filatelia';
-    if (role === 'ATENCION') return 'Atención al Cliente';
     return 'Coleccionista Oficial';
   };
 
@@ -139,7 +139,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Logo Corporativo Institucional */}
               <div className="border-l border-slate-700/80 pl-3 shrink-0">
                 <div className="text-[10px] tracking-widest text-amber-200/90 uppercase font-medium mt-0.5 flex items-center gap-1">
-                  <span>Filatelia</span>
+                  <span>Filatelia Bolivia</span>
+                </div>
+                <div className="text-[9px] text-slate-300 font-medium uppercase tracking-wider">
+                  Correos de Bolivia
                 </div>
               </div>
             </Link>
@@ -155,7 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   href={link.href}
                   className={`py-1 border-b-2 whitespace-nowrap text-xs lg:text-sm font-medium transition-colors duration-200 ${
                     isActive
-                      ? 'text-amber-200 border-amber-300/80'
+                      ? 'text-amber-200 border-amber-300/80 font-bold'
                       : 'text-slate-200 border-transparent hover:text-amber-200 hover:border-amber-300/40'
                   }`}
                 >
@@ -184,13 +187,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                       </span>
                     )}
                   </div>
-                  <span className="max-w-0 opacity-0 group-hover:max-w-[110px] group-hover:opacity-100 group-hover:ml-2.5 transition-all duration-300 ease-out text-xs font-bold text-amber-200 overflow-hidden whitespace-nowrap">
+                  <span className="max-w-0 opacity-0 group-hover:max-w-[110px] group-hover:opacity-100 group-hover:ml-2.5 transition-all duration-300 ease-out text-xs font-semibold text-amber-200/90 overflow-hidden whitespace-nowrap">
                     Bóveda {cartCount > 0 ? `(${cartCount})` : ''}
                   </span>
                 </button>
 
-                {/* Separador vertical de lujo */}
-                <div className="h-6 w-px bg-slate-700/60 shrink-0 hidden sm:block" />
+                {/* Separador vertical */}
+                <div className="h-6 w-px bg-slate-700 shrink-0 hidden sm:block" />
 
                 {/* 3. Luxury VIP Account Dropdown Menu */}
                 <div className="relative" ref={menuRef}>
@@ -198,14 +201,27 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     className={`flex items-center h-10 gap-2.5 px-3 rounded-xl border transition-all duration-200 shadow-sm shrink-0 cursor-pointer ${
                       isMenuOpen
-                        ? 'bg-white/[0.12] border-white/25 shadow-sm'
-                        : 'bg-white/[0.06] hover:bg-white/[0.09] border-white/10 hover:border-white/20'
+                        ? 'bg-[#001D3D] text-white border-amber-300/40'
+                        : 'bg-white/[0.08] hover:bg-white/[0.12] text-white border-white/10 hover:border-white/20'
                     }`}
                     title="Menú de Custodia y Cuenta Oficial"
                     aria-expanded={isMenuOpen}
                   >
-                    <div className="w-7 h-7 rounded-full bg-white/[0.12] text-amber-200 border border-white/15 flex items-center justify-center font-bold text-xs shadow-inner shrink-0">
-                      {currentUser.name ? currentUser.name.charAt(0).toUpperCase() : 'C'}
+                    <div className="w-7 h-7 rounded-full bg-white/[0.1] text-amber-200 border border-white/15 flex items-center justify-center font-bold text-xs shadow-inner shrink-0 overflow-hidden relative">
+                      {currentUser.avatar ? (
+                        <img
+                          src={currentUser.avatar}
+                          alt=""
+                          referrerPolicy="no-referrer"
+                          className="absolute inset-0 w-full h-full object-cover rounded-full z-10"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      ) : null}
+                      <span className="font-bold text-xs select-none">
+                        {currentUser.name ? currentUser.name.charAt(0).toUpperCase() : 'C'}
+                      </span>
                     </div>
                     <div className="flex flex-col text-left leading-tight hidden sm:flex">
                       <span className="text-xs font-bold text-white truncate max-w-[110px]">
@@ -238,8 +254,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                         </div>
 
                         <div className="flex items-center gap-3">
-                          <div className="w-11 h-11 rounded-xl bg-white/[0.1] text-amber-200 flex items-center justify-center font-bold text-lg shadow-md shrink-0 border border-white/15">
-                            {currentUser.name ? currentUser.name.charAt(0).toUpperCase() : 'C'}
+                          <div className="w-11 h-11 rounded-xl bg-white/[0.1] text-amber-200 flex items-center justify-center font-bold text-lg shadow-md shrink-0 border border-white/15 overflow-hidden relative">
+                            {currentUser.avatar ? (
+                              <img
+                                src={currentUser.avatar}
+                                alt=""
+                                referrerPolicy="no-referrer"
+                                className="absolute inset-0 w-full h-full object-cover z-10"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = 'none';
+                                }}
+                              />
+                            ) : null}
+                            <span className="font-bold text-lg select-none">
+                              {currentUser.name ? currentUser.name.charAt(0).toUpperCase() : 'C'}
+                            </span>
                           </div>
                           <div className="flex flex-col min-w-0">
                             <span className="text-sm font-bold text-white truncate">
@@ -284,6 +313,32 @@ export const Navbar: React.FC<NavbarProps> = ({
                           </Link>
                         )}
 
+                        {/* 1.5. Datos de la Cuenta (Expediente del Cliente) */}
+                        {onOpenProfile && (
+                          <button
+                            onClick={() => {
+                              setIsMenuOpen(false);
+                              onOpenProfile();
+                            }}
+                            className="w-full group flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.05] border border-transparent hover:border-white/10 transition-all duration-200 cursor-pointer text-left"
+                          >
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 rounded-lg bg-[#001A38] border border-slate-700/60 flex items-center justify-center shrink-0 text-amber-300/80 group-hover:text-amber-200 transition-colors">
+                                <User className="w-4.5 h-4.5" />
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="font-semibold text-slate-200 group-hover:text-white flex items-center gap-1.5">
+                                  Datos de la Cuenta
+                                </span>
+                                <span className="text-[11px] text-slate-400">
+                                  Expediente personal y seguridad
+                                </span>
+                              </div>
+                            </div>
+                            <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-amber-200 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                          </button>
+                        )}
+
                         {/* 2. Mi Bóveda & Portafolio de Inversión */}
                         <button
                           onClick={() => {
@@ -310,6 +365,35 @@ export const Navbar: React.FC<NavbarProps> = ({
                           </div>
                           <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-amber-200 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
                         </button>
+
+                        {/* 2.5. Rastreo y Seguimiento Postal */}
+                        {onOpenTracking && (
+                          <button
+                            onClick={() => {
+                              setIsMenuOpen(false);
+                              onOpenTracking();
+                            }}
+                            className="w-full group flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.05] border border-transparent hover:border-white/10 transition-all duration-200 cursor-pointer text-left"
+                          >
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 rounded-lg bg-[#001A38] border border-slate-700/60 flex items-center justify-center shrink-0 text-amber-300/80 group-hover:text-amber-200 transition-colors">
+                                <Truck className="w-4.5 h-4.5" />
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="font-semibold text-slate-200 group-hover:text-white flex items-center gap-1.5">
+                                  Rastreo de Envíos
+                                  <span className="bg-[#FFD100]/20 text-[#FFD100] text-[9px] font-bold px-1.5 py-0.5 rounded border border-[#FFD100]/30">
+                                    Guías
+                                  </span>
+                                </span>
+                                <span className="text-[11px] text-slate-400">
+                                  Seguimiento de valijas y guías de envío
+                                </span>
+                              </div>
+                            </div>
+                            <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-amber-200 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                          </button>
+                        )}
 
                         {/* 3. Lista de Deseos */}
                         <button
@@ -389,7 +473,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             ) : (
               <button
-                onClick={onOpenLoginModal}
+                onClick={() => onOpenLoginModal()}
                 className="flex items-center h-10 gap-2 px-3.5 sm:px-4 rounded-xl gold-button text-xs font-bold transition shadow-md whitespace-nowrap shrink-0 cursor-pointer"
                 title="Iniciar Sesión"
               >

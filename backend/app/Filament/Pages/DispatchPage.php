@@ -24,7 +24,7 @@ class DispatchPage extends Page
     protected string $view = 'filament.pages.dispatch-page';
 
     public $dispatchOrderId;
-    public $dispatchCarrier = 'Agencia Boliviana de Correos - Valija Postal';
+    public $dispatchCarrier = 'Correos de Bolivia - Valija Postal';
     public $dispatchTrackingCode = '';
 
     public static function canAccess(): bool

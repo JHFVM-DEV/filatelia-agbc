@@ -1,5 +1,5 @@
 'use client';
-import { API_BASE_URL } from '@/config/api';
+import { API_BASE_URL, normalizeImageUrl } from '@/config/api';
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -87,8 +87,8 @@ export default function Home() {
               paper_type: p.paper_type || 'Papel verjurado',
               gum_condition: p.gum_condition || 'Goma original intacta',
               dimensions: p.dimensions || '28 x 35 mm',
-              front_image: p.front_image || '/images/hero-philately.jpg',
-              back_image: p.back_image || '/images/hero-philately.jpg',
+              front_image: normalizeImageUrl(p.front_image),
+              back_image: normalizeImageUrl(p.back_image),
               is_featured: p.is_featured,
               description: p.description || '',
               historical_context: p.historical_context || '',
@@ -145,17 +145,17 @@ export default function Home() {
       title: 'Emisión Bicentenario (1825–2025)',
       subtitle: '200 Años de Soberanía e Historia Patria',
       description: 'Homenaje de gala conmemorativo al Bicentenario de la República de Bolivia. Pliegos de lujo con dorados al fuego, filigrana de seguridad y hojitas bloque numeradas.',
-      image: '/images/hero-philately.jpg',
+      image: '/images/stamps/sello-bicentenario-batalla-de-la-tablada-2017.png',
       tag: 'Magna Emisión',
       categorySlug: 'hojitas-bloque',
       badgeColor: 'bg-white/[0.08] text-amber-200 border-white/10',
     },
     {
       id: 'clasicos',
-      title: 'Los Cóndores de 1866 (Primera Emisión)',
+      title: 'Los Cóndores y Primeros Sellos',
       subtitle: 'El Origen de la Filatelia Boliviana',
-      description: 'La primera serie postal oficial autorizada bajo la presidencia de Mariano Melgarejo. Grabados al aguafuerte sobre planchas de cobre, piezas cumbres de museos internacionales.',
-      image: '/images/cat-classic.jpg',
+      description: 'La histórica tradición postal oficial soberana. Grabados al aguafuerte sobre planchas de cobre, piezas cumbres de museos internacionales.',
+      image: '/images/stamps/sello-150-anos-primer-sello-postal-boliviano-2017.png',
       tag: 'Piezas de Museo',
       categorySlug: 'sellos-y-series',
       badgeColor: 'bg-white/[0.08] text-blue-200 border-white/10',
@@ -165,39 +165,39 @@ export default function Home() {
       title: 'Flora, Fauna & Riqueza Andino-Amazónica',
       subtitle: 'Patrimonio Natural y Especies Protegidas',
       description: 'Series dedicadas a la biodiversidad del Madidi, los bosques secos de la Chiquitania, el jucumari, la paraba barba azul y orquídeas endémicas del territorio nacional.',
-      image: '/images/cat-themes.jpg',
+      image: '/images/stamps/sello-colibri-cometa-sappho-sparganurus-potosi-2007.png',
       tag: 'Temática Natural',
-      categorySlug: 'sellos-y-series',
+      categorySlug: 'fauna-y-flora',
       badgeColor: 'bg-white/[0.08] text-emerald-200 border-white/10',
     },
     {
       id: 'fdc',
-      title: 'Sobres de Primer Día de Emisión (FDC)',
-      subtitle: 'Documentos Postales Cancelados en Fecha Cero',
-      description: 'Sobres ilustrados conmemorativos que llevan adherida la serie completa y cancelada con matasellos especial de gala en la fecha exacta de su puesta en circulación.',
-      image: '/images/cat-limited.jpg',
-      tag: 'Primer Día FDC',
-      categorySlug: 'sobres-primer-dia',
+      title: 'Dípticos, Trípticos & Arte Sacro',
+      subtitle: 'Documentos Postales y Arte Virreinal',
+      description: 'Ediciones polícromas de alta resolución que rescatan el acervo pictórico colonial virreinal y conmemoraciones nacionales.',
+      image: '/images/stamps/sello-navidad-arte-sacro-triptico-2007.png',
+      tag: 'Arte Sacro',
+      categorySlug: 'dipticos-y-tripticos',
       badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-400/40',
     },
     {
-      id: 'accesorios',
-      title: 'Material de Conservación & Bóveda Hawid',
-      subtitle: 'Estuches Libres de Ácido y Óptica 10x',
-      description: 'Álbumes clasificadores con bandas de papel pergamino, camisas protectoras glassine y lupas cuentahilos con iluminación UV para el resguardo pericial de sus piezas.',
-      image: '/images/cat-accessories.jpg',
-      tag: 'Conservación',
-      categorySlug: 'accesorios-filatelicos',
+      id: 'soberania',
+      title: 'Soberanía Postal & Telecomunicaciones',
+      subtitle: 'Patrimonio Institucional del Estado',
+      description: 'Emisiones que certifican la soberanía postal, hitos de desarrollo nacional, tratados y telecomunicaciones bolivianas.',
+      image: '/images/stamps/sello-att-soberania-postal-y-telecomunicaciones-2015.png',
+      tag: 'Patrimonio Soberano',
+      categorySlug: 'sellos-y-series',
       badgeColor: 'bg-amber-400/15 text-amber-200 border-amber-300/40',
     },
     {
       id: 'hojitas',
-      title: 'Hojitas Bloque & Pliegos Especiales',
-      subtitle: 'Ediciones Especiales de Exposición',
-      description: 'Hojas independientes de pequeño tiraje con márgenes ilustrados continuos, emitidas para exposiciones filatélicas internacionales y certámenes de la UPU.',
-      image: '/images/hero-philately.jpg',
+      title: 'Recursos Naturales & Aguas del Silala',
+      subtitle: 'Ediciones Especiales de Bóveda',
+      description: 'Series y pliegos dedicados a la protección de los recursos naturales soberanos y manantiales altoandinos.',
+      image: '/images/stamps/sello-manantiales-del-silala-potosi-18bs-2016.png',
       tag: 'Pliegos de Gala',
-      categorySlug: 'hojitas-bloque',
+      categorySlug: 'sellos-y-series',
       badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-400/40',
     },
   ];
@@ -296,15 +296,15 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 3. ANATOMÍA DE UN SELLO POSTAL (MÓDULO EDUCATIVO VISUAL)                 */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-[#001A38] text-white border-b border-[#0A3B73] relative overflow-hidden">
+      <section className="py-20 bg-[#001A38] text-white border-t-4 border-[#FFCC00] border-b border-[#0A3B73] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.08] text-amber-200 text-xs font-medium tracking-wide mb-3">
-              <Microscope className="w-4 h-4 text-amber-300/80" />
-              <span>Análisis Pericial & Educación</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFCC00] text-[#002B5B] text-xs font-bold tracking-wide mb-3 shadow-sm">
+              <Microscope className="w-4 h-4 text-[#002B5B]" />
+              <span>Análisis Pericial & Educación Postal</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
               Anatomía de un Sello Postal
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-300">
@@ -325,13 +325,13 @@ export default function Home() {
                     onClick={() => setActiveAnatomy(idx)}
                     className={`w-full text-left p-4 rounded-xl transition-all duration-200 cursor-pointer flex items-center justify-between border ${
                       isSelected
-                        ? 'bg-[#001833] border-white/20 text-white shadow-lg'
+                        ? 'bg-[#001833] border-[#FFCC00] text-white shadow-lg'
                         : 'bg-[#002B5B]/50 hover:bg-[#002B5B] border-slate-700/60 text-slate-300 hover:text-white'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs ${
-                        isSelected ? 'bg-white/[0.15] text-amber-200' : 'bg-[#001A38] text-slate-400'
+                        isSelected ? 'bg-[#FFCC00] text-[#002B5B]' : 'bg-[#001A38] text-slate-400'
                       }`}>
                         {idx + 1}
                       </div>
@@ -340,7 +340,7 @@ export default function Home() {
                         <span className="text-[11px] text-amber-200/80 font-medium">{item.badge}</span>
                       </div>
                     </div>
-                    <ChevronRight className={`w-4 h-4 transition-transform ${isSelected ? 'translate-x-1 text-amber-200' : 'text-slate-500'}`} />
+                    <ChevronRight className={`w-4 h-4 transition-transform ${isSelected ? 'translate-x-1 text-[#FFD100]' : 'text-slate-500'}`} />
                   </button>
                 );
               })}
@@ -373,7 +373,7 @@ export default function Home() {
               <div className="pt-3 flex flex-wrap items-center gap-3">
                 <Link
                   href="/guia"
-                  className="px-4 py-2.5 rounded-xl text-xs font-bold text-[#002B5B] bg-[#F4C400] hover:bg-amber-300 transition flex items-center gap-1.5 shadow"
+                  className="px-4 py-2.5 rounded-xl text-xs font-bold text-[#002B5B] bg-[#FFCC00] hover:bg-amber-300 transition flex items-center gap-1.5 shadow"
                 >
                   <BookOpen className="w-3.5 h-3.5" />
                   <span>Ver Guía de Grados UPU</span>
@@ -571,18 +571,18 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 6. GARANTÍA POSTAL Y SERVICIOS OFICIALES DE BÓVEDA                      */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-[#001A38] text-white border-b border-[#0A3B73]">
+      <section className="py-20 bg-[#001A38] text-white border-t-4 border-[#FFCC00] border-b border-[#0A3B73]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div className="lg:col-span-6 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.08] text-amber-200 text-xs font-medium tracking-wide">
-                <Shield className="w-3.5 h-3.5 text-amber-300/80" />
-                <span>Rigor Notarial y Pericial</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFCC00] text-[#002B5B] text-xs font-bold tracking-wide shadow-sm">
+                <Shield className="w-3.5 h-3.5 text-[#002B5B]" />
+                <span>Rigor Notarial y Pericial Oficial</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
                 Garantía y Fe Pública de la Agencia Postal
               </h2>
 
@@ -592,7 +592,7 @@ export default function Home() {
 
               <div className="space-y-3 pt-2">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-amber-300/80 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#FFD100] shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-white text-sm font-bold block">Certificado Notarial Foliado con QR</strong>
                     <span className="text-xs text-slate-300">Cada orden de bóveda incluye su acta física sellada en seco con código criptográfico de serie.</span>
@@ -600,7 +600,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-amber-300/80 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#FFD100] shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-white text-sm font-bold block">Protección Glassine Libre de Ácido</strong>
                     <span className="text-xs text-slate-300">Embalaje individual con polímeros y fibras libres de lignina para salvaguardar la goma centenaria.</span>
@@ -608,7 +608,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-amber-300/80 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#FFD100] shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-white text-sm font-bold block">Custodia Climatizada Controlada</strong>
                     <span className="text-xs text-slate-300">Bóvedas con 50% de humedad relativa y 20°C constantes para impedir hongos u óxido filatélico.</span>
@@ -619,7 +619,7 @@ export default function Home() {
               <div className="pt-3">
                 <Link
                   href="/certificacion"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-amber-300 hover:text-white underline underline-offset-4"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-[#FFD100] hover:text-white underline underline-offset-4"
                 >
                   <span>Conocer más sobre el protocolo de peritaje y certificación notarial</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -629,10 +629,10 @@ export default function Home() {
 
             {/* Certificado de Muestra */}
             <div className="lg:col-span-6 flex justify-center">
-              <div className="w-full max-w-sm bg-[#FAF8F0] text-[#002B5B] p-7 rounded-3xl border border-[#E2DDD5] shadow-2xl relative rotate-1 hover:rotate-0 transition-transform duration-300">
+              <div className="w-full max-w-sm bg-[#FAF8F0] text-[#002B5B] p-7 rounded-3xl border-2 border-[#FFCC00] shadow-2xl relative rotate-1 hover:rotate-0 transition-transform duration-300">
                 <div className="text-center pb-4 border-b border-[#E2DDD5]">
                   <span className="text-[10px] uppercase tracking-widest text-[#C99A00] font-black block">
-                    Agencia Boliviana de Correos
+                    Correos de Bolivia
                   </span>
                   <h4 className="text-base font-black text-[#002B5B] mt-1">
                     ACTA DE CERTIFICACIÓN NOTARIAL

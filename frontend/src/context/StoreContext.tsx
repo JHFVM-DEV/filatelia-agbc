@@ -25,14 +25,30 @@ interface StoreContextType {
   closeCart: () => void;
   openCheckout: () => void;
   closeCheckout: () => void;
-  openLoginModal: () => void;
+  openLoginModal: (view?: 'login' | 'register' | 'forgot' | 'reset') => void;
+  openRegisterModal: () => void;
   closeLoginModal: () => void;
+  loginModalInitialView: 'login' | 'register' | 'forgot' | 'reset';
   openWishlist: () => void;
   closeWishlist: () => void;
   openOrders: () => void;
   closeOrders: () => void;
   openCertificate: (order: any) => void;
   closeCertificate: () => void;
+  isProfileOpen: boolean;
+  openProfileModal: () => void;
+  closeProfileModal: () => void;
+  isTrackingOpen: boolean;
+  trackingInitialCode: string | null;
+  openTracking: (code?: string | null) => void;
+  closeTracking: () => void;
+  isEmailVerificationOpen: boolean;
+  emailVerificationReason: 'wishlist' | 'checkout' | 'general' | null;
+  pendingWishlistStampId: number | null;
+  openEmailVerificationModal: (reason?: 'wishlist' | 'checkout' | 'general', pendingStampId?: number | null) => void;
+  closeEmailVerificationModal: () => void;
+  handleEmailVerificationSuccess: (verifiedUser: any) => void;
+  isEmailVerified: boolean;
   setCurrentUser: (user: any) => void;
   logout: () => void;
   clearCart: () => void;
@@ -47,9 +63,26 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [loginModalInitialView, setLoginModalInitialView] = useState<'login' | 'register' | 'forgot' | 'reset'>('login');
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isOrdersOpen, setIsOrdersOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isTrackingOpen, setIsTrackingOpen] = useState(false);
+  const [trackingInitialCode, setTrackingInitialCode] = useState<string | null>(null);
+  const [isEmailVerificationOpen, setIsEmailVerificationOpen] = useState(false);
+  const [emailVerificationReason, setEmailVerificationReason] = useState<'wishlist' | 'checkout' | 'general' | null>('general');
+  const [pendingWishlistStampId, setPendingWishlistStampId] = useState<number | null>(null);
   const [selectedCertificateOrder, setSelectedCertificateOrder] = useState<any | null>(null);
+
+  const openTracking = (code?: string | null) => {
+    setTrackingInitialCode(code || null);
+    setIsTrackingOpen(true);
+  };
+
+  const closeTracking = () => {
+    setIsTrackingOpen(false);
+    setTrackingInitialCode(null);
+  };
 
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -222,9 +255,53 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     setCart((prev) => prev.filter((item) => item.stamp.id !== stampId));
   };
 
+  const isEmailVerified = Boolean(
+    currentUser && (
+      currentUser.email === 'admin@filatelia.bo' ||
+      currentUser.email === 'almacen@filatelia.bo' ||
+      currentUser.roles?.includes('SUPER_ADMIN') ||
+      currentUser.roles?.includes('ADMIN_PRODUCTOS_ALMACEN') ||
+      currentUser.email_verified_at
+    )
+  );
+
+  const openEmailVerificationModal = (
+    reason: 'wishlist' | 'checkout' | 'general' = 'general',
+    pendingStampId: number | null = null
+  ) => {
+    setEmailVerificationReason(reason);
+    setPendingWishlistStampId(pendingStampId);
+    setIsEmailVerificationOpen(true);
+  };
+
+  const closeEmailVerificationModal = () => {
+    setIsEmailVerificationOpen(false);
+    setPendingWishlistStampId(null);
+  };
+
+  const handleEmailVerificationSuccess = (verifiedUser: any) => {
+    setCurrentUser(verifiedUser);
+    try {
+      localStorage.setItem('filatelia_user', JSON.stringify(verifiedUser));
+    } catch {}
+
+    const lastReason = emailVerificationReason;
+    const lastPendingId = pendingWishlistStampId;
+
+    if (lastReason === 'checkout') {
+      setIsCheckoutOpen(true);
+    } else if (lastReason === 'wishlist' && lastPendingId !== null) {
+      setWishlist((prev) => (prev.includes(lastPendingId) ? prev : [...prev, lastPendingId]));
+    }
+  };
+
   const toggleWishlist = (stampId: number) => {
     if (!currentUser) {
       setIsLoginModalOpen(true);
+      return;
+    }
+    if (!isEmailVerified) {
+      openEmailVerificationModal('wishlist', stampId);
       return;
     }
     setWishlist((prev) =>
@@ -267,6 +344,18 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     setCart([]);
   };
 
+  const openCheckout = () => {
+    if (!currentUser) {
+      setIsLoginModalOpen(true);
+      return;
+    }
+    if (!isEmailVerified) {
+      openEmailVerificationModal('checkout');
+      return;
+    }
+    setIsCheckoutOpen(true);
+  };
+
   return (
     <StoreContext.Provider
       value={{
@@ -279,6 +368,13 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         isWishlistOpen,
         isOrdersOpen,
         selectedCertificateOrder,
+        isEmailVerificationOpen,
+        emailVerificationReason,
+        pendingWishlistStampId,
+        openEmailVerificationModal,
+        closeEmailVerificationModal,
+        handleEmailVerificationSuccess,
+        isEmailVerified,
         addToCart,
         updateQuantity,
         removeItem,
@@ -287,14 +383,33 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         moveAllWishlistToCart,
         openCart: () => setIsCartOpen(true),
         closeCart: () => setIsCartOpen(false),
-        openCheckout: () => setIsCheckoutOpen(true),
+        openCheckout,
         closeCheckout: () => setIsCheckoutOpen(false),
-        openLoginModal: () => setIsLoginModalOpen(true),
+        openLoginModal: (view?: any) => {
+          const safeView: 'login' | 'register' | 'forgot' | 'reset' =
+            typeof view === 'string' && ['login', 'register', 'forgot', 'reset'].includes(view)
+              ? (view as 'login' | 'register' | 'forgot' | 'reset')
+              : 'login';
+          setLoginModalInitialView(safeView);
+          setIsLoginModalOpen(true);
+        },
+        openRegisterModal: () => {
+          setLoginModalInitialView('register');
+          setIsLoginModalOpen(true);
+        },
         closeLoginModal: () => setIsLoginModalOpen(false),
+        loginModalInitialView,
         openWishlist: () => setIsWishlistOpen(true),
         closeWishlist: () => setIsWishlistOpen(false),
         openOrders: () => setIsOrdersOpen(true),
         closeOrders: () => setIsOrdersOpen(false),
+        isProfileOpen,
+        openProfileModal: () => setIsProfileOpen(true),
+        closeProfileModal: () => setIsProfileOpen(false),
+        isTrackingOpen,
+        trackingInitialCode,
+        openTracking,
+        closeTracking,
         openCertificate: (order: any) => setSelectedCertificateOrder(order),
         closeCertificate: () => setSelectedCertificateOrder(null),
         setCurrentUser,

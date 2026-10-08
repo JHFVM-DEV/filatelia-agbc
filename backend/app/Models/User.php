@@ -23,6 +23,8 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'google_id',
+        'avatar',
     ];
 
     /**
@@ -53,9 +55,7 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasAnyRole([
             'SUPER_ADMIN',
             'ADMIN_PRODUCTOS_ALMACEN',
-            'ADMIN_FILATELIA',
             'ALMACEN',
-            'ATENCION',
         ]);
     }
 

@@ -45,22 +45,27 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Se activa con cada scroll cuando el elemento entra en la ventana visual
         if (entry.isIntersecting) {
           setIsVisible(true);
-        } else {
-          // Se reinicia cuando sale del viewport para volver a animarse cada vez que se hace scroll
-          setIsVisible(false);
         }
       },
       {
-        threshold: 0.12,
-        rootMargin: '0px 0px -35px 0px',
+        threshold: 0.05,
+        rootMargin: '120px 0px 60px 0px',
       }
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+
+    // Fallback de seguridad: garantiza que la pieza sea visible incluso si el scroll/viewport se demora
+    const fallbackTimer = setTimeout(() => {
+      setIsVisible(true);
+    }, 1000);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimer);
+    };
   }, []);
 
   // Desfase escalonado elegante según la columna en la cuadrícula
@@ -117,7 +122,7 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
               alt={stamp.name}
               fill
               sizes="(max-width: 640px) 75vw, (max-width: 1024px) 35vw, 220px"
-              loading="lazy"
+              priority={index < 4}
               className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.01]"
             />
           </div>
@@ -305,10 +310,10 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium whitespace-nowrap transition flex items-center gap-2 border ${
+                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm whitespace-nowrap transition flex items-center gap-2 border cursor-pointer ${
                   isActive
-                    ? 'bg-[#002B5B] text-white border-[#002B5B] shadow-sm'
-                    : 'bg-white text-[#5A554E] hover:text-[#002B5B] hover:bg-[#FAF5E6] hover:border-slate-300 border-[#E2DDD5]'
+                    ? 'bg-[#FFCC00] text-[#002B5B] font-black border-[#E5B500] shadow-sm'
+                    : 'bg-white text-[#5A554E] hover:text-[#002B5B] hover:bg-[#FAF5E6] hover:border-slate-300 border-[#E2DDD5] font-medium'
                 }`}
               >
                 <span>{cat.name}</span>

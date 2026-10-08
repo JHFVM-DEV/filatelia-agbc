@@ -1,4 +1,4 @@
-# 🇧🇴 Filatelia Bolivia — Agencia Boliviana de Correos (AGBC)
+# 🇧🇴 Filatelia Bolivia — Correos de Bolivia
 
 Plataforma oficial de catalogación, peritaje numismático/filatélico, venta y custodia física de piezas postales conmemorativas y patrimoniales de Bolivia.
 
@@ -170,7 +170,7 @@ server {
 
 ## 🖼️ Gestión y Visualización de Imágenes Catalogadas
 
-* **Imágenes Oficiales Precargadas:** El repositorio incluye las **43 fotografías oficiales de alta resolución** de los sellos postales, logos oficiales de la AGBC y banners en:
+* **Imágenes Oficiales Precargadas:** El repositorio incluye las **43 fotografías oficiales de alta resolución** de los sellos postales, logos oficiales de Correos de Bolivia y banners en:
   * `frontend/public/images/stamps/`
   * `backend/public/images/stamps/`
 * **Carga en PostgreSQL:** Al ejecutar `php artisan db:seed --force`, todas las piezas quedan registradas en la base de datos con sus rutas de imagen correspondientes (`/images/stamps/...`), visibles de forma instantánea en el catálogo público, el visor con lupa 10x y el modo pantalla completa 100% HD.
@@ -178,12 +178,24 @@ server {
 
 ---
 
-## 🔐 Credenciales y Roles Administrativos
+## 🔐 Credenciales y Roles Oficiales del Sistema
 
-El sistema incluye seeders oficiales con los siguientes roles precargados:
-* **Super Administrador:** `admin@filatelia.bo` / `Admin12345!`
-* **Admin Filatelia & Curaduría:** `filatelia@filatelia.bo` / `Filatelia12345!`
-* **Jefe de Bóveda & Almacén:** `almacen@filatelia.bo` / `Almacen12345!`
-* **Atención al Cliente:** `soporte@filatelia.bo` / `Soporte12345!`
+La plataforma opera bajo una arquitectura de **3 roles oficiales** (gestionados con Spatie Permissions y autenticación unificada):
 
-> Se recomienda cambiar las contraseñas predeterminadas inmediatamente después del primer inicio de sesión en el módulo de usuarios.
+1. **Super Administrador (`SUPER_ADMIN`):**
+   * **Correo:** `admin@filatelia.bo`
+   * **Contraseña:** `Admin12345!`
+   * **Alcance:** Control total de la plataforma, auditoría ejecutiva, gestión de usuarios, roles, métricas globales y configuración del sistema.
+
+2. **Encargado de Productos y Almacén (`ADMIN_PRODUCTOS_ALMACEN`):**
+   * **Correo:** `almacen@filatelia.bo`
+   * **Contraseña:** `Almacen12345!`
+   * **Alcance:** Curaduría del catálogo filatélico oficial, control de existencias físicas en bóveda, registro de emisiones conmemorativas y despacho postal.
+
+3. **Cliente / Coleccionista Oficial (`CLIENTE`):**
+   * **Correo:** `coleccionista@filatelia.bo`
+   * **Contraseña:** `Cliente12345!`
+   * **Alcance:** Acceso al catálogo digital interactivo, visor de alta definición con lupa 10x, listas de deseos, adquisición filatélica y seguimiento de pedidos.
+
+> Se recomienda cambiar las contraseñas predeterminadas tras la puesta en marcha inicial mediante el flujo oficial de inicio de sesión o restablecimiento de contraseña.
+

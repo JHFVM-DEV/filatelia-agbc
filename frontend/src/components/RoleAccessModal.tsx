@@ -2,7 +2,7 @@
 import { API_BASE_URL } from '@/config/api';
 
 import React, { useState } from 'react';
-import { X, Shield, KeyRound, ExternalLink, Package, User, Crown, Check, Sparkles, Headphones, Eye, EyeOff } from 'lucide-react';
+import { X, Shield, KeyRound, ExternalLink, Package, User, Crown, Check, Eye, EyeOff } from 'lucide-react';
 
 interface RoleAccessModalProps {
   isOpen: boolean;
@@ -40,40 +40,14 @@ export const RoleAccessModal: React.FC<RoleAccessModalProps> = ({
       isFilament: true,
     },
     {
-      id: 'ADMIN_FILATELIA',
-      name: 'Admin de Filatelia & Curaduría',
-      icon: Sparkles,
-      badgeColor: 'bg-purple-100 text-purple-900 border-purple-300',
-      description: 'Gestión y peritaje del catálogo filatélico oficial, registro de emisiones conmemorativas con decreto, composición por categorías y control de piezas raras/museo.',
-      credentials: {
-        email: 'filatelia@filatelia.bo',
-        pass: 'Filatelia12345!',
-      },
-      panelUrl: '/admin',
-      isFilament: true,
-    },
-    {
-      id: 'ALMACEN',
-      name: 'Jefe de Bóveda & Despacho',
+      id: 'ADMIN_PRODUCTOS_ALMACEN',
+      name: 'Encargado de Productos y Almacén',
       icon: Package,
       badgeColor: 'bg-blue-100 text-blue-900 border-blue-300',
-      description: 'Custodia física de existencias en bóvedas departamentales, mesa de empaque glassine libre de ácido, asignación de precintos y despacho en valijas de Correos.',
+      description: 'Gestión y curaduría del catálogo filatélico oficial, custodia física de existencias en bóvedas departamentales, asignación de precintos y despacho postal.',
       credentials: {
         email: 'almacen@filatelia.bo',
         pass: 'Almacen12345!',
-      },
-      panelUrl: '/admin',
-      isFilament: true,
-    },
-    {
-      id: 'ATENCION',
-      name: 'Atención al Coleccionista & Guías',
-      icon: Headphones,
-      badgeColor: 'bg-teal-100 text-teal-900 border-teal-300',
-      description: 'Resolución de consultas y reclamos de autenticidad, localización inmediata de paquetes en tránsito postal con buscador de guías y contacto con compradores.',
-      credentials: {
-        email: 'soporte@filatelia.bo',
-        pass: 'Soporte12345!',
       },
       panelUrl: '/admin',
       isFilament: true,
@@ -103,7 +77,7 @@ export const RoleAccessModal: React.FC<RoleAccessModalProps> = ({
             <KeyRound className="w-5 h-5 text-amber-300" />
             <div>
               <h3 className="font-bold text-base">Estructura de Roles y Control de Acceso</h3>
-              <p className="text-[11px] text-slate-300">Demostración de los 4 perfiles administrativos y el rol coleccionista</p>
+              <p className="text-[11px] text-slate-300">Demostración de los 3 perfiles oficiales del sistema</p>
             </div>
           </div>
           <button 
@@ -201,7 +175,7 @@ export const RoleAccessModal: React.FC<RoleAccessModalProps> = ({
 
         {/* Footer info */}
         <div className="bg-white p-4 border-t border-[#E2DDD5] text-center text-xs text-slate-500">
-          Los 4 perfiles administrativos cuentan con Dashboards de métricas adaptados en <strong>Filament</strong> y control de acceso con <strong>Spatie Permissions</strong>.
+          Los 3 roles oficiales operan con control de acceso unificado y permisos asignados con <strong>Spatie Permissions</strong>.
         </div>
 
       </div>

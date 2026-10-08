@@ -80,6 +80,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
                       src={stamp.front_image}
                       alt={stamp.name}
                       fill
+                      sizes="64px"
                       className="object-contain"
                     />
                   </div>

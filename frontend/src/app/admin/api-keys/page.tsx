@@ -28,9 +28,11 @@ import {
   Zap,
   Eye,
   EyeOff,
+  Store,
 } from 'lucide-react';
 
 import { useStore } from '@/context/StoreContext';
+import { ShowcaseManager } from '@/components/ShowcaseManager';
 
 interface ApiTokenItem {
   id: number;
@@ -87,7 +89,18 @@ export default function ApiKeysManagementPage() {
   const [refreshing, setRefreshing] = useState<boolean>(false);
   const [search, setSearch] = useState<string>('');
   const [statusFilter, setStatusFilter] = useState<'ALL' | 'ACTIVE' | 'EXPIRED'>('ALL');
-  const [activeTab, setActiveTab] = useState<'tokens' | 'docs' | 'downloads'>('tokens');
+  const [activeTab, setActiveTab] = useState<'tokens' | 'showcase' | 'docs' | 'downloads'>('tokens');
+
+  // Permitir activar pestaña mediante parámetro ?tab=showcase
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get('tab');
+      if (tabParam === 'showcase' || tabParam === 'docs' || tabParam === 'downloads') {
+        setActiveTab(tabParam as any);
+      }
+    }
+  }, []);
 
   // Modal para crear nueva API Key
   const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false);
@@ -607,6 +620,17 @@ export default function ApiKeysManagementPage() {
           API Keys Emitidas ({tokens.length})
         </button>
         <button
+          onClick={() => setActiveTab('showcase')}
+          className={`pb-3 px-5 text-xs font-black transition-all border-b-2 flex items-center gap-2 cursor-pointer ${
+            activeTab === 'showcase'
+              ? 'border-amber-400 text-amber-400'
+              : 'border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700'
+          }`}
+        >
+          <Store className="w-4 h-4 text-[#FFCC00]" />
+          Vitrina Portal Correos (API)
+        </button>
+        <button
           onClick={() => setActiveTab('docs')}
           className={`pb-3 px-5 text-xs font-black transition-all border-b-2 flex items-center gap-2 cursor-pointer ${
             activeTab === 'docs'
@@ -629,6 +653,11 @@ export default function ApiKeysManagementPage() {
           Descargar Especificaciones
         </button>
       </div>
+
+      {/* TAB VITRINA: CONFIGURACIÓN PARA EL PORTAL GENERAL DE CORREOS */}
+      {activeTab === 'showcase' && (
+        <ShowcaseManager />
+      )}
 
       {/* TAB 1: LISTADO DE TOKENS */}
       {activeTab === 'tokens' && (

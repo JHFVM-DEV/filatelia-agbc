@@ -46,7 +46,7 @@ class AdminController extends Controller
     protected function authorizeStaff(Request $request): ?JsonResponse
     {
         $user = $request->user();
-        if (!$user || !$user->hasAnyRole(['SUPER_ADMIN', 'ADMIN_PRODUCTOS_ALMACEN', 'ADMIN_FILATELIA', 'ALMACEN', 'ATENCION'])) {
+        if (!$user || !$user->hasAnyRole(['SUPER_ADMIN', 'ADMIN_PRODUCTOS_ALMACEN', 'ALMACEN'])) {
             return response()->json([
                 'success' => false,
                 'message' => 'Acceso denegado: Se requieren credenciales administrativas oficiales.',
@@ -309,7 +309,7 @@ class AdminController extends Controller
             $shipment = Shipment::firstOrCreate(
                 ['order_id' => $order->id],
                 [
-                    'tracking_number' => $order->tracking_code ?? ('BOL-EXP-' . strtoupper(Str::random(8))),
+                    'tracking_code' => $order->tracking_code ?? ('BOL-EXP-' . strtoupper(Str::random(8))),
                     'carrier' => 'Agencia Postal de Bolivia (Correos Bolivia)',
                     'status' => $request->status === 'DELIVERED' ? 'DELIVERED' : 'IN_TRANSIT',
                 ]

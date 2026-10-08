@@ -1,5 +1,5 @@
 'use client';
-import { API_BASE_URL } from '@/config/api';
+import { API_BASE_URL, normalizeImageUrl } from '@/config/api';
 
 import React, { useState, useEffect, Suspense } from 'react';
 import dynamic from 'next/dynamic';
@@ -73,8 +73,8 @@ function CatalogContent() {
               paper_type: p.paper_type || 'Papel verjurado',
               gum_condition: p.gum_condition || 'Goma original intacta',
               dimensions: p.dimensions || '28 x 35 mm',
-              front_image: p.front_image || '/images/hero-philately.jpg',
-              back_image: p.back_image || '/images/hero-philately.jpg',
+              front_image: normalizeImageUrl(p.front_image),
+              back_image: normalizeImageUrl(p.back_image),
               is_featured: p.is_featured,
               description: p.description || '',
               historical_context: p.historical_context || '',
@@ -92,44 +92,44 @@ function CatalogContent() {
 
   return (
     <div className="animate-in fade-in duration-300">
-      {/* Institutional Catalog Header Banner */}
-      <section className="bg-gradient-to-b from-[#001A38] via-[#00224a] to-[#002B5B] text-white pt-10 pb-12 border-b border-[#0A3B73] relative overflow-hidden">
-        {/* Subtle Guilloche / Gold Glow */}
-        <div className="absolute inset-0 bg-guilloche opacity-15 pointer-events-none" />
-        <div className="absolute -top-24 right-1/4 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Institutional Catalog Header Banner - Amarillo Postal Dominante */}
+      <section className="bg-gradient-to-r from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] pt-10 pb-12 border-b-2 border-[#E5B500] relative overflow-hidden shadow-sm">
+        {/* Subtle Pattern */}
+        <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
+        <div className="absolute -top-24 right-1/4 w-96 h-96 bg-white/25 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb Navigation */}
-          <nav className="flex items-center gap-2 text-xs text-amber-200/80 mb-4 font-medium">
-            <Link href="/" className="hover:text-white transition-colors">
+          <nav className="flex items-center gap-2 text-xs text-[#002B5B]/80 mb-4 font-bold">
+            <Link href="/" className="hover:text-black transition-colors">
               Inicio
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-amber-200/90 font-medium">Catálogo y Emisiones</span>
+            <ChevronRight className="w-3.5 h-3.5 text-[#002B5B]/60" />
+            <span className="text-[#002B5B] font-extrabold">Catálogo y Emisiones</span>
           </nav>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-3 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.08] text-amber-200 text-xs font-medium tracking-wide">
-                <Sparkles className="w-3.5 h-3.5 text-amber-300/80" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#FFD100]" />
                 <span>Acervo Numismático & Postal Oficial</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
                 Catálogo de Sellos y Emisiones
               </h1>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-[#002B5B]/85 leading-relaxed font-medium">
                 Explore nuestra colección de sellos conmemorativos, primeras emisiones de 1866, hojitas bloque de gala y material de conservación con peritaje científico y certificado notarial de autenticidad.
               </p>
             </div>
 
             {/* Quick Guarantees Pill */}
-            <div className="flex flex-wrap md:flex-col gap-2 shrink-0 text-xs text-slate-200">
-              <div className="flex items-center gap-2 bg-white/[0.06] px-3.5 py-2 rounded-xl text-slate-200 text-xs font-medium backdrop-blur-sm border border-white/10">
-                <ShieldCheck className="w-4 h-4 text-amber-300/80" />
+            <div className="flex flex-wrap md:flex-col gap-2 shrink-0 text-xs">
+              <div className="flex items-center gap-2 bg-[#002B5B] px-3.5 py-2 rounded-xl text-white text-xs font-bold shadow-sm">
+                <ShieldCheck className="w-4 h-4 text-[#FFD100]" />
                 <span>Goma Original MNH Auditada</span>
               </div>
-              <div className="flex items-center gap-2 bg-white/[0.06] px-3.5 py-2 rounded-xl text-slate-200 text-xs font-medium backdrop-blur-sm border border-white/10">
-                <Award className="w-4 h-4 text-amber-300/80" />
+              <div className="flex items-center gap-2 bg-[#002B5B] px-3.5 py-2 rounded-xl text-white text-xs font-bold shadow-sm">
+                <Award className="w-4 h-4 text-[#FFD100]" />
                 <span>Certificado Notarial Foliado</span>
               </div>
             </div>
@@ -148,7 +148,7 @@ function CatalogContent() {
       />
 
       {/* Trust & Dispatch Assurance Bar */}
-      <section className="bg-[#001A38] text-white py-10 border-t border-[#0A3B73]">
+      <section className="bg-[#001A38] text-white py-10 border-t-4 border-[#FFCC00]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs text-slate-300">
             <div className="flex items-center gap-3 bg-[#002B5B]/60 p-4 rounded-xl border border-slate-700">

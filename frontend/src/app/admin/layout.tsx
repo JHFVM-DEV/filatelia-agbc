@@ -31,6 +31,7 @@ import {
   Tag,
   Terminal,
   QrCode,
+  Store,
 } from 'lucide-react';
 
 
@@ -126,9 +127,7 @@ export default function AdminLayout({
       [
         'SUPER_ADMIN',
         'ADMIN_PRODUCTOS_ALMACEN',
-        'ADMIN_FILATELIA',
         'ALMACEN',
-        'ATENCION',
       ].includes(roleName)
     );
   };
@@ -190,6 +189,13 @@ export default function AdminLayout({
           href: '/admin/api-keys',
           icon: Terminal,
           description: 'Tokens de integración y especificaciones REST',
+          module: 'APIs',
+        },
+        {
+          name: 'Vitrina Correos Market',
+          href: '/admin/vitrina-portal',
+          icon: Store,
+          description: 'Selección y orden de estampas en portal general',
           module: 'APIs',
         },
       ],

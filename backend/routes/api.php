@@ -10,6 +10,7 @@ Route::get('/products/{slug}', [ApiController::class, 'getProductBySlug']);
 Route::get('/categories', [ApiController::class, 'getCategories']);
 Route::get('/emissions', [ApiController::class, 'getEmissions']);
 Route::post('/orders', [ApiController::class, 'createOrder']);
+Route::get('/tracking/{code}', [ApiController::class, 'getTrackingInfo']);
 
 // External Showcase & Portal Integration (Con imágenes absolutas y datos formateados para tarjetas visuales)
 Route::get('/external/products', [\App\Http\Controllers\Api\ExternalIntegrationController::class, 'getShowcase']);
@@ -19,12 +20,19 @@ Route::get('/external/products/{slug}', [\App\Http\Controllers\Api\ExternalInteg
 // Auth API
 Route::post('/auth/login', [ApiController::class, 'login']);
 Route::post('/auth/unified-login', [ApiController::class, 'unifiedLogin']);
+Route::post('/auth/google', [ApiController::class, 'googleLogin']);
+Route::post('/auth/register', [ApiController::class, 'register']);
 Route::get('/auth/verify-session', [ApiController::class, 'verifySession']);
 Route::post('/auth/logout', [ApiController::class, 'logout']);
+Route::post('/auth/forgot-password', [ApiController::class, 'forgotPassword']);
+Route::post('/auth/reset-password', [ApiController::class, 'resetPassword']);
+Route::post('/auth/send-verification-code', [ApiController::class, 'sendVerificationCode']);
+Route::post('/auth/verify-email', [ApiController::class, 'verifyEmail']);
 
 // Authenticated Collector Profile API
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [ApiController::class, 'getProfile']);
+    Route::put('/profile', [ApiController::class, 'updateProfile']);
     Route::get('/user', function (Request $request) {
         return response()->json([
             'user' => $request->user(),
@@ -109,6 +117,12 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::get('/api-tokens/{id}/export-markdown', [\App\Http\Controllers\Api\ApiTokenController::class, 'exportTokenMarkdown']);
     Route::get('/api-tokens/{id}/export-word', [\App\Http\Controllers\Api\ApiTokenController::class, 'exportTokenWord']);
     Route::delete('/api-tokens/{id}', [\App\Http\Controllers\Api\ApiTokenController::class, 'destroy']);
+
+    // Vitrina Postal & Integración Externa (Correos Market)
+    Route::get('/showcase', [\App\Http\Controllers\Api\ShowcaseController::class, 'index']);
+    Route::post('/showcase', [\App\Http\Controllers\Api\ShowcaseController::class, 'update']);
+    Route::post('/showcase/{id}/toggle', [\App\Http\Controllers\Api\ShowcaseController::class, 'toggle']);
+    Route::post('/showcase/reset-default', [\App\Http\Controllers\Api\ShowcaseController::class, 'resetDefault']);
 });
 
 

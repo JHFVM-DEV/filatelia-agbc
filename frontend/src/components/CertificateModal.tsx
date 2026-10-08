@@ -244,7 +244,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                   <span>Estado Plurinacional de Bolivia</span>
                 </div>
                 <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#002B5B] uppercase font-serif">
-                  Agencia Boliviana de Correos
+                  Correos de Bolivia
                 </h2>
                 <p className="text-xs font-semibold tracking-wider text-[#C99A00] uppercase mt-0.5">
                   Dirección Nacional de Filatelia & Custodia de Bóveda

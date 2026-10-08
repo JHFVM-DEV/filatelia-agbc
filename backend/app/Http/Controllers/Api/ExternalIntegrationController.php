@@ -94,7 +94,9 @@ class ExternalIntegrationController extends Controller
             'name' => $p->name,
             'slug' => $p->slug,
             'catalog_code' => $p->catalog_code,
-            'badge' => mb_strtoupper($p->category?->name ?? 'FILATELIA OFICIAL', 'UTF-8'),
+            'badge' => $p->badge,
+            'is_in_showcase' => (bool) $p->is_in_showcase,
+            'showcase_order' => (int) ($p->showcase_order ?? 0),
             'category' => [
                 'id' => $p->category_id,
                 'name' => $p->category?->name ?? 'Colección General',
@@ -145,14 +147,23 @@ class ExternalIntegrationController extends Controller
 
         $query = Product::with(['category', 'emission'])->where('is_active', true);
 
-        // Filtro por destacadas (por defecto true para la vitrina principal)
-        if ($request->has('featured')) {
-            if ($request->boolean('featured')) {
+        // Si existen piezas configuradas específicamente para la vitrina del portal
+        $hasCustomShowcase = Product::where('is_active', true)->where('is_in_showcase', true)->exists();
+
+        if ($hasCustomShowcase && !$request->has('featured') && !$request->has('category') && !$request->has('search')) {
+            $query->where('is_in_showcase', true)
+                  ->orderBy('showcase_order', 'asc')
+                  ->orderBy('id', 'asc');
+        } else {
+            // Filtro por destacadas
+            if ($request->has('featured')) {
+                if ($request->boolean('featured')) {
+                    $query->where('is_featured', true);
+                }
+            } else {
                 $query->where('is_featured', true);
             }
-        } else {
-            // Si no se especifica, priorizar destacadas o las más recientes
-            $query->where('is_featured', true);
+            $query->orderBy('id', 'desc');
         }
 
         // Si se filtra por categoría
@@ -173,17 +184,17 @@ class ExternalIntegrationController extends Controller
             });
         }
 
-        $limit = min((int) $request->get('limit', 4), 50);
-        $products = $query->orderBy('id', 'desc')->take($limit)->get();
+        $limit = min((int) $request->get('limit', 12), 50);
+        $products = $query->take($limit)->get();
 
-        // Si no hubieron destacadas suficientes, rellenar con activas
-        if ($products->count() < $limit && !$request->has('category') && !$request->has('search')) {
+        // Si no hubieron piezas suficientes y no se filtró específicamente, completar
+        if ($products->count() < 4 && !$request->has('category') && !$request->has('search')) {
             $ids = $products->pluck('id')->toArray();
             $more = Product::with(['category', 'emission'])
                 ->where('is_active', true)
                 ->whereNotIn('id', $ids)
                 ->orderBy('id', 'desc')
-                ->take($limit - count($ids))
+                ->take(4 - count($ids))
                 ->get();
             $products = $products->concat($more);
         }

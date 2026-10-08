@@ -2,8 +2,9 @@
 import { API_BASE_URL } from '@/config/api';
 
 import React, { useState, useEffect } from 'react';
-import { X, ShieldCheck, QrCode, CreditCard, Building2, CheckCircle, ArrowRight, Loader2, Award } from 'lucide-react';
+import { X, ShieldCheck, QrCode, CreditCard, Building2, CheckCircle, ArrowRight, Loader2, Award, AlertTriangle, MailCheck } from 'lucide-react';
 import { CartItem } from './CartDrawer';
+import { useStore } from '@/context/StoreContext';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -22,6 +23,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   currentUser,
   onViewCertificate,
 }) => {
+  const { isEmailVerified, openEmailVerificationModal } = useStore();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -57,6 +60,13 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isEmailVerified) {
+      onClose();
+      openEmailVerificationModal('checkout');
+      return;
+    }
+
     setIsLoading(true);
 
     const token = typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
@@ -96,6 +106,16 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           rawOrder: data.data,
         });
       } else {
+        if (res.status === 403) {
+          const errorData = await res.json().catch(() => null);
+          if (errorData?.requires_verification) {
+            setIsLoading(false);
+            onClose();
+            openEmailVerificationModal('checkout');
+            return;
+          }
+        }
+
         // Fallback simulate success
         const orderNum = `BO-FIL-2026-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
         orderResult = {
@@ -261,6 +281,31 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
         ) : (
           /* Checkout Form */
           <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-6">
+            {!isEmailVerified && (
+              <div className="p-3.5 bg-amber-50 border border-amber-300 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs animate-in fade-in">
+                <div className="flex items-start gap-2 text-amber-900">
+                  <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block font-bold">Confirmación de Correo Requerida</strong>
+                    <span className="text-[11px] text-amber-800">
+                      Debe confirmar su correo institucional para completar el proceso de compra y custodia patrimonial.
+                    </span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    openEmailVerificationModal('checkout');
+                  }}
+                  className="px-3.5 py-1.5 bg-[#002B5B] hover:bg-[#0A3B73] text-amber-300 font-bold rounded-lg text-xs flex items-center justify-center gap-1.5 shrink-0 transition shadow-sm"
+                >
+                  <MailCheck className="w-3.5 h-3.5" />
+                  <span>Confirmar Ahora</span>
+                </button>
+              </div>
+            )}
+
             {/* Collector Information */}
             <div className="space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E2DDD5] pb-2">

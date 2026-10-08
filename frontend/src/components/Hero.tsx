@@ -87,13 +87,13 @@ export const Hero: React.FC<HeroProps> = ({
   const currentStamp = carouselItems[currentIndex] || carouselItems[0];
 
   return (
-    <section className="relative bg-[#002B5B] text-white overflow-hidden py-12 lg:py-18 border-b border-[#E5DFC8]/20 select-none">
+    <section className="relative bg-gradient-to-br from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] overflow-hidden py-12 lg:py-18 border-b-2 border-[#E5B500] select-none">
       {/* Subtle Guilloche Texture */}
-      <div className="absolute inset-0 bg-guilloche opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 bg-guilloche opacity-15 pointer-events-none mix-blend-multiply" />
       
       {/* Ambient Gradient Glow */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-white/30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#002B5B]/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -103,53 +103,53 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Left Column: Focused Stamp Information */}
           <div className="lg:col-span-6 space-y-5">
             <div className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.08] backdrop-blur-xs text-amber-200 text-xs font-medium tracking-wide">
-                <Award className="w-3.5 h-3.5 text-amber-300/80 shrink-0" />
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide shadow-sm">
+                <Award className="w-3.5 h-3.5 text-[#FFD100] shrink-0" />
                 <span>Patrimonio Postal & Custodia Filatélica Oficial</span>
               </div>
-              <span className="px-3 py-1 rounded-full bg-white/[0.06] text-slate-300 text-xs font-medium">
+              <span className="px-3 py-1 rounded-full bg-white/90 border border-[#002B5B]/20 text-[#002B5B] text-xs font-bold shadow-xs">
                 {currentStamp.category_name}
               </span>
             </div>
 
             <div className="flex flex-wrap items-center gap-2 text-xs">
-              <span className="px-2.5 py-1 rounded-full bg-white/[0.08] text-slate-200 font-mono text-[11px] font-semibold tracking-wider">
+              <span className="px-2.5 py-1 rounded-full bg-[#002B5B] text-white font-mono text-[11px] font-bold tracking-wider shadow-xs">
                 {currentStamp.catalog_code}
               </span>
-              <span className="text-slate-400 font-medium px-1">
-                Emisión: <strong className="text-slate-200 font-semibold">{currentStamp.year}</strong>
+              <span className="text-[#002B5B] font-semibold px-1">
+                Emisión: <strong className="text-[#002B5B] font-black">{currentStamp.year}</strong>
               </span>
-              <span className="text-slate-600">•</span>
-              <span className="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-200 text-[11px] font-medium">
+              <span className="text-[#002B5B]/40">•</span>
+              <span className="px-2.5 py-1 rounded-full bg-emerald-800 text-white text-[11px] font-bold shadow-xs">
                 {currentStamp.condition_label}
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white transition-all duration-300">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-[#002B5B] drop-shadow-xs transition-all duration-300">
               {currentStamp.name}
             </h1>
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl font-normal line-clamp-3">
+            <p className="text-[#002B5B]/90 text-sm sm:text-base leading-relaxed max-w-xl font-medium line-clamp-3">
               {currentStamp.description}
             </p>
 
             {/* Value Highlights */}
-            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs text-slate-200">
-              <div className="flex items-center gap-2 bg-white/[0.05] px-3.5 py-2 rounded-xl text-slate-300 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-amber-300/80 shrink-0" />
+            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs text-[#002B5B]">
+              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-xs px-3.5 py-2 rounded-xl text-[#002B5B] font-semibold border border-[#002B5B]/15 shadow-sm">
+                <CheckCircle2 className="w-4 h-4 text-[#002B5B] shrink-0" />
                 <span className="whitespace-nowrap">
-                  Dentado: <strong className="text-white">{currentStamp.perforation ? currentStamp.perforation.replace(/milímetros|milimetros/gi, 'mm').trim() : '13.5 x 13.5 mm'}</strong>
+                  Dentado: <strong className="font-bold text-black">{currentStamp.perforation ? currentStamp.perforation.replace(/milímetros|milimetros/gi, 'mm').trim() : '13.5 x 13.5 mm'}</strong>
                 </span>
               </div>
-              <div className="flex items-center gap-2 bg-white/[0.05] px-3.5 py-2 rounded-xl text-slate-300 shadow-xs">
-                <Shield className="w-4 h-4 text-amber-300/80 shrink-0" />
-                <span className="whitespace-nowrap font-medium text-amber-200/90">
+              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-xs px-3.5 py-2 rounded-xl text-[#002B5B] font-semibold border border-[#002B5B]/15 shadow-sm">
+                <Shield className="w-4 h-4 text-[#002B5B] shrink-0" />
+                <span className="whitespace-nowrap font-bold text-[#002B5B]">
                   {currentStamp.rarity_label ? currentStamp.rarity_label.split('/')[0] : 'Pieza de Colección'}
                 </span>
               </div>
-              <div className="flex items-center gap-2 bg-white/[0.05] px-3.5 py-2 rounded-xl text-slate-300 shadow-xs">
-                <Award className="w-4 h-4 text-amber-300/80 shrink-0" />
-                <span className="whitespace-nowrap">Certificado Oficial ABC</span>
+              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-xs px-3.5 py-2 rounded-xl text-[#002B5B] font-semibold border border-[#002B5B]/15 shadow-sm">
+                <Award className="w-4 h-4 text-[#002B5B] shrink-0" />
+                <span className="whitespace-nowrap font-bold">Certificado Oficial ABC</span>
               </div>
             </div>
 
@@ -157,26 +157,26 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-3">
               <button
                 onClick={() => onAddToCart(currentStamp)}
-                className="gold-button px-5 sm:px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 shadow-xl cursor-pointer"
+                className="px-5 sm:px-6 py-3.5 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 bg-[#002B5B] hover:bg-[#001D3D] text-[#FFD100] shadow-xl hover:shadow-2xl transition transform hover:-translate-y-0.5 cursor-pointer"
               >
-                <ShoppingBag className="w-4 h-4" />
+                <ShoppingBag className="w-4 h-4 text-[#FFD100]" />
                 <span>Adquirir ({currentStamp.price.toLocaleString('es-BO', { minimumFractionDigits: 2 })} BOB)</span>
               </button>
 
               <button
                 onClick={() => onInspect(currentStamp)}
-                className="px-4 sm:px-5 py-3.5 rounded-xl text-xs sm:text-sm font-semibold text-white bg-slate-800/90 hover:bg-slate-700 border border-slate-600 transition flex items-center gap-2 backdrop-blur-sm cursor-pointer"
+                className="px-4 sm:px-5 py-3.5 rounded-xl text-xs sm:text-sm font-bold text-[#002B5B] bg-white hover:bg-slate-50 border border-[#002B5B]/25 transition flex items-center gap-2 shadow-sm cursor-pointer"
               >
-                <ZoomIn className="w-4 h-4 text-amber-300/90" />
+                <ZoomIn className="w-4 h-4 text-[#002B5B]" />
                 <span>Laboratorio 10x</span>
               </button>
 
               <Link
                 href="/catalogo"
-                className="px-4 sm:px-5 py-3.5 rounded-xl text-xs sm:text-sm font-semibold text-white bg-white/[0.08] hover:bg-white/[0.12] border border-white/10 transition flex items-center gap-2 shadow-md cursor-pointer"
+                className="px-4 sm:px-5 py-3.5 rounded-xl text-xs sm:text-sm font-bold text-[#002B5B] bg-white/60 hover:bg-white border border-[#002B5B]/20 transition flex items-center gap-2 shadow-xs cursor-pointer"
               >
                 <span>Ver Catálogo</span>
-                <ArrowRight className="w-4 h-4 text-amber-300/80" />
+                <ArrowRight className="w-4 h-4 text-[#002B5B]" />
               </Link>
             </div>
 
@@ -186,13 +186,13 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="lg:col-span-6 relative py-4 flex flex-col items-center">
             
             {/* Selector de Modo de Carrusel: 1 por Colección vs Últimos 5 */}
-            <div className="flex items-center gap-2 mb-4 bg-white/[0.06] p-1.5 rounded-2xl border border-white/10 shadow-lg text-xs z-10 backdrop-blur-md">
+            <div className="flex items-center gap-2 mb-4 bg-white/70 p-1.5 rounded-2xl border border-[#002B5B]/15 shadow-md text-xs z-10 backdrop-blur-md">
               <button
                 onClick={() => setCarouselMode('collections')}
-                className={`px-3 py-1.5 rounded-xl font-medium flex items-center gap-1.5 transition ${
+                className={`px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 transition ${
                   carouselMode === 'collections'
-                    ? 'bg-white/[0.15] text-amber-200 shadow-sm'
-                    : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                    ? 'bg-[#002B5B] text-[#FFD100] shadow-sm'
+                    : 'text-[#002B5B] hover:bg-white/80'
                 }`}
               >
                 <Layers className="w-3.5 h-3.5" />
@@ -201,10 +201,10 @@ export const Hero: React.FC<HeroProps> = ({
 
               <button
                 onClick={() => setCarouselMode('recent')}
-                className={`px-3 py-1.5 rounded-xl font-medium flex items-center gap-1.5 transition ${
+                className={`px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 transition ${
                   carouselMode === 'recent'
-                    ? 'bg-white/[0.15] text-amber-200 shadow-sm'
-                    : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                    ? 'bg-[#002B5B] text-[#FFD100] shadow-sm'
+                    : 'text-[#002B5B] hover:bg-white/80'
                 }`}
               >
                 <Clock className="w-3.5 h-3.5" />
@@ -257,7 +257,6 @@ export const Hero: React.FC<HeroProps> = ({
                               sizes="(max-width: 768px) 85vw, 280px"
                               className="object-contain p-2 hover:scale-105 transition duration-500"
                               priority={idx === 0}
-                              loading={idx === 0 ? "eager" : "lazy"}
                             />
                           </div>
 
@@ -312,10 +311,10 @@ export const Hero: React.FC<HeroProps> = ({
                 <button
                   key={`dot-${stamp.id}-${idx}`}
                   onClick={() => handleSelectSlide(idx)}
-                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
                     currentIndex === idx 
-                      ? 'w-8 bg-[#F4C400]' 
-                      : 'w-2.5 bg-white/30 hover:bg-white/60'
+                      ? 'w-8 bg-[#002B5B] shadow-sm' 
+                      : 'w-2.5 bg-[#002B5B]/30 hover:bg-[#002B5B]/60'
                   }`}
                   title={carouselMode === 'collections' ? stamp.category_name : `Pieza ${idx + 1}`}
                 />

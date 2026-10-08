@@ -15,52 +15,49 @@ export const CollectorClub: React.FC = () => {
   };
 
   return (
-    <section id="club" className="py-20 bg-gradient-to-b from-[#001A38] to-[#002B5B] text-white relative overflow-hidden">
-      {/* Decorative Gold Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-400/5 rounded-full blur-3xl pointer-events-none" />
-
+    <section id="club" className="py-20 bg-[#FAF8F0] border-b border-[#E2DDD5] relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="bg-[#00152e]/90 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-white/10 shadow-2xl">
+        <div className="bg-gradient-to-br from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] rounded-3xl p-8 sm:p-12 border-2 border-[#E5B500] shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Column: Information */}
             <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.08] text-amber-200 text-xs font-medium tracking-wide">
-                <Sparkles className="w-3.5 h-3.5 text-amber-300/80" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#FFD100]" />
                 <span>Círculo Exclusivo de Bóveda</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#002B5B] leading-tight">
                 Acceso Prioritario a Nuevas Emisiones y Pliegos Conmemorativos
               </h2>
 
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Suscríbase al boletín oficial de la Agencia Boliviana de Correos para recibir avisos de primer día de emisión (FDC), liberación de ejemplares conmemorativos del <strong className="text-amber-200 font-semibold">Bicentenario</strong> y piezas históricas de bóveda antes de su publicación general.
+              <p className="text-xs sm:text-sm text-[#002B5B]/85 font-medium leading-relaxed">
+                Suscríbase al boletín oficial de Correos de Bolivia para recibir avisos de primer día de emisión (FDC), liberación de ejemplares conmemorativos del <strong className="text-[#002B5B] font-black">Bicentenario</strong> y piezas históricas de bóveda antes de su publicación general.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-slate-300">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-[#002B5B] font-bold">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-amber-300/80 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#002B5B] shrink-0" />
                   <span>Avisos de FDC de Primer Día</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-amber-300/80 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#002B5B] shrink-0" />
                   <span>Pliegos Limitados y Bloques</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-amber-300/80 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#002B5B] shrink-0" />
                   <span>Catálogo Anual en PDF Oficial</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-amber-300/80 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#002B5B] shrink-0" />
                   <span>Sin Spam ni Comunicaciones Comerciales</span>
                 </div>
               </div>
             </div>
 
             {/* Right Column: Form */}
-            <div className="lg:col-span-5 bg-[#002B5B] p-6 sm:p-8 rounded-2xl border border-[#0A3B73] shadow-xl">
+            <div className="lg:col-span-5 bg-[#002B5B] p-6 sm:p-8 rounded-2xl border border-[#001A38] shadow-xl text-white">
               {isSubmitted ? (
                 <div className="text-center py-6 space-y-3 animate-in fade-in">
                   <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto">
@@ -128,7 +125,7 @@ export const CollectorClub: React.FC = () => {
 
                   <div className="pt-2 text-center">
                     <p className="text-[10px] text-slate-400 leading-tight">
-                      Protegido bajo la Ley de Privacidad y el Archivo Central de la Agencia Boliviana de Correos.
+                      Protegido bajo la Ley de Privacidad y el Archivo Central de Correos de Bolivia.
                     </p>
                   </div>
                 </form>

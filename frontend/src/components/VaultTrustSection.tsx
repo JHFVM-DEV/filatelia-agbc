@@ -28,57 +28,57 @@ export const VaultTrustSection: React.FC = () => {
   ];
 
   return (
-    <section id="certificacion" className="py-20 bg-[#001A38] text-white border-b border-[#0A3B73] relative overflow-hidden">
-      {/* Background Subtle Lines */}
-      <div className="absolute inset-0 bg-vault-pattern opacity-10 pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.08] text-amber-200 text-xs font-medium tracking-wide mb-3">
-            <Award className="w-4 h-4 text-amber-300/80" />
+    <section id="certificacion" className="relative overflow-hidden">
+      {/* Header Banner - Amarillo Postal Dominante de Correos de Bolivia */}
+      <div className="bg-gradient-to-r from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] py-14 border-b-2 border-[#E5B500] relative overflow-hidden shadow-sm">
+        <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide mb-3 shadow-sm">
+            <Award className="w-4 h-4 text-[#FFD100]" />
             <span>Rigor Pericial & Garantía de Procedencia</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
             Peritaje Científico y Certificación Notarial
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-300">
-            Adquirir una pieza en la <strong className="text-amber-200 font-semibold">Filatelia Oficial de Bolivia</strong> es una inversión segura. Cada ejemplar pasa por un protocolo estricto de autenticación científica antes de salir de nuestras bóvedas.
+          </h1>
+          <p className="mt-3 text-sm sm:text-base text-[#002B5B]/85 max-w-3xl mx-auto font-medium leading-relaxed">
+            Adquirir una pieza en la <strong className="text-[#002B5B] font-black">Filatelia Oficial de Bolivia</strong> es una inversión segura. Cada ejemplar pasa por un protocolo estricto de autenticación científica antes de salir de nuestras bóvedas.
           </p>
         </div>
+      </div>
 
-        {/* 4 Trust Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {guarantees.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <div 
-                key={idx}
-                className="bg-[#002B5B]/80 backdrop-blur-sm p-6 rounded-2xl border border-[#0A3B73] hover:border-amber-400/50 transition-all duration-300 group flex flex-col justify-between"
-              >
-                <div>
-                  <div className="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-amber-300/80 mb-4 group-hover:scale-105 transition-transform">
-                    <Icon className="w-6 h-6" />
+      <div className="py-16 bg-[#FAF8F0] border-b border-[#E2DDD5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* 4 Trust Pillars */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {guarantees.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div 
+                  key={idx}
+                  className="bg-white p-6 rounded-2xl border border-[#E2DDD5] hover:border-[#FFCC00] shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="w-12 h-12 rounded-xl bg-[#002B5B] flex items-center justify-center text-[#FFD100] mb-4 group-hover:scale-105 transition-transform shadow-xs">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-base font-bold text-[#002B5B] mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
-                  <h3 className="text-base font-bold text-white mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    {item.description}
-                  </p>
+                  <div className="mt-4 pt-3 border-t border-[#E2DDD5] flex items-center gap-1.5 text-[11px] text-[#002B5B] font-bold">
+                    <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Protocolo Aprobado</span>
+                  </div>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-700/60 flex items-center gap-1.5 text-[11px] text-amber-300 font-semibold">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Protocolo Aprobado</span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-        {/* Notarized Physical Certificate Preview Banner */}
-        <div className="bg-gradient-to-br from-[#002B5B] to-[#00152e] rounded-3xl p-8 sm:p-10 border border-white/10 shadow-2xl relative overflow-hidden">
+          {/* Notarized Physical Certificate Preview Banner */}
+          <div className="bg-[#002B5B] rounded-3xl p-8 sm:p-10 border-2 border-[#FFCC00] shadow-2xl relative overflow-hidden text-white">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-8 space-y-4">
@@ -91,7 +91,7 @@ export const VaultTrustSection: React.FC = () => {
               </h3>
 
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-2xl">
-                Toda adquisición superior a 200 BOB o clasificada como <strong className="text-amber-200 font-semibold">Pieza de Museo</strong> incluye un Certificado de Bóveda impreso en papel de seguridad con filigrana, numeración correlativa ministerial y relieve en seco de la Agencia Boliviana de Correos.
+                Toda adquisición superior a 200 BOB o clasificada como <strong className="text-amber-200 font-semibold">Pieza de Museo</strong> incluye un Certificado de Bóveda impreso en papel de seguridad con filigrana, numeración correlativa ministerial y relieve en seco de Correos de Bolivia.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-2 text-xs text-slate-300">
@@ -114,7 +114,7 @@ export const VaultTrustSection: React.FC = () => {
               <div className="w-full max-w-xs bg-[#FAF8F0] text-[#002B5B] p-6 rounded-2xl border border-[#E2DDD5] shadow-2xl relative rotate-1 hover:rotate-0 transition-transform duration-300">
                 <div className="text-center pb-3 border-b border-[#E2DDD5]">
                   <span className="text-[9px] uppercase tracking-widest text-[#C99A00] font-black block">
-                    Agencia Boliviana de Correos
+                    Correos de Bolivia
                   </span>
                   <h4 className="text-sm font-extrabold text-[#002B5B] mt-0.5">
                     ACTA DE PERITAJE POSTAL
@@ -146,8 +146,8 @@ export const VaultTrustSection: React.FC = () => {
 
           </div>
         </div>
-
       </div>
-    </section>
+    </div>
+  </section>
   );
 };

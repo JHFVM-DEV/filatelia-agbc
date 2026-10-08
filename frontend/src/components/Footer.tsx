@@ -7,7 +7,8 @@ import { ShieldCheck, Mail, Phone, MapPin, Award, CheckCircle2, FileText, Lock }
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#001A38] text-white border-t border-[#0A3B73]">
+    <footer className="bg-[#001A38] text-white border-t-4 border-[#FFCC00] relative">
+      <div className="h-1 bg-gradient-to-r from-[#FFD100] via-[#FFCC00] to-[#E5B500] w-full absolute top-0 left-0" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           
@@ -59,11 +60,10 @@ export const Footer: React.FC = () => {
               Colecciones Oficiales
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-300">
-              <li><Link href="/catalogo?categoria=hojitas-bloque" className="hover:text-amber-200 transition-colors duration-200">Emisión Bicentenario</Link></li>
-              <li><Link href="/catalogo?categoria=sellos-y-series" className="hover:text-amber-200 transition-colors duration-200">Primeras Emisiones 1866</Link></li>
-              <li><Link href="/catalogo?categoria=hojitas-bloque" className="hover:text-amber-200 transition-colors duration-200">Hojitas Bloque & Pliegos</Link></li>
-              <li><Link href="/catalogo?categoria=sobres-primer-dia" className="hover:text-amber-200 transition-colors duration-200">Sobres Primer Día (FDC)</Link></li>
-              <li><Link href="/catalogo?categoria=accesorios-filatelicos" className="hover:text-amber-200 transition-colors duration-200">Material de Conservación</Link></li>
+              <li><Link href="/catalogo" className="hover:text-amber-200 transition-colors duration-200">Todo el Catálogo</Link></li>
+              <li><Link href="/catalogo?categoria=sellos-y-series" className="hover:text-amber-200 transition-colors duration-200">Sellos y Series</Link></li>
+              <li><Link href="/catalogo?categoria=fauna-y-flora" className="hover:text-amber-200 transition-colors duration-200">Flora y Fauna</Link></li>
+              <li><Link href="/catalogo?categoria=dipticos-y-tripticos" className="hover:text-amber-200 transition-colors duration-200">Dípticos y Trípticos</Link></li>
             </ul>
           </div>
 
@@ -109,7 +109,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="mt-14 pt-6 border-t border-[#0A3B73] flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-3">
-          <p>© 2026 Agencia Boliviana de Correos — Todos los derechos reservados. Filatelia Soberana & Numismática Postal.</p>
+          <p>© 2026 Correos de Bolivia — Todos los derechos reservados. Filatelia Soberana & Numismática Postal.</p>
           <div className="flex items-center space-x-5">
             <a href="#" onClick={(e) => { e.preventDefault(); alert('Términos del Servicio Filatélico: Todas las piezas están sujetas a peritaje y disponibilidad en bóveda.'); }} className="hover:text-white transition-colors">
               Términos del Servicio

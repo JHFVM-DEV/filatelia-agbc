@@ -49,7 +49,7 @@ export default function AdminMesaDespachoPage() {
   // Dispatch Modal
   const [showDispatchModal, setShowDispatchModal] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState<QueueOrder | null>(null);
-  const [carrier, setCarrier] = useState('Agencia Boliviana de Correos - Valija Postal');
+  const [carrier, setCarrier] = useState('Correos de Bolivia - Valija Postal');
   const [trackingCode, setTrackingCode] = useState('');
   const [dispatching, setDispatching] = useState(false);
 
@@ -372,8 +372,8 @@ export default function AdminMesaDespachoPage() {
                   onChange={(e) => setCarrier(e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
                 >
-                  <option value="Agencia Boliviana de Correos - Valija Postal">
-                    Agencia Boliviana de Correos - Valija Postal Oficial
+                  <option value="Correos de Bolivia - Valija Postal">
+                    Correos de Bolivia - Valija Postal Oficial
                   </option>
                   <option value="Correos de Bolivia Express (Prioritario)">
                     Correos de Bolivia Express (Prioritario Nacional)

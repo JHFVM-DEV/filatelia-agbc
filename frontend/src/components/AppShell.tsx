@@ -32,6 +32,18 @@ const UnifiedLoginModal = dynamic(
   () => import('@/components/UnifiedLoginModal').then((m) => m.UnifiedLoginModal),
   { ssr: false }
 );
+const ClientProfileModal = dynamic(
+  () => import('@/components/ClientProfileModal').then((m) => m.ClientProfileModal),
+  { ssr: false }
+);
+const EmailVerificationModal = dynamic(
+  () => import('@/components/EmailVerificationModal').then((m) => m.EmailVerificationModal),
+  { ssr: false }
+);
+const TrackingModal = dynamic(
+  () => import('@/components/TrackingModal').then((m) => m.TrackingModal),
+  { ssr: false }
+);
 
 const ShellContent: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const {
@@ -44,6 +56,10 @@ const ShellContent: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     isOrdersOpen,
     selectedCertificateOrder,
     isLoginModalOpen,
+    isEmailVerificationOpen,
+    emailVerificationReason,
+    closeEmailVerificationModal,
+    handleEmailVerificationSuccess,
     openCart,
     closeCart,
     openWishlist,
@@ -54,7 +70,15 @@ const ShellContent: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     closeOrders,
     openCertificate,
     closeCertificate,
+    isProfileOpen,
+    openProfileModal,
+    closeProfileModal,
+    isTrackingOpen,
+    trackingInitialCode,
+    openTracking,
+    closeTracking,
     openLoginModal,
+    loginModalInitialView,
     closeLoginModal,
     updateQuantity,
     removeItem,
@@ -86,7 +110,9 @@ const ShellContent: React.FC<{ children: React.ReactNode }> = ({ children }) => 
           onOpenCart={openCart}
           onOpenWishlist={openWishlist}
           onOpenOrders={openOrders}
-          onOpenLoginModal={openLoginModal}
+          onOpenTracking={openTracking}
+          onOpenLoginModal={() => openLoginModal('login')}
+          onOpenProfile={openProfileModal}
           currentUser={currentUser}
           onLogout={logout}
         />
@@ -146,6 +172,27 @@ const ShellContent: React.FC<{ children: React.ReactNode }> = ({ children }) => 
         isOpen={isLoginModalOpen}
         onClose={closeLoginModal}
         onLoginSuccess={setCurrentUser}
+        initialView={loginModalInitialView}
+      />
+
+      <ClientProfileModal
+        isOpen={isProfileOpen}
+        onClose={closeProfileModal}
+        currentUser={currentUser}
+      />
+
+      <EmailVerificationModal
+        isOpen={isEmailVerificationOpen}
+        onClose={closeEmailVerificationModal}
+        currentUser={currentUser}
+        reason={emailVerificationReason}
+        onVerificationSuccess={handleEmailVerificationSuccess}
+      />
+
+      <TrackingModal
+        isOpen={isTrackingOpen}
+        onClose={closeTracking}
+        initialCode={trackingInitialCode}
       />
     </div>
   );

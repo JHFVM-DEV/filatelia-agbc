@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Sellos y Series Oficiales',
                 'description' => 'Sellos individuales y series conmemorativas emitidas por el servicio postal oficial.',
-                'image' => '/images/cat-classic.jpg',
+                'image' => '/images/stamps/sello-150-anos-primer-sello-postal-boliviano-2017.png',
                 'sort_order' => 1,
             ]
         );
@@ -84,7 +84,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Hojitas Bloque & Souvenir Sheets',
                 'description' => 'Ediciones especiales numeradas y láminas conmemorativas para vitrinas de honor.',
-                'image' => '/images/cat-limited.jpg',
+                'image' => '/images/stamps/sello-bicentenario-batalla-de-la-tablada-2017.png',
                 'sort_order' => 2,
             ]
         );
@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Sobres Primer Día (FDC)',
                 'description' => 'Piezas históricas con matasellos ceremonial exclusivo del día de emisión.',
-                'image' => '/images/cat-themes.jpg',
+                'image' => '/images/stamps/sello-campana-de-la-libertad-sucre-2009.png',
                 'sort_order' => 3,
             ]
         );
@@ -104,7 +104,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Accesorios y Archivo de Conservación',
                 'description' => 'Material especializado libre de ácido, lupas de peritaje y pinzas alemanas.',
-                'image' => '/images/cat-accessories.jpg',
+                'image' => '/images/stamps/sello-att-soberania-postal-y-telecomunicaciones-2015.png',
                 'sort_order' => 4,
             ]
         );
@@ -244,7 +244,7 @@ class DatabaseSeeder extends Seeder
                 'front_image' => '/images/hero-philately.jpg',
                 'back_image' => '/images/hero-philately.jpg',
                 'is_featured' => true,
-                'is_active' => true,
+                'is_active' => false,
                 'description' => 'Pieza de museo de la histórica primera emisión postal de Bolivia autorizada bajo el gobierno de Mariano Melgarejo. Margen amplio, tinta verde esmeralda uniforme con nitidez de grabado extraordinaria.',
                 'historical_context' => 'El sello del Cóndor de 1866 marca el nacimiento de las comunicaciones postales modernas en Bolivia.',
             ]
@@ -273,7 +273,7 @@ class DatabaseSeeder extends Seeder
                 'front_image' => '/images/cat-limited.jpg',
                 'back_image' => '/images/cat-limited.jpg',
                 'is_featured' => true,
-                'is_active' => true,
+                'is_active' => false,
                 'description' => 'Emisión cumbre del Bicentenario con relieve escultórico y detalles en pan de oro auténtico.',
                 'historical_context' => 'Edición conmemorativa que une las 9 regiones de Bolivia.',
             ]
@@ -302,7 +302,7 @@ class DatabaseSeeder extends Seeder
                 'front_image' => '/images/cat-themes.jpg',
                 'back_image' => '/images/cat-themes.jpg',
                 'is_featured' => true,
-                'is_active' => true,
+                'is_active' => false,
                 'description' => 'Serie completa de 4 valores en estado impecable dedicada a las especies protegidas.',
                 'historical_context' => 'Premiada en la Exposición Filatélica Interamericana.',
             ]
@@ -331,7 +331,7 @@ class DatabaseSeeder extends Seeder
                 'front_image' => '/images/cat-classic.jpg',
                 'back_image' => '/images/cat-classic.jpg',
                 'is_featured' => false,
-                'is_active' => true,
+                'is_active' => false,
                 'description' => 'Sobre primer día con matasellos especial aplicado en la Casa de la Libertad (Sucre).',
                 'historical_context' => 'Matasellado único en la fecha del 6 de Agosto en la ciudad capital histórica.',
             ]
@@ -360,7 +360,7 @@ class DatabaseSeeder extends Seeder
                 'front_image' => '/images/cat-accessories.jpg',
                 'back_image' => '/images/cat-accessories.jpg',
                 'is_featured' => true,
-                'is_active' => true,
+                'is_active' => false,
                 'description' => 'El clasificador definitivo para el coleccionista de élite.',
                 'historical_context' => 'Fabricado bajo normas internacionales de conservación preventiva.',
             ]
@@ -1059,7 +1059,7 @@ class DatabaseSeeder extends Seeder
                 'is_featured' => true,
                 'is_active' => true,
                 'description' => 'Magnífica composición que reúne la lítica Illa del Ekeko repatriada a Bolivia, el imponente Cerro Rico de Potosí de fondo y un pesebre con figuras de cerámica luciendo atuendos de los pueblos indígenas originarios campesinos.',
-                'historical_context' => 'Emitida por la nueva Agencia Boliviana de Correos en coordinación con el Ministerio de Culturas, Descolonización y Despatriarcalización.',
+                'historical_context' => 'Emitida por Correos de Bolivia en coordinación con el Ministerio de Culturas, Descolonización y Despatriarcalización.',
             ]
         );
 
@@ -1737,7 +1737,7 @@ class DatabaseSeeder extends Seeder
                     ['tracking_code' => $oData['tracking_code']],
                     [
                         'order_id' => $order->id,
-                        'carrier' => 'Agencia Boliviana de Correos - Valija Diplomática / Postal',
+                        'carrier' => 'Correos de Bolivia - Valija Diplomática / Postal',
                         'status' => $oData['status'] === 'DELIVERED' ? 'DELIVERED' : ($oData['status'] === 'SHIPPED' ? 'IN_TRANSIT' : 'DISPATCHED'),
                         'origin_department' => 'La Paz',
                         'destination_department' => $oData['department'],
@@ -1826,5 +1826,8 @@ class DatabaseSeeder extends Seeder
                 'notes' => 'Salida para embalaje en valija asegurada.',
             ]
         );
+
+        // 9. Simulación de Guías Postales y Envíos para jhefersonveizagamujica@gmail.com
+        $this->call(SimulationUserTrackingSeeder::class);
     }
 }

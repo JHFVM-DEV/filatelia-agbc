@@ -2,8 +2,9 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { X, Trash2, ShieldCheck, ArrowRight, ShoppingBag } from 'lucide-react';
+import { X, Trash2, ShieldCheck, ArrowRight, ShoppingBag, AlertTriangle, MailCheck } from 'lucide-react';
 import { StampItem } from '@/data/stamps';
+import { useStore } from '@/context/StoreContext';
 
 export interface CartItem {
   stamp: StampItem;
@@ -27,6 +28,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onRemoveItem,
   onProceedToCheckout,
 }) => {
+  const { currentUser, isEmailVerified, openEmailVerificationModal, openLoginModal } = useStore();
+
   if (!isOpen) return null;
 
   const totalAmount = items.reduce((sum, item) => sum + item.stamp.price * item.quantity, 0);
@@ -77,6 +80,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       src={stamp.front_image}
                       alt={stamp.name}
                       fill
+                      sizes="64px"
                       className="object-contain"
                     />
                   </div>
@@ -149,8 +153,40 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 </span>
               </div>
 
+              {currentUser && !isEmailVerified && (
+                <div className="p-3 bg-amber-50/90 border border-amber-300/80 rounded-xl space-y-2">
+                  <div className="flex items-start gap-2">
+                    <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                    <div className="text-[11px] text-amber-900 leading-snug">
+                      <strong className="font-bold block text-amber-950">Confirmación de correo pendiente</strong>
+                      Para concretar la adquisición de estas piezas filatélicas, confirme su correo electrónico.
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => {
+                      onClose();
+                      openEmailVerificationModal('checkout');
+                    }}
+                    className="w-full py-2 px-3 bg-[#002B5B] hover:bg-[#0A3B73] text-amber-300 rounded-lg font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-sm"
+                  >
+                    <MailCheck className="w-3.5 h-3.5" />
+                    <span>Confirmar mi correo ahora</span>
+                  </button>
+                </div>
+              )}
+
               <button
                 onClick={() => {
+                  if (!currentUser) {
+                    onClose();
+                    openLoginModal('login');
+                    return;
+                  }
+                  if (!isEmailVerified) {
+                    onClose();
+                    openEmailVerificationModal('checkout');
+                    return;
+                  }
                   onClose();
                   onProceedToCheckout();
                 }}

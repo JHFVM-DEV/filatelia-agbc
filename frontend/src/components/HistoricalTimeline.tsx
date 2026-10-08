@@ -36,7 +36,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
       significance: 'Primer sello postal en la historia de la República de Bolivia',
     },
     quote: 'El Cóndor de 1866 representa el hito cero de nuestra soberanía postal y uno de los sellos más venerados de Sudamérica.',
-    quoteAuthor: 'Archivo Histórico de la Agencia Boliviana de Correos',
+    quoteAuthor: 'Archivo Histórico de Correos de Bolivia',
   },
   {
     year: '1894',
@@ -104,7 +104,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
       significance: 'Hito cumbre del patrimonio filatélico de la nación',
     },
     quote: 'El Bicentenario no solo honra a nuestros fundadores, sino que consagra el valor de la filatelia como archivo vivo de la patria.',
-    quoteAuthor: 'Agencia Boliviana de Correos (2025)',
+    quoteAuthor: 'Correos de Bolivia (2025)',
   },
 ];
 
@@ -113,70 +113,56 @@ export const HistoricalTimeline: React.FC = () => {
   const currentEvent = TIMELINE_EVENTS[activeIdx];
 
   return (
-    <section id="historia" className="py-20 bg-[#001A38] text-white border-y border-[#0A3B73] relative overflow-hidden">
-      {/* Background Decorative Guilloche Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(#F4C400_1px,transparent_1px)] [background-size:32px_32px] opacity-5 pointer-events-none" />
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#002B5B] rounded-full blur-3xl opacity-40 pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.08] text-amber-200 text-xs font-medium tracking-wide mb-3">
-            <Landmark className="w-4 h-4 text-amber-300/80" />
+    <section id="historia" className="relative overflow-hidden">
+      {/* Header Banner - Amarillo Postal Dominante de Correos de Bolivia */}
+      <div className="bg-gradient-to-r from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] py-14 border-b-2 border-[#E5B500] relative overflow-hidden shadow-sm">
+        <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide mb-3 shadow-sm">
+            <Landmark className="w-4 h-4 text-[#FFD100]" />
             <span>Memoria Postal & Archivo Nacional</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
             Hitos de la Filatelia Boliviana
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-300">
-            Desde los primeros <strong className="text-amber-200/90 font-semibold">Cóndores de 1866</strong> grabados en cobre hasta la <strong className="text-amber-200/90 font-semibold">Magna Emisión del Bicentenario</strong>. Descubra la evolución gráfica y soberana de nuestra patria.
+          </h1>
+          <p className="mt-3 text-sm sm:text-base text-[#002B5B]/85 max-w-3xl mx-auto font-medium leading-relaxed">
+            Desde los primeros <strong className="text-[#002B5B] font-black">Cóndores de 1866</strong> grabados en cobre hasta la <strong className="text-[#002B5B] font-black">Magna Emisión del Bicentenario</strong>. Descubra la evolución gráfica y soberana de nuestra patria.
           </p>
         </div>
+      </div>
 
-        {/* Timeline Navigation Bar - Diseño Formal Curatorial */}
-        <div className="flex items-center justify-center mb-12">
-          <div className="inline-flex flex-wrap items-center justify-center p-1.5 rounded-2xl bg-[#001428] border border-[#0A3B73]/70 shadow-xl gap-1 sm:gap-2">
-            {TIMELINE_EVENTS.map((event, idx) => {
-              const isActive = idx === activeIdx;
-              return (
-                <button
-                  key={event.year}
-                  onClick={() => setActiveIdx(idx)}
-                  className={`relative flex flex-col items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all duration-200 text-center min-w-[105px] sm:min-w-[130px] ${
-                    isActive
-                      ? 'bg-[#002B5B] text-white border border-white/20 shadow-md'
-                      : 'text-slate-400 hover:text-white hover:bg-white/[0.04] border border-transparent'
-                  }`}
-                >
-                  <span
-                    className={`text-base sm:text-lg font-bold font-mono tracking-wider transition-colors ${
-                      isActive ? 'text-amber-200' : 'text-slate-300'
+      <div className="py-14 bg-[#FAF8F0] border-b border-[#E2DDD5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Timeline Navigation Bar - Diseño Curatorial Postal */}
+          <div className="flex items-center justify-center mb-10">
+            <div className="inline-flex flex-wrap items-center justify-center p-2 rounded-2xl bg-white border-2 border-[#E2DDD5] shadow-lg gap-1.5 sm:gap-2">
+              {TIMELINE_EVENTS.map((event, idx) => {
+                const isActive = idx === activeIdx;
+                return (
+                  <button
+                    key={event.year}
+                    onClick={() => setActiveIdx(idx)}
+                    className={`relative flex flex-col items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all duration-200 text-center min-w-[105px] sm:min-w-[130px] cursor-pointer ${
+                      isActive
+                        ? 'bg-[#FFCC00] text-[#002B5B] border border-[#E5B500] shadow-md font-extrabold'
+                        : 'text-slate-600 hover:text-[#002B5B] hover:bg-[#FAF5E6] border border-transparent font-medium'
                     }`}
                   >
-                    {event.year}
-                  </span>
-                  <span
-                    className={`text-[11px] font-medium tracking-normal mt-0.5 whitespace-nowrap transition-colors ${
-                      isActive ? 'text-amber-200/90 font-medium' : 'text-slate-400'
-                    }`}
-                  >
-                    {event.shortLabel}
-                  </span>
-
-                  {/* Sutil indicador inferior formal */}
-                  {isActive && (
-                    <span className="absolute bottom-1 w-6 h-0.5 rounded-full bg-amber-300/80" />
-                  )}
-                </button>
-              );
-            })}
+                    <span className="text-base sm:text-lg font-black font-mono tracking-wider">
+                      {event.year}
+                    </span>
+                    <span className="text-[11px] font-bold tracking-normal mt-0.5 whitespace-nowrap">
+                      {event.shortLabel}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        {/* Active Event Showcase Card */}
-        <div className="bg-[#002B5B]/90 backdrop-blur-md rounded-3xl border border-[#0A3B73] p-6 sm:p-10 shadow-2xl transition-all duration-500">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Active Event Showcase Card */}
+          <div className="bg-[#002B5B] rounded-3xl border-2 border-[#FFCC00] p-6 sm:p-10 shadow-2xl transition-all duration-500 text-white">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-5">
@@ -259,8 +245,8 @@ export const HistoricalTimeline: React.FC = () => {
 
           </div>
         </div>
-
       </div>
-    </section>
+    </div>
+  </section>
   );
 };

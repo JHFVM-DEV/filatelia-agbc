@@ -39,7 +39,7 @@ class ShipmentForm
                             ->schema([
                                 TextInput::make('carrier')
                                     ->label('Operador Logístico')
-                                    ->default('Agencia Boliviana de Correos')
+                                    ->default('Correos de Bolivia')
                                     ->required(),
 
                                 Select::make('status')

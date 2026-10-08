@@ -72,64 +72,67 @@ export const CollectorGuide: React.FC = () => {
   const activeGrade = GRADES.find((g) => g.code === selectedGrade) || GRADES[0];
 
   return (
-    <section id="guia" className="py-20 bg-[#FAF8F0] text-[#002B5B] border-b border-[#E2DDD5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B]/5 border border-[#002B5B]/10 text-[#002B5B] text-xs font-medium tracking-wide mb-3">
-            <BookOpen className="w-4 h-4 text-amber-600/80" />
-            <span>Academia & Normas Internacionales</span>
+    <section id="guia" className="relative overflow-hidden">
+      {/* Header Banner - Amarillo Postal Dominante de Correos de Bolivia */}
+      <div className="bg-gradient-to-r from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] py-14 border-b-2 border-[#E5B500] relative overflow-hidden shadow-sm">
+        <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide mb-3 shadow-sm">
+            <BookOpen className="w-4 h-4 text-[#FFD100]" />
+            <span>Academia & Normas Internacionales UPU</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#002B5B] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
             Guía del Coleccionista & Criterios de Calidad
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-600">
-            En la filatelia de alta gama, cada detalle define el valor de una pieza. Conozca los estándares universales de conservación, anatomía y custodia dictados por la <strong className="text-[#002B5B]">Unión Postal Universal (UPU)</strong>.
+          </h1>
+          <p className="mt-3 text-sm sm:text-base text-[#002B5B]/85 max-w-3xl mx-auto font-medium leading-relaxed">
+            En la filatelia de alta gama, cada detalle define el valor de una pieza. Conozca los estándares universales de conservación, anatomía y custodia dictados por la <strong className="text-[#002B5B] font-black">Unión Postal Universal (UPU)</strong>.
           </p>
         </div>
+      </div>
 
-        {/* 1. Interactive Grading System */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E2DDD5] shadow-xl mb-16">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#E2DDD5]">
-            <div>
-              <span className="text-xs font-bold text-[#C99A00] uppercase tracking-widest block mb-1">
-                Escala Universal de Conservación
-              </span>
-              <h3 className="text-xl sm:text-2xl font-black text-[#002B5B]">
-                ¿Cómo se clasifican los estados de conservación?
-              </h3>
-            </div>
-            
-            {/* Grade Selector Pills */}
-            <div className="flex flex-wrap gap-2">
-              {GRADES.map((g) => (
-                <button
-                  key={g.code}
-                  onClick={() => setSelectedGrade(g.code)}
-                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
-                    selectedGrade === g.code
-                      ? 'bg-[#002B5B] text-white shadow-md'
-                      : 'bg-[#FAF8F0] text-slate-600 hover:bg-slate-100 hover:text-[#002B5B] border border-[#E2DDD5]'
-                  }`}
-                >
-                  {g.code}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Active Grade Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-7 space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="text-lg font-black font-mono px-3 py-1 bg-[#002B5B] text-amber-200 rounded-lg">
-                  {activeGrade.code}
+      <div className="py-16 bg-[#FAF8F0] border-b border-[#E2DDD5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* 1. Interactive Grading System */}
+          <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E2DDD5] shadow-xl mb-16">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#E2DDD5]">
+              <div>
+                <span className="text-xs font-extrabold text-[#C99A00] uppercase tracking-widest block mb-1">
+                  Escala Universal de Conservación
                 </span>
-                <h4 className="text-base sm:text-lg font-bold text-[#002B5B]">
-                  {activeGrade.name}
-                </h4>
+                <h3 className="text-xl sm:text-2xl font-black text-[#002B5B]">
+                  ¿Cómo se clasifican los estados de conservación?
+                </h3>
               </div>
+              
+              {/* Grade Selector Pills */}
+              <div className="flex flex-wrap gap-2">
+                {GRADES.map((g) => (
+                  <button
+                    key={g.code}
+                    onClick={() => setSelectedGrade(g.code)}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                      selectedGrade === g.code
+                        ? 'bg-[#FFCC00] text-[#002B5B] border-[#E5B500] shadow-md font-black'
+                        : 'bg-[#FAF8F0] text-slate-600 hover:bg-[#FAF5E6] hover:text-[#002B5B] border-[#E2DDD5]'
+                    }`}
+                  >
+                    {g.code}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Active Grade Content */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div className="lg:col-span-7 space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-lg font-black font-mono px-3 py-1 bg-[#002B5B] text-[#FFD100] rounded-lg shadow-xs">
+                    {activeGrade.code}
+                  </span>
+                  <h4 className="text-base sm:text-lg font-bold text-[#002B5B]">
+                    {activeGrade.name}
+                  </h4>
+                </div>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 {activeGrade.summary}
@@ -212,8 +215,8 @@ export const CollectorGuide: React.FC = () => {
           </div>
 
         </div>
-
       </div>
-    </section>
+    </div>
+  </section>
   );
 };

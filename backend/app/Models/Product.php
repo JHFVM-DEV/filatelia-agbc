@@ -34,6 +34,9 @@ class Product extends Model
         'back_image',
         'is_featured',
         'is_active',
+        'is_in_showcase',
+        'showcase_order',
+        'showcase_badge',
         'description',
         'historical_context',
         'vault_room',
@@ -51,6 +54,8 @@ class Product extends Model
         'certified' => 'boolean',
         'is_featured' => 'boolean',
         'is_active' => 'boolean',
+        'is_in_showcase' => 'boolean',
+        'showcase_order' => 'integer',
     ];
 
     protected $appends = [
@@ -140,6 +145,9 @@ class Product extends Model
      */
     public function getBadgeAttribute(): string
     {
+        if (!empty($this->showcase_badge)) {
+            return mb_strtoupper($this->showcase_badge, 'UTF-8');
+        }
         return mb_strtoupper($this->category?->name ?? 'COLECCIÓN OFICIAL', 'UTF-8');
     }
 

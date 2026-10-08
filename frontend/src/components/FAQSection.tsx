@@ -26,13 +26,13 @@ const FAQS: FAQItem[] = [
     category: 'Seguridad & Entrega',
     question: '¿Cómo protegen los sellos contra dobleces, presiones o la humedad del transporte?',
     answer:
-      'Todas las piezas se introducen en camisas de papel glassine neutro (pH 7.0-7.5) libres de ácido, emparedadas entre dos placas rígidas de polipropileno indeformable y selladas al vacío con precinto holográfico inviolable de la Agencia Boliviana de Correos.',
+      'Todas las piezas se introducen en camisas de papel glassine neutro (pH 7.0-7.5) libres de ácido, emparedadas entre dos placas rígidas de polipropileno indeformable y selladas al vacío con precinto holográfico inviolable de Correos de Bolivia.',
   },
   {
     category: 'Tasaciones & Servicios',
     question: '¿Puedo solicitar la tasación o peritaje de mi propia colección filatélica heredada?',
     answer:
-      'Sí. La Agencia Boliviana de Correos y su equipo de curadores ofrecen servicios de catalogación, autenticación y tasación notarial de colecciones particulares. Puede coordinar una cita con el curador a través del correo oficial filatelia@correosbolivia.gob.bo.',
+      'Sí. Correos de Bolivia y su equipo de curadores ofrecen servicios de catalogación, autenticación y tasación notarial de colecciones particulares. Puede coordinar una cita con el curador a través del correo oficial filatelia@correosbolivia.gob.bo.',
   },
   {
     category: 'Garantía & Devoluciones',
@@ -44,7 +44,7 @@ const FAQS: FAQItem[] = [
     category: 'Documentación Oficial',
     question: '¿Las compras incluyen certificado físico de procedencia?',
     answer:
-      'Todas las órdenes superiores a 200 BOB o catalogadas como "Pieza de Museo" / "Muy Raro" incluyen un Certificado Notarial de Autenticidad foliado y con sello en relieve en seco de la Agencia Boliviana de Correos.',
+      'Todas las órdenes superiores a 200 BOB o catalogadas como "Pieza de Museo" / "Muy Raro" incluyen un Certificado Notarial de Autenticidad foliado y con sello en relieve en seco de Correos de Bolivia.',
   },
 ];
 
@@ -56,25 +56,28 @@ export const FAQSection: React.FC = () => {
   };
 
   return (
-    <section id="faqs" className="py-20 bg-[#FAF8F0] text-[#002B5B] border-b border-[#E2DDD5]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B]/5 border border-[#002B5B]/10 text-[#002B5B] text-xs font-medium tracking-wide mb-3">
-            <HelpCircle className="w-4 h-4 text-amber-600/80" />
-            <span>Respuestas Claras & Transparencia</span>
+    <section id="faqs" className="relative overflow-hidden">
+      {/* Header Banner - Amarillo Postal Dominante de Correos de Bolivia */}
+      <div className="bg-gradient-to-r from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] py-14 border-b-2 border-[#E5B500] relative overflow-hidden shadow-sm">
+        <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide mb-3 shadow-sm">
+            <HelpCircle className="w-4 h-4 text-[#FFD100]" />
+            <span>Respuestas Claras & Transparencia Oficial</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#002B5B] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
             Preguntas Frecuentes de Coleccionistas
-          </h2>
-          <p className="mt-3 text-sm text-slate-600">
+          </h1>
+          <p className="mt-3 text-sm sm:text-base text-[#002B5B]/85 max-w-2xl mx-auto font-medium leading-relaxed">
             Todo lo que necesita saber sobre el peritaje de goma, modalidades de liquidación y los protocolos de custodia de la bóveda postal.
           </p>
         </div>
+      </div>
 
-        {/* Accordion List */}
-        <div className="space-y-3.5">
+      <div className="py-16 bg-[#FAF8F0] border-b border-[#E2DDD5]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Accordion List */}
+          <div className="space-y-3.5">
           {FAQS.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
@@ -139,8 +142,8 @@ export const FAQSection: React.FC = () => {
             Contactar a Curaduría
           </a>
         </div>
-
       </div>
-    </section>
+    </div>
+  </section>
   );
 };

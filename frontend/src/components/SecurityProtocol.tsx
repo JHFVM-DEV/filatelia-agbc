@@ -32,16 +32,16 @@ export const SecurityProtocol: React.FC = () => {
   ];
 
   return (
-    <section id="seguridad" className="py-16 bg-[#002B5B] text-white border-y border-[#001A38]">
+    <section id="seguridad" className="py-16 bg-[#002B5B] text-white border-t-4 border-[#FFCC00] border-b border-[#001A38]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.08] text-amber-200 text-xs font-medium tracking-wide mb-3">
-            <ShieldCheck className="w-4 h-4 text-amber-300/80" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFCC00] text-[#002B5B] text-xs font-bold tracking-wide mb-3 shadow-sm">
+            <ShieldCheck className="w-4 h-4 text-[#002B5B]" />
             <span>Garantía de Museo y Preservación Numismática</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+          <h2 className="text-3xl sm:text-4xl font-black text-white">
             Protocolo de Bóveda y Embalaje Filatélico
           </h2>
           <p className="mt-3 text-sm text-slate-300">
@@ -56,13 +56,13 @@ export const SecurityProtocol: React.FC = () => {
             return (
               <div 
                 key={idx}
-                className="bg-[#001A38]/70 rounded-2xl p-6 border border-[#0A3B73] hover:border-amber-400/40 transition-colors duration-300 relative group"
+                className="bg-[#001A38]/70 rounded-2xl p-6 border border-[#0A3B73] hover:border-[#FFCC00] transition-colors duration-300 relative group"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-3 rounded-xl bg-white/[0.06] border border-white/10 text-amber-300/80">
+                  <div className="p-3 rounded-xl bg-white/[0.06] border border-white/10 text-[#FFD100]">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <span className="text-2xl font-black text-slate-600 group-hover:text-amber-400/50 transition">
+                  <span className="text-2xl font-black text-[#FFCC00]/50 group-hover:text-[#FFCC00] transition">
                     {step.number}
                   </span>
                 </div>
@@ -84,7 +84,7 @@ export const SecurityProtocol: React.FC = () => {
           <div className="text-left">
             <h4 className="font-semibold text-sm text-white flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-amber-300/80" />
-              Certificado de Autenticidad de la Agencia Boliviana de Correos
+              Certificado de Autenticidad de Correos de Bolivia
             </h4>
             <p className="text-xs text-slate-300 mt-0.5">
               Todas las órdenes de alto valor incluyen acta de procedencia sellada en seco por el Curador en Jefe.

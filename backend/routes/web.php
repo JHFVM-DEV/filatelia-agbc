@@ -30,7 +30,7 @@ Route::get('/admin/auth-bridge', function (Request $request) {
 
     $user = User::find($userId);
 
-    if (!$user || !$user->hasAnyRole(['SUPER_ADMIN', 'ADMIN_PRODUCTOS_ALMACEN', 'ADMIN_FILATELIA', 'ALMACEN', 'ATENCION'])) {
+    if (!$user || !$user->hasAnyRole(['SUPER_ADMIN', 'ADMIN_PRODUCTOS_ALMACEN', 'ALMACEN'])) {
         return redirect('/admin/login')->with('error', 'El usuario no cuenta con permisos administrativos.');
     }
 
