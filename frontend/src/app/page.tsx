@@ -217,18 +217,18 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 2. ¿QUÉ ES LA FILATELIA? (EL UNIVERSO DEL COLECCIONISMO POSTAL)          */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-[#FAF8F0] text-[#002B5B] border-b border-[#E2DDD5]">
+      <section className="py-20 bg-gradient-to-b from-[#FFFDF0] via-[#FFF9DC] to-[#FAF8F0] text-[#002B5B] border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B]/5 border border-[#002B5B]/10 text-[#002B5B] text-xs font-medium tracking-wide mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-amber-600/80" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFCC00] text-[#002B5B] text-xs font-black tracking-wide mb-3 shadow-sm border border-[#E5B500]">
+              <Sparkles className="w-3.5 h-3.5 text-[#002B5B]" />
               <span>Cultura & Patrimonio Soberano</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#002B5B] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
               ¿Qué es la Filatelia y por qué coleccionar?
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
+            <p className="mt-4 text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
               La filatelia es el arte, la ciencia y la pasión por estudiar y conservar los sellos postales y documentos de correo. En cada pieza confluyen la historia de un país, su soberanía geopolítica, sus próceres y las obras de grandes maestros del grabado.
             </p>
           </div>
@@ -237,53 +237,53 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Pilar 1 */}
-            <div className="bg-white p-7 rounded-2xl border border-[#E2DDD5] shadow-sm hover:shadow-md transition group">
-              <div className="w-12 h-12 rounded-xl bg-[#002B5B] text-amber-300 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
+            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE875] hover:border-[#FFCC00] shadow-sm hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-[#FFCC00] text-[#002B5B] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
                 <Landmark className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-[#002B5B] mb-2">
+              <h3 className="text-lg font-black text-[#002B5B] mb-2">
                 Memoria Histórica Viva
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
                 Cada emisión postal es un testimonio oficial emitido por decreto de Estado que inmortaliza batallas, efemérides patrias, personajes ilustres y la evolución territorial de Bolivia.
               </p>
             </div>
 
             {/* Pilar 2 */}
-            <div className="bg-white p-7 rounded-2xl border border-[#E2DDD5] shadow-sm hover:shadow-md transition group">
-              <div className="w-12 h-12 rounded-xl bg-[#002B5B] text-[#F4C400] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE875] hover:border-[#FFCC00] shadow-sm hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-[#FFCC00] text-[#002B5B] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
                 <ScrollText className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-[#002B5B] mb-2">
+              <h3 className="text-lg font-black text-[#002B5B] mb-2">
                 Artes Gráficas y Grabado
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
                 Obras maestras en miniatura creadas en planchas de acero mediante talla dulce, litografía y tintas metalizadas que reflejan el nivel artístico de la Casa de la Moneda y Casas de Moneda del mundo.
               </p>
             </div>
 
             {/* Pilar 3 */}
-            <div className="bg-white p-7 rounded-2xl border border-[#E2DDD5] shadow-sm hover:shadow-md transition group">
-              <div className="w-12 h-12 rounded-xl bg-[#002B5B] text-[#F4C400] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE875] hover:border-[#FFCC00] shadow-sm hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-[#FFCC00] text-[#002B5B] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
                 <Compass className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-[#002B5B] mb-2">
+              <h3 className="text-lg font-black text-[#002B5B] mb-2">
                 Soberanía & Diplomacia
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
                 El sello postal es el embajador que recorre el planeta bajo los convenios de la Unión Postal Universal (UPU), afianzando el derecho y la presencia internacional del Estado boliviano.
               </p>
             </div>
 
             {/* Pilar 4 */}
-            <div className="bg-white p-7 rounded-2xl border border-[#E2DDD5] shadow-sm hover:shadow-md transition group">
-              <div className="w-12 h-12 rounded-xl bg-[#002B5B] text-[#F4C400] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE875] hover:border-[#FFCC00] shadow-sm hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-[#FFCC00] text-[#002B5B] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-[#002B5B] mb-2">
+              <h3 className="text-lg font-black text-[#002B5B] mb-2">
                 Patrimonio & Inversión
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
                 Los ejemplares con conservación MNH, series escasas y pliegos limitados son bienes coleccionables tangibles con valor de mercado documentado y revalorización constante en subastas.
               </p>
             </div>
@@ -296,84 +296,87 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 3. ANATOMÍA DE UN SELLO POSTAL (MÓDULO EDUCATIVO VISUAL)                 */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-[#001A38] text-white border-t-4 border-[#FFCC00] border-b border-[#0A3B73] relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-[#FFFDF2] via-[#FFF9DC] to-[#FFF1BA] text-[#002B5B] border-t-4 border-[#FFCC00] border-b-2 border-[#E5B500] relative overflow-hidden">
+        <div className="absolute inset-0 bg-guilloche opacity-5 pointer-events-none mix-blend-multiply" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFCC00] text-[#002B5B] text-xs font-bold tracking-wide mb-3 shadow-sm">
-              <Microscope className="w-4 h-4 text-[#002B5B]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide mb-3 shadow-md">
+              <Microscope className="w-4 h-4 text-[#FFD100]" />
               <span>Análisis Pericial & Educación Postal</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
               Anatomía de un Sello Postal
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-slate-300">
+            <p className="mt-4 text-sm sm:text-base text-[#002B5B]/85 max-w-2xl mx-auto font-medium leading-relaxed">
               Conozca cada detalle que compone una pieza filatélica y cómo los expertos periciales determinan su autenticidad y grado de conservación internacional.
             </p>
           </div>
 
           {/* Interactive Anatomy Browser */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#00244c]/80 rounded-3xl p-6 sm:p-10 border border-[#0A3B73] shadow-2xl backdrop-blur-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/95 rounded-3xl p-6 sm:p-10 border-2 border-[#E5B500] shadow-2xl backdrop-blur-sm">
             
             {/* Lista Interactiva de Componentes */}
-            <div className="lg:col-span-5 space-y-2">
+            <div className="lg:col-span-5 space-y-2.5">
               {anatomyPoints.map((item, idx) => {
                 const isSelected = activeAnatomy === idx;
                 return (
                   <button
                     key={idx}
                     onClick={() => setActiveAnatomy(idx)}
-                    className={`w-full text-left p-4 rounded-xl transition-all duration-200 cursor-pointer flex items-center justify-between border ${
+                    className={`w-full text-left p-4 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-between border-2 ${
                       isSelected
-                        ? 'bg-[#001833] border-[#FFCC00] text-white shadow-lg'
-                        : 'bg-[#002B5B]/50 hover:bg-[#002B5B] border-slate-700/60 text-slate-300 hover:text-white'
+                        ? 'bg-[#FFCC00] border-[#E5B500] text-[#002B5B] shadow-md font-bold'
+                        : 'bg-[#FAF8F0] hover:bg-[#FFF9DE] border-[#E2DDD5] text-slate-700'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs ${
-                        isSelected ? 'bg-[#FFCC00] text-[#002B5B]' : 'bg-[#001A38] text-slate-400'
+                      <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-black text-xs shadow-xs ${
+                        isSelected ? 'bg-[#002B5B] text-[#FFD100]' : 'bg-white text-slate-500 border border-slate-200'
                       }`}>
                         {idx + 1}
                       </div>
                       <div>
-                        <span className="font-bold text-sm block">{item.title}</span>
-                        <span className="text-[11px] text-amber-200/80 font-medium">{item.badge}</span>
+                        <span className="font-black text-sm block text-[#002B5B]">{item.title}</span>
+                        <span className={`text-[11px] font-bold ${isSelected ? 'text-[#002B5B]/80' : 'text-[#C99A00]'}`}>
+                          {item.badge}
+                        </span>
                       </div>
                     </div>
-                    <ChevronRight className={`w-4 h-4 transition-transform ${isSelected ? 'translate-x-1 text-[#FFD100]' : 'text-slate-500'}`} />
+                    <ChevronRight className={`w-4 h-4 transition-transform ${isSelected ? 'translate-x-1 text-[#002B5B]' : 'text-slate-400'}`} />
                   </button>
                 );
               })}
             </div>
 
             {/* Detalle del Componente Seleccionado */}
-            <div className="lg:col-span-7 bg-[#001A38] p-7 sm:p-9 rounded-2xl border border-white/10 shadow-inner space-y-5">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <span className="text-xs font-mono font-medium text-amber-200/90 uppercase tracking-wider">
+            <div className="lg:col-span-7 bg-[#FFFDF5] p-7 sm:p-9 rounded-2xl border-2 border-[#FFE066] shadow-sm space-y-5 text-[#002B5B]">
+              <div className="flex items-center justify-between border-b border-[#E5DFC8] pb-3">
+                <span className="text-xs font-mono font-black text-[#C99A00] uppercase tracking-wider">
                   {anatomyPoints[activeAnatomy].badge}
                 </span>
-                <span className="text-xs text-slate-400">
+                <span className="text-xs font-bold text-slate-500">
                   Elemento {activeAnatomy + 1} de {anatomyPoints.length}
                 </span>
               </div>
 
-              <h3 className="text-2xl font-extrabold text-white">
+              <h3 className="text-2xl font-black text-[#002B5B]">
                 {anatomyPoints[activeAnatomy].title}
               </h3>
 
-              <p className="text-sm text-slate-300 leading-relaxed font-normal">
+              <p className="text-sm text-slate-700 leading-relaxed font-normal">
                 {anatomyPoints[activeAnatomy].description}
               </p>
 
-              <div className="p-4 rounded-xl bg-[#002B5B]/90 border border-white/10 text-xs text-slate-200 flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-amber-300/80 shrink-0 mt-0.5" />
-                <span><strong className="text-amber-200">Regla de Bóveda:</strong> {anatomyPoints[activeAnatomy].tip}</span>
+              <div className="p-4 rounded-xl bg-white border border-[#FFE066] text-xs text-[#002B5B] flex items-start gap-2.5 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-[#C99A00] shrink-0 mt-0.5" />
+                <span><strong className="text-[#002B5B] font-bold">Regla de Bóveda:</strong> {anatomyPoints[activeAnatomy].tip}</span>
               </div>
 
               <div className="pt-3 flex flex-wrap items-center gap-3">
                 <Link
                   href="/guia"
-                  className="px-4 py-2.5 rounded-xl text-xs font-bold text-[#002B5B] bg-[#FFCC00] hover:bg-amber-300 transition flex items-center gap-1.5 shadow"
+                  className="px-5 py-2.5 rounded-xl text-xs font-black text-[#FFD100] bg-[#002B5B] hover:bg-[#0A3B73] transition flex items-center gap-1.5 shadow-md"
                 >
                   <BookOpen className="w-3.5 h-3.5" />
                   <span>Ver Guía de Grados UPU</span>
@@ -381,10 +384,10 @@ export default function Home() {
 
                 <Link
                   href="/catalogo"
-                  className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700 transition flex items-center gap-1.5"
+                  className="px-5 py-2.5 rounded-xl text-xs font-bold text-[#002B5B] hover:bg-[#FAF8F0] bg-white border border-[#E2DDD5] transition flex items-center gap-1.5 shadow-xs"
                 >
                   <span>Ver Ejemplares en Catálogo</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-[#C99A00]" />
                 </Link>
               </div>
             </div>
@@ -571,47 +574,48 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 6. GARANTÍA POSTAL Y SERVICIOS OFICIALES DE BÓVEDA                      */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-[#001A38] text-white border-t-4 border-[#FFCC00] border-b border-[#0A3B73]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-br from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] border-t-4 border-[#E5B500] border-b-2 border-[#E5B500] relative overflow-hidden">
+        <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none mix-blend-multiply" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div className="lg:col-span-6 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFCC00] text-[#002B5B] text-xs font-bold tracking-wide shadow-sm">
-                <Shield className="w-3.5 h-3.5 text-[#002B5B]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide shadow-md">
+                <Shield className="w-3.5 h-3.5 text-[#FFD100]" />
                 <span>Rigor Notarial y Pericial Oficial</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
                 Garantía y Fe Pública de la Agencia Postal
               </h2>
 
-              <p className="text-sm text-slate-300 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-[#002B5B]/85 leading-relaxed font-medium">
                 Toda pieza adquirida a través de la plataforma oficial goza de la garantía soberana del Estado boliviano. Nuestro equipo pericial audita cada ejemplar mediante microscopía y espectrometría UV.
               </p>
 
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#FFD100] shrink-0 mt-0.5" />
+              <div className="space-y-3.5 pt-2">
+                <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm p-3.5 rounded-2xl border border-white/80 shadow-xs">
+                  <CheckCircle2 className="w-5 h-5 text-[#002B5B] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-white text-sm font-bold block">Certificado Notarial Foliado con QR</strong>
-                    <span className="text-xs text-slate-300">Cada orden de bóveda incluye su acta física sellada en seco con código criptográfico de serie.</span>
+                    <strong className="text-[#002B5B] text-sm font-black block">Certificado Notarial Foliado con QR</strong>
+                    <span className="text-xs text-[#002B5B]/80 font-medium">Cada orden de bóveda incluye su acta física sellada en seco con código criptográfico de serie.</span>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#FFD100] shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm p-3.5 rounded-2xl border border-white/80 shadow-xs">
+                  <CheckCircle2 className="w-5 h-5 text-[#002B5B] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-white text-sm font-bold block">Protección Glassine Libre de Ácido</strong>
-                    <span className="text-xs text-slate-300">Embalaje individual con polímeros y fibras libres de lignina para salvaguardar la goma centenaria.</span>
+                    <strong className="text-[#002B5B] text-sm font-black block">Protección Glassine Libre de Ácido</strong>
+                    <span className="text-xs text-[#002B5B]/80 font-medium">Embalaje individual con polímeros y fibras libres de lignina para salvaguardar la goma centenaria.</span>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#FFD100] shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm p-3.5 rounded-2xl border border-white/80 shadow-xs">
+                  <CheckCircle2 className="w-5 h-5 text-[#002B5B] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-white text-sm font-bold block">Custodia Climatizada Controlada</strong>
-                    <span className="text-xs text-slate-300">Bóvedas con 50% de humedad relativa y 20°C constantes para impedir hongos u óxido filatélico.</span>
+                    <strong className="text-[#002B5B] text-sm font-black block">Custodia Climatizada Controlada</strong>
+                    <span className="text-xs text-[#002B5B]/80 font-medium">Bóvedas con 50% de humedad relativa y 20°C constantes para impedir hongos u óxido filatélico.</span>
                   </div>
                 </div>
               </div>
@@ -619,17 +623,17 @@ export default function Home() {
               <div className="pt-3">
                 <Link
                   href="/certificacion"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-[#FFD100] hover:text-white underline underline-offset-4"
+                  className="inline-flex items-center gap-2 text-xs font-black bg-[#002B5B] hover:bg-[#0A3B73] text-[#FFD100] px-6 py-3 rounded-xl shadow-lg transition hover:scale-105 active:scale-95"
                 >
                   <span>Conocer más sobre el protocolo de peritaje y certificación notarial</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4 text-[#FFD100]" />
                 </Link>
               </div>
             </div>
 
             {/* Certificado de Muestra */}
             <div className="lg:col-span-6 flex justify-center">
-              <div className="w-full max-w-sm bg-[#FAF8F0] text-[#002B5B] p-7 rounded-3xl border-2 border-[#FFCC00] shadow-2xl relative rotate-1 hover:rotate-0 transition-transform duration-300">
+              <div className="w-full max-w-sm bg-white text-[#002B5B] p-8 rounded-3xl border-3 border-[#002B5B] shadow-2xl relative rotate-1 hover:rotate-0 transition-transform duration-300">
                 <div className="text-center pb-4 border-b border-[#E2DDD5]">
                   <span className="text-[10px] uppercase tracking-widest text-[#C99A00] font-black block">
                     Correos de Bolivia

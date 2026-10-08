@@ -55,16 +55,16 @@ export const VaultTrustSection: React.FC = () => {
               return (
                 <div 
                   key={idx}
-                  className="bg-white p-6 rounded-2xl border border-[#E2DDD5] hover:border-[#FFCC00] shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between"
+                  className="bg-white p-6 rounded-2xl border-2 border-[#FFE875] hover:border-[#FFCC00] shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-[#002B5B] flex items-center justify-center text-[#FFD100] mb-4 group-hover:scale-105 transition-transform shadow-xs">
+                    <div className="w-12 h-12 rounded-xl bg-[#FFCC00] flex items-center justify-center text-[#002B5B] mb-4 group-hover:scale-110 transition-transform shadow-xs">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-base font-bold text-[#002B5B] mb-2">
+                    <h3 className="text-base font-black text-[#002B5B] mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
                       {item.description}
                     </p>
                   </div>
@@ -82,7 +82,7 @@ export const VaultTrustSection: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.08] text-amber-200 text-xs font-medium tracking-wide uppercase">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFCC00] text-[#002B5B] text-xs font-black tracking-wide uppercase shadow-sm">
                 Documento Oficial de Bóveda
               </div>
               
@@ -91,7 +91,7 @@ export const VaultTrustSection: React.FC = () => {
               </h3>
 
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-2xl">
-                Toda adquisición superior a 200 BOB o clasificada como <strong className="text-amber-200 font-semibold">Pieza de Museo</strong> incluye un Certificado de Bóveda impreso en papel de seguridad con filigrana, numeración correlativa ministerial y relieve en seco de Correos de Bolivia.
+                Toda adquisición superior a 200 BOB o clasificada como <strong className="text-[#FFD100] font-bold">Pieza de Museo</strong> incluye un Certificado de Bóveda impreso en papel de seguridad con filigrana, numeración correlativa ministerial y relieve en seco de Correos de Bolivia.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-2 text-xs text-slate-300">
@@ -111,12 +111,12 @@ export const VaultTrustSection: React.FC = () => {
             </div>
 
             <div className="lg:col-span-4 flex justify-center">
-              <div className="w-full max-w-xs bg-[#FAF8F0] text-[#002B5B] p-6 rounded-2xl border border-[#E2DDD5] shadow-2xl relative rotate-1 hover:rotate-0 transition-transform duration-300">
+              <div className="w-full max-w-xs bg-[#FAF8F0] text-[#002B5B] p-6 rounded-2xl border-2 border-[#FFCC00] shadow-2xl relative rotate-1 hover:rotate-0 transition-transform duration-300">
                 <div className="text-center pb-3 border-b border-[#E2DDD5]">
-                  <span className="text-[9px] uppercase tracking-widest text-[#C99A00] font-black block">
+                  <span className="text-[9px] uppercase tracking-widest text-[#002B5B] font-black block">
                     Correos de Bolivia
                   </span>
-                  <h4 className="text-sm font-extrabold text-[#002B5B] mt-0.5">
+                  <h4 className="text-sm font-black text-[#002B5B] mt-0.5">
                     ACTA DE PERITAJE POSTAL
                   </h4>
                 </div>
@@ -137,7 +137,7 @@ export const VaultTrustSection: React.FC = () => {
                 </div>
 
                 <div className="pt-3 border-t border-[#E2DDD5] text-center">
-                  <span className="inline-block px-3 py-1 bg-[#002B5B] text-amber-200 text-[9px] font-medium rounded-md">
+                  <span className="inline-block px-3 py-1 bg-[#FFCC00] text-[#002B5B] text-[9px] font-black rounded-md shadow-xs">
                     SELLO EN SECO VÁLIDO
                   </span>
                 </div>

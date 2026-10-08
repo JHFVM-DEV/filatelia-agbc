@@ -83,20 +83,22 @@ export const FAQSection: React.FC = () => {
             return (
               <div
                 key={idx}
-                className={`bg-white rounded-2xl border transition-all duration-200 overflow-hidden ${
-                  isOpen ? 'border-[#002B5B] shadow-md' : 'border-[#E2DDD5] hover:border-slate-400'
+                className={`bg-white rounded-2xl border-2 transition-all duration-200 overflow-hidden ${
+                  isOpen ? 'border-[#FFCC00] shadow-lg ring-2 ring-[#FFCC00]/20' : 'border-[#E2DDD5] hover:border-[#FFE875]'
                 }`}
               >
                 <button
                   onClick={() => toggleAccordion(idx)}
-                  className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 focus:outline-none"
+                  className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
                 >
                   <div className="flex items-start gap-3">
-                    <span className="text-xs font-bold text-[#C99A00] font-mono shrink-0 mt-0.5">
+                    <span className={`text-xs font-black font-mono shrink-0 mt-0.5 px-2 py-0.5 rounded-md ${
+                      isOpen ? 'bg-[#FFCC00] text-[#002B5B]' : 'bg-slate-100 text-slate-600'
+                    }`}>
                       0{idx + 1}.
                     </span>
                     <div>
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">
+                      <span className="text-[10px] font-bold text-[#C99A00] uppercase tracking-wider block mb-0.5">
                         {faq.category}
                       </span>
                       <h3 className="text-sm sm:text-base font-bold text-[#002B5B]">
@@ -106,7 +108,7 @@ export const FAQSection: React.FC = () => {
                   </div>
 
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                    isOpen ? 'bg-[#002B5B] text-amber-200 rotate-180' : 'bg-slate-100 text-slate-500'
+                    isOpen ? 'bg-[#FFCC00] text-[#002B5B] rotate-180 shadow-xs' : 'bg-slate-100 text-slate-500'
                   }`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
@@ -114,7 +116,7 @@ export const FAQSection: React.FC = () => {
 
                 {isOpen && (
                   <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-[#FAF8F0]/40 animate-in fade-in duration-200">
-                    <p className="pl-6 border-l-2 border-[#002B5B]/30">
+                    <p className="pl-6 border-l-3 border-[#FFCC00]">
                       {faq.answer}
                     </p>
                   </div>
@@ -125,10 +127,10 @@ export const FAQSection: React.FC = () => {
         </div>
 
         {/* Still Have Questions Box */}
-        <div className="mt-12 bg-white rounded-2xl p-6 border border-[#E2DDD5] text-center flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+        <div className="mt-12 bg-white rounded-2xl p-6 border-2 border-[#FFE875] text-center flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
           <div className="text-left">
             <h4 className="font-bold text-sm text-[#002B5B] flex items-center gap-2">
-              <Mail className="w-4 h-4 text-[#C99A00]" />
+              <Mail className="w-4 h-4 text-[#FFCC00]" />
               ¿Tiene una consulta sobre un sello en particular?
             </h4>
             <p className="text-xs text-slate-500 mt-0.5">
@@ -137,7 +139,7 @@ export const FAQSection: React.FC = () => {
           </div>
           <a
             href="mailto:filatelia@correosbolivia.gob.bo"
-            className="px-5 py-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] text-white text-xs font-bold transition whitespace-nowrap shadow"
+            className="px-5 py-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] text-[#FFD100] text-xs font-black transition whitespace-nowrap shadow-md hover:scale-105"
           >
             Contactar a Curaduría
           </a>

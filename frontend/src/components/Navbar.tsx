@@ -138,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               {/* Logo Corporativo Institucional */}
               <div className="border-l border-slate-700/80 pl-3 shrink-0">
-                <div className="text-[10px] tracking-widest text-amber-200/90 uppercase font-medium mt-0.5 flex items-center gap-1">
+                <div className="text-[10px] tracking-widest text-[#FFD100] uppercase font-bold mt-0.5 flex items-center gap-1">
                   <span>Filatelia Bolivia</span>
                 </div>
                 <div className="text-[9px] text-slate-300 font-medium uppercase tracking-wider">
@@ -158,8 +158,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   href={link.href}
                   className={`py-1 border-b-2 whitespace-nowrap text-xs lg:text-sm font-medium transition-colors duration-200 ${
                     isActive
-                      ? 'text-amber-200 border-amber-300/80 font-bold'
-                      : 'text-slate-200 border-transparent hover:text-amber-200 hover:border-amber-300/40'
+                      ? 'text-[#FFD100] border-[#FFCC00] font-black'
+                      : 'text-slate-200 border-transparent hover:text-[#FFD100] hover:border-[#FFCC00]/50'
                   }`}
                 >
                   {link.label}
@@ -180,14 +180,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                   title="Bóveda de Adquisiciones"
                 >
                   <div className="relative shrink-0 flex items-center justify-center">
-                    <ShoppingBag className="w-4.5 h-4.5 text-amber-300/90 transition-transform duration-300 group-hover:scale-110" />
+                    <ShoppingBag className="w-4.5 h-4.5 text-[#FFCC00] transition-transform duration-300 group-hover:scale-110" />
                     {cartCount > 0 && (
-                      <span className="absolute -top-1.5 -right-2 bg-amber-300 text-[#002B5B] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow">
+                      <span className="absolute -top-1.5 -right-2 bg-[#FFCC00] text-[#002B5B] text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow">
                         {cartCount}
                       </span>
                     )}
                   </div>
-                  <span className="max-w-0 opacity-0 group-hover:max-w-[110px] group-hover:opacity-100 group-hover:ml-2.5 transition-all duration-300 ease-out text-xs font-semibold text-amber-200/90 overflow-hidden whitespace-nowrap">
+                  <span className="max-w-0 opacity-0 group-hover:max-w-[110px] group-hover:opacity-100 group-hover:ml-2.5 transition-all duration-300 ease-out text-xs font-semibold text-[#FFD100] overflow-hidden whitespace-nowrap">
                     Bóveda {cartCount > 0 ? `(${cartCount})` : ''}
                   </span>
                 </button>
@@ -484,6 +484,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
       </div>
+      <div className="h-0.5 bg-gradient-to-r from-[#FFD100] via-[#FFCC00] to-[#E5B500] w-full" />
     </header>
   );
 };

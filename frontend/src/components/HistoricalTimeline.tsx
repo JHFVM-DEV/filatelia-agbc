@@ -167,10 +167,10 @@ export const HistoricalTimeline: React.FC = () => {
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-5">
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-lg bg-white/[0.08] text-amber-200 font-medium font-mono text-sm tracking-widest border border-white/10 shadow-sm">
+                <span className="px-3.5 py-1.5 rounded-xl bg-[#FFCC00] text-[#002B5B] font-black font-mono text-sm tracking-widest border border-[#E5B500] shadow-md">
                   AÑO {currentEvent.year}
                 </span>
-                <span className="text-xs text-amber-200/80 font-medium tracking-wide uppercase">
+                <span className="text-xs text-[#FFD100] font-bold tracking-wide uppercase">
                   {currentEvent.period}
                 </span>
               </div>
@@ -179,7 +179,7 @@ export const HistoricalTimeline: React.FC = () => {
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
                   {currentEvent.title}
                 </h3>
-                <p className="text-sm font-medium text-amber-200/90 mt-1">
+                <p className="text-sm font-bold text-[#FFD100] mt-1">
                   {currentEvent.subtitle}
                 </p>
               </div>
@@ -189,20 +189,20 @@ export const HistoricalTimeline: React.FC = () => {
               </p>
 
               {/* Curatorial Quote */}
-              <div className="border-l-2 border-amber-400/40 pl-4 py-1 italic bg-white/[0.03] rounded-r-xl">
-                <p className="text-xs text-slate-300">
+              <div className="border-l-4 border-[#FFCC00] pl-4 py-2 italic bg-white/[0.05] rounded-r-xl">
+                <p className="text-xs text-slate-200">
                   &ldquo;{currentEvent.quote}&rdquo;
                 </p>
-                <p className="text-[11px] text-amber-200/90 font-medium mt-1 not-italic">
+                <p className="text-[11px] text-[#FFD100] font-bold mt-1.5 not-italic">
                   — {currentEvent.quoteAuthor}
                 </p>
               </div>
             </div>
 
             {/* Right Technical Specification Column */}
-            <div className="lg:col-span-5 bg-[#001A38] rounded-2xl border border-[#0A3B73] p-6 space-y-4">
+            <div className="lg:col-span-5 bg-[#001A38] rounded-2xl border-2 border-[#FFCC00]/50 p-6 space-y-4 shadow-xl">
               <div className="flex items-center gap-2 pb-3 border-b border-slate-700/80">
-                <Award className="w-5 h-5 text-amber-300/80" />
+                <Award className="w-5 h-5 text-[#FFCC00]" />
                 <h4 className="text-xs font-bold text-white uppercase tracking-wider">
                   Ficha Técnica de Bóveda
                 </h4>
@@ -216,7 +216,7 @@ export const HistoricalTimeline: React.FC = () => {
 
                 <div>
                   <span className="block text-slate-400 text-[11px]">Grado de Rareza:</span>
-                  <span className="inline-block px-3 py-1 rounded-lg bg-white/[0.06] text-amber-200/90 font-medium text-[11px] mt-0.5 border border-white/10">
+                  <span className="inline-block px-3 py-1 rounded-lg bg-[#FFCC00]/15 text-[#FFD100] font-bold text-[11px] mt-0.5 border border-[#FFCC00]/30">
                     {currentEvent.technicalDetails.rarity}
                   </span>
                 </div>
@@ -237,7 +237,7 @@ export const HistoricalTimeline: React.FC = () => {
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   Catalogación UPU Verificada
                 </span>
-                <span className="font-mono text-amber-200/90 font-semibold">
+                <span className="font-mono text-[#FFCC00] font-black">
                   REG. OFICIAL #{activeIdx + 1}/5
                 </span>
               </div>
