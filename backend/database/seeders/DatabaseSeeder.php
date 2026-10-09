@@ -220,151 +220,14 @@ class DatabaseSeeder extends Seeder
         );
 
 
-        // 5. Productos / Sellos de Alta Gama
-        $prodCondor = Product::firstOrCreate(
-            ['slug' => 'condor-1866-10c-verde'],
-            [
-                'name' => 'Cóndor de Los Andes 1866 — 10 Centavos Verde (Primera Emisión)',
-                'catalog_code' => 'Yvert #2 / Scott #2',
-                'category_id' => $catSellos->id,
-                'emission_id' => $emisionClasica->id,
-                'price' => 4850.00,
-                'face_value' => '10 Centavos',
-                'year' => 1866,
-                'country' => 'Bolivia',
-                'condition' => 'MINT_NH',
-                'rarity' => 'MUSEUM_PIECE',
-                'certified' => true,
-                'stock' => 2,
-                'perforation' => 'Imperforado (Corte manual en margen)',
-                'printing_technique' => 'Calcografía al aguafuerte sobre plancha de cobre',
-                'paper_type' => 'Papel verjurado sin filigrana (libre de ácido)',
-                'gum_condition' => 'Goma original intacta sin charnela (Never Hinged)',
-                'dimensions' => '22 x 26 mm',
-                'front_image' => '/images/hero-philately.jpg',
-                'back_image' => '/images/hero-philately.jpg',
-                'is_featured' => true,
-                'is_active' => false,
-                'description' => 'Pieza de museo de la histórica primera emisión postal de Bolivia autorizada bajo el gobierno de Mariano Melgarejo. Margen amplio, tinta verde esmeralda uniforme con nitidez de grabado extraordinaria.',
-                'historical_context' => 'El sello del Cóndor de 1866 marca el nacimiento de las comunicaciones postales modernas en Bolivia.',
-            ]
-        );
-
-        $prodBicentenario = Product::firstOrCreate(
-            ['slug' => 'bicentenario-hojita-bloque-gala'],
-            [
-                'name' => 'Bicentenario de Bolivia — Hojita Bloque de Gala con Pan de Oro',
-                'catalog_code' => 'SCOTT-BO-2025-01',
-                'category_id' => $catBloques->id,
-                'emission_id' => $emisionBicentenario->id,
-                'price' => 380.00,
-                'face_value' => '50.00 BOB',
-                'year' => 2025,
-                'country' => 'Bolivia',
-                'condition' => 'MINT_NH',
-                'rarity' => 'VERY_RARE',
-                'certified' => true,
-                'stock' => 15,
-                'perforation' => '13.5 x 13.5 micro-dentado láser',
-                'printing_technique' => 'Offset cuatricromía + Hot-Stamping en Oro 24K',
-                'paper_type' => 'Papel tizado de seguridad 110g con fibrillas UV',
-                'gum_condition' => 'Goma sintética vegetal tropicalizada (PVA)',
-                'dimensions' => '120 x 85 mm',
-                'front_image' => '/images/cat-limited.jpg',
-                'back_image' => '/images/cat-limited.jpg',
-                'is_featured' => true,
-                'is_active' => false,
-                'description' => 'Emisión cumbre del Bicentenario con relieve escultórico y detalles en pan de oro auténtico.',
-                'historical_context' => 'Edición conmemorativa que une las 9 regiones de Bolivia.',
-            ]
-        );
-
-        $prodFauna = Product::firstOrCreate(
-            ['slug' => 'fauna-andina-serie-completa-2024'],
-            [
-                'name' => 'Flora & Fauna Andina — Serie Completa Cóndor Real & Oso Jukumari',
-                'catalog_code' => 'SCOTT-BO-2024-F4',
-                'category_id' => $catSellos->id,
-                'emission_id' => $emisionFauna->id,
-                'price' => 145.00,
-                'face_value' => '18.00 BOB',
-                'year' => 2024,
-                'country' => 'Bolivia',
-                'condition' => 'MINT_NH',
-                'rarity' => 'SCARCE',
-                'certified' => true,
-                'stock' => 28,
-                'perforation' => '14 x 14 peine de precisión',
-                'printing_technique' => 'Offset litográfico a 6 tintas directas',
-                'paper_type' => 'Papel satinado con filigrana institucional',
-                'gum_condition' => 'Goma original mate perfecta',
-                'dimensions' => '40 x 30 mm',
-                'front_image' => '/images/cat-themes.jpg',
-                'back_image' => '/images/cat-themes.jpg',
-                'is_featured' => true,
-                'is_active' => false,
-                'description' => 'Serie completa de 4 valores en estado impecable dedicada a las especies protegidas.',
-                'historical_context' => 'Premiada en la Exposición Filatélica Interamericana.',
-            ]
-        );
-
-        $prodFDC = Product::firstOrCreate(
-            ['slug' => 'fdc-bicentenario-sucre-2025'],
-            [
-                'name' => 'Sobre Primer Día (FDC) — Ceremonia Oficial Bicentenario Sucre 2025',
-                'catalog_code' => 'FDC-BO-2025-SUC',
-                'category_id' => $catFDC->id,
-                'emission_id' => $emisionBicentenario->id,
-                'price' => 210.00,
-                'face_value' => 'Sobre Timbrado',
-                'year' => 2025,
-                'country' => 'Bolivia',
-                'condition' => 'FDC',
-                'rarity' => 'RARE',
-                'certified' => true,
-                'stock' => 12,
-                'perforation' => '13.5 x 13.5',
-                'printing_technique' => 'Matasellos en tinta carbón aplicada en seco',
-                'paper_type' => 'Sobre de vitela de algodón 140g',
-                'gum_condition' => 'Adherido oficial de época',
-                'dimensions' => '165 x 102 mm',
-                'front_image' => '/images/cat-classic.jpg',
-                'back_image' => '/images/cat-classic.jpg',
-                'is_featured' => false,
-                'is_active' => false,
-                'description' => 'Sobre primer día con matasellos especial aplicado en la Casa de la Libertad (Sucre).',
-                'historical_context' => 'Matasellado único en la fecha del 6 de Agosto en la ciudad capital histórica.',
-            ]
-        );
-
-        $prodAlbum = Product::firstOrCreate(
-            ['slug' => 'clasificador-lujo-64-paginas'],
-            [
-                'name' => 'Álbum Clasificador Gran Lujo — 64 Páginas Glassine Cuero Azul Marino',
-                'catalog_code' => 'ACC-ALBUM-PRO-01',
-                'category_id' => $catAccesorios->id,
-                'emission_id' => null,
-                'price' => 320.00,
-                'face_value' => 'Material Numismático',
-                'year' => 2025,
-                'country' => 'Alemania (Importado)',
-                'condition' => 'MINT_NH',
-                'rarity' => 'COMMON',
-                'certified' => true,
-                'stock' => 20,
-                'perforation' => 'No aplica',
-                'printing_technique' => 'Encuadernación artesanal cosida con dorados al fuego',
-                'paper_type' => 'Cartón negro neutro pH 7.5 + pergamino transparente',
-                'gum_condition' => 'Libre de plastificantes y químicos abrasivos',
-                'dimensions' => '230 x 305 mm',
-                'front_image' => '/images/cat-accessories.jpg',
-                'back_image' => '/images/cat-accessories.jpg',
-                'is_featured' => true,
-                'is_active' => false,
-                'description' => 'El clasificador definitivo para el coleccionista de élite.',
-                'historical_context' => 'Fabricado bajo normas internacionales de conservación preventiva.',
-            ]
-        );
+        // 5. Eliminar productos de ejemplo / ficticios iniciales si existieran
+        Product::whereIn('slug', [
+            'condor-1866-10c-verde',
+            'bicentenario-hojita-bloque-gala',
+            'fauna-andina-serie-completa-2024',
+            'fdc-bicentenario-sucre-2025',
+            'clasificador-lujo-64-paginas',
+        ])->delete();
 
         // Colección de Sellos Reales de Bolivia (43 piezas catalogadas)
         Product::updateOrCreate(
@@ -1614,7 +1477,13 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 6. Órdenes Realistas con Envíos y Estados Variados
+        // 6. Órdenes Realistas con Envíos y Estados Variados sobre Sellos Reales de Bolivia
+        $prodReal1 = Product::where('slug', 'navidad-arte-sacro-triptico-2007')->first() ?? Product::first();
+        $prodReal2 = Product::where('slug', 'att-soberania-postal-telecomunicaciones-2015')->first() ?? Product::first();
+        $prodReal3 = Product::where('slug', 'frutas-nativas-naranja-boliviana-2012')->first() ?? Product::first();
+        $prodReal4 = Product::where('slug', 'centenario-fuerza-aerea-boliviana-2023')->first() ?? Product::first();
+        $prodReal5 = Product::where('slug', 'bicentenario-batalla-de-la-tablada-2017')->first() ?? Product::first();
+
         $ordersData = [
             [
                 'order_number' => 'ORD-2026-0101',
@@ -1624,11 +1493,11 @@ class DatabaseSeeder extends Seeder
                 'shipping_address' => 'Zona Sopocachi, Calle Guachalla #450',
                 'city' => 'La Paz',
                 'department' => 'La Paz',
-                'total_amount' => 5230.00,
+                'total_amount' => 185.00,
                 'status' => 'DELIVERED',
                 'payment_method' => 'QR_TRANSFER',
                 'tracking_code' => 'BO-CORREOS-LPZ-001',
-                'product' => $prodCondor,
+                'product' => $prodReal1,
             ],
             [
                 'order_number' => 'ORD-2026-0102',
@@ -1638,11 +1507,11 @@ class DatabaseSeeder extends Seeder
                 'shipping_address' => 'Equipetrol Norte, Calle 7 Este #89',
                 'city' => 'Santa Cruz de la Sierra',
                 'department' => 'Santa Cruz',
-                'total_amount' => 1140.00,
+                'total_amount' => 90.00,
                 'status' => 'SHIPPED',
                 'payment_method' => 'CREDIT_CARD',
                 'tracking_code' => 'BO-CORREOS-SCZ-002',
-                'product' => $prodBicentenario,
+                'product' => $prodReal2,
             ],
             [
                 'order_number' => 'ORD-2026-0103',
@@ -1652,11 +1521,11 @@ class DatabaseSeeder extends Seeder
                 'shipping_address' => 'Av. Ballivián #670, El Prado',
                 'city' => 'Cochabamba',
                 'department' => 'Cochabamba',
-                'total_amount' => 435.00,
+                'total_amount' => 76.00,
                 'status' => 'PACKED_GLASSINE',
                 'payment_method' => 'QR_TRANSFER',
                 'tracking_code' => 'BO-CORREOS-CBB-003',
-                'product' => $prodFauna,
+                'product' => $prodReal3,
             ],
             [
                 'order_number' => 'ORD-2026-0104',
@@ -1666,11 +1535,11 @@ class DatabaseSeeder extends Seeder
                 'shipping_address' => 'Calle Calvo #112, Centro Histórico',
                 'city' => 'Sucre',
                 'department' => 'Chuquisaca',
-                'total_amount' => 630.00,
+                'total_amount' => 120.00,
                 'status' => 'VAULT_PREPARATION',
                 'payment_method' => 'QR_TRANSFER',
                 'tracking_code' => 'BO-CORREOS-CHQ-004',
-                'product' => $prodFDC,
+                'product' => $prodReal4,
             ],
             [
                 'order_number' => 'ORD-2026-0105',
@@ -1680,11 +1549,11 @@ class DatabaseSeeder extends Seeder
                 'shipping_address' => 'Barrio San Roque, Calle Corrado #210',
                 'city' => 'Tarija',
                 'department' => 'Tarija',
-                'total_amount' => 640.00,
+                'total_amount' => 140.00,
                 'status' => 'PENDING',
                 'payment_method' => 'VAULT_PICKUP',
                 'tracking_code' => null,
-                'product' => $prodAlbum,
+                'product' => $prodReal5,
             ],
             [
                 'order_number' => 'ORD-2026-0106',
@@ -1694,11 +1563,11 @@ class DatabaseSeeder extends Seeder
                 'shipping_address' => 'Calle 6 de Octubre #1450',
                 'city' => 'Oruro',
                 'department' => 'Oruro',
-                'total_amount' => 525.00,
+                'total_amount' => 76.00,
                 'status' => 'SHIPPED',
                 'payment_method' => 'QR_TRANSFER',
                 'tracking_code' => 'BO-CORREOS-ORU-005',
-                'product' => $prodFauna,
+                'product' => $prodReal3,
             ],
         ];
 
@@ -1757,8 +1626,8 @@ class DatabaseSeeder extends Seeder
                 'customer_email' => 'cmesa@historiabolivia.org',
                 'customer_phone' => '+591 72011223',
                 'order_id' => 1,
-                'subject' => 'Consulta de Autenticidad y Peritaje Cóndor 1866',
-                'message' => 'Solicito copia digital del certificado de la Fábrica de Moneda y Timbre para mi archivo histórico.',
+                'subject' => 'Consulta de Autenticidad y Peritaje Tríptico Arte Sacro',
+                'message' => 'Solicito copia digital del certificado de la Dirección Filatélica para mi archivo histórico.',
                 'priority' => 'HIGH',
                 'status' => 'IN_PROGRESS',
                 'assigned_user_id' => $almacen->id,
@@ -1790,7 +1659,7 @@ class DatabaseSeeder extends Seeder
                 'customer_phone' => '+591 70788990',
                 'order_id' => 3,
                 'subject' => 'Embalaje Especial en Papel Pergamino / Glassine',
-                'message' => 'Deseo verificar que la serie de Fauna Andina venga con doble protección contra la humedad.',
+                'message' => 'Deseo verificar que la serie filatélica venga con doble protección contra la humedad.',
                 'priority' => 'NORMAL',
                 'status' => 'RESOLVED',
                 'assigned_user_id' => $almacen->id,
@@ -1802,26 +1671,26 @@ class DatabaseSeeder extends Seeder
         InventoryMovement::firstOrCreate(
             ['reason' => 'Ingreso inicial por decreto supremo de emisión'],
             [
-                'product_id' => $prodCondor->id,
+                'product_id' => $prodReal1->id,
                 'user_id' => $almacen->id,
                 'type' => 'IN',
-                'quantity' => 3,
+                'quantity' => 10,
                 'previous_stock' => 0,
-                'new_stock' => 3,
+                'new_stock' => 10,
                 'department' => 'La Paz',
-                'notes' => 'Custodia en Bóveda A1 - Caja de Seguridad Clásicos.',
+                'notes' => 'Custodia en Bóveda A1 - Caja de Seguridad Oficial.',
             ]
         );
 
         InventoryMovement::firstOrCreate(
             ['reason' => 'Despacho por orden ORD-2026-0101'],
             [
-                'product_id' => $prodCondor->id,
+                'product_id' => $prodReal1->id,
                 'user_id' => $almacen->id,
                 'type' => 'OUT',
                 'quantity' => 1,
-                'previous_stock' => 3,
-                'new_stock' => 2,
+                'previous_stock' => 10,
+                'new_stock' => 9,
                 'department' => 'La Paz',
                 'notes' => 'Salida para embalaje en valija asegurada.',
             ]

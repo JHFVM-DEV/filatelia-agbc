@@ -80,15 +80,15 @@ class SimulationUserTrackingSeeder extends Seeder
         );
 
         $orderInTransit->items()->delete();
-        $p1 = Product::find(3);
-        $p2 = Product::find(7);
+        $p1 = Product::where('slug', 'campana-de-la-libertad-sucre-2009')->first() ?? Product::where('is_active', true)->first();
+        $p2 = Product::where('slug', 'navidad-arte-sacro-triptico-2007')->first() ?? Product::where('is_active', true)->first();
 
         $orderInTransit->items()->create([
             'product_id' => $p1 ? $p1->id : null,
-            'product_name' => $p1 ? $p1->name : 'Flora & Fauna Andina — Serie Completa Cóndor Real & Oso Jukumari',
-            'unit_price' => 2450.00,
+            'product_name' => $p1 ? $p1->name : 'Bicentenario de la Gesta Libertaria — Campana de la Libertad (Sucre 1809 - 2009)',
+            'unit_price' => 75.00,
             'quantity' => 1,
-            'subtotal' => 2450.00,
+            'subtotal' => 75.00,
         ]);
 
         $orderInTransit->items()->create([

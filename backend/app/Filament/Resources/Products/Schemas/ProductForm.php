@@ -27,7 +27,7 @@ class ProductForm
                                     ->label('Nombre del Ejemplar')
                                     ->required()
                                     ->maxLength(255)
-                                    ->placeholder('Ej: Cóndor de Los Andes 1866 — 10 Centavos Verde'),
+                                    ->placeholder('Ej: Tríptico Arte Sacro — Navidad 2007'),
                                 TextInput::make('slug')
                                     ->label('Identificador URL (Slug)')
                                     ->required()
@@ -37,7 +37,7 @@ class ProductForm
                             ->schema([
                                 TextInput::make('catalog_code')
                                     ->label('Código de Catálogo (Scott/Yvert)')
-                                    ->placeholder('Ej: BO-1866-SCOTT-10C')
+                                    ->placeholder('Ej: BO-2007-NAV-TRIP')
                                     ->required(),
                                 Select::make('category_id')
                                     ->label('Categoría Filatélica')
