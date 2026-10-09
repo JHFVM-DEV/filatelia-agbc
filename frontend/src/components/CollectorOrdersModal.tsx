@@ -208,14 +208,14 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
-      className="fixed inset-0 z-50 overflow-y-auto bg-[#001A38]/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in print:hidden"
+      className="fixed inset-0 z-50 overflow-y-auto bg-[#102542]/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in print:hidden"
     >
       <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-[#E2DDD5] overflow-hidden flex flex-col max-h-[92vh]">
         
         {/* Luxury Header */}
-        <div className="bg-gradient-to-r from-[#001A38] via-[#002B5B] to-[#001A38] px-6 py-5 text-white flex items-center justify-between border-b border-[#0A3B73]">
+        <div className="bg-gradient-to-r from-[#102542] via-[#102542] to-[#102542] px-6 py-5 text-white flex items-center justify-between border-b border-[#2C63AC]">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-amber-400 to-[#C99A00] text-[#002B5B] shadow-md">
+            <div className="p-2.5 rounded-xl bg-gradient-to-br from-amber-400 to-[#8A6800] text-[#102542] shadow-md">
               <TrendingUp className="w-5 h-5" />
             </div>
             <div>
@@ -245,7 +245,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
         <div className="bg-[#FAF8F0] px-6 py-3 border-b border-[#E2DDD5] flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-xs">
             <span className="text-slate-500 font-medium">Titular:</span>
-            <strong className="text-[#002B5B] font-bold">{currentUser?.name || 'Coleccionista Oficial'}</strong>
+            <strong className="text-[#102542] font-bold">{currentUser?.name || 'Coleccionista Oficial'}</strong>
             <span className="text-slate-400 font-mono hidden sm:inline">({currentUser?.email || 'boveda@filatelia.bo'})</span>
           </div>
 
@@ -255,8 +255,8 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
               onClick={() => setActiveTab('portfolio')}
               className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'portfolio'
-                  ? 'bg-[#002B5B] text-white shadow-sm'
-                  : 'text-slate-600 hover:text-[#002B5B]'
+                  ? 'bg-[#102542] text-white shadow-sm'
+                  : 'text-slate-600 hover:text-[#102542]'
               }`}
             >
               <TrendingUp className="w-3.5 h-3.5" />
@@ -266,8 +266,8 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
               onClick={() => setActiveTab('orders')}
               className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'orders'
-                  ? 'bg-[#002B5B] text-white shadow-sm'
-                  : 'text-slate-600 hover:text-[#002B5B]'
+                  ? 'bg-[#102542] text-white shadow-sm'
+                  : 'text-slate-600 hover:text-[#102542]'
               }`}
             >
               <ScrollText className="w-3.5 h-3.5" />
@@ -277,8 +277,8 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
               onClick={() => setActiveTab('tracking')}
               className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'tracking'
-                  ? 'bg-[#002B5B] text-[#FFD100] shadow-sm'
-                  : 'text-slate-600 hover:text-[#002B5B]'
+                  ? 'bg-[#102542] text-[#FECC36] shadow-sm'
+                  : 'text-slate-600 hover:text-[#102542]'
               }`}
             >
               <Truck className="w-3.5 h-3.5" />
@@ -291,7 +291,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
         <div className="flex-1 overflow-y-auto p-6 sm:p-8 bg-[#FAF8F0]/40">
           {isLoading ? (
             <div className="py-20 text-center text-slate-500 space-y-3">
-              <Loader2 className="w-8 h-8 animate-spin mx-auto text-[#002B5B]" />
+              <Loader2 className="w-8 h-8 animate-spin mx-auto text-[#102542]" />
               <p className="text-xs font-semibold">Consultando libros matrices de custodia y cotización...</p>
             </div>
           ) : activeTab === 'portfolio' ? (
@@ -308,7 +308,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                     <Coins className="w-4 h-4 text-amber-500" />
                   </div>
                   <div>
-                    <div className="text-2xl font-black text-[#002B5B]">
+                    <div className="text-2xl font-black text-[#102542]">
                       {portfolioStats.totalBOB.toLocaleString('es-BO', { minimumFractionDigits: 2 })}
                       <span className="text-xs font-bold text-slate-500 ml-1">BOB</span>
                     </div>
@@ -325,7 +325,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                     <Layers className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
-                    <div className="text-2xl font-black text-[#002B5B]">
+                    <div className="text-2xl font-black text-[#102542]">
                       {portfolioStats.totalPieces}
                       <span className="text-xs font-normal text-slate-500 ml-1">ejemplares</span>
                     </div>
@@ -375,7 +375,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
               <div className="bg-white rounded-2xl border border-[#E2DDD5] p-6 shadow-sm space-y-4">
                 <div className="flex items-center justify-between border-b border-[#E2DDD5] pb-3">
                   <div>
-                    <h4 className="font-extrabold text-sm text-[#002B5B]">
+                    <h4 className="font-extrabold text-sm text-[#102542]">
                       Composición Temática del Patrimonio Custodiado
                     </h4>
                     <p className="text-xs text-slate-500">
@@ -394,7 +394,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                         {category}
                       </span>
                       <div className="flex items-baseline justify-between">
-                        <strong className="text-lg font-black text-[#002B5B]">
+                        <strong className="text-lg font-black text-[#102542]">
                           {count}
                         </strong>
                         <span className="text-[10px] text-slate-400 font-medium">
@@ -407,7 +407,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
               </div>
 
               {/* Garantía Soberana de Resguardo */}
-              <div className="bg-gradient-to-r from-[#002B5B] to-[#001A38] text-white p-6 rounded-2xl border border-white/10 shadow-md flex flex-col sm:flex-row items-center justify-between gap-5">
+              <div className="bg-gradient-to-r from-[#102542] to-[#102542] text-white p-6 rounded-2xl border border-white/10 shadow-md flex flex-col sm:flex-row items-center justify-between gap-5">
                 <div className="space-y-1.5 text-center sm:text-left">
                   <div className="inline-flex items-center gap-1.5 text-amber-200/90 font-medium text-xs">
                     <ShieldCheck className="w-4 h-4 text-amber-300/80" />
@@ -436,7 +436,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                   <div className="w-12 h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center mx-auto border border-amber-200">
                     <Sparkles className="w-6 h-6" />
                   </div>
-                  <h4 className="font-bold text-base text-[#002B5B]">
+                  <h4 className="font-bold text-base text-[#102542]">
                     Inicie la Construcción de su Bóveda Filatélica
                   </h4>
                   <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
@@ -445,7 +445,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                   <Link
                     href="/catalogo"
                     onClick={onClose}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] text-amber-200 text-xs font-semibold transition shadow-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] text-amber-200 text-xs font-semibold transition shadow-sm"
                   >
                     <span>Explorar Catálogo de Inversión</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -462,14 +462,14 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                   <div className="w-16 h-16 rounded-full bg-slate-100 border border-slate-300 text-slate-400 flex items-center justify-center mx-auto">
                     <ScrollText className="w-8 h-8" />
                   </div>
-                  <h4 className="text-base font-bold text-[#002B5B]">No tiene adquisiciones registradas</h4>
+                  <h4 className="text-base font-bold text-[#102542]">No tiene adquisiciones registradas</h4>
                   <p className="text-xs text-slate-500 max-w-sm mx-auto">
                     Cuando adquiera ejemplares a través de la plataforma oficial, sus comprobantes y actas notariales de autenticidad quedarán archivadas aquí permanentemente.
                   </p>
                   <Link
                     href="/catalogo"
                     onClick={onClose}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#002B5B] text-amber-200 text-xs font-semibold transition shadow-sm mt-2"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#102542] text-amber-200 text-xs font-semibold transition shadow-sm mt-2"
                   >
                     <span>Ir al Catálogo</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -486,7 +486,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                   return (
                     <div 
                       key={order.id || idx}
-                      className="bg-white rounded-2xl border border-[#E2DDD5] p-5 shadow-sm hover:border-[#002B5B]/40 transition space-y-4"
+                      className="bg-white rounded-2xl border border-[#E2DDD5] p-5 shadow-sm hover:border-[#102542]/40 transition space-y-4"
                     >
                       {/* Order Card Header */}
                       <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#E2DDD5]">
@@ -494,7 +494,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
                             Folio Oficial de Orden
                           </span>
-                          <strong className="text-sm sm:text-base font-mono font-black text-[#002B5B]">
+                          <strong className="text-sm sm:text-base font-mono font-black text-[#102542]">
                             {order.order_number}
                           </strong>
                         </div>
@@ -509,10 +509,10 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                       </div>
 
                       {/* Guía Postal de Despacho Oficial — Amarillo Dominante */}
-                      <div className="p-4 rounded-xl bg-gradient-to-r from-[#FFFBE6] via-amber-50 to-[#FFFDF5] border-2 border-[#FFD100] space-y-3 shadow-xs">
+                      <div className="p-4 rounded-xl bg-gradient-to-r from-[#FFFBE6] via-amber-50 to-[#FFFDF5] border-2 border-[#FECC36] space-y-3 shadow-xs">
                         <div className="flex flex-wrap items-center justify-between gap-3">
                           <div className="flex items-center gap-2.5">
-                            <div className="w-8 h-8 rounded-lg bg-[#002B5B] text-[#FFD100] flex items-center justify-center font-bold shrink-0 shadow-xs border border-[#001A38]">
+                            <div className="w-8 h-8 rounded-lg bg-[#102542] text-[#FECC36] flex items-center justify-center font-bold shrink-0 shadow-xs border border-[#102542]">
                               <Truck className="w-4 h-4" />
                             </div>
                             <div>
@@ -520,7 +520,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                                 Guía Postal Oficial (Correos de Bolivia)
                               </span>
                               <div className="flex items-center gap-2 mt-0.5">
-                                <span className="font-mono font-black text-[#002B5B] text-xs sm:text-sm tracking-wider">
+                                <span className="font-mono font-black text-[#102542] text-xs sm:text-sm tracking-wider">
                                   {order.tracking_code || 'En generación...'}
                                 </span>
                                 {order.tracking_code && (
@@ -529,7 +529,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                                     className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[10px] font-black transition cursor-pointer shadow-2xs ${
                                       copiedCode === order.tracking_code
                                         ? 'bg-emerald-600 text-white'
-                                        : 'bg-[#FFD100] hover:bg-[#FFE043] text-[#002B5B] border border-amber-400'
+                                        : 'bg-[#FECC36] hover:bg-[#FFD95E] text-[#102542] border border-amber-400'
                                     }`}
                                     title="Copiar guía postal al portapapeles"
                                   >
@@ -554,22 +554,22 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                           {order.tracking_code && (
                             <button
                               onClick={() => openTracking(order.tracking_code)}
-                              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#FFD100] hover:bg-[#FFE043] text-[#002B5B] text-xs font-black transition shadow-xs cursor-pointer border border-amber-400"
+                              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#FECC36] hover:bg-[#FFD95E] text-[#102542] text-xs font-black transition shadow-xs cursor-pointer border border-amber-400"
                             >
-                              <Search className="w-3.5 h-3.5 text-[#002B5B]" />
+                              <Search className="w-3.5 h-3.5 text-[#102542]" />
                               <span>Rastrear Envío en Vivo</span>
                             </button>
                           )}
                         </div>
 
                         {/* Mini Stepper de Progreso del Envío */}
-                        <div className="grid grid-cols-4 gap-1 sm:gap-2 pt-2 border-t border-[#002B5B]/10 text-center">
+                        <div className="grid grid-cols-4 gap-1 sm:gap-2 pt-2 border-t border-[#102542]/10 text-center">
                           {/* 1. Bóveda */}
                           <div className="flex flex-col items-center">
                             <span className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] font-bold mb-1 shadow-xs">
                               ✓
                             </span>
-                            <span className="text-[10px] font-bold text-[#002B5B]">En Bóveda</span>
+                            <span className="text-[10px] font-bold text-[#102542]">En Bóveda</span>
                             <span className="text-[9px] text-slate-400 hidden sm:inline">Verificado</span>
                           </div>
 
@@ -582,7 +582,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                             }`}>
                               {['GLASSINE_PACKED', 'SHIPPED', 'IN_TRANSIT', 'DELIVERED'].includes(order.status) ? '✓' : '2'}
                             </span>
-                            <span className="text-[10px] font-bold text-[#002B5B]">Empaque Glassine</span>
+                            <span className="text-[10px] font-bold text-[#102542]">Empaque Glassine</span>
                             <span className="text-[9px] text-slate-400 hidden sm:inline">Libre de Ácido</span>
                           </div>
 
@@ -592,12 +592,12 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                               ['SHIPPED', 'IN_TRANSIT', 'DELIVERED'].includes(order.status)
                                 ? 'bg-emerald-600 text-white'
                                 : order.status === 'GLASSINE_PACKED'
-                                ? 'bg-[#FFD100] text-[#002B5B] ring-2 ring-amber-300'
+                                ? 'bg-[#FECC36] text-[#102542] ring-2 ring-amber-300'
                                 : 'bg-slate-200 text-slate-500'
                             }`}>
                               {['SHIPPED', 'IN_TRANSIT', 'DELIVERED'].includes(order.status) ? '✓' : '3'}
                             </span>
-                            <span className="text-[10px] font-bold text-[#002B5B]">En Tránsito</span>
+                            <span className="text-[10px] font-bold text-[#102542]">En Tránsito</span>
                             <span className="text-[9px] text-slate-400 hidden sm:inline">Correos Bolivia</span>
                           </div>
 
@@ -610,7 +610,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                             }`}>
                               {order.status === 'DELIVERED' ? '✓' : '4'}
                             </span>
-                            <span className="text-[10px] font-bold text-[#002B5B]">Entregado</span>
+                            <span className="text-[10px] font-bold text-[#102542]">Entregado</span>
                             <span className="text-[9px] text-slate-400 hidden sm:inline">Destino</span>
                           </div>
                         </div>
@@ -619,7 +619,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                         {(order.city || order.department) && (
                           <div className="text-[11px] text-slate-500 flex items-center justify-between pt-1">
                             <span className="flex items-center gap-1">
-                              <MapPin className="w-3 h-3 text-[#002B5B]" />
+                              <MapPin className="w-3 h-3 text-[#102542]" />
                               <span>Destino: <strong>{order.city || order.department}, Bolivia</strong></span>
                             </span>
                             {order.shipping_address && (
@@ -644,7 +644,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                             >
                               <div className="flex items-center gap-2">
                                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                                <span className="font-semibold text-[#002B5B]">
+                                <span className="font-semibold text-[#102542]">
                                   {item.product_name || item.name || `Pieza Filatélica #${itemIdx + 1}`}
                                 </span>
                               </div>
@@ -660,7 +660,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                       <div className="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-[#E2DDD5]/70">
                         <div>
                           <span className="text-[10px] text-slate-400 uppercase font-bold block">Valor de Adquisición</span>
-                          <strong className="text-sm sm:text-base font-black text-[#002B5B]">
+                          <strong className="text-sm sm:text-base font-black text-[#102542]">
                             {totalAmount.toLocaleString('es-BO', { minimumFractionDigits: 2 })} BOB
                           </strong>
                         </div>
@@ -668,7 +668,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => onViewCertificate(order)}
-                            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] text-amber-200 font-semibold text-xs shadow-sm transition cursor-pointer"
+                            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] text-amber-200 font-semibold text-xs shadow-sm transition cursor-pointer"
                             title="Ver e imprimir acta notarial de autenticidad"
                           >
                             <Award className="w-4 h-4 text-amber-300" />
@@ -686,22 +686,22 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
             /* TAB 3: SEGUIMIENTO Y GUÍAS DE ENVÍO POSTAL */
             <div className="space-y-4">
               {/* Card de Búsqueda Rápida de Guía — Amarillo Dominante */}
-              <div className="bg-gradient-to-r from-[#FFD100] via-[#FFCC00] to-[#F5BE00] rounded-2xl p-5 text-[#002B5B] shadow-sm space-y-3 border-2 border-amber-400">
+              <div className="bg-gradient-to-r from-[#FECC36] via-[#FECC36] to-[#E5B728] rounded-2xl p-5 text-[#102542] shadow-sm space-y-3 border-2 border-amber-400">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#002B5B] text-[#FFD100] flex items-center justify-center font-bold shadow-md border-2 border-[#001A38]">
+                    <div className="w-10 h-10 rounded-xl bg-[#102542] text-[#FECC36] flex items-center justify-center font-bold shadow-md border-2 border-[#102542]">
                       <Truck className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-black text-sm sm:text-base text-[#002B5B]">
+                      <h4 className="font-black text-sm sm:text-base text-[#102542]">
                         Trazabilidad Oficial de Envíos — Correos de Bolivia
                       </h4>
-                      <p className="text-xs text-[#002B5B]/85 font-medium">
+                      <p className="text-xs text-[#102542]/85 font-medium">
                         Consulte los hitos notariales, despacho y recepción de sus piezas filatélicas
                       </p>
                     </div>
                   </div>
-                  <span className="px-3 py-1 rounded-full bg-[#002B5B] text-[#FFD100] font-mono text-xs font-black border border-[#001A38]">
+                  <span className="px-3 py-1 rounded-full bg-[#102542] text-[#FECC36] font-mono text-xs font-black border border-[#102542]">
                     {orders.length} {orders.length === 1 ? 'guía registrada' : 'guías registradas'}
                   </span>
                 </div>
@@ -714,7 +714,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                       placeholder="Ingrese o pegue un número de guía (ej: TRK-... o BO-CORREOS-...)"
                       value={customTrackCode}
                       onChange={(e) => setCustomTrackCode(e.target.value)}
-                      className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border-2 border-[#002B5B]/20 text-[#002B5B] placeholder-slate-400 text-xs font-mono font-bold tracking-wider focus:outline-none focus:border-[#002B5B]"
+                      className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-white border-2 border-[#102542]/20 text-[#102542] placeholder-slate-400 text-xs font-mono font-bold tracking-wider focus:outline-none focus:border-[#102542]"
                     />
                   </div>
                   <button
@@ -724,7 +724,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                       }
                     }}
                     disabled={!customTrackCode.trim()}
-                    className="px-5 py-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] text-[#FFD100] font-black text-xs transition disabled:opacity-50 cursor-pointer shadow-md flex items-center gap-1.5 shrink-0 border border-[#001A38]"
+                    className="px-5 py-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] text-[#FECC36] font-black text-xs transition disabled:opacity-50 cursor-pointer shadow-md flex items-center gap-1.5 shrink-0 border border-[#102542]"
                   >
                     <Search className="w-3.5 h-3.5" />
                     <span>Rastrear</span>
@@ -738,14 +738,14 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                   <div className="w-16 h-16 rounded-full bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mx-auto">
                     <Truck className="w-8 h-8" />
                   </div>
-                  <h4 className="text-base font-bold text-[#002B5B]">No tiene guías de envío registradas</h4>
+                  <h4 className="text-base font-bold text-[#102542]">No tiene guías de envío registradas</h4>
                   <p className="text-xs text-slate-500 max-w-sm mx-auto">
                     Al adquirir piezas filatélicas en la tienda oficial, se le asignará una guía de valija postal única para el seguimiento paso a paso de su entrega.
                   </p>
                   <Link
                     href="/catalogo"
                     onClick={onClose}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#002B5B] text-amber-200 text-xs font-semibold transition shadow-sm mt-2"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#102542] text-amber-200 text-xs font-semibold transition shadow-sm mt-2"
                   >
                     <span>Explorar Catálogo</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -762,11 +762,11 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                     return (
                       <div
                         key={order.id || idx}
-                        className="bg-white rounded-2xl border border-[#E2DDD5] p-5 shadow-sm hover:border-[#002B5B]/30 transition space-y-3"
+                        className="bg-white rounded-2xl border border-[#E2DDD5] p-5 shadow-sm hover:border-[#102542]/30 transition space-y-3"
                       >
                         <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#F1EFEB]">
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-amber-50 text-[#002B5B] flex items-center justify-center border border-amber-200 shrink-0 font-bold">
+                            <div className="w-10 h-10 rounded-xl bg-amber-50 text-[#102542] flex items-center justify-center border border-amber-200 shrink-0 font-bold">
                               <Package className="w-5 h-5" />
                             </div>
                             <div>
@@ -774,7 +774,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                                 <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                                   Nº Guía:
                                 </span>
-                                <strong className="font-mono text-sm font-black text-[#002B5B]">
+                                <strong className="font-mono text-sm font-black text-[#102542]">
                                   {tracking}
                                 </strong>
                                 {order.tracking_code && (
@@ -783,7 +783,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                                     className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold transition cursor-pointer ${
                                       copiedCode === order.tracking_code
                                         ? 'bg-emerald-600 text-white'
-                                        : 'bg-slate-100 hover:bg-slate-200 text-[#002B5B]'
+                                        : 'bg-slate-100 hover:bg-slate-200 text-[#102542]'
                                     }`}
                                     title="Copiar guía"
                                   >
@@ -797,7 +797,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                                 )}
                               </div>
                               <span className="text-[11px] text-slate-500 block">
-                                Orden: <strong className="font-mono text-[#002B5B]">{order.order_number}</strong> • Fecha: {orderDate}
+                                Orden: <strong className="font-mono text-[#102542]">{order.order_number}</strong> • Fecha: {orderDate}
                               </span>
                             </div>
                           </div>
@@ -807,9 +807,9 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                             {order.tracking_code && (
                               <button
                                 onClick={() => openTracking(order.tracking_code)}
-                                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#FFD100] hover:bg-[#FFE043] text-[#002B5B] text-xs font-black transition cursor-pointer shadow-xs border border-amber-400"
+                                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#FECC36] hover:bg-[#FFD95E] text-[#102542] text-xs font-black transition cursor-pointer shadow-xs border border-amber-400"
                               >
-                                <Search className="w-3.5 h-3.5 text-[#002B5B]" />
+                                <Search className="w-3.5 h-3.5 text-[#102542]" />
                                 <span>Ver Itinerario</span>
                               </button>
                             )}
@@ -822,7 +822,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                             <MapPin className="w-4 h-4 text-slate-400 shrink-0" />
                             <div>
                               <span className="text-[10px] uppercase font-bold text-slate-400 block">Origen Postal</span>
-                              <span className="font-semibold text-[#002B5B]">Mesa Central — La Paz, Bolivia</span>
+                              <span className="font-semibold text-[#102542]">Mesa Central — La Paz, Bolivia</span>
                             </div>
                           </div>
 
@@ -830,7 +830,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                             <Truck className="w-4 h-4 text-emerald-600 shrink-0" />
                             <div>
                               <span className="text-[10px] uppercase font-bold text-slate-400 block">Destino Final</span>
-                              <span className="font-semibold text-[#002B5B]">
+                              <span className="font-semibold text-[#102542]">
                                 {order.city || order.department || 'Bolivia'} {order.shipping_address ? `(${order.shipping_address})` : ''}
                               </span>
                             </div>

@@ -1,7 +1,7 @@
 <x-filament-panels::page>
     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
         {{-- Encabezado Institucional --}}
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.05);">
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.05);">
             <div>
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                     <span style="font-size: 0.75rem; font-weight: 800; color: #D97706; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;">
@@ -11,7 +11,7 @@
                         Exclusivo Super Administrador
                     </span>
                 </div>
-                <h2 style="font-size: 1.35rem; font-weight: 900; color: #002B5B; margin-top: 0.35rem;">
+                <h2 style="font-size: 1.35rem; font-weight: 900; color: #102542; margin-top: 0.35rem;">
                     Centro de Gestión de APIs y Tokens de Integración
                 </h2>
                 <p style="font-size: 0.8125rem; color: #64748b; margin-top: 0.25rem;">
@@ -22,9 +22,9 @@
                 <button 
                     type="button"
                     wire:click="$toggle('showCreateModal')" 
-                    style="padding: 0.625rem 1.25rem; border-radius: 0.75rem; background: linear-gradient(135deg, #002B5B 0%, #0A3B73 100%); color: #ffffff; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.25);"
+                    style="padding: 0.625rem 1.25rem; border-radius: 0.75rem; background: linear-gradient(135deg, #102542 0%, #2C63AC 100%); color: #ffffff; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.25);"
                 >
-                    <svg style="width: 1rem; height: 1rem; color: #F4C400;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg style="width: 1rem; height: 1rem; color: #FECC36;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
                     {{ $showCreateModal ? 'Ocultar Formulario' : 'Emitir Nueva API Key' }}
@@ -84,10 +84,10 @@
 
         {{-- Formulario para Emitir Nueva Clave (Expandible) --}}
         @if ($showCreateModal)
-            <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 1.25rem; padding: 1.75rem; box-shadow: 0 4px 16px rgba(0, 43, 91, 0.08);">
+            <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 1.25rem; padding: 1.75rem; box-shadow: 0 4px 16px rgba(16, 37, 66, 0.08);">
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1.5rem;">
                     <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 900; color: #002B5B;">
+                        <h3 style="font-size: 1.15rem; font-weight: 900; color: #102542;">
                             Formulario de Emisión de API Key Institucional
                         </h3>
                         <p style="font-size: 0.8125rem; color: #64748b; margin-top: 0.15rem;">
@@ -106,7 +106,7 @@
                 <form wire:submit.prevent="createToken">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
                         <div>
-                            <label style="display: block; font-size: 0.8125rem; font-weight: 800; color: #002B5B; margin-bottom: 0.4rem;">
+                            <label style="display: block; font-size: 0.8125rem; font-weight: 800; color: #102542; margin-bottom: 0.4rem;">
                                 Nombre de la Aplicación / Cliente *
                             </label>
                             <input 
@@ -122,7 +122,7 @@
                         </div>
 
                         <div>
-                            <label style="display: block; font-size: 0.8125rem; font-weight: 800; color: #002B5B; margin-bottom: 0.4rem;">
+                            <label style="display: block; font-size: 0.8125rem; font-weight: 800; color: #102542; margin-bottom: 0.4rem;">
                                 Período de Vigencia / Expiración
                             </label>
                             <select 
@@ -143,7 +143,7 @@
                     <div style="margin-bottom: 1.5rem;">
                         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
                             <div>
-                                <label style="font-size: 0.875rem; font-weight: 900; color: #002B5B;">
+                                <label style="font-size: 0.875rem; font-weight: 900; color: #102542;">
                                     Permisos Disponibles (Scopes Seleccionables) *
                                 </label>
                                 <span style="font-size: 0.75rem; color: #64748b; display: block;">
@@ -182,11 +182,11 @@
                                         type="checkbox" 
                                         wire:model.defer="selectedAbilities" 
                                         value="{{ $scope['key'] }}"
-                                        style="margin-top: 0.2rem; border-radius: 0.25rem; accent-color: #002B5B; width: 1.1rem; height: 1.1rem;"
+                                        style="margin-top: 0.2rem; border-radius: 0.25rem; accent-color: #102542; width: 1.1rem; height: 1.1rem;"
                                     />
                                     <div style="flex: 1;">
                                         <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.35rem;">
-                                            <span style="font-weight: 800; font-size: 0.8125rem; color: #002B5B;">{{ $scope['label'] }}</span>
+                                            <span style="font-weight: 800; font-size: 0.8125rem; color: #102542;">{{ $scope['label'] }}</span>
                                             <code style="font-size: 0.7rem; background: #F1F5F9; padding: 0.15rem 0.35rem; border-radius: 0.25rem; color: #475569;">{{ $scope['key'] }}</code>
                                         </div>
                                         <p style="font-size: 0.72rem; color: #64748b; margin-top: 0.2rem; line-height: 1.3;">
@@ -225,22 +225,22 @@
 
         {{-- Tarjetas de Estadísticas --}}
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0, 43, 91, 0.04);">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(16, 37, 66, 0.04);">
                 <span style="font-size: 0.75rem; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block;">Total Emitidas</span>
-                <div style="font-size: 1.5rem; font-weight: 900; color: #002B5B; margin-top: 0.25rem;">{{ $totalTokens }}</div>
+                <div style="font-size: 1.5rem; font-weight: 900; color: #102542; margin-top: 0.25rem;">{{ $totalTokens }}</div>
                 <span style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem; display: block;">Historial de credenciales</span>
             </div>
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0, 43, 91, 0.04);">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(16, 37, 66, 0.04);">
                 <span style="font-size: 0.75rem; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block;">Claves Activas</span>
                 <div style="font-size: 1.5rem; font-weight: 900; color: #059669; margin-top: 0.25rem;">{{ $activeCount }}</div>
                 <span style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem; display: block;">Habilitadas para consumo</span>
             </div>
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0, 43, 91, 0.04);">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(16, 37, 66, 0.04);">
                 <span style="font-size: 0.75rem; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block;">Claves Expiradas</span>
                 <div style="font-size: 1.5rem; font-weight: 900; color: #dc2626; margin-top: 0.25rem;">{{ $expiredCount }}</div>
                 <span style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem; display: block;">Caducadas por tiempo</span>
             </div>
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0, 43, 91, 0.04);">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(16, 37, 66, 0.04);">
                 <span style="font-size: 0.75rem; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block;">Formatos de Exportación</span>
                 <div style="font-size: 1.5rem; font-weight: 900; color: #D97706; margin-top: 0.25rem;">4 Formatos</div>
                 <span style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem; display: block;">Word (.doc), Postman, OpenAPI & MD</span>
@@ -252,14 +252,14 @@
             <button 
                 type="button" 
                 wire:click="$set('activeTab', 'tokens')"
-                style="padding: 0.5rem 1.25rem; border-radius: 0.75rem; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; transition: all 0.2s; {{ $activeTab === 'tokens' ? 'background: #002B5B; color: #ffffff;' : 'background: transparent; color: #64748b;' }}"
+                style="padding: 0.5rem 1.25rem; border-radius: 0.75rem; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; transition: all 0.2s; {{ $activeTab === 'tokens' ? 'background: #102542; color: #ffffff;' : 'background: transparent; color: #64748b;' }}"
             >
                 Tokens de Acceso Emitidos ({{ $totalTokens }})
             </button>
             <button 
                 type="button" 
                 wire:click="$set('activeTab', 'docs')"
-                style="padding: 0.5rem 1.25rem; border-radius: 0.75rem; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; transition: all 0.2s; {{ $activeTab === 'docs' ? 'background: #002B5B; color: #ffffff;' : 'background: transparent; color: #64748b;' }}"
+                style="padding: 0.5rem 1.25rem; border-radius: 0.75rem; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; transition: all 0.2s; {{ $activeTab === 'docs' ? 'background: #102542; color: #ffffff;' : 'background: transparent; color: #64748b;' }}"
             >
                 Documentación & Descargas Técnicas
             </button>
@@ -267,10 +267,10 @@
 
         {{-- Pestaña 1: Lista de Tokens --}}
         @if ($activeTab === 'tokens')
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.05);">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.05);">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;">
                     <div>
-                        <h3 style="font-size: 1rem; font-weight: 800; color: #002B5B;">
+                        <h3 style="font-size: 1rem; font-weight: 800; color: #102542;">
                             Registro Oficial de API Keys
                         </h3>
                         <p style="font-size: 0.75rem; color: #64748b;">
@@ -292,7 +292,7 @@
                         <svg style="width: 3rem; height: 3rem; color: #94a3b8; margin: 0 auto 0.75rem auto;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                         </svg>
-                        <h4 style="font-size: 1rem; font-weight: 800; color: #002B5B;">No hay API Keys registradas</h4>
+                        <h4 style="font-size: 1rem; font-weight: 800; color: #102542;">No hay API Keys registradas</h4>
                         <p style="font-size: 0.8125rem; color: #64748b; margin-top: 0.25rem;">
                             Haga clic en "Emitir Nueva API Key" para generar una credencial institucional.
                         </p>
@@ -314,7 +314,7 @@
                                 @foreach ($tokens as $t)
                                     <tr style="border-bottom: 1px solid #f1f5f9; transition: background 0.2s;">
                                         <td style="padding: 0.85rem 1rem;">
-                                            <div style="font-weight: 800; color: #002B5B; font-size: 0.875rem;">
+                                            <div style="font-weight: 800; color: #102542; font-size: 0.875rem;">
                                                 {{ $t['name'] }}
                                             </div>
                                             <span style="font-size: 0.72rem; color: #94a3b8; display: block; margin-top: 0.15rem;">
@@ -401,7 +401,7 @@
                                         </span>
                                     @endif
                                 </div>
-                                <h3 style="font-size: 1.35rem; font-weight: 900; color: #002B5B; margin-top: 0.25rem;">
+                                <h3 style="font-size: 1.35rem; font-weight: 900; color: #102542; margin-top: 0.25rem;">
                                     {{ $selectedTokenDetails['name'] }}
                                 </h3>
                                 <p style="font-size: 0.75rem; color: #64748b; margin-top: 0.15rem;">
@@ -456,7 +456,7 @@
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem;">
                             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 0.75rem;">
                                 <span style="font-size: 0.68rem; color: #64748b; font-weight: 700; text-transform: uppercase; display: block;">Fecha de Emisión</span>
-                                <div style="font-size: 0.82rem; font-weight: 800; color: #002B5B; margin-top: 0.2rem;">{{ $selectedTokenDetails['created_at'] }}</div>
+                                <div style="font-size: 0.82rem; font-weight: 800; color: #102542; margin-top: 0.2rem;">{{ $selectedTokenDetails['created_at'] }}</div>
                             </div>
                             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 0.75rem;">
                                 <span style="font-size: 0.68rem; color: #64748b; font-weight: 700; text-transform: uppercase; display: block;">Vigencia / Expiración</span>
@@ -464,20 +464,20 @@
                             </div>
                             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 0.75rem;">
                                 <span style="font-size: 0.68rem; color: #64748b; font-weight: 700; text-transform: uppercase; display: block;">Último Acceso</span>
-                                <div style="font-size: 0.82rem; font-weight: 800; color: #002B5B; margin-top: 0.2rem;">{{ $selectedTokenDetails['last_used'] }}</div>
+                                <div style="font-size: 0.82rem; font-weight: 800; color: #102542; margin-top: 0.2rem;">{{ $selectedTokenDetails['last_used'] }}</div>
                             </div>
                         </div>
 
                         {{-- Permisos / Scopes Concedidos --}}
                         <div style="margin-bottom: 1.25rem;">
-                            <h4 style="font-size: 0.85rem; font-weight: 900; color: #002B5B; margin-bottom: 0.5rem;">
+                            <h4 style="font-size: 0.85rem; font-weight: 900; color: #102542; margin-bottom: 0.5rem;">
                                 Permisos Autorizados ({{ count($selectedTokenDetails['abilities']) }})
                             </h4>
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.5rem; max-height: 200px; overflow-y: auto; padding: 0.5rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.75rem;">
                                 @foreach ($selectedTokenDetails['detailed_scopes'] as $sc)
                                     <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.6rem;">
                                         <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.25rem;">
-                                            <span style="font-weight: 800; font-size: 0.75rem; color: #002B5B;">{{ $sc['label'] }}</span>
+                                            <span style="font-weight: 800; font-size: 0.75rem; color: #102542;">{{ $sc['label'] }}</span>
                                             <code style="font-size: 0.65rem; background: #F1F5F9; padding: 0.1rem 0.3rem; border-radius: 0.2rem; color: #475569;">{{ $sc['key'] }}</code>
                                         </div>
                                         <p style="font-size: 0.68rem; color: #64748b; margin-top: 0.15rem; line-height: 1.3;">
@@ -502,9 +502,9 @@
                                 <button 
                                     type="button" 
                                     wire:click="downloadTokenWord({{ $selectedTokenDetails['id'] }})"
-                                    style="padding: 0.55rem 1rem; border-radius: 0.6rem; background: #002B5B; color: #ffffff; font-weight: 800; font-size: 0.75rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.35rem;"
+                                    style="padding: 0.55rem 1rem; border-radius: 0.6rem; background: #102542; color: #ffffff; font-weight: 800; font-size: 0.75rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.35rem;"
                                 >
-                                    <svg style="width: 0.85rem; height: 0.85rem; color: #F4C400;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg style="width: 0.85rem; height: 0.85rem; color: #FECC36;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                     Descargar Informe Técnico Word (.doc)
@@ -545,7 +545,7 @@
                             <button 
                                 type="button" 
                                 wire:click="closeDetailsModal"
-                                style="padding: 0.5rem 1.25rem; border-radius: 0.5rem; background: #002B5B; color: #ffffff; font-weight: 800; font-size: 0.75rem; border: none; cursor: pointer;"
+                                style="padding: 0.5rem 1.25rem; border-radius: 0.5rem; background: #102542; color: #ffffff; font-weight: 800; font-size: 0.75rem; border: none; cursor: pointer;"
                             >
                                 Cerrar Ventana
                             </button>
@@ -560,12 +560,12 @@
         @if ($activeTab === 'docs')
             <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                 {{-- Centro de Descarga de Especificaciones --}}
-                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.05);">
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.05);">
                     <div style="margin-bottom: 1.25rem;">
                         <span style="font-size: 0.75rem; font-weight: 800; color: #D97706; text-transform: uppercase;">
                             Exportación Oficial de Especificaciones
                         </span>
-                        <h3 style="font-size: 1.15rem; font-weight: 900; color: #002B5B; margin-top: 0.2rem;">
+                        <h3 style="font-size: 1.15rem; font-weight: 900; color: #102542; margin-top: 0.2rem;">
                             Descargar Documentación para Desarrolladores y Entidades
                         </h3>
                         <p style="font-size: 0.8125rem; color: #64748b; margin-top: 0.25rem;">
@@ -650,14 +650,14 @@
                         </div>
 
                         {{-- Word Report Card --}}
-                        <div style="background: #f8fafc; border: 2px solid #002B5B; border-radius: 1rem; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.08);">
+                        <div style="background: #f8fafc; border: 2px solid #102542; border-radius: 1rem; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.08);">
                             <div>
                                 <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                                    <span style="background: #002B5B; color: #ffffff; font-weight: 900; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 0.35rem;">
+                                    <span style="background: #102542; color: #ffffff; font-weight: 900; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 0.35rem;">
                                         WORD OFICIAL (.DOC)
                                     </span>
                                 </div>
-                                <h4 style="font-weight: 900; color: #002B5B; font-size: 0.95rem;">Informe Técnico Formal</h4>
+                                <h4 style="font-weight: 900; color: #102542; font-size: 0.95rem;">Informe Técnico Formal</h4>
                                 <p style="font-size: 0.75rem; color: #475569; margin-top: 0.25rem; line-height: 1.4;">
                                     Documento formal para Word con carátula institucional, control documental, topología, matriz de scopes, guía de portal y firmas técnicas.
                                 </p>
@@ -665,9 +665,9 @@
                             <button 
                                 type="button" 
                                 wire:click="downloadWord"
-                                style="margin-top: 1rem; padding: 0.55rem 1rem; border-radius: 0.625rem; background: linear-gradient(135deg, #002B5B 0%, #0A3B73 100%); color: #ffffff; font-weight: 800; font-size: 0.75rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.35rem; box-shadow: 0 4px 10px rgba(0, 43, 91, 0.2);"
+                                style="margin-top: 1rem; padding: 0.55rem 1rem; border-radius: 0.625rem; background: linear-gradient(135deg, #102542 0%, #2C63AC 100%); color: #ffffff; font-weight: 800; font-size: 0.75rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.35rem; box-shadow: 0 4px 10px rgba(16, 37, 66, 0.2);"
                             >
-                                <svg style="width: 0.875rem; height: 0.875rem; color: #F4C400;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg style="width: 0.875rem; height: 0.875rem; color: #FECC36;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
                                 Descargar Informe Word (.doc)
@@ -677,15 +677,15 @@
                 </div>
 
                 {{-- Guía Interactiva de Endpoints --}}
-                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.05);">
-                    <h3 style="font-size: 1.1rem; font-weight: 900; color: #002B5B; margin-bottom: 1.25rem;">
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.05);">
+                    <h3 style="font-size: 1.1rem; font-weight: 900; color: #102542; margin-bottom: 1.25rem;">
                         Catálogo de Endpoints REST Oficiales
                     </h3>
 
                     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                         @foreach ($endpointsGroups as $group)
                             <div>
-                                <h4 style="font-size: 0.95rem; font-weight: 900; color: #0A3B73; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; margin-bottom: 0.85rem;">
+                                <h4 style="font-size: 0.95rem; font-weight: 900; color: #2C63AC; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; margin-bottom: 0.85rem;">
                                     {{ $group['group'] }}
                                 </h4>
 
@@ -706,7 +706,7 @@
                                                     <span style="background: {{ $methodColor }}; color: #ffffff; font-weight: 900; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 0.35rem;">
                                                         {{ $ep['method'] }}
                                                     </span>
-                                                    <code style="font-size: 0.85rem; font-weight: 800; color: #002B5B;">
+                                                    <code style="font-size: 0.85rem; font-weight: 800; color: #102542;">
                                                         {{ $ep['path'] }}
                                                     </code>
                                                 </div>

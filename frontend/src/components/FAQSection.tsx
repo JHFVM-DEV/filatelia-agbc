@@ -58,17 +58,17 @@ export const FAQSection: React.FC = () => {
   return (
     <section id="faqs" className="relative overflow-hidden">
       {/* Header Banner - Amarillo Postal Dominante de Correos de Bolivia */}
-      <div className="bg-gradient-to-r from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] py-14 border-b-2 border-[#E5B500] relative overflow-hidden shadow-sm">
+      <div className="bg-gradient-to-r from-[#FFE58C] via-[#FECC36] to-[#E5B728] text-[#102542] py-14 border-b-2 border-[#E5B728] relative overflow-hidden shadow-sm">
         <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide mb-3 shadow-sm">
-            <HelpCircle className="w-4 h-4 text-[#FFD100]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#102542] text-[#FECC36] text-xs font-bold tracking-wide mb-3 shadow-sm">
+            <HelpCircle className="w-4 h-4 text-[#FECC36]" />
             <span>Respuestas Claras & Transparencia Oficial</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#102542] tracking-tight">
             Preguntas Frecuentes de Coleccionistas
           </h1>
-          <p className="mt-3 text-sm sm:text-base text-[#002B5B]/85 max-w-2xl mx-auto font-medium leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-[#102542]/85 max-w-2xl mx-auto font-medium leading-relaxed">
             Todo lo que necesita saber sobre el peritaje de goma, modalidades de liquidación y los protocolos de custodia de la bóveda postal.
           </p>
         </div>
@@ -84,7 +84,7 @@ export const FAQSection: React.FC = () => {
               <div
                 key={idx}
                 className={`bg-white rounded-2xl border-2 transition-all duration-200 overflow-hidden ${
-                  isOpen ? 'border-[#FFCC00] shadow-lg ring-2 ring-[#FFCC00]/20' : 'border-[#E2DDD5] hover:border-[#FFE875]'
+                  isOpen ? 'border-[#FECC36] shadow-lg ring-2 ring-[#FECC36]/20' : 'border-[#E2DDD5] hover:border-[#FFE58C]'
                 }`}
               >
                 <button
@@ -93,22 +93,22 @@ export const FAQSection: React.FC = () => {
                 >
                   <div className="flex items-start gap-3">
                     <span className={`text-xs font-black font-mono shrink-0 mt-0.5 px-2 py-0.5 rounded-md ${
-                      isOpen ? 'bg-[#FFCC00] text-[#002B5B]' : 'bg-slate-100 text-slate-600'
+                      isOpen ? 'bg-[#FECC36] text-[#102542]' : 'bg-slate-100 text-slate-600'
                     }`}>
                       0{idx + 1}.
                     </span>
                     <div>
-                      <span className="text-[10px] font-bold text-[#C99A00] uppercase tracking-wider block mb-0.5">
+                      <span className="text-[10px] font-bold text-[#8A6800] uppercase tracking-wider block mb-0.5">
                         {faq.category}
                       </span>
-                      <h3 className="text-sm sm:text-base font-bold text-[#002B5B]">
+                      <h3 className="text-sm sm:text-base font-bold text-[#102542]">
                         {faq.question}
                       </h3>
                     </div>
                   </div>
 
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                    isOpen ? 'bg-[#FFCC00] text-[#002B5B] rotate-180 shadow-xs' : 'bg-slate-100 text-slate-500'
+                    isOpen ? 'bg-[#FECC36] text-[#102542] rotate-180 shadow-xs' : 'bg-slate-100 text-slate-500'
                   }`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
@@ -116,7 +116,7 @@ export const FAQSection: React.FC = () => {
 
                 {isOpen && (
                   <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-[#FAF8F0]/40 animate-in fade-in duration-200">
-                    <p className="pl-6 border-l-3 border-[#FFCC00]">
+                    <p className="pl-6 border-l-3 border-[#FECC36]">
                       {faq.answer}
                     </p>
                   </div>
@@ -127,10 +127,10 @@ export const FAQSection: React.FC = () => {
         </div>
 
         {/* Still Have Questions Box */}
-        <div className="mt-12 bg-white rounded-2xl p-6 border-2 border-[#FFE875] text-center flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+        <div className="mt-12 bg-white rounded-2xl p-6 border-2 border-[#FFE58C] text-center flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
           <div className="text-left">
-            <h4 className="font-bold text-sm text-[#002B5B] flex items-center gap-2">
-              <Mail className="w-4 h-4 text-[#FFCC00]" />
+            <h4 className="font-bold text-sm text-[#102542] flex items-center gap-2">
+              <Mail className="w-4 h-4 text-[#FECC36]" />
               ¿Tiene una consulta sobre un sello en particular?
             </h4>
             <p className="text-xs text-slate-500 mt-0.5">
@@ -139,7 +139,7 @@ export const FAQSection: React.FC = () => {
           </div>
           <a
             href="mailto:filatelia@correosbolivia.gob.bo"
-            className="px-5 py-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] text-[#FFD100] text-xs font-black transition whitespace-nowrap shadow-md hover:scale-105"
+            className="px-5 py-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] text-[#FECC36] text-xs font-black transition whitespace-nowrap shadow-md hover:scale-105"
           >
             Contactar a Curaduría
           </a>

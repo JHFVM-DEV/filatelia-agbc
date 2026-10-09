@@ -46,8 +46,8 @@ class MonthlyRevenueChartWidget extends ChartWidget
                 [
                     'label' => 'Recaudación Oficial (Bs.)',
                     'data' => $data,
-                    'borderColor' => '#F4C400',
-                    'backgroundColor' => 'rgba(244, 196, 0, 0.15)',
+                    'borderColor' => '#FECC36',
+                    'backgroundColor' => 'rgba(254, 204, 54, 0.15)',
                     'fill' => true,
                     'tension' => 0.4,
                 ],

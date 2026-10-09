@@ -138,7 +138,7 @@ export default function AdminRolesPermisosPage() {
         <button
           onClick={fetchMatrix}
           disabled={loading || savingModule !== null}
-          className="self-start sm:self-auto p-2 rounded-xl bg-[#001A38] hover:bg-[#002B5B] border border-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
+          className="self-start sm:self-auto p-2 rounded-xl bg-[#102542] hover:bg-[#102542] border border-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
           title="Actualizar tabla"
         >
           <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -169,10 +169,10 @@ export default function AdminRolesPermisosPage() {
       )}
 
       {/* Matrix Table */}
-      <div className="bg-[#001A38] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+      <div className="bg-[#102542] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#00142B] text-slate-400 border-b border-slate-800 uppercase tracking-wider font-semibold">
+            <thead className="bg-[#0D2039] text-slate-400 border-b border-slate-800 uppercase tracking-wider font-semibold">
               <tr>
                 <th className="py-4 px-6 w-1/2">Módulo del Sistema</th>
                 <th className="py-4 px-6 text-center">
@@ -211,7 +211,7 @@ export default function AdminRolesPermisosPage() {
                   const almacenAllowed = matrix[module]?.['ADMIN_PRODUCTOS_ALMACEN'] ?? false;
 
                   return (
-                    <tr key={module} className="hover:bg-[#002B5B]/30 transition-colors">
+                    <tr key={module} className="hover:bg-[#102542]/30 transition-colors">
                       <td className="py-4 px-6 font-semibold text-white">
                         <div className="flex items-center gap-2">
                           <span className="w-2 h-2 rounded-full bg-amber-400/70" />

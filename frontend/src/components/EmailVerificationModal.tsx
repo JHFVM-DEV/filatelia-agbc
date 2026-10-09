@@ -212,23 +212,23 @@ export const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({
       <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl border border-[#DCD8D0] overflow-hidden">
         
         {/* Cabecera Formal Amarillo Postal de Correos de Bolivia */}
-        <div className="bg-[#FFCC00] px-6 py-4 border-b-2 border-[#E5B500] flex items-center justify-between">
+        <div className="bg-[#FECC36] px-6 py-4 border-b-2 border-[#E5B728] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#002B5B] flex items-center justify-center shadow-sm">
-              <ShieldCheck className="w-5 h-5 text-[#FFD100]" />
+            <div className="w-8 h-8 rounded-lg bg-[#102542] flex items-center justify-center shadow-sm">
+              <ShieldCheck className="w-5 h-5 text-[#FECC36]" />
             </div>
             <div>
-              <h2 id="email-verification-title" className="text-sm font-black text-[#002B5B] tracking-wide">
+              <h2 id="email-verification-title" className="text-sm font-black text-[#102542] tracking-wide">
                 Correos de Bolivia
               </h2>
-              <span className="text-[10px] text-[#002B5B]/80 uppercase tracking-widest block font-bold">
+              <span className="text-[10px] text-[#102542]/80 uppercase tracking-widest block font-bold">
                 Seguridad & Validación Postal
               </span>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-[#002B5B]/70 hover:text-[#002B5B] hover:bg-[#002B5B]/10 rounded-lg transition"
+            className="p-1.5 text-[#102542]/70 hover:text-[#102542] hover:bg-[#102542]/10 rounded-lg transition"
             aria-label="Cerrar modal"
             disabled={isLoading}
           >
@@ -241,10 +241,10 @@ export const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({
           
           {/* Título contextual y descripción */}
           <div className="text-center mb-6">
-            <div className="inline-flex p-3 rounded-full bg-[#002B5B]/5 border border-[#002B5B]/15 text-[#002B5B] mb-3">
-              <MailCheck className="w-7 h-7 text-[#002B5B]" />
+            <div className="inline-flex p-3 rounded-full bg-[#102542]/5 border border-[#102542]/15 text-[#102542] mb-3">
+              <MailCheck className="w-7 h-7 text-[#102542]" />
             </div>
-            <h3 className="text-base font-bold text-[#002B5B]">
+            <h3 className="text-base font-bold text-[#102542]">
               {getReasonTitle()}
             </h3>
             <p className="mt-1.5 text-xs text-[#5A554E] leading-relaxed">
@@ -252,7 +252,7 @@ export const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({
             </p>
 
             {userEmail && (
-              <div className="mt-3.5 inline-block px-3.5 py-1.5 rounded-lg bg-[#FAF8F0] border border-[#E2DDD5] text-xs font-semibold text-[#002B5B]">
+              <div className="mt-3.5 inline-block px-3.5 py-1.5 rounded-lg bg-[#FAF8F0] border border-[#E2DDD5] text-xs font-semibold text-[#102542]">
                 Destinatario: <span className="underline">{userEmail}</span>
               </div>
             )}
@@ -276,7 +276,7 @@ export const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({
           {/* Formulario con Input de 6 Dígitos */}
           <form onSubmit={handleVerify} className="space-y-4">
             <div>
-              <label htmlFor="verify-code-input" className="block text-center text-xs font-bold text-[#002B5B] uppercase tracking-wider mb-2">
+              <label htmlFor="verify-code-input" className="block text-center text-xs font-bold text-[#102542] uppercase tracking-wider mb-2">
                 Código de 6 Dígitos
               </label>
               
@@ -293,7 +293,7 @@ export const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({
                   onChange={handleCodeChange}
                   placeholder="000000"
                   disabled={isLoading}
-                  className="w-full text-center tracking-[0.6em] font-mono text-2xl sm:text-3xl font-bold py-3.5 px-4 bg-white border-2 border-[#DCD8D0] rounded-xl text-[#002B5B] placeholder-slate-300 focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/15 transition shadow-sm"
+                  className="w-full text-center tracking-[0.6em] font-mono text-2xl sm:text-3xl font-bold py-3.5 px-4 bg-white border-2 border-[#DCD8D0] rounded-xl text-[#102542] placeholder-slate-300 focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/15 transition shadow-sm"
                 />
               </div>
               <p className="text-[11px] text-center text-slate-500 mt-2">
@@ -305,7 +305,7 @@ export const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({
             <button
               type="submit"
               disabled={isLoading || code.length !== 6}
-              className="w-full py-3 px-4 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] disabled:bg-slate-300 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition"
+              className="w-full py-3 px-4 rounded-xl bg-[#102542] hover:bg-[#2C63AC] disabled:bg-slate-300 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition"
             >
               {isLoading ? (
                 <>
@@ -315,7 +315,7 @@ export const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({
               ) : (
                 <>
                   <span>Confirmar y Habilitar Cuenta</span>
-                  <ArrowRight className="w-4 h-4 text-[#F4C400]" />
+                  <ArrowRight className="w-4 h-4 text-[#FECC36]" />
                 </>
               )}
             </button>
@@ -330,7 +330,7 @@ export const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({
               type="button"
               onClick={handleResendCode}
               disabled={resendCooldown > 0 || isResending || isLoading}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#002B5B] hover:text-[#0A3B73] disabled:text-slate-400 hover:underline transition"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#102542] hover:text-[#2C63AC] disabled:text-slate-400 hover:underline transition"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${isResending ? 'animate-spin' : ''}`} />
               {resendCooldown > 0
@@ -347,7 +347,7 @@ export const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({
             <Lock className="w-3.5 h-3.5 text-slate-400" />
             Transmisión Cifrada
           </span>
-          <span className="font-semibold text-[#002B5B]">
+          <span className="font-semibold text-[#102542]">
             Correos de Bolivia
           </span>
         </div>

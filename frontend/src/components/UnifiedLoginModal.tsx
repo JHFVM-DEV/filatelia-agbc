@@ -384,11 +384,11 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
   const activeView = normalizeView(view);
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#001A38]/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#102542]/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
       <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl border border-[#E2DDD5] overflow-hidden">
         
         {/* Header Formal Institucional Amarillo Postal */}
-        <div className="bg-[#FFCC00] px-6 py-4 text-[#002B5B] flex items-center justify-between border-b-2 border-[#E5B500]">
+        <div className="bg-[#FECC36] px-6 py-4 text-[#102542] flex items-center justify-between border-b-2 border-[#E5B728]">
           <div className="flex items-center gap-2.5">
             {activeView !== 'login' && activeView !== 'register' && (
               <button
@@ -397,33 +397,33 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                   setErrorMessage('');
                   setView(activeView === 'reset' ? 'forgot' : 'login');
                 }}
-                className="p-1 -ml-1 text-[#002B5B] hover:bg-black/10 rounded-lg transition-colors cursor-pointer mr-0.5"
+                className="p-1 -ml-1 text-[#102542] hover:bg-black/10 rounded-lg transition-colors cursor-pointer mr-0.5"
                 title="Volver"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
             )}
-            <div className="p-2 rounded-lg bg-[#002B5B] text-[#FFD100] shadow-xs">
+            <div className="p-2 rounded-lg bg-[#102542] text-[#FECC36] shadow-xs">
               {activeView === 'login' && <Lock className="w-4 h-4" />}
               {activeView === 'register' && <UserPlus className="w-4 h-4" />}
               {activeView === 'forgot' && <KeyRound className="w-4 h-4" />}
               {activeView === 'reset' && <ShieldCheck className="w-4 h-4" />}
             </div>
             <div>
-              <h3 className="font-black text-base tracking-wide text-[#002B5B] leading-tight">
+              <h3 className="font-black text-base tracking-wide text-[#102542] leading-tight">
                 {activeView === 'login' && 'Inicio de Sesión'}
                 {activeView === 'register' && 'Registrarse'}
                 {activeView === 'forgot' && 'Restablecer Contraseña'}
                 {activeView === 'reset' && 'Nueva Contraseña'}
               </h3>
-              <p className="text-[11px] text-[#002B5B]/85 tracking-wider uppercase font-extrabold">
+              <p className="text-[11px] text-[#102542]/85 tracking-wider uppercase font-extrabold">
                 Correos de Bolivia
               </p>
             </div>
           </div>
           <button 
             onClick={handleClose}
-            className="p-1.5 text-[#002B5B] hover:bg-black/10 rounded-lg transition-colors cursor-pointer"
+            className="p-1.5 text-[#102542] hover:bg-black/10 rounded-lg transition-colors cursor-pointer"
             title="Cerrar modal"
           >
             <X className="w-5 h-5" />
@@ -445,8 +445,8 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                 }}
                 className={`py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                   activeView === 'login'
-                    ? 'bg-[#002B5B] text-[#FFD100] shadow-sm'
-                    : 'text-[#475569] hover:text-[#002B5B]'
+                    ? 'bg-[#102542] text-[#FECC36] shadow-sm'
+                    : 'text-[#475569] hover:text-[#102542]'
                 }`}
               >
                 <Lock className="w-3.5 h-3.5" />
@@ -461,8 +461,8 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                 }}
                 className={`py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                   activeView === 'register'
-                    ? 'bg-[#002B5B] text-[#FFD100] shadow-sm'
-                    : 'text-[#475569] hover:text-[#002B5B]'
+                    ? 'bg-[#102542] text-[#FECC36] shadow-sm'
+                    : 'text-[#475569] hover:text-[#102542]'
                 }`}
               >
                 <UserPlus className="w-3.5 h-3.5" />
@@ -483,7 +483,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                   href={staffRedirectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-[#002B5B] hover:bg-[#0A3B73] text-[#F4C400] font-bold text-xs shadow-sm transition"
+                  className="mt-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-[#102542] hover:bg-[#2C63AC] text-[#FECC36] font-bold text-xs shadow-sm transition"
                 >
                   <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
                   <span>Abrir Panel Filament en nueva pestaña</span>
@@ -504,7 +504,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
           {activeView === 'login' && (
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-[#002B5B] mb-1.5">
+                <label className="block text-xs font-semibold text-[#102542] mb-1.5">
                   Correo Electrónico
                 </label>
                 <div className="relative">
@@ -516,14 +516,14 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     placeholder="correo@ejemplo.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
+                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 text-[#102542] shadow-sm transition"
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="block text-xs font-semibold text-[#002B5B]">
+                  <label className="block text-xs font-semibold text-[#102542]">
                     Contraseña
                   </label>
                   <button
@@ -534,7 +534,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                       setSuccessInfo(null);
                       setView('forgot');
                     }}
-                    className="text-[11px] text-[#C99A00] hover:underline font-medium cursor-pointer"
+                    className="text-[11px] text-[#8A6800] hover:underline font-medium cursor-pointer"
                   >
                     ¿Olvidó su contraseña?
                   </button>
@@ -547,12 +547,12 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     placeholder={showPassword ? 'Ingrese su contraseña' : '••••••••'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
+                    className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 text-[#102542] shadow-sm transition"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#002B5B] transition p-1 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#102542] transition p-1 cursor-pointer"
                     title={showPassword ? 'Ocultar contraseña' : 'Ver contraseña'}
                     tabIndex={-1}
                   >
@@ -567,7 +567,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     type="checkbox"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    className="rounded border-[#E2DDD5] text-[#002B5B] focus:ring-0 cursor-pointer"
+                    className="rounded border-[#E2DDD5] text-[#102542] focus:ring-0 cursor-pointer"
                   />
                   <span>Recordar sesión</span>
                 </label>
@@ -618,7 +618,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                       setSuccessInfo(null);
                       setView('register');
                     }}
-                    className="text-xs font-bold text-[#002B5B] hover:text-[#0A3B73] hover:underline cursor-pointer"
+                    className="text-xs font-bold text-[#102542] hover:text-[#2C63AC] hover:underline cursor-pointer"
                   >
                     Registrarse
                   </button>
@@ -635,7 +635,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
               </p>
 
               <div>
-                <label className="block text-xs font-semibold text-[#002B5B] mb-1">
+                <label className="block text-xs font-semibold text-[#102542] mb-1">
                   Nombre y Apellidos
                 </label>
                 <div className="relative">
@@ -647,13 +647,13 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     placeholder="Ej. Carlos Mendoza Flores"
                     value={regName}
                     onChange={(e) => setRegName(e.target.value)}
-                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
+                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 text-[#102542] shadow-sm transition"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#002B5B] mb-1">
+                <label className="block text-xs font-semibold text-[#102542] mb-1">
                   Correo Electrónico
                 </label>
                 <div className="relative">
@@ -664,13 +664,13 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     placeholder="correo@ejemplo.com"
                     value={regEmail}
                     onChange={(e) => setRegEmail(e.target.value)}
-                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
+                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 text-[#102542] shadow-sm transition"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#002B5B] mb-1">
+                <label className="block text-xs font-semibold text-[#102542] mb-1">
                   Contraseña <span className="text-[10px] text-slate-500 font-normal">(mínimo 8 caracteres)</span>
                 </label>
                 <div className="relative">
@@ -681,12 +681,12 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     placeholder="••••••••"
                     value={regPassword}
                     onChange={(e) => setRegPassword(e.target.value)}
-                    className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
+                    className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 text-[#102542] shadow-sm transition"
                   />
                   <button
                     type="button"
                     onClick={() => setShowRegPassword(!showRegPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#002B5B] transition p-1 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#102542] transition p-1 cursor-pointer"
                     title={showRegPassword ? 'Ocultar contraseña' : 'Ver contraseña'}
                     tabIndex={-1}
                   >
@@ -696,7 +696,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#002B5B] mb-1">
+                <label className="block text-xs font-semibold text-[#102542] mb-1">
                   Confirmar Contraseña
                 </label>
                 <div className="relative">
@@ -707,12 +707,12 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     placeholder="••••••••"
                     value={regConfirmPassword}
                     onChange={(e) => setRegConfirmPassword(e.target.value)}
-                    className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
+                    className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 text-[#102542] shadow-sm transition"
                   />
                   <button
                     type="button"
                     onClick={() => setShowRegConfirmPassword(!showRegConfirmPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#002B5B] transition p-1 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#102542] transition p-1 cursor-pointer"
                     title={showRegConfirmPassword ? 'Ocultar contraseña' : 'Ver contraseña'}
                     tabIndex={-1}
                   >
@@ -727,7 +727,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     type="checkbox"
                     checked={acceptTerms}
                     onChange={(e) => setAcceptTerms(e.target.checked)}
-                    className="mt-0.5 rounded border-[#E2DDD5] text-[#002B5B] focus:ring-0 cursor-pointer"
+                    className="mt-0.5 rounded border-[#E2DDD5] text-[#102542] focus:ring-0 cursor-pointer"
                   />
                   <span>
                     Acepto las condiciones del servicio y las normas de custodia patrimonial de <strong>Correos de Bolivia</strong>.
@@ -783,7 +783,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                       setSuccessInfo(null);
                       setView('login');
                     }}
-                    className="text-xs font-bold text-[#002B5B] hover:text-[#0A3B73] hover:underline cursor-pointer"
+                    className="text-xs font-bold text-[#102542] hover:text-[#2C63AC] hover:underline cursor-pointer"
                   >
                     Iniciar sesión
                   </button>
@@ -800,7 +800,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
               </p>
 
               <div>
-                <label className="block text-xs font-semibold text-[#002B5B] mb-1.5">
+                <label className="block text-xs font-semibold text-[#102542] mb-1.5">
                   Correo Electrónico Registrado
                 </label>
                 <div className="relative">
@@ -812,7 +812,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     placeholder="correo@ejemplo.com"
                     value={recoveryEmail}
                     onChange={(e) => setRecoveryEmail(e.target.value)}
-                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
+                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 text-[#102542] shadow-sm transition"
                   />
                 </div>
               </div>
@@ -839,7 +839,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     setErrorMessage('');
                     setView('login');
                   }}
-                  className="text-xs text-slate-500 hover:text-[#002B5B] font-medium transition cursor-pointer"
+                  className="text-xs text-slate-500 hover:text-[#102542] font-medium transition cursor-pointer"
                 >
                   ← Volver al Inicio de Sesión
                 </button>
@@ -850,15 +850,15 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
           {/* VISTA 4: INTRODUCIR CÓDIGO Y NUEVA CONTRASEÑA (RESET) */}
           {activeView === 'reset' && (
             <form onSubmit={handleResetPassword} className="space-y-3.5">
-              <div className="p-3 bg-blue-50/80 border border-blue-200/80 rounded-xl text-xs text-[#002B5B] flex items-start gap-2.5 shadow-sm">
-                <Mail className="w-4 h-4 text-[#002B5B] shrink-0 mt-0.5" />
+              <div className="p-3 bg-blue-50/80 border border-blue-200/80 rounded-xl text-xs text-[#102542] flex items-start gap-2.5 shadow-sm">
+                <Mail className="w-4 h-4 text-[#102542] shrink-0 mt-0.5" />
                 <div className="leading-relaxed">
-                  Hemos enviado un código de seguridad de 6 dígitos a <strong className="font-semibold text-[#002B5B]">{recoveryEmail}</strong>. Ingréselo a continuación desde su bandeja de entrada.
+                  Hemos enviado un código de seguridad de 6 dígitos a <strong className="font-semibold text-[#102542]">{recoveryEmail}</strong>. Ingréselo a continuación desde su bandeja de entrada.
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#002B5B] mb-1">
+                <label className="block text-xs font-semibold text-[#102542] mb-1">
                   Código de Verificación (6 dígitos)
                 </label>
                 <div className="relative">
@@ -871,13 +871,13 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     placeholder="123456"
                     value={resetCode}
                     onChange={(e) => setResetCode(e.target.value.replace(/\D/g, ''))}
-                    className="w-full pl-10 pr-3.5 py-2.5 text-xs font-mono tracking-widest font-bold rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
+                    className="w-full pl-10 pr-3.5 py-2.5 text-xs font-mono tracking-widest font-bold rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 text-[#102542] shadow-sm transition"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#002B5B] mb-1">
+                <label className="block text-xs font-semibold text-[#102542] mb-1">
                   Nueva Contraseña (mínimo 8 caracteres)
                 </label>
                 <div className="relative">
@@ -888,12 +888,12 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     placeholder="••••••••"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
+                    className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 text-[#102542] shadow-sm transition"
                   />
                   <button
                     type="button"
                     onClick={() => setShowNewPassword(!showNewPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#002B5B] transition p-1 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#102542] transition p-1 cursor-pointer"
                     tabIndex={-1}
                   >
                     {showNewPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4 text-slate-500" />}
@@ -902,7 +902,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#002B5B] mb-1">
+                <label className="block text-xs font-semibold text-[#102542] mb-1">
                   Confirmar Nueva Contraseña
                 </label>
                 <div className="relative">
@@ -913,12 +913,12 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     placeholder="••••••••"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 text-[#002B5B] shadow-sm transition"
+                    className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 text-[#102542] shadow-sm transition"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#002B5B] transition p-1 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#102542] transition p-1 cursor-pointer"
                     tabIndex={-1}
                   >
                     {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4 text-slate-500" />}
@@ -948,7 +948,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     setErrorMessage('');
                     setView('forgot');
                   }}
-                  className="text-slate-500 hover:text-[#002B5B] font-medium transition cursor-pointer"
+                  className="text-slate-500 hover:text-[#102542] font-medium transition cursor-pointer"
                 >
                   ← Solicitar otro código
                 </button>
@@ -958,7 +958,7 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                     setErrorMessage('');
                     setView('login');
                   }}
-                  className="text-slate-500 hover:text-[#002B5B] font-medium transition cursor-pointer"
+                  className="text-slate-500 hover:text-[#102542] font-medium transition cursor-pointer"
                 >
                   Volver al Login
                 </button>

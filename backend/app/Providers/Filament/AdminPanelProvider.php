@@ -45,7 +45,7 @@ class AdminPanelProvider extends PanelProvider
             ->favicon(fn () => asset('images/FILATELIA-1.png'))
             ->font('Plus Jakarta Sans')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::hex('#102542'),
             ])
             ->darkMode(false)
             ->databaseNotifications()
@@ -62,9 +62,9 @@ class AdminPanelProvider extends PanelProvider
                 fn (): string => '<a 
                     href="http://localhost:3000" 
                     target="_blank" 
-                    style="display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.375rem 0.875rem; border-radius: 0.75rem; background: #002B5B; color: #F4C400; font-weight: 700; font-size: 0.75rem; text-decoration: none; margin-right: 0.75rem; transition: all 0.2s; box-shadow: 0 2px 6px rgba(0, 43, 91, 0.15);"
-                    onmouseover="this.style.background=\'#0A3B73\'; this.style.color=\'#FFFFFF\';"
-                    onmouseout="this.style.background=\'#002B5B\'; this.style.color=\'#F4C400\';"
+                    style="display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.375rem 0.875rem; border-radius: 0.75rem; background: #102542; color: #FECC36; font-weight: 700; font-size: 0.75rem; text-decoration: none; margin-right: 0.75rem; transition: all 0.2s; box-shadow: 0 2px 6px rgba(16, 37, 66, 0.15);"
+                    onmouseover="this.style.background=\'#2C63AC\'; this.style.color=\'#FFFFFF\';"
+                    onmouseout="this.style.background=\'#102542\'; this.style.color=\'#FECC36\';"
                     title="Abrir la vitrina de la tienda web en una nueva pestaña"
                 >
                     <svg style="width: 0.875rem; height: 0.875rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,9 +79,9 @@ class AdminPanelProvider extends PanelProvider
                 <style>
                     /* Estilos Personalizados Filatelia de Alta Gama - Tema Institucional Luminoso */
                     :root {
-                        --filatelia-azul: #002B5B;
-                        --filatelia-azul-dark: #001A38;
-                        --filatelia-oro: #F4C400;
+                        --filatelia-azul: #102542;
+                        --filatelia-azul-dark: #102542;
+                        --filatelia-oro: #FECC36;
                         --filatelia-marfil: #FAF8F0;
                     }
                     /* Fondo General Claro y Luminoso */
@@ -92,7 +92,7 @@ class AdminPanelProvider extends PanelProvider
                     .fi-sidebar {
                         background-color: #FFFFFF !important;
                         border-right: 1px solid #E2E8F0 !important;
-                        box-shadow: 2px 0 8px rgba(0, 43, 91, 0.02) !important;
+                        box-shadow: 2px 0 8px rgba(16, 37, 66, 0.02) !important;
                     }
                     .fi-sidebar-header {
                         background-color: #FFFFFF !important;
@@ -102,27 +102,27 @@ class AdminPanelProvider extends PanelProvider
                     .fi-topbar {
                         background-color: #FFFFFF !important;
                         border-bottom: 1px solid #E2E8F0 !important;
-                        box-shadow: 0 1px 4px rgba(0, 43, 91, 0.04) !important;
+                        box-shadow: 0 1px 4px rgba(16, 37, 66, 0.04) !important;
                     }
                     .fi-topbar nav, .fi-topbar-item {
-                        color: #002B5B !important;
+                        color: #102542 !important;
                     }
                     /* Tarjetas y Contenedores */
                     .fi-section, .fi-ta-ctn, .fi-widget {
                         border-color: #E2E8F0 !important;
-                        box-shadow: 0 2px 8px rgba(0, 43, 91, 0.03) !important;
+                        box-shadow: 0 2px 8px rgba(16, 37, 66, 0.03) !important;
                     }
                     /* Botones primarios en Azul Institucional con Acentos Oro */
                     .fi-btn-primary {
-                        background: linear-gradient(135deg, #002B5B 0%, #0A3B73 100%) !important;
+                        background: linear-gradient(135deg, #102542 0%, #2C63AC 100%) !important;
                         color: #FFFFFF !important;
                         font-weight: 700 !important;
-                        box-shadow: 0 3px 8px rgba(0, 43, 91, 0.2) !important;
+                        box-shadow: 0 3px 8px rgba(16, 37, 66, 0.2) !important;
                         border: none !important;
                     }
                     .fi-btn-primary:hover {
-                        background: linear-gradient(135deg, #0A3B73 0%, #001A38 100%) !important;
-                        color: #F4C400 !important;
+                        background: linear-gradient(135deg, #2C63AC 0%, #102542 100%) !important;
+                        color: #FECC36 !important;
                     }
                     /* Insignias */
                     .fi-badge {
@@ -132,7 +132,7 @@ class AdminPanelProvider extends PanelProvider
                     :root {
                         --scrollbar-track: #F1F5F9;
                         --scrollbar-thumb: #CBD5E1;
-                        --scrollbar-thumb-hover: #002B5B;
+                        --scrollbar-thumb-hover: #102542;
                     }
                     html, body, .fi-sidebar-nav, .fi-main, .fi-ta-content, .fi-modal-content, aside {
                         scrollbar-width: thin;
@@ -152,8 +152,8 @@ class AdminPanelProvider extends PanelProvider
                         transition: background-color 0.2s ease, box-shadow 0.2s ease;
                     }
                     ::-webkit-scrollbar-thumb:hover {
-                        background: #002B5B;
-                        box-shadow: 0 0 8px rgba(0, 43, 91, 0.3);
+                        background: #102542;
+                        box-shadow: 0 0 8px rgba(16, 37, 66, 0.3);
                     }
                     ::-webkit-scrollbar-corner {
                         background: #F1F5F9;

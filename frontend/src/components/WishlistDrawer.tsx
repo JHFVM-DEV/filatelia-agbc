@@ -41,7 +41,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
         <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col border-l border-[#E2DDD5]">
           
           {/* Header */}
-          <div className="bg-[#002B5B] px-6 py-5 text-white flex items-center justify-between border-b border-[#0A3B73]">
+          <div className="bg-[#102542] px-6 py-5 text-white flex items-center justify-between border-b border-[#2C63AC]">
             <div className="flex items-center gap-2.5">
               <Heart className="w-5 h-5 text-amber-300 fill-amber-300/20" />
               <h3 className="font-bold text-base tracking-wide">
@@ -64,7 +64,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
                 <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto mb-3 border border-slate-200 text-slate-400">
                   <Heart className="w-8 h-8" />
                 </div>
-                <h4 className="text-base font-bold text-[#002B5B]">No tiene piezas en seguimiento</h4>
+                <h4 className="text-base font-bold text-[#102542]">No tiene piezas en seguimiento</h4>
                 <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">
                   Explore el catálogo y marque los ejemplares de su interés con el ícono de custodia para monitorear su disponibilidad.
                 </p>
@@ -73,7 +73,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
               items.map((stamp) => (
                 <div 
                   key={stamp.id}
-                  className="bg-white p-4 rounded-xl border border-[#E2DDD5] shadow-sm flex gap-3.5 items-center group hover:border-[#002B5B]/30 transition"
+                  className="bg-white p-4 rounded-xl border border-[#E2DDD5] shadow-sm flex gap-3.5 items-center group hover:border-[#102542]/30 transition"
                 >
                   <div className="relative w-16 h-20 bg-[#FAF8F0] p-1.5 rounded border border-[#E5DFC8] shrink-0">
                     <Image 
@@ -86,14 +86,14 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <span className="text-[10px] font-bold text-[#C99A00] uppercase tracking-wider block">
+                    <span className="text-[10px] font-bold text-[#8A6800] uppercase tracking-wider block">
                       {stamp.catalog_code}
                     </span>
-                    <h4 className="font-bold text-xs text-[#002B5B] truncate mt-0.5" title={stamp.name}>
+                    <h4 className="font-bold text-xs text-[#102542] truncate mt-0.5" title={stamp.name}>
                       {stamp.name}
                     </h4>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-xs font-bold text-[#002B5B]">
+                      <span className="text-xs font-bold text-[#102542]">
                         {stamp.price.toLocaleString('es-BO', { minimumFractionDigits: 2 })} BOB
                       </span>
                       <span className="text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-semibold border border-slate-200">
@@ -104,7 +104,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
                     <div className="flex items-center gap-2 mt-2.5">
                       <button
                         onClick={() => onMoveToCart(stamp)}
-                        className="flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#002B5B] hover:bg-[#0A3B73] text-amber-200 hover:text-white text-[11px] font-semibold shadow-sm transition"
+                        className="flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#102542] hover:bg-[#2C63AC] text-amber-200 hover:text-white text-[11px] font-semibold shadow-sm transition"
                         title="Trasladar a la Bóveda de compras"
                       >
                         <ShoppingBag className="w-3.5 h-3.5 text-amber-300" />
@@ -129,7 +129,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({
             <div className="p-6 bg-white border-t border-[#E2DDD5] space-y-3">
               <div className="flex justify-between items-center text-xs">
                 <span className="text-slate-500 font-medium">Valoración Total en Seguimiento:</span>
-                <span className="font-bold text-[#002B5B] text-sm">
+                <span className="font-bold text-[#102542] text-sm">
                   {totalEstimatedValue.toLocaleString('es-BO', { minimumFractionDigits: 2 })} BOB
                 </span>
               </div>

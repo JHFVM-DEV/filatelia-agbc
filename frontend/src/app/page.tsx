@@ -217,15 +217,15 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 2. ¿QUÉ ES LA FILATELIA? (EL UNIVERSO DEL COLECCIONISMO POSTAL)          */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-gradient-to-b from-[#FFFDF0] via-[#FFF9DC] to-[#FAF8F0] text-[#002B5B] border-b border-[#E2DDD5]">
+      <section className="py-20 bg-gradient-to-b from-[#FFFDF0] via-[#FFF9DC] to-[#FAF8F0] text-[#102542] border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFCC00] text-[#002B5B] text-xs font-black tracking-wide mb-3 shadow-sm border border-[#E5B500]">
-              <Sparkles className="w-3.5 h-3.5 text-[#002B5B]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FECC36] text-[#102542] text-xs font-black tracking-wide mb-3 shadow-sm border border-[#E5B728]">
+              <Sparkles className="w-3.5 h-3.5 text-[#102542]" />
               <span>Cultura & Patrimonio Soberano</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#102542] tracking-tight">
               ¿Qué es la Filatelia y por qué coleccionar?
             </h2>
             <p className="mt-4 text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
@@ -237,11 +237,11 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Pilar 1 */}
-            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE875] hover:border-[#FFCC00] shadow-sm hover:shadow-xl transition-all duration-300 group">
-              <div className="w-12 h-12 rounded-2xl bg-[#FFCC00] text-[#002B5B] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
+            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE58C] hover:border-[#FECC36] shadow-sm hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-[#FECC36] text-[#102542] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
                 <Landmark className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-black text-[#002B5B] mb-2">
+              <h3 className="text-lg font-black text-[#102542] mb-2">
                 Memoria Histórica Viva
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-normal">
@@ -250,11 +250,11 @@ export default function Home() {
             </div>
 
             {/* Pilar 2 */}
-            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE875] hover:border-[#FFCC00] shadow-sm hover:shadow-xl transition-all duration-300 group">
-              <div className="w-12 h-12 rounded-2xl bg-[#FFCC00] text-[#002B5B] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
+            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE58C] hover:border-[#FECC36] shadow-sm hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-[#FECC36] text-[#102542] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
                 <ScrollText className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-black text-[#002B5B] mb-2">
+              <h3 className="text-lg font-black text-[#102542] mb-2">
                 Artes Gráficas y Grabado
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-normal">
@@ -263,11 +263,11 @@ export default function Home() {
             </div>
 
             {/* Pilar 3 */}
-            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE875] hover:border-[#FFCC00] shadow-sm hover:shadow-xl transition-all duration-300 group">
-              <div className="w-12 h-12 rounded-2xl bg-[#FFCC00] text-[#002B5B] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
+            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE58C] hover:border-[#FECC36] shadow-sm hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-[#FECC36] text-[#102542] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
                 <Compass className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-black text-[#002B5B] mb-2">
+              <h3 className="text-lg font-black text-[#102542] mb-2">
                 Soberanía & Diplomacia
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-normal">
@@ -276,11 +276,11 @@ export default function Home() {
             </div>
 
             {/* Pilar 4 */}
-            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE875] hover:border-[#FFCC00] shadow-sm hover:shadow-xl transition-all duration-300 group">
-              <div className="w-12 h-12 rounded-2xl bg-[#FFCC00] text-[#002B5B] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
+            <div className="bg-white p-7 rounded-3xl border-2 border-[#FFE58C] hover:border-[#FECC36] shadow-sm hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-[#FECC36] text-[#102542] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xs">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-black text-[#002B5B] mb-2">
+              <h3 className="text-lg font-black text-[#102542] mb-2">
                 Patrimonio & Inversión
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-normal">
@@ -296,25 +296,25 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 3. ANATOMÍA DE UN SELLO POSTAL (MÓDULO EDUCATIVO VISUAL)                 */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-gradient-to-b from-[#FFFDF2] via-[#FFF9DC] to-[#FFF1BA] text-[#002B5B] border-t-4 border-[#FFCC00] border-b-2 border-[#E5B500] relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-[#FFFDF2] via-[#FFF9DC] to-[#FFF1BA] text-[#102542] border-t-4 border-[#FECC36] border-b-2 border-[#E5B728] relative overflow-hidden">
         <div className="absolute inset-0 bg-guilloche opacity-5 pointer-events-none mix-blend-multiply" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide mb-3 shadow-md">
-              <Microscope className="w-4 h-4 text-[#FFD100]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#102542] text-[#FECC36] text-xs font-bold tracking-wide mb-3 shadow-md">
+              <Microscope className="w-4 h-4 text-[#FECC36]" />
               <span>Análisis Pericial & Educación Postal</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#102542] tracking-tight">
               Anatomía de un Sello Postal
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-[#002B5B]/85 max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="mt-4 text-sm sm:text-base text-[#102542]/85 max-w-2xl mx-auto font-medium leading-relaxed">
               Conozca cada detalle que compone una pieza filatélica y cómo los expertos periciales determinan su autenticidad y grado de conservación internacional.
             </p>
           </div>
 
           {/* Interactive Anatomy Browser */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/95 rounded-3xl p-6 sm:p-10 border-2 border-[#E5B500] shadow-2xl backdrop-blur-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/95 rounded-3xl p-6 sm:p-10 border-2 border-[#E5B728] shadow-2xl backdrop-blur-sm">
             
             {/* Lista Interactiva de Componentes */}
             <div className="lg:col-span-5 space-y-2.5">
@@ -326,33 +326,33 @@ export default function Home() {
                     onClick={() => setActiveAnatomy(idx)}
                     className={`w-full text-left p-4 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-between border-2 ${
                       isSelected
-                        ? 'bg-[#FFCC00] border-[#E5B500] text-[#002B5B] shadow-md font-bold'
+                        ? 'bg-[#FECC36] border-[#E5B728] text-[#102542] shadow-md font-bold'
                         : 'bg-[#FAF8F0] hover:bg-[#FFF9DE] border-[#E2DDD5] text-slate-700'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-black text-xs shadow-xs ${
-                        isSelected ? 'bg-[#002B5B] text-[#FFD100]' : 'bg-white text-slate-500 border border-slate-200'
+                        isSelected ? 'bg-[#102542] text-[#FECC36]' : 'bg-white text-slate-500 border border-slate-200'
                       }`}>
                         {idx + 1}
                       </div>
                       <div>
-                        <span className="font-black text-sm block text-[#002B5B]">{item.title}</span>
-                        <span className={`text-[11px] font-bold ${isSelected ? 'text-[#002B5B]/80' : 'text-[#C99A00]'}`}>
+                        <span className="font-black text-sm block text-[#102542]">{item.title}</span>
+                        <span className={`text-[11px] font-bold ${isSelected ? 'text-[#102542]/80' : 'text-[#8A6800]'}`}>
                           {item.badge}
                         </span>
                       </div>
                     </div>
-                    <ChevronRight className={`w-4 h-4 transition-transform ${isSelected ? 'translate-x-1 text-[#002B5B]' : 'text-slate-400'}`} />
+                    <ChevronRight className={`w-4 h-4 transition-transform ${isSelected ? 'translate-x-1 text-[#102542]' : 'text-slate-400'}`} />
                   </button>
                 );
               })}
             </div>
 
             {/* Detalle del Componente Seleccionado */}
-            <div className="lg:col-span-7 bg-[#FFFDF5] p-7 sm:p-9 rounded-2xl border-2 border-[#FFE066] shadow-sm space-y-5 text-[#002B5B]">
+            <div className="lg:col-span-7 bg-[#FFFDF5] p-7 sm:p-9 rounded-2xl border-2 border-[#FFE58C] shadow-sm space-y-5 text-[#102542]">
               <div className="flex items-center justify-between border-b border-[#E5DFC8] pb-3">
-                <span className="text-xs font-mono font-black text-[#C99A00] uppercase tracking-wider">
+                <span className="text-xs font-mono font-black text-[#8A6800] uppercase tracking-wider">
                   {anatomyPoints[activeAnatomy].badge}
                 </span>
                 <span className="text-xs font-bold text-slate-500">
@@ -360,7 +360,7 @@ export default function Home() {
                 </span>
               </div>
 
-              <h3 className="text-2xl font-black text-[#002B5B]">
+              <h3 className="text-2xl font-black text-[#102542]">
                 {anatomyPoints[activeAnatomy].title}
               </h3>
 
@@ -368,15 +368,15 @@ export default function Home() {
                 {anatomyPoints[activeAnatomy].description}
               </p>
 
-              <div className="p-4 rounded-xl bg-white border border-[#FFE066] text-xs text-[#002B5B] flex items-start gap-2.5 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-[#C99A00] shrink-0 mt-0.5" />
-                <span><strong className="text-[#002B5B] font-bold">Regla de Bóveda:</strong> {anatomyPoints[activeAnatomy].tip}</span>
+              <div className="p-4 rounded-xl bg-white border border-[#FFE58C] text-xs text-[#102542] flex items-start gap-2.5 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-[#8A6800] shrink-0 mt-0.5" />
+                <span><strong className="text-[#102542] font-bold">Regla de Bóveda:</strong> {anatomyPoints[activeAnatomy].tip}</span>
               </div>
 
               <div className="pt-3 flex flex-wrap items-center gap-3">
                 <Link
                   href="/guia"
-                  className="px-5 py-2.5 rounded-xl text-xs font-black text-[#FFD100] bg-[#002B5B] hover:bg-[#0A3B73] transition flex items-center gap-1.5 shadow-md"
+                  className="px-5 py-2.5 rounded-xl text-xs font-black text-[#FECC36] bg-[#102542] hover:bg-[#2C63AC] transition flex items-center gap-1.5 shadow-md"
                 >
                   <BookOpen className="w-3.5 h-3.5" />
                   <span>Ver Guía de Grados UPU</span>
@@ -384,10 +384,10 @@ export default function Home() {
 
                 <Link
                   href="/catalogo"
-                  className="px-5 py-2.5 rounded-xl text-xs font-bold text-[#002B5B] hover:bg-[#FAF8F0] bg-white border border-[#E2DDD5] transition flex items-center gap-1.5 shadow-xs"
+                  className="px-5 py-2.5 rounded-xl text-xs font-bold text-[#102542] hover:bg-[#FAF8F0] bg-white border border-[#E2DDD5] transition flex items-center gap-1.5 shadow-xs"
                 >
                   <span>Ver Ejemplares en Catálogo</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#C99A00]" />
+                  <ArrowRight className="w-3.5 h-3.5 text-[#8A6800]" />
                 </Link>
               </div>
             </div>
@@ -400,15 +400,15 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 4. GRANDES SERIES Y COLECCIONES TEMÁTICAS (CATÁLOGO EN PERSPECTIVA)      */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-[#FAF8F0] text-[#002B5B] border-b border-[#E2DDD5]">
+      <section className="py-20 bg-[#FAF8F0] text-[#102542] border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div className="max-w-2xl">
-              <span className="text-xs font-bold tracking-widest text-[#C99A00] uppercase inline-block mb-1">
+              <span className="text-xs font-bold tracking-widest text-[#8A6800] uppercase inline-block mb-1">
                 Catálogo por Colecciones
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#002B5B] tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#102542] tracking-tight">
                 Series y Emisiones Emblemáticas
               </h2>
               <p className="mt-3 text-sm sm:text-base text-slate-600">
@@ -434,7 +434,7 @@ export default function Home() {
               >
                 <div>
                   {/* Vista Previa Fotográfica */}
-                  <div className="relative h-48 bg-[#001A38] overflow-hidden">
+                  <div className="relative h-48 bg-[#102542] overflow-hidden">
                     <Image
                       src={col.image}
                       alt={col.title}
@@ -442,7 +442,7 @@ export default function Home() {
                       sizes="(max-width: 768px) 100vw, 380px"
                       className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-85 group-hover:opacity-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#001A38] via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#102542] via-transparent to-transparent" />
                     
                     <div className="absolute top-3 left-3">
                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border backdrop-blur-sm ${col.badgeColor}`}>
@@ -453,10 +453,10 @@ export default function Home() {
 
                   {/* Textos y Contexto */}
                   <div className="p-6">
-                    <span className="text-[11px] font-semibold text-[#C99A00] block mb-1">
+                    <span className="text-[11px] font-semibold text-[#8A6800] block mb-1">
                       {col.subtitle}
                     </span>
-                    <h3 className="font-extrabold text-lg text-[#002B5B] group-hover:text-[#0A3B73] transition leading-snug">
+                    <h3 className="font-extrabold text-lg text-[#102542] group-hover:text-[#2C63AC] transition leading-snug">
                       {col.title}
                     </h3>
                     <p className="mt-2 text-xs text-slate-600 leading-relaxed line-clamp-3">
@@ -473,7 +473,7 @@ export default function Home() {
                     </span>
                     <Link
                       href={`/catalogo?categoria=${col.categorySlug}`}
-                      className="text-xs font-extrabold text-[#002B5B] hover:text-[#C99A00] flex items-center gap-1 transition"
+                      className="text-xs font-extrabold text-[#102542] hover:text-[#8A6800] flex items-center gap-1 transition"
                     >
                       <span>Explorar Serie</span>
                       <ChevronRight className="w-3.5 h-3.5" />
@@ -491,14 +491,14 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 5. CÓMO INICIAR TU COLECCIÓN (PASO A PASO DIDÁCTICO)                     */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-gradient-to-b from-[#FAF8F0] to-[#F3EEE0] text-[#002B5B] border-b border-[#E2DDD5]">
+      <section className="py-20 bg-gradient-to-b from-[#FAF8F0] to-[#F3EEE0] text-[#102542] border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold tracking-widest text-[#C99A00] uppercase inline-block mb-1">
+            <span className="text-xs font-bold tracking-widest text-[#8A6800] uppercase inline-block mb-1">
               Guía para Nuevos y Experimentados Coleccionistas
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#002B5B] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#102542] tracking-tight">
               ¿Cómo Iniciar tu Colección Filatélica?
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-600">
@@ -510,13 +510,13 @@ export default function Home() {
             
             {/* Paso 1 */}
             <div className="bg-white p-8 rounded-2xl border border-[#E2DDD5] shadow-md relative">
-              <div className="text-4xl font-black text-[#F4C400]/40 absolute top-4 right-6">
+              <div className="text-4xl font-black text-[#FECC36]/40 absolute top-4 right-6">
                 01
               </div>
-              <div className="w-12 h-12 rounded-xl bg-amber-100 text-[#C99A00] flex items-center justify-center mb-5 font-bold">
+              <div className="w-12 h-12 rounded-xl bg-amber-100 text-[#8A6800] flex items-center justify-center mb-5 font-bold">
                 <Compass className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-[#002B5B] mb-2">
+              <h3 className="text-lg font-bold text-[#102542] mb-2">
                 1. Define tu Temática
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
@@ -526,13 +526,13 @@ export default function Home() {
 
             {/* Paso 2 */}
             <div className="bg-white p-8 rounded-2xl border border-[#E2DDD5] shadow-md relative">
-              <div className="text-4xl font-black text-[#F4C400]/40 absolute top-4 right-6">
+              <div className="text-4xl font-black text-[#FECC36]/40 absolute top-4 right-6">
                 02
               </div>
-              <div className="w-12 h-12 rounded-xl bg-blue-100 text-[#002B5B] flex items-center justify-center mb-5 font-bold">
+              <div className="w-12 h-12 rounded-xl bg-blue-100 text-[#102542] flex items-center justify-center mb-5 font-bold">
                 <Layers className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-[#002B5B] mb-2">
+              <h3 className="text-lg font-bold text-[#102542] mb-2">
                 2. Equípate con lo Básico
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
@@ -542,13 +542,13 @@ export default function Home() {
 
             {/* Paso 3 */}
             <div className="bg-white p-8 rounded-2xl border border-[#E2DDD5] shadow-md relative">
-              <div className="text-4xl font-black text-[#F4C400]/40 absolute top-4 right-6">
+              <div className="text-4xl font-black text-[#FECC36]/40 absolute top-4 right-6">
                 03
               </div>
               <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-5 font-bold">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-[#002B5B] mb-2">
+              <h3 className="text-lg font-bold text-[#102542] mb-2">
                 3. Adquiere Piezas Oficiales
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
@@ -561,9 +561,9 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               href="/guia"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] text-white text-xs sm:text-sm font-bold shadow-md transition"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#102542] hover:bg-[#2C63AC] text-white text-xs sm:text-sm font-bold shadow-md transition"
             >
-              <BookOpen className="w-4 h-4 text-[#F4C400]" />
+              <BookOpen className="w-4 h-4 text-[#FECC36]" />
               <span>Ver Guía Completa de Clasificación y Conservación</span>
             </Link>
           </div>
@@ -574,48 +574,48 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 6. GARANTÍA POSTAL Y SERVICIOS OFICIALES DE BÓVEDA                      */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] border-t-4 border-[#E5B500] border-b-2 border-[#E5B500] relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-[#FFE58C] via-[#FECC36] to-[#E5B728] text-[#102542] border-t-4 border-[#E5B728] border-b-2 border-[#E5B728] relative overflow-hidden">
         <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none mix-blend-multiply" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div className="lg:col-span-6 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide shadow-md">
-                <Shield className="w-3.5 h-3.5 text-[#FFD100]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#102542] text-[#FECC36] text-xs font-bold tracking-wide shadow-md">
+                <Shield className="w-3.5 h-3.5 text-[#FECC36]" />
                 <span>Rigor Notarial y Pericial Oficial</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#102542] tracking-tight">
                 Garantía y Fe Pública de la Agencia Postal
               </h2>
 
-              <p className="text-sm sm:text-base text-[#002B5B]/85 leading-relaxed font-medium">
+              <p className="text-sm sm:text-base text-[#102542]/85 leading-relaxed font-medium">
                 Toda pieza adquirida a través de la plataforma oficial goza de la garantía soberana del Estado boliviano. Nuestro equipo pericial audita cada ejemplar mediante microscopía y espectrometría UV.
               </p>
 
               <div className="space-y-3.5 pt-2">
                 <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm p-3.5 rounded-2xl border border-white/80 shadow-xs">
-                  <CheckCircle2 className="w-5 h-5 text-[#002B5B] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#102542] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-[#002B5B] text-sm font-black block">Certificado Notarial Foliado con QR</strong>
-                    <span className="text-xs text-[#002B5B]/80 font-medium">Cada orden de bóveda incluye su acta física sellada en seco con código criptográfico de serie.</span>
+                    <strong className="text-[#102542] text-sm font-black block">Certificado Notarial Foliado con QR</strong>
+                    <span className="text-xs text-[#102542]/80 font-medium">Cada orden de bóveda incluye su acta física sellada en seco con código criptográfico de serie.</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm p-3.5 rounded-2xl border border-white/80 shadow-xs">
-                  <CheckCircle2 className="w-5 h-5 text-[#002B5B] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#102542] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-[#002B5B] text-sm font-black block">Protección Glassine Libre de Ácido</strong>
-                    <span className="text-xs text-[#002B5B]/80 font-medium">Embalaje individual con polímeros y fibras libres de lignina para salvaguardar la goma centenaria.</span>
+                    <strong className="text-[#102542] text-sm font-black block">Protección Glassine Libre de Ácido</strong>
+                    <span className="text-xs text-[#102542]/80 font-medium">Embalaje individual con polímeros y fibras libres de lignina para salvaguardar la goma centenaria.</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm p-3.5 rounded-2xl border border-white/80 shadow-xs">
-                  <CheckCircle2 className="w-5 h-5 text-[#002B5B] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#102542] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-[#002B5B] text-sm font-black block">Custodia Climatizada Controlada</strong>
-                    <span className="text-xs text-[#002B5B]/80 font-medium">Bóvedas con 50% de humedad relativa y 20°C constantes para impedir hongos u óxido filatélico.</span>
+                    <strong className="text-[#102542] text-sm font-black block">Custodia Climatizada Controlada</strong>
+                    <span className="text-xs text-[#102542]/80 font-medium">Bóvedas con 50% de humedad relativa y 20°C constantes para impedir hongos u óxido filatélico.</span>
                   </div>
                 </div>
               </div>
@@ -623,22 +623,22 @@ export default function Home() {
               <div className="pt-3">
                 <Link
                   href="/certificacion"
-                  className="inline-flex items-center gap-2 text-xs font-black bg-[#002B5B] hover:bg-[#0A3B73] text-[#FFD100] px-6 py-3 rounded-xl shadow-lg transition hover:scale-105 active:scale-95"
+                  className="inline-flex items-center gap-2 text-xs font-black bg-[#102542] hover:bg-[#2C63AC] text-[#FECC36] px-6 py-3 rounded-xl shadow-lg transition hover:scale-105 active:scale-95"
                 >
                   <span>Conocer más sobre el protocolo de peritaje y certificación notarial</span>
-                  <ArrowRight className="w-4 h-4 text-[#FFD100]" />
+                  <ArrowRight className="w-4 h-4 text-[#FECC36]" />
                 </Link>
               </div>
             </div>
 
             {/* Certificado de Muestra */}
             <div className="lg:col-span-6 flex justify-center">
-              <div className="w-full max-w-sm bg-white text-[#002B5B] p-8 rounded-3xl border-3 border-[#002B5B] shadow-2xl relative rotate-1 hover:rotate-0 transition-transform duration-300">
+              <div className="w-full max-w-sm bg-white text-[#102542] p-8 rounded-3xl border-3 border-[#102542] shadow-2xl relative rotate-1 hover:rotate-0 transition-transform duration-300">
                 <div className="text-center pb-4 border-b border-[#E2DDD5]">
-                  <span className="text-[10px] uppercase tracking-widest text-[#C99A00] font-black block">
+                  <span className="text-[10px] uppercase tracking-widest text-[#8A6800] font-black block">
                     Correos de Bolivia
                   </span>
-                  <h4 className="text-base font-black text-[#002B5B] mt-1">
+                  <h4 className="text-base font-black text-[#102542] mt-1">
                     ACTA DE CERTIFICACIÓN NOTARIAL
                   </h4>
                   <span className="text-[10px] text-slate-500 font-mono">Bóveda Central • Protocolo UPU</span>
@@ -647,7 +647,7 @@ export default function Home() {
                 <div className="py-4 space-y-2 text-xs font-mono text-slate-700">
                   <div className="flex justify-between">
                     <span>FÓLIO NOTARIAL:</span>
-                    <strong className="text-[#002B5B]">BO-CERT-2026-994</strong>
+                    <strong className="text-[#102542]">BO-CERT-2026-994</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>ESTADO GOMA:</span>
@@ -655,16 +655,16 @@ export default function Home() {
                   </div>
                   <div className="flex justify-between">
                     <span>AUDITORÍA UV:</span>
-                    <strong className="text-[#002B5B]">CONFORME 100%</strong>
+                    <strong className="text-[#102542]">CONFORME 100%</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>PROCEDENCIA:</span>
-                    <strong className="text-[#002B5B]">Bóveda Soberana</strong>
+                    <strong className="text-[#102542]">Bóveda Soberana</strong>
                   </div>
                 </div>
 
                 <div className="pt-4 border-t border-[#E2DDD5] text-center">
-                  <span className="inline-block px-4 py-1.5 bg-[#002B5B] text-amber-200 text-[10px] font-semibold rounded-lg uppercase tracking-wider">
+                  <span className="inline-block px-4 py-1.5 bg-[#102542] text-amber-200 text-[10px] font-semibold rounded-lg uppercase tracking-wider">
                     Sello Notarial en Seco Aprobado
                   </span>
                 </div>

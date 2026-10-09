@@ -335,9 +335,9 @@ export default function FichasAlmacenPage() {
       {/* ========================================================================= */}
       <div className="print:hidden space-y-6">
         {/* Header Banner */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-[#001A38] via-[#002244] to-[#00142B] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-[#102542] via-[#163359] to-[#0D2039] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#002B5B] to-[#001A38] border border-white/10 flex items-center justify-center text-amber-200 shadow-lg shadow-black/40">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542] border border-white/10 flex items-center justify-center text-amber-200 shadow-lg shadow-black/40">
               <QrCode className="w-7 h-7" />
             </div>
             <div>
@@ -371,7 +371,7 @@ export default function FichasAlmacenPage() {
             <button
               onClick={fetchProducts}
               disabled={loading}
-              className="p-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer shadow-md"
+              className="p-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer shadow-md"
               title="Refrescar catálogo"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -405,7 +405,7 @@ export default function FichasAlmacenPage() {
         {/* Format Selector & QR Destination Controls */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Card Format Selector */}
-          <div className="bg-[#001833] border border-slate-800 p-5 rounded-2xl space-y-3">
+          <div className="bg-[#0F233E] border border-slate-800 p-5 rounded-2xl space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
                 <Tag className="w-4 h-4 text-amber-400" /> Formato de Impresión / Salida:
@@ -417,8 +417,8 @@ export default function FichasAlmacenPage() {
                 onClick={() => setCardFormat('CARD_GLASSINE')}
                 className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                   cardFormat === 'CARD_GLASSINE'
-                    ? 'bg-[#002B5B] border-white/10 text-white shadow-sm'
-                    : 'bg-[#001021] border-slate-800 text-slate-400 hover:text-white hover:bg-[#002B5B]/40'
+                    ? 'bg-[#102542] border-white/10 text-white shadow-sm'
+                    : 'bg-[#0B1A2D] border-slate-800 text-slate-400 hover:text-white hover:bg-[#102542]/40'
                 }`}
               >
                 <div className="font-bold text-xs">Ficha Sobre Glassine</div>
@@ -431,8 +431,8 @@ export default function FichasAlmacenPage() {
                 onClick={() => setCardFormat('LABEL_DRAWER')}
                 className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                   cardFormat === 'LABEL_DRAWER'
-                    ? 'bg-[#002B5B] border-white/10 text-white shadow-sm'
-                    : 'bg-[#001021] border-slate-800 text-slate-400 hover:text-white hover:bg-[#002B5B]/40'
+                    ? 'bg-[#102542] border-white/10 text-white shadow-sm'
+                    : 'bg-[#0B1A2D] border-slate-800 text-slate-400 hover:text-white hover:bg-[#102542]/40'
                 }`}
               >
                 <div className="font-bold text-xs">Rótulo de Gaveta</div>
@@ -445,8 +445,8 @@ export default function FichasAlmacenPage() {
                 onClick={() => setCardFormat('SHEET_A4')}
                 className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                   cardFormat === 'SHEET_A4'
-                    ? 'bg-[#002B5B] border-white/10 text-white shadow-sm'
-                    : 'bg-[#001021] border-slate-800 text-slate-400 hover:text-white hover:bg-[#002B5B]/40'
+                    ? 'bg-[#102542] border-white/10 text-white shadow-sm'
+                    : 'bg-[#0B1A2D] border-slate-800 text-slate-400 hover:text-white hover:bg-[#102542]/40'
                 }`}
               >
                 <div className="font-bold text-xs">Pliego A4 (8 Fichas)</div>
@@ -458,7 +458,7 @@ export default function FichasAlmacenPage() {
           </div>
 
           {/* QR Destination Selector */}
-          <div className="bg-[#001833] border border-slate-800 p-5 rounded-2xl space-y-3">
+          <div className="bg-[#0F233E] border border-slate-800 p-5 rounded-2xl space-y-3">
             <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
               <QrCode className="w-4 h-4 text-cyan-400" /> Destino del Escaneo QR:
             </span>
@@ -468,8 +468,8 @@ export default function FichasAlmacenPage() {
                 onClick={() => setQrTarget('CATALOG')}
                 className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                   qrTarget === 'CATALOG'
-                    ? 'bg-[#002B5B] border-white/10 text-white shadow-sm'
-                    : 'bg-[#001021] border-slate-800 text-slate-400 hover:text-white hover:bg-[#002B5B]/40'
+                    ? 'bg-[#102542] border-white/10 text-white shadow-sm'
+                    : 'bg-[#0B1A2D] border-slate-800 text-slate-400 hover:text-white hover:bg-[#102542]/40'
                 }`}
               >
                 <div className="font-bold text-xs">Catálogo Público</div>
@@ -482,8 +482,8 @@ export default function FichasAlmacenPage() {
                 onClick={() => setQrTarget('ADMIN')}
                 className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                   qrTarget === 'ADMIN'
-                    ? 'bg-[#002B5B] border-white/10 text-white shadow-sm'
-                    : 'bg-[#001021] border-slate-800 text-slate-400 hover:text-white hover:bg-[#002B5B]/40'
+                    ? 'bg-[#102542] border-white/10 text-white shadow-sm'
+                    : 'bg-[#0B1A2D] border-slate-800 text-slate-400 hover:text-white hover:bg-[#102542]/40'
                 }`}
               >
                 <div className="font-bold text-xs">Bóveda Administrativa</div>
@@ -496,8 +496,8 @@ export default function FichasAlmacenPage() {
                 onClick={() => setQrTarget('TECHNICAL')}
                 className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                   qrTarget === 'TECHNICAL'
-                    ? 'bg-[#002B5B] border-white/10 text-white shadow-sm'
-                    : 'bg-[#001021] border-slate-800 text-slate-400 hover:text-white hover:bg-[#002B5B]/40'
+                    ? 'bg-[#102542] border-white/10 text-white shadow-sm'
+                    : 'bg-[#0B1A2D] border-slate-800 text-slate-400 hover:text-white hover:bg-[#102542]/40'
                 }`}
               >
                 <div className="font-bold text-xs">Cripto-Ficha Offline</div>
@@ -510,7 +510,7 @@ export default function FichasAlmacenPage() {
         </div>
 
         {/* Search, Filter & Bulk Selection Toolbar */}
-        <div className="bg-[#00142B] border border-slate-800 p-4 rounded-2xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+        <div className="bg-[#0D2039] border border-slate-800 p-4 rounded-2xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
           <div className="flex flex-1 items-center gap-3">
             {/* Search */}
             <div className="relative flex-1">
@@ -520,7 +520,7 @@ export default function FichasAlmacenPage() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Filtrar por código (ej. SCOTT-BO-1866-C1), nombre, gaveta o álbum..."
-                className="w-full bg-[#001021] border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
               />
             </div>
 
@@ -528,7 +528,7 @@ export default function FichasAlmacenPage() {
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="bg-[#001021] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer"
+              className="bg-[#0B1A2D] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer"
             >
               <option value="ALL">Todas las Categorías</option>
               {categories.map((c) => (
@@ -542,7 +542,7 @@ export default function FichasAlmacenPage() {
             <select
               value={drawerFilter}
               onChange={(e) => setDrawerFilter(e.target.value)}
-              className="bg-[#001021] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer"
+              className="bg-[#0B1A2D] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer"
             >
               <option value="ALL">Todas las Gavetas</option>
               {drawers.map((d) => (
@@ -557,7 +557,7 @@ export default function FichasAlmacenPage() {
           <div className="flex items-center gap-3">
             <button
               onClick={handleSelectAllFiltered}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#002244] hover:bg-[#002D5B] text-slate-300 hover:text-white text-xs font-semibold cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#163359] hover:bg-[#102542] text-slate-300 hover:text-white text-xs font-semibold cursor-pointer"
             >
               <CheckSquare className="w-4 h-4 text-amber-400" />
               <span>
@@ -574,7 +574,7 @@ export default function FichasAlmacenPage() {
         </div>
 
         {/* Interactive Stamp Selection Strip (Horizontal Accordion / Grid) */}
-        <div className="bg-[#001021] border border-slate-800 rounded-2xl p-4">
+        <div className="bg-[#0B1A2D] border border-slate-800 rounded-2xl p-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-800/80 mb-3">
             <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
               Piezas en Almacén ({filteredProducts.length}) — Haga clic para marcar/desmarcar para impresión:
@@ -594,8 +594,8 @@ export default function FichasAlmacenPage() {
                   onClick={() => handleToggleSelect(p.id)}
                   className={`p-3 rounded-xl border transition-all cursor-pointer relative group flex items-start gap-3 ${
                     isSelected
-                      ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
-                      : 'bg-[#00142B] border-slate-800 hover:border-slate-700 opacity-70 hover:opacity-100 hover:bg-[#002B5B]/30'
+                      ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
+                      : 'bg-[#0D2039] border-slate-800 hover:border-slate-700 opacity-70 hover:opacity-100 hover:bg-[#102542]/30'
                   }`}
                 >
                   {/* Stamp Thumbnail */}
@@ -606,7 +606,7 @@ export default function FichasAlmacenPage() {
                       className="w-12 h-12 object-contain rounded bg-black/40 border border-slate-700 shrink-0"
                     />
                   ) : (
-                    <div className="w-12 h-12 rounded bg-[#002B5B] flex items-center justify-center text-amber-400 font-bold text-xs shrink-0">
+                    <div className="w-12 h-12 rounded bg-[#102542] flex items-center justify-center text-amber-400 font-bold text-xs shrink-0">
                       BO
                     </div>
                   )}
@@ -638,7 +638,7 @@ export default function FichasAlmacenPage() {
                       e.stopPropagation();
                       openEditModal(p);
                     }}
-                    className="absolute bottom-2 right-2 p-1 rounded-md bg-[#002B5B] hover:bg-amber-400 hover:text-slate-950 text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                    className="absolute bottom-2 right-2 p-1 rounded-md bg-[#102542] hover:bg-amber-400 hover:text-slate-950 text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
                     title="Editar ubicación en bóveda"
                   >
                     <Edit3 className="w-3 h-3" />
@@ -727,7 +727,7 @@ export default function FichasAlmacenPage() {
       {/* ========================================================================= */}
       <div id="printable-canvas" className="space-y-6 print:m-0 print:p-0 print:w-full">
         {selectedProducts.length === 0 ? (
-          <div className="py-20 text-center text-slate-500 bg-[#001021] border border-slate-800 rounded-2xl">
+          <div className="py-20 text-center text-slate-500 bg-[#0B1A2D] border border-slate-800 rounded-2xl">
             <QrCode className="w-12 h-12 text-slate-600 mx-auto mb-3" />
             <h4 className="text-sm font-bold text-slate-300">No hay piezas seleccionadas</h4>
             <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
@@ -762,7 +762,7 @@ export default function FichasAlmacenPage() {
                         <div className="flex items-center gap-2">
                           <div className="w-1.5 h-6 rounded-sm bg-gradient-to-b from-[#D52B1E] via-[#FCD116] to-[#007934] shrink-0 border border-slate-400 print:border-black" />
                           <div>
-                            <div className="text-[9px] font-black uppercase tracking-wider text-[#002B5B] print:text-black leading-tight">
+                            <div className="text-[9px] font-black uppercase tracking-wider text-[#102542] print:text-black leading-tight">
                               ESTADO PLURINACIONAL DE BOLIVIA
                             </div>
                             <div className="text-[7.5px] font-bold text-slate-600 print:text-black tracking-tight leading-none mt-0.5">
@@ -800,7 +800,7 @@ export default function FichasAlmacenPage() {
                         {/* Philatelic Data */}
                         <div className="flex-1 min-w-0 space-y-1">
                           <div>
-                            <div className="text-[11px] font-black font-mono text-[#002B5B] print:text-black leading-tight">
+                            <div className="text-[11px] font-black font-mono text-[#102542] print:text-black leading-tight">
                               {stamp.catalog_code}
                             </div>
                             <div className="text-[10px] font-bold text-slate-950 leading-tight mt-0.5 line-clamp-2">
@@ -842,7 +842,7 @@ export default function FichasAlmacenPage() {
                           <span className="font-bold text-slate-950 ml-1">SOBRE:</span>
                           <span className="bg-white px-1 py-0.2 rounded border border-slate-300 print:border-black font-semibold text-slate-900">{stamp.vault_envelope || '#001'}</span>
                         </div>
-                        <div className="shrink-0 text-right font-black text-[9.5px] text-[#002B5B] print:text-black font-mono">
+                        <div className="shrink-0 text-right font-black text-[9.5px] text-[#102542] print:text-black font-mono">
                           Bs. {Number(stamp.price).toFixed(2)}
                         </div>
                       </div>
@@ -868,7 +868,7 @@ export default function FichasAlmacenPage() {
                           {stamp.vault_drawer || 'GAVETA GENERAL'}
                         </div>
 
-                        <div className="text-[10px] font-bold text-[#002B5B] print:text-black line-clamp-2">
+                        <div className="text-[10px] font-bold text-[#102542] print:text-black line-clamp-2">
                           [{stamp.catalog_code}] {stamp.name}
                         </div>
 
@@ -911,7 +911,7 @@ export default function FichasAlmacenPage() {
                         <div className="flex items-center justify-between border-b border-slate-300 pb-1">
                           <div className="flex items-center gap-1.5">
                             <div className="w-1.5 h-3.5 rounded-sm bg-gradient-to-b from-[#D52B1E] via-[#FCD116] to-[#007934] shrink-0 border border-slate-400 print:border-black" />
-                            <span className="text-[8.5px] font-black text-[#002B5B] print:text-black">
+                            <span className="text-[8.5px] font-black text-[#102542] print:text-black">
                               FILATELIA BOLIVIANA • BÓVEDA OFICIAL
                             </span>
                           </div>
@@ -966,8 +966,8 @@ export default function FichasAlmacenPage() {
       {/* ========================================================================= */}
       {editingProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm print:hidden animate-fadeIn">
-          <div className="bg-[#001730] border border-white/10 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl">
-            <div className="bg-gradient-to-r from-[#002244] to-[#00142B] px-6 py-4 border-b border-white/10 flex items-center justify-between">
+          <div className="bg-[#0E223C] border border-white/10 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl">
+            <div className="bg-gradient-to-r from-[#163359] to-[#0D2039] px-6 py-4 border-b border-white/10 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-white/[0.08] border border-white/10 flex items-center justify-center text-amber-200/90">
                   <Building2 className="w-5 h-5" />
@@ -1002,7 +1002,7 @@ export default function FichasAlmacenPage() {
                     onChange={(e) => setEditRoom(e.target.value)}
                     required
                     placeholder="Ej. Bóveda Central A"
-                    className="w-full bg-[#001021] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400"
+                    className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
 
@@ -1016,7 +1016,7 @@ export default function FichasAlmacenPage() {
                     onChange={(e) => setEditCabinet(e.target.value)}
                     required
                     placeholder="Ej. Armario Ignífugo 01"
-                    className="w-full bg-[#001021] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400"
+                    className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
 
@@ -1030,7 +1030,7 @@ export default function FichasAlmacenPage() {
                     onChange={(e) => setEditDrawer(e.target.value)}
                     required
                     placeholder="Ej. Gaveta G-01 (Clásicos)"
-                    className="w-full bg-[#001021] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 font-bold text-amber-300"
+                    className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 font-bold text-amber-300"
                   />
                 </div>
 
@@ -1043,7 +1043,7 @@ export default function FichasAlmacenPage() {
                     value={editAlbum}
                     onChange={(e) => setEditAlbum(e.target.value)}
                     placeholder="Ej. Álbum Lindner Tomo I"
-                    className="w-full bg-[#001021] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400"
+                    className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
               </div>
@@ -1057,7 +1057,7 @@ export default function FichasAlmacenPage() {
                   value={editEnvelope}
                   onChange={(e) => setEditEnvelope(e.target.value)}
                   placeholder="Ej. Sobre Acid-Free #014"
-                  className="w-full bg-[#001021] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400"
+                  className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400"
                 />
               </div>
 
@@ -1070,7 +1070,7 @@ export default function FichasAlmacenPage() {
                   value={editNotes}
                   onChange={(e) => setEditNotes(e.target.value)}
                   placeholder="Humedad relativa, gel de sílice, temperatura recomendada..."
-                  className="w-full bg-[#001021] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 resize-none"
+                  className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 resize-none"
                 />
               </div>
 

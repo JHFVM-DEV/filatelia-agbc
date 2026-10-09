@@ -33,7 +33,7 @@ class StampCategoryChartWidget extends ChartWidget
                 [
                     'label' => 'Ejemplares',
                     'data' => $counts,
-                    'backgroundColor' => ['#002B5B', '#F4C400', '#2E7D32', '#6A1B9A', '#D84315'],
+                    'backgroundColor' => ['#102542', '#FECC36', '#2E7D32', '#6A1B9A', '#D84315'],
                 ],
             ],
             'labels' => $labels,

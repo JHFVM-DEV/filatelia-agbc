@@ -177,8 +177,8 @@ export const GoogleSignInButton: React.FC<GoogleSignInButtonProps> = ({
         } ${disabled ? 'opacity-50 pointer-events-none' : ''}`}
       />
       {isVerifying && (
-        <div className="absolute inset-0 w-full rounded-xl border border-amber-300 bg-amber-50/95 backdrop-blur-xs flex items-center justify-center gap-2.5 px-3 py-2 text-xs font-bold text-[#002B5B] shadow-sm z-10 animate-in fade-in duration-150">
-          <Loader2 className="w-4 h-4 animate-spin text-[#002B5B] shrink-0" />
+        <div className="absolute inset-0 w-full rounded-xl border border-amber-300 bg-amber-50/95 backdrop-blur-xs flex items-center justify-center gap-2.5 px-3 py-2 text-xs font-bold text-[#102542] shadow-sm z-10 animate-in fade-in duration-150">
+          <Loader2 className="w-4 h-4 animate-spin text-[#102542] shrink-0" />
           <span className="truncate">Verificando cuenta Google...</span>
         </div>
       )}

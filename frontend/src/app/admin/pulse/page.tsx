@@ -82,7 +82,7 @@ export default function AdminPulsePage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#001A38]/90 border border-slate-800 p-6 rounded-2xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#102542]/90 border border-slate-800 p-6 rounded-2xl">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-amber-200/90">
             <Cpu className="w-6 h-6" />
@@ -106,7 +106,7 @@ export default function AdminPulsePage() {
           <button
             onClick={fetchHealth}
             disabled={loading}
-            className="p-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
+            className="p-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
             title="Actualizar métricas"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -133,7 +133,7 @@ export default function AdminPulsePage() {
       {/* Real-time Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Latency */}
-        <div className="bg-[#001A38] border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-[#102542] border border-slate-800 p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider">
             <span>Latencia DB</span>
             <Zap className="w-4 h-4 text-slate-400" />
@@ -149,7 +149,7 @@ export default function AdminPulsePage() {
         </div>
 
         {/* Memory */}
-        <div className="bg-[#001A38] border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-[#102542] border border-slate-800 p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider">
             <span>Consumo RAM PHP</span>
             <Activity className="w-4 h-4 text-blue-400" />
@@ -164,7 +164,7 @@ export default function AdminPulsePage() {
         </div>
 
         {/* DB Connection */}
-        <div className="bg-[#001A38] border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-[#102542] border border-slate-800 p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider">
             <span>Motor Relacional</span>
             <Database className="w-4 h-4 text-purple-400" />
@@ -179,7 +179,7 @@ export default function AdminPulsePage() {
         </div>
 
         {/* Server Time */}
-        <div className="bg-[#001A38] border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-[#102542] border border-slate-800 p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider">
             <span>Hora del Servidor</span>
             <Clock className="w-4 h-4 text-slate-400" />
@@ -192,49 +192,49 @@ export default function AdminPulsePage() {
       </div>
 
       {/* System Specifications Grid */}
-      <div className="bg-[#001A38] border border-slate-800 rounded-2xl p-6 shadow-xl">
+      <div className="bg-[#102542] border border-slate-800 rounded-2xl p-6 shadow-xl">
         <h2 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
           <Server className="w-4 h-4 text-slate-400" />
           <span>Especificaciones de la Pila Tecnológica</span>
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
-          <div className="p-4 rounded-xl bg-[#00142B] border border-slate-800/80">
+          <div className="p-4 rounded-xl bg-[#0D2039] border border-slate-800/80">
             <div className="text-slate-400 font-semibold mb-1">Versión del Motor PHP</div>
             <div className="text-sm font-mono font-bold text-white">
               {health?.phpVersion ?? 'PHP 8.2+'}
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#00142B] border border-slate-800/80">
+          <div className="p-4 rounded-xl bg-[#0D2039] border border-slate-800/80">
             <div className="text-slate-400 font-semibold mb-1">Framework Backend</div>
             <div className="text-sm font-mono font-bold text-white">
               Laravel {health?.laravelVersion ?? '12.x'}
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#00142B] border border-slate-800/80">
+          <div className="p-4 rounded-xl bg-[#0D2039] border border-slate-800/80">
             <div className="text-slate-400 font-semibold mb-1">Controlador de Sesiones</div>
             <div className="text-sm font-mono font-bold text-amber-300">
               {health?.sessionDriver ?? 'database'} (Sanctum Tokens)
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#00142B] border border-slate-800/80">
+          <div className="p-4 rounded-xl bg-[#0D2039] border border-slate-800/80">
             <div className="text-slate-400 font-semibold mb-1">Caché de Aplicación</div>
             <div className="text-sm font-mono font-bold text-white">
               {health?.cacheDriver ?? 'database'}
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#00142B] border border-slate-800/80">
+          <div className="p-4 rounded-xl bg-[#0D2039] border border-slate-800/80">
             <div className="text-slate-400 font-semibold mb-1">Gestor de Colas (Queue)</div>
             <div className="text-sm font-mono font-bold text-white">
               {health?.queueDriver ?? 'database'}
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#00142B] border border-slate-800/80">
+          <div className="p-4 rounded-xl bg-[#0D2039] border border-slate-800/80">
             <div className="text-slate-400 font-semibold mb-1">Suite Administrativa</div>
             <div className="text-sm font-mono font-bold text-emerald-400">
               Next.js 15 SPA (Native Admin)

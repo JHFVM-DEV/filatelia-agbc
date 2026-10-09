@@ -43,7 +43,7 @@ class PaymentMethodsChartWidget extends ChartWidget
                 [
                     'label' => 'Transacciones',
                     'data' => $values,
-                    'backgroundColor' => ['#F4C400', '#002B5B', '#2E7D32'],
+                    'backgroundColor' => ['#FECC36', '#102542', '#2E7D32'],
                 ],
             ],
             'labels' => $labels,

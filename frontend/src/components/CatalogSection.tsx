@@ -86,11 +86,11 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
         
         {/* Badge Condición */}
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
-          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#002B5B] text-white shadow-sm">
+          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#102542] text-white shadow-sm">
             {stamp.condition === 'MINT_NH' ? 'MINT NH' : stamp.condition}
           </span>
           {stamp.rarity === 'MUSEUM_PIECE' && (
-            <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-[#002B5B]/5 text-[#002B5B] border border-[#002B5B]/15">
+            <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-[#102542]/5 text-[#102542] border border-[#102542]/15">
               PIEZA DE MUSEO
             </span>
           )}
@@ -115,7 +115,7 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
         </button>
 
         {/* Montura Passepartout del sello */}
-        <div className="relative w-44 h-48 bg-white p-3 rounded shadow-md border border-[#E5DFC8] flex items-center justify-center group-hover:scale-[1.025] group-hover:border-[#C99A00]/40 group-hover:shadow-lg transition-all duration-500 ease-out">
+        <div className="relative w-44 h-48 bg-white p-3 rounded shadow-md border border-[#E5DFC8] flex items-center justify-center group-hover:scale-[1.025] group-hover:border-[#8A6800]/40 group-hover:shadow-lg transition-all duration-500 ease-out">
           <div className="relative w-full h-full">
             <Image 
               src={stamp.front_image}
@@ -131,7 +131,7 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
         {/* Botón Examinar Pieza al pasar el cursor */}
         <button
           onClick={() => onInspect(stamp)}
-          className="absolute bottom-3 bg-[#002B5B]/95 hover:bg-[#002B5B] text-white text-xs font-semibold px-3.5 py-1.5 rounded-full opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1.5 shadow-md backdrop-blur-sm"
+          className="absolute bottom-3 bg-[#102542]/95 hover:bg-[#102542] text-white text-xs font-semibold px-3.5 py-1.5 rounded-full opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1.5 shadow-md backdrop-blur-sm"
         >
           <ZoomIn className="w-3.5 h-3.5 text-amber-300" />
           <span>Examinar Pieza</span>
@@ -142,11 +142,11 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
       <div className="p-6 flex-1 flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between text-[11px] text-[#5A554E] font-medium mb-1">
-            <span className="text-[#C99A00] font-bold tracking-wider">{stamp.catalog_code}</span>
+            <span className="text-[#8A6800] font-bold tracking-wider">{stamp.catalog_code}</span>
             <span>Año: <strong>{stamp.year}</strong></span>
           </div>
 
-          <h3 className="font-bold text-base text-[#002B5B] group-hover:text-[#0B3E7A] transition line-clamp-2">
+          <h3 className="font-bold text-base text-[#102542] group-hover:text-[#2C63AC] transition line-clamp-2">
             {stamp.name}
           </h3>
 
@@ -182,7 +182,7 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
         <div className="mt-6 pt-4 border-t border-[#E2DDD5] flex items-center justify-between">
           <div>
             <div className="text-[10px] uppercase tracking-wider text-[#5A554E] font-medium">Cotización</div>
-            <div className="text-xl font-extrabold text-[#002B5B]">
+            <div className="text-xl font-extrabold text-[#102542]">
               {stamp.price.toLocaleString('es-BO', { minimumFractionDigits: 2 })} <span className="text-xs font-bold text-slate-500">BOB</span>
             </div>
           </div>
@@ -291,10 +291,10 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
             headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
-          <span className="text-xs font-bold tracking-widest text-[#C99A00] uppercase inline-block mb-1">
+          <span className="text-xs font-bold tracking-widest text-[#8A6800] uppercase inline-block mb-1">
             Galería Postal Soberana
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#002B5B]">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#102542]">
             Catálogo Oficial de Piezas Filatélicas
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#5A554E]">
@@ -312,8 +312,8 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm whitespace-nowrap transition flex items-center gap-2 border cursor-pointer ${
                   isActive
-                    ? 'bg-[#FFCC00] text-[#002B5B] font-black border-[#E5B500] shadow-sm'
-                    : 'bg-white text-[#5A554E] hover:text-[#002B5B] hover:bg-[#FAF5E6] hover:border-slate-300 border-[#E2DDD5] font-medium'
+                    ? 'bg-[#FECC36] text-[#102542] font-black border-[#E5B728] shadow-sm'
+                    : 'bg-white text-[#5A554E] hover:text-[#102542] hover:bg-[#FAF5E6] hover:border-slate-300 border-[#E2DDD5] font-medium'
                 }`}
               >
                 <span>{cat.name}</span>
@@ -333,7 +333,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
               placeholder="Buscar por sello, serie o código Scott..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm rounded-lg border border-[#E2DDD5] focus:outline-none focus:border-[#002B5B] text-[#002B5B] bg-[#FAF8F0]/50 placeholder:text-slate-400"
+              className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm rounded-lg border border-[#E2DDD5] focus:outline-none focus:border-[#102542] text-[#102542] bg-[#FAF8F0]/50 placeholder:text-slate-400"
             />
           </div>
 
@@ -342,11 +342,11 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
             
             {/* Condition Filter */}
             <div className="flex items-center gap-1 text-xs text-[#5A554E]">
-              <Filter className="w-3.5 h-3.5 text-[#002B5B]" />
+              <Filter className="w-3.5 h-3.5 text-[#102542]" />
               <select
                 value={selectedCondition}
                 onChange={(e) => setSelectedCondition(e.target.value)}
-                className="px-2.5 py-2 text-xs rounded-lg border border-[#E2DDD5] bg-[#FAF8F0]/50 text-[#002B5B] focus:outline-none focus:border-[#002B5B]"
+                className="px-2.5 py-2 text-xs rounded-lg border border-[#E2DDD5] bg-[#FAF8F0]/50 text-[#102542] focus:outline-none focus:border-[#102542]"
               >
                 <option value="all">Todas las Condiciones</option>
                 <option value="MINT_NH">MINT NH (Goma Intacta)</option>
@@ -360,7 +360,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
             <select
               value={selectedRarity}
               onChange={(e) => setSelectedRarity(e.target.value)}
-              className="px-2.5 py-2 text-xs rounded-lg border border-[#E2DDD5] bg-[#FAF8F0]/50 text-[#002B5B] focus:outline-none focus:border-[#002B5B]"
+              className="px-2.5 py-2 text-xs rounded-lg border border-[#E2DDD5] bg-[#FAF8F0]/50 text-[#102542] focus:outline-none focus:border-[#102542]"
             >
               <option value="all">Todas las Rarezas</option>
               <option value="MUSEUM_PIECE">Pieza de Museo</option>
@@ -373,7 +373,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-2.5 py-2 text-xs rounded-lg border border-[#E2DDD5] bg-[#FAF8F0]/50 text-[#002B5B] focus:outline-none focus:border-[#002B5B] font-medium"
+              className="px-2.5 py-2 text-xs rounded-lg border border-[#E2DDD5] bg-[#FAF8F0]/50 text-[#102542] focus:outline-none focus:border-[#102542] font-medium"
             >
               <option value="featured">Destacados de Bóveda</option>
               <option value="price_asc">Precio: Menor a Mayor</option>
@@ -391,7 +391,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
           {selectedCategory !== 'all' && (
             <button 
               onClick={() => { setSelectedCategory('all'); setSelectedCondition('all'); setSelectedRarity('all'); setSearchQuery(''); }}
-              className="text-[#002B5B] underline hover:text-[#C99A00]"
+              className="text-[#102542] underline hover:text-[#8A6800]"
             >
               Limpiar filtros
             </button>
@@ -402,7 +402,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
         {filteredStamps.length === 0 ? (
           <div className="bg-white rounded-2xl border border-[#E2DDD5] p-12 text-center max-w-md mx-auto">
             <Sparkles className="w-10 h-10 text-amber-500 mx-auto mb-3" />
-            <h4 className="text-base font-bold text-[#002B5B]">No se encontraron piezas con estos criterios</h4>
+            <h4 className="text-base font-bold text-[#102542]">No se encontraron piezas con estos criterios</h4>
             <p className="text-xs text-[#5A554E] mt-1">Pruebe ajustando el término de búsqueda o cambiando la condición seleccionada.</p>
           </div>
         ) : (

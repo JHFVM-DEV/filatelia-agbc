@@ -309,7 +309,7 @@ export default function AdminLayout({
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-[#00142B] flex items-center justify-center text-white">
+      <div className="min-h-screen bg-[#0D2039] flex items-center justify-center text-white">
         <div className="flex flex-col items-center gap-3">
           <div className="w-10 h-10 border-3 border-amber-400 border-t-transparent rounded-full animate-spin" />
           <span className="text-xs tracking-wider uppercase text-amber-300 font-medium">
@@ -323,12 +323,12 @@ export default function AdminLayout({
   // Si el usuario no está autenticado o no cuenta con roles de staff
   if (!currentUser || !isStaff()) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#00142B] via-[#002B5B] to-[#00142B] flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-[#001A38]/90 backdrop-blur-xl border border-amber-400/30 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-b from-[#0D2039] via-[#102542] to-[#0D2039] flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-[#102542]/90 backdrop-blur-xl border border-amber-400/30 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
           {/* Acento dorado decorativo superior */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-amber-200/30 to-transparent" />
 
-          <div className="w-16 h-16 rounded-2xl bg-[#002B5B] border border-white/10 flex items-center justify-center mx-auto mb-5 text-amber-200/90 shadow-lg">
+          <div className="w-16 h-16 rounded-2xl bg-[#102542] border border-white/10 flex items-center justify-center mx-auto mb-5 text-amber-200/90 shadow-lg">
             <Lock className="w-8 h-8" />
           </div>
 
@@ -350,7 +350,7 @@ export default function AdminLayout({
 
             <button
               onClick={() => openLoginModal()}
-              className="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#001A38] font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#102542] font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg cursor-pointer flex items-center justify-center gap-2"
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Identificarse con Cuenta de Personal</span>
@@ -358,7 +358,7 @@ export default function AdminLayout({
 
             <Link
               href="/"
-              className="w-full py-2.5 px-4 rounded-xl bg-[#002B5B]/80 hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white font-medium text-xs transition-colors flex items-center justify-center gap-2"
+              className="w-full py-2.5 px-4 rounded-xl bg-[#102542]/80 hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white font-medium text-xs transition-colors flex items-center justify-center gap-2"
             >
               <span>Volver a la Vitrina Pública</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -395,11 +395,11 @@ export default function AdminLayout({
 
   if (requiredModule && !hasAccess(requiredModule)) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#00142B] via-[#002B5B] to-[#00142B] flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-[#001A38]/90 backdrop-blur-xl border border-rose-500/30 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-b from-[#0D2039] via-[#102542] to-[#0D2039] flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-[#102542]/90 backdrop-blur-xl border border-rose-500/30 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-rose-500 to-transparent" />
 
-          <div className="w-16 h-16 rounded-2xl bg-[#002B5B] border border-rose-500/40 flex items-center justify-center mx-auto mb-5 text-rose-400 shadow-lg">
+          <div className="w-16 h-16 rounded-2xl bg-[#102542] border border-rose-500/40 flex items-center justify-center mx-auto mb-5 text-rose-400 shadow-lg">
             <Lock className="w-8 h-8" />
           </div>
 
@@ -413,7 +413,7 @@ export default function AdminLayout({
           <div className="space-y-3">
             <Link
               href="/admin/inventario"
-              className="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#001A38] font-bold text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2"
+              className="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#102542] font-bold text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2"
             >
               <ClipboardList className="w-4 h-4" />
               <span>Ir a Bóveda & Operaciones</span>
@@ -421,7 +421,7 @@ export default function AdminLayout({
 
             <Link
               href="/admin"
-              className="w-full py-2.5 px-4 rounded-xl bg-[#002B5B]/80 hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white font-medium text-xs transition-colors flex items-center justify-center gap-2"
+              className="w-full py-2.5 px-4 rounded-xl bg-[#102542]/80 hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white font-medium text-xs transition-colors flex items-center justify-center gap-2"
             >
               <LayoutDashboard className="w-4 h-4" />
               <span>Volver al Dashboard Operativo</span>
@@ -435,7 +435,7 @@ export default function AdminLayout({
   return (
     <div className="min-h-screen bg-[#030d1d] text-slate-100 flex flex-col md:flex-row antialiased selection:bg-amber-400/30 selection:text-amber-200 print:bg-white print:text-black print:block print:min-h-0 print:p-0 print:m-0">
       {/* Mobile Header Bar */}
-      <div className="md:hidden bg-[#001A38] border-b border-slate-800 p-4 flex items-center justify-between sticky top-0 z-30 print:hidden">
+      <div className="md:hidden bg-[#102542] border-b border-slate-800 p-4 flex items-center justify-between sticky top-0 z-30 print:hidden">
         <div className="flex items-center gap-2">
           <Image
             src="/images/FILATELIA-1.png"
@@ -457,7 +457,7 @@ export default function AdminLayout({
 
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="p-2 rounded-lg bg-[#002B5B] text-slate-300 hover:text-white border border-slate-700"
+          className="p-2 rounded-lg bg-[#102542] text-slate-300 hover:text-white border border-slate-700"
           aria-label="Abrir menú"
         >
           {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -466,13 +466,13 @@ export default function AdminLayout({
 
       {/* Sidebar Navigation */}
       <aside
-        className={`fixed md:sticky top-0 left-0 z-40 h-screen w-72 bg-[#001A38]/95 backdrop-blur-md border-r border-slate-800/80 flex flex-col transition-transform duration-300 ease-in-out md:translate-x-0 print:hidden ${
+        className={`fixed md:sticky top-0 left-0 z-40 h-screen w-72 bg-[#102542]/95 backdrop-blur-md border-r border-slate-800/80 flex flex-col transition-transform duration-300 ease-in-out md:translate-x-0 print:hidden ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Brand Header */}
         <div className="p-5 border-b border-slate-800/80 flex items-center gap-3.5">
-          <div className="relative w-11 h-11 rounded-xl bg-[#002B5B] border border-white/10 p-1 flex items-center justify-center shrink-0 shadow-md">
+          <div className="relative w-11 h-11 rounded-xl bg-[#102542] border border-white/10 p-1 flex items-center justify-center shrink-0 shadow-md">
             <Image
               src="/images/FILATELIA-1.png"
               alt="Escudo Filatélico"
@@ -504,15 +504,15 @@ export default function AdminLayout({
               onClick={() => setIsSidebarOpen(false)}
               className={`group flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 cursor-pointer ${
                 pathname === '/admin'
-                  ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
-                  : 'text-slate-300 hover:text-white hover:bg-[#002B5B]/60 border border-transparent'
+                  ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
+                  : 'text-slate-300 hover:text-white hover:bg-[#102542]/60 border border-transparent'
               }`}
             >
               <div
                 className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                   pathname === '/admin'
                     ? 'bg-white/10 text-white'
-                    : 'bg-[#002B5B] text-slate-400 group-hover:text-slate-200 border border-slate-700/60'
+                    : 'bg-[#102542] text-slate-400 group-hover:text-slate-200 border border-slate-700/60'
                 }`}
               >
                 <LayoutDashboard className="w-4 h-4" />
@@ -573,8 +573,8 @@ export default function AdminLayout({
                           onClick={() => setIsSidebarOpen(false)}
                           className={`group flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer ${
                             isActive
-                              ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
-                              : 'text-slate-300 hover:text-white hover:bg-[#002B5B]/60 border border-transparent'
+                              ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
+                              : 'text-slate-300 hover:text-white hover:bg-[#102542]/60 border border-transparent'
                           }`}
                         >
                           <div
@@ -610,7 +610,7 @@ export default function AdminLayout({
         <div className="p-3.5 border-t border-slate-800/80">
           <Link
             href="/"
-            className="flex items-center justify-between p-3 rounded-xl bg-[#002B5B]/70 hover:bg-[#002B5B] border border-white/10 hover:border-white/20 text-xs transition-all duration-200 group"
+            className="flex items-center justify-between p-3 rounded-xl bg-[#102542]/70 hover:bg-[#102542] border border-white/10 hover:border-white/20 text-xs transition-all duration-200 group"
           >
             <div className="flex items-center gap-2.5">
               <Sparkles className="w-4 h-4 text-amber-200/90" />
@@ -628,7 +628,7 @@ export default function AdminLayout({
         </div>
 
         {/* User Card & Logout */}
-        <div className="p-3.5 border-t border-slate-800/80 bg-[#001329]">
+        <div className="p-3.5 border-t border-slate-800/80 bg-[#0D1E36]">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2.5 min-w-0">
               <div className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/10 text-amber-200/90 font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">
@@ -650,7 +650,7 @@ export default function AdminLayout({
                 router.push('/');
               }}
               title="Cerrar sesión unificada"
-              className="p-2 rounded-lg bg-[#002B5B] hover:bg-rose-950/60 border border-slate-700 hover:border-rose-500/50 text-slate-300 hover:text-rose-300 transition-all cursor-pointer"
+              className="p-2 rounded-lg bg-[#102542] hover:bg-rose-950/60 border border-slate-700 hover:border-rose-500/50 text-slate-300 hover:text-rose-300 transition-all cursor-pointer"
             >
               <LogOut className="w-4 h-4" />
             </button>
@@ -661,7 +661,7 @@ export default function AdminLayout({
       {/* Main Content Area */}
       <main className="flex-1 min-w-0 flex flex-col min-h-screen bg-[#030d1d] overflow-x-hidden print:bg-white print:p-0 print:m-0 print:w-full print:min-h-0 print:overflow-visible print:block">
         {/* Top Header */}
-        <header className="hidden md:flex h-16 bg-[#001A38]/70 backdrop-blur-md border-b border-slate-800/80 px-8 items-center justify-between sticky top-0 z-20 print:hidden">
+        <header className="hidden md:flex h-16 bg-[#102542]/70 backdrop-blur-md border-b border-slate-800/80 px-8 items-center justify-between sticky top-0 z-20 print:hidden">
           <div className="flex items-center gap-2.5 text-xs text-slate-400">
             <span className="font-semibold text-slate-300">Bóveda Administrativa</span>
             <span>/</span>
@@ -675,7 +675,7 @@ export default function AdminLayout({
           <div className="flex items-center gap-4">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] border border-white/10 text-xs font-medium text-slate-200 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] border border-white/10 text-xs font-medium text-slate-200 hover:text-white transition-colors"
             >
               <span>Ver Vitrina Pública</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-amber-200/90" />

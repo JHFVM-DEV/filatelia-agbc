@@ -68,11 +68,11 @@ export const RoleAccessModal: React.FC<RoleAccessModalProps> = ({
   ];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#001A38]/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#102542]/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in">
       <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-[#E2DDD5] overflow-hidden my-8">
         
         {/* Header */}
-        <div className="bg-[#002B5B] px-6 py-5 text-white flex items-center justify-between border-b border-[#0A3B73]">
+        <div className="bg-[#102542] px-6 py-5 text-white flex items-center justify-between border-b border-[#2C63AC]">
           <div className="flex items-center gap-2.5">
             <KeyRound className="w-5 h-5 text-amber-300" />
             <div>
@@ -98,17 +98,17 @@ export const RoleAccessModal: React.FC<RoleAccessModalProps> = ({
               <div 
                 key={role.id}
                 className={`p-5 rounded-2xl border transition-all bg-white shadow-sm ${
-                  isCurrent ? 'border-[#002B5B] ring-2 ring-[#002B5B]/10' : 'border-[#E2DDD5] hover:border-slate-300'
+                  isCurrent ? 'border-[#102542] ring-2 ring-[#102542]/10' : 'border-[#E2DDD5] hover:border-slate-300'
                 }`}
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-[#002B5B] text-amber-300">
+                    <div className="p-2.5 rounded-xl bg-[#102542] text-amber-300">
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h4 className="font-bold text-sm text-[#002B5B]">{role.name}</h4>
+                        <h4 className="font-bold text-sm text-[#102542]">{role.name}</h4>
                         <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${role.badgeColor}`}>
                           {role.id}
                         </span>
@@ -131,13 +131,13 @@ export const RoleAccessModal: React.FC<RoleAccessModalProps> = ({
                   <div className="flex items-center gap-1.5 text-slate-600 font-mono text-[11px] bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200">
                     <span>{role.credentials.email}</span>
                     <span className="text-slate-400">/</span>
-                    <span className={visiblePasswords[role.id] ? "text-[#002B5B] font-bold" : "text-slate-400"}>
+                    <span className={visiblePasswords[role.id] ? "text-[#102542] font-bold" : "text-slate-400"}>
                       {visiblePasswords[role.id] ? role.credentials.pass : '••••••••'}
                     </span>
                     <button
                       type="button"
                       onClick={() => togglePasswordVisibility(role.id)}
-                      className="text-slate-400 hover:text-[#002B5B] transition p-0.5 ml-0.5 cursor-pointer"
+                      className="text-slate-400 hover:text-[#102542] transition p-0.5 ml-0.5 cursor-pointer"
                       title={visiblePasswords[role.id] ? "Ocultar contraseña" : "Ver contraseña"}
                     >
                       {visiblePasswords[role.id] ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
@@ -150,7 +150,7 @@ export const RoleAccessModal: React.FC<RoleAccessModalProps> = ({
                         onSelectRole(role.name);
                         onClose();
                       }}
-                      className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-[#002B5B] transition"
+                      className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-[#102542] transition"
                     >
                       Seleccionar en Vista
                     </button>

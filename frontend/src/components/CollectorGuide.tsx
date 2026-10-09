@@ -74,18 +74,18 @@ export const CollectorGuide: React.FC = () => {
   return (
     <section id="guia" className="relative overflow-hidden">
       {/* Header Banner - Amarillo Postal Dominante de Correos de Bolivia */}
-      <div className="bg-gradient-to-r from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] py-14 border-b-2 border-[#E5B500] relative overflow-hidden shadow-sm">
+      <div className="bg-gradient-to-r from-[#FFE58C] via-[#FECC36] to-[#E5B728] text-[#102542] py-14 border-b-2 border-[#E5B728] relative overflow-hidden shadow-sm">
         <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide mb-3 shadow-sm">
-            <BookOpen className="w-4 h-4 text-[#FFD100]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#102542] text-[#FECC36] text-xs font-bold tracking-wide mb-3 shadow-sm">
+            <BookOpen className="w-4 h-4 text-[#FECC36]" />
             <span>Academia & Normas Internacionales UPU</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#102542] tracking-tight">
             Guía del Coleccionista & Criterios de Calidad
           </h1>
-          <p className="mt-3 text-sm sm:text-base text-[#002B5B]/85 max-w-3xl mx-auto font-medium leading-relaxed">
-            En la filatelia de alta gama, cada detalle define el valor de una pieza. Conozca los estándares universales de conservación, anatomía y custodia dictados por la <strong className="text-[#002B5B] font-black">Unión Postal Universal (UPU)</strong>.
+          <p className="mt-3 text-sm sm:text-base text-[#102542]/85 max-w-3xl mx-auto font-medium leading-relaxed">
+            En la filatelia de alta gama, cada detalle define el valor de una pieza. Conozca los estándares universales de conservación, anatomía y custodia dictados por la <strong className="text-[#102542] font-black">Unión Postal Universal (UPU)</strong>.
           </p>
         </div>
       </div>
@@ -96,10 +96,10 @@ export const CollectorGuide: React.FC = () => {
           <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E2DDD5] shadow-xl mb-16">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#E2DDD5]">
               <div>
-                <span className="text-xs font-extrabold text-[#C99A00] uppercase tracking-widest block mb-1">
+                <span className="text-xs font-extrabold text-[#8A6800] uppercase tracking-widest block mb-1">
                   Escala Universal de Conservación
                 </span>
-                <h3 className="text-xl sm:text-2xl font-black text-[#002B5B]">
+                <h3 className="text-xl sm:text-2xl font-black text-[#102542]">
                   ¿Cómo se clasifican los estados de conservación?
                 </h3>
               </div>
@@ -112,8 +112,8 @@ export const CollectorGuide: React.FC = () => {
                     onClick={() => setSelectedGrade(g.code)}
                     className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
                       selectedGrade === g.code
-                        ? 'bg-[#FFCC00] text-[#002B5B] border-[#E5B500] shadow-md font-black'
-                        : 'bg-[#FAF8F0] text-slate-600 hover:bg-[#FAF5E6] hover:text-[#002B5B] border-[#E2DDD5]'
+                        ? 'bg-[#FECC36] text-[#102542] border-[#E5B728] shadow-md font-black'
+                        : 'bg-[#FAF8F0] text-slate-600 hover:bg-[#FAF5E6] hover:text-[#102542] border-[#E2DDD5]'
                     }`}
                   >
                     {g.code}
@@ -126,10 +126,10 @@ export const CollectorGuide: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-7 space-y-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-lg font-black font-mono px-3 py-1 bg-[#002B5B] text-[#FFD100] rounded-lg shadow-xs">
+                  <span className="text-lg font-black font-mono px-3 py-1 bg-[#102542] text-[#FECC36] rounded-lg shadow-xs">
                     {activeGrade.code}
                   </span>
-                  <h4 className="text-base sm:text-lg font-bold text-[#002B5B]">
+                  <h4 className="text-base sm:text-lg font-bold text-[#102542]">
                     {activeGrade.name}
                   </h4>
                 </div>
@@ -139,7 +139,7 @@ export const CollectorGuide: React.FC = () => {
               </p>
 
               <div className="space-y-2 pt-2">
-                <span className="text-xs font-bold text-[#002B5B] uppercase tracking-wider block">
+                <span className="text-xs font-bold text-[#102542] uppercase tracking-wider block">
                   Rasgos Periciales Auditados:
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -153,7 +153,7 @@ export const CollectorGuide: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-[#001A38] text-white p-6 rounded-2xl border border-[#0A3B73] space-y-4">
+            <div className="lg:col-span-5 bg-[#102542] text-white p-6 rounded-2xl border border-[#2C63AC] space-y-4">
               <div className="flex items-center gap-2 text-amber-200/90 font-medium">
                 <Shield className="w-5 h-5 text-amber-300/80" />
                 <h5 className="font-semibold text-xs uppercase tracking-wider">
@@ -165,7 +165,7 @@ export const CollectorGuide: React.FC = () => {
                 {activeGrade.recommendation}
               </p>
 
-              <div className="p-3 bg-[#002B5B] rounded-xl border border-white/10 text-[11px] text-slate-200">
+              <div className="p-3 bg-[#102542] rounded-xl border border-white/10 text-[11px] text-slate-200">
                 💡 Todas las piezas catalogadas en nuestra bóveda como <strong>MINT NH</strong> son sometidas a espectrometría UV para certificar la ausencia de re-engomado o manipulaciones térmicas.
               </div>
             </div>
@@ -177,10 +177,10 @@ export const CollectorGuide: React.FC = () => {
           
           {/* Card 1: Dentado y Perforación */}
           <div className="bg-white p-6 rounded-2xl border border-[#E2DDD5] shadow-md hover:shadow-lg transition">
-            <div className="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center text-[#C99A00] mb-4">
+            <div className="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center text-[#8A6800] mb-4">
               <Layers className="w-6 h-6" />
             </div>
-            <h4 className="text-base font-bold text-[#002B5B] mb-2">
+            <h4 className="text-base font-bold text-[#102542] mb-2">
               Dentado y Odontómetro
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
@@ -190,10 +190,10 @@ export const CollectorGuide: React.FC = () => {
 
           {/* Card 2: Marcas de Agua y Filigranas */}
           <div className="bg-white p-6 rounded-2xl border border-[#E2DDD5] shadow-md hover:shadow-lg transition">
-            <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-[#0A3B73] mb-4">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-[#2C63AC] mb-4">
               <Eye className="w-6 h-6" />
             </div>
-            <h4 className="text-base font-bold text-[#002B5B] mb-2">
+            <h4 className="text-base font-bold text-[#102542] mb-2">
               Filigranas y Papel de Seguridad
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
@@ -206,7 +206,7 @@ export const CollectorGuide: React.FC = () => {
             <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 mb-4">
               <Thermometer className="w-6 h-6" />
             </div>
-            <h4 className="text-base font-bold text-[#002B5B] mb-2">
+            <h4 className="text-base font-bold text-[#102542] mb-2">
               Microclima de Custodia
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">

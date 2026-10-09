@@ -407,9 +407,9 @@ export default function AdminLogsPage() {
   return (
     <div className="space-y-6">
       {/* Top Banner Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-[#001A38] via-[#002244] to-[#00142B] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-[#102542] via-[#163359] to-[#0D2039] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#002B5B] to-[#001A38] border border-white/10 flex items-center justify-center text-amber-200 shadow-lg shadow-black/40">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542] border border-white/10 flex items-center justify-center text-amber-200 shadow-lg shadow-black/40">
             <Shield className="w-7 h-7" />
           </div>
           <div>
@@ -442,7 +442,7 @@ export default function AdminLogsPage() {
           <button
             onClick={loadAllData}
             disabled={loading}
-            className="p-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer shadow-md"
+            className="p-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer shadow-md"
             title="Refrescar todos los datos"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -479,7 +479,7 @@ export default function AdminLogsPage() {
           onClick={() => setActiveTab('AUDIT')}
           className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
             activeTab === 'AUDIT'
-              ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
+              ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
               : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
           }`}
         >
@@ -491,7 +491,7 @@ export default function AdminLogsPage() {
           onClick={() => setActiveTab('REVALUATIONS')}
           className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
             activeTab === 'REVALUATIONS'
-              ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
+              ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
               : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
           }`}
         >
@@ -503,7 +503,7 @@ export default function AdminLogsPage() {
           onClick={() => setActiveTab('SYSTEM_LOGS')}
           className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
             activeTab === 'SYSTEM_LOGS'
-              ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
+              ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
               : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
           }`}
         >
@@ -519,7 +519,7 @@ export default function AdminLogsPage() {
         <div className="space-y-6">
           {/* 4 KPI Metrics */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-[#00142B]/80 border border-slate-800/80 p-5 rounded-2xl relative overflow-hidden">
+            <div className="bg-[#0D2039]/80 border border-slate-800/80 p-5 rounded-2xl relative overflow-hidden">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-slate-400 font-medium">Total Eventos Auditados</span>
                 <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
@@ -532,7 +532,7 @@ export default function AdminLogsPage() {
               <p className="text-[11px] text-slate-500 mt-1">Eventos con firma criptográfica y rol</p>
             </div>
 
-            <div className="bg-[#00142B]/80 border border-emerald-900/30 p-5 rounded-2xl relative overflow-hidden">
+            <div className="bg-[#0D2039]/80 border border-emerald-900/30 p-5 rounded-2xl relative overflow-hidden">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-emerald-400 font-medium">Revalorizaciones de Precio</span>
                 <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
@@ -545,7 +545,7 @@ export default function AdminLogsPage() {
               <p className="text-[11px] text-emerald-500/80 mt-1">Dictámenes oficiales de cotización</p>
             </div>
 
-            <div className="bg-[#00142B]/80 border border-amber-900/30 p-5 rounded-2xl relative overflow-hidden">
+            <div className="bg-[#0D2039]/80 border border-amber-900/30 p-5 rounded-2xl relative overflow-hidden">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-amber-400 font-medium">Ajustes Físicos en Bóveda</span>
                 <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
@@ -558,7 +558,7 @@ export default function AdminLogsPage() {
               <p className="text-[11px] text-amber-500/80 mt-1">Altas, bajas y cuadres de inventario</p>
             </div>
 
-            <div className="bg-[#00142B]/80 border border-purple-900/30 p-5 rounded-2xl relative overflow-hidden">
+            <div className="bg-[#0D2039]/80 border border-purple-900/30 p-5 rounded-2xl relative overflow-hidden">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-purple-400 font-medium">Transiciones de Despacho</span>
                 <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">
@@ -573,7 +573,7 @@ export default function AdminLogsPage() {
           </div>
 
           {/* Search & Filter Toolbar */}
-          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 bg-[#001833] border border-slate-800 p-4 rounded-xl">
+          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 bg-[#0F233E] border border-slate-800 p-4 rounded-xl">
             <div className="relative flex-1">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
@@ -581,7 +581,7 @@ export default function AdminLogsPage() {
                 value={auditSearch}
                 onChange={(e) => setAuditSearch(e.target.value)}
                 placeholder="Buscar por sello, funcionario, justificación o resumen de cambio..."
-                className="w-full bg-[#001021] border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
               />
               {auditSearch && (
                 <button
@@ -607,7 +607,7 @@ export default function AdminLogsPage() {
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                     auditActionFilter === pill.value
                       ? 'bg-amber-400 text-slate-950 font-bold'
-                      : 'bg-[#002244] text-slate-300 hover:bg-[#002D5B] hover:text-white'
+                      : 'bg-[#163359] text-slate-300 hover:bg-[#102542] hover:text-white'
                   }`}
                 >
                   {pill.label}
@@ -617,8 +617,8 @@ export default function AdminLogsPage() {
           </div>
 
           {/* Audit Trail List */}
-          <div className="bg-[#00142B] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
-            <div className="p-4 border-b border-slate-800 bg-[#001021]/80 flex items-center justify-between">
+          <div className="bg-[#0D2039] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+            <div className="p-4 border-b border-slate-800 bg-[#0B1A2D]/80 flex items-center justify-between">
               <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
                 Registros Oficiales ({filteredAuditLogs.length})
               </span>
@@ -653,7 +653,7 @@ export default function AdminLogsPage() {
                   });
 
                   return (
-                    <div key={log.id} className="p-4 hover:bg-[#001A38]/50 transition-colors">
+                    <div key={log.id} className="p-4 hover:bg-[#102542]/50 transition-colors">
                       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
                         <div className="flex items-start gap-3">
                           <div className="mt-0.5">{getActionBadge(log.action)}</div>
@@ -686,7 +686,7 @@ export default function AdminLogsPage() {
                             <div className="flex items-center gap-1.5 justify-end text-xs font-semibold text-slate-300">
                               <User className="w-3.5 h-3.5 text-slate-400" />
                               <span>{log.user_name}</span>
-                              <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-[#002B5B] text-amber-300 border border-slate-700">
+                              <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-[#102542] text-amber-300 border border-slate-700">
                                 {log.user_role}
                               </span>
                             </div>
@@ -719,12 +719,12 @@ export default function AdminLogsPage() {
 
                       {/* Expandable Diffs */}
                       {isExpanded && (log.old_values || log.new_values) && (
-                        <div className="mt-3 p-3 rounded-xl bg-[#000E1C] border border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono">
+                        <div className="mt-3 p-3 rounded-xl bg-[#091627] border border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono">
                           <div>
                             <span className="text-[10px] font-bold uppercase text-rose-400">
                               Valores Anteriores:
                             </span>
-                            <pre className="mt-1 p-2 bg-[#00142B] rounded text-slate-400 overflow-x-auto text-[11px]">
+                            <pre className="mt-1 p-2 bg-[#0D2039] rounded text-slate-400 overflow-x-auto text-[11px]">
                               {JSON.stringify(log.old_values, null, 2)}
                             </pre>
                           </div>
@@ -732,7 +732,7 @@ export default function AdminLogsPage() {
                             <span className="text-[10px] font-bold uppercase text-emerald-400">
                               Nuevos Valores Aplicados:
                             </span>
-                            <pre className="mt-1 p-2 bg-[#00142B] rounded text-slate-200 overflow-x-auto text-[11px]">
+                            <pre className="mt-1 p-2 bg-[#0D2039] rounded text-slate-200 overflow-x-auto text-[11px]">
                               {JSON.stringify(log.new_values, null, 2)}
                             </pre>
                           </div>
@@ -754,7 +754,7 @@ export default function AdminLogsPage() {
         <div className="space-y-6">
           {/* 3 Executive Metrics */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-gradient-to-br from-[#001F3F] to-[#00142B] border-2 border-emerald-500/40 p-6 rounded-2xl shadow-xl">
+            <div className="bg-gradient-to-br from-[#142E52] to-[#0D2039] border-2 border-emerald-500/40 p-6 rounded-2xl shadow-xl">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-emerald-300 font-bold uppercase tracking-wider">
                   Plusvalía Acumulada en Bóveda
@@ -771,7 +771,7 @@ export default function AdminLogsPage() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-[#001F3F] to-[#00142B] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
+            <div className="bg-gradient-to-br from-[#142E52] to-[#0D2039] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-amber-300 font-bold uppercase tracking-wider">
                   Revalorizaciones Oficiales
@@ -788,7 +788,7 @@ export default function AdminLogsPage() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-[#001F3F] to-[#00142B] border border-cyan-500/30 p-6 rounded-2xl shadow-xl">
+            <div className="bg-gradient-to-br from-[#142E52] to-[#0D2039] border border-cyan-500/30 p-6 rounded-2xl shadow-xl">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-cyan-300 font-bold uppercase tracking-wider">
                   Variación Media de Cotización
@@ -807,7 +807,7 @@ export default function AdminLogsPage() {
           </div>
 
           {/* Action Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#001833] border border-slate-800 p-4 rounded-xl">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0F233E] border border-slate-800 p-4 rounded-xl">
             <div>
               <h3 className="text-sm font-bold text-white">
                 Registro de Actas de Revalorización Filatélica
@@ -827,11 +827,11 @@ export default function AdminLogsPage() {
           </div>
 
           {/* Revaluations Table */}
-          <div className="bg-[#00142B] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+          <div className="bg-[#0D2039] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-[#001021] text-slate-400 border-b border-slate-800 text-[11px] uppercase tracking-wider">
+                  <tr className="bg-[#0B1A2D] text-slate-400 border-b border-slate-800 text-[11px] uppercase tracking-wider">
                     <th className="p-4">Pieza Filatélica</th>
                     <th className="p-4">Cotización Anterior</th>
                     <th className="p-4">Nueva Cotización</th>
@@ -859,7 +859,7 @@ export default function AdminLogsPage() {
                       });
 
                       return (
-                        <tr key={r.id} className="hover:bg-[#001A38]/50 transition-colors">
+                        <tr key={r.id} className="hover:bg-[#102542]/50 transition-colors">
                           <td className="p-4">
                             <div className="flex items-center gap-3">
                               {r.product?.front_image ? (
@@ -869,7 +869,7 @@ export default function AdminLogsPage() {
                                   className="w-10 h-10 object-contain rounded bg-black/40 border border-slate-700 shrink-0"
                                 />
                               ) : (
-                                <div className="w-10 h-10 rounded bg-[#002B5B] flex items-center justify-center text-amber-400 font-serif font-bold text-xs shrink-0">
+                                <div className="w-10 h-10 rounded bg-[#102542] flex items-center justify-center text-amber-400 font-serif font-bold text-xs shrink-0">
                                   BO
                                 </div>
                               )}
@@ -951,7 +951,7 @@ export default function AdminLogsPage() {
       {/* ========================================================================= */}
       {activeTab === 'SYSTEM_LOGS' && (
         <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#001833] border border-slate-800 p-4 rounded-xl">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0F233E] border border-slate-800 p-4 rounded-xl">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
                 <Terminal className="w-5 h-5" />
@@ -969,7 +969,7 @@ export default function AdminLogsPage() {
             <div className="flex items-center gap-2">
               <button
                 onClick={fetchRawLogs}
-                className="p-2 rounded-lg bg-[#002B5B] hover:bg-[#0A3B73] text-slate-300 hover:text-white transition-colors cursor-pointer"
+                className="p-2 rounded-lg bg-[#102542] hover:bg-[#2C63AC] text-slate-300 hover:text-white transition-colors cursor-pointer"
                 title="Actualizar registros"
               >
                 <RefreshCw className="w-4 h-4" />
@@ -992,7 +992,7 @@ export default function AdminLogsPage() {
                 onClick={() => setRawFilter(lvl)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium tracking-wider uppercase transition-colors cursor-pointer ${
                   rawFilter === lvl
-                    ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
+                    ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -1002,8 +1002,8 @@ export default function AdminLogsPage() {
           </div>
 
           {/* Terminal Box */}
-          <div className="bg-[#001021] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
-            <div className="bg-[#00142B] px-4 py-3 border-b border-slate-800/80 flex items-center justify-between">
+          <div className="bg-[#0B1A2D] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="bg-[#0D2039] px-4 py-3 border-b border-slate-800/80 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
@@ -1076,9 +1076,9 @@ export default function AdminLogsPage() {
       {/* ========================================================================= */}
       {showRevalModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-[#001730] border border-white/10 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl">
+          <div className="bg-[#0E223C] border border-white/10 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-[#002244] to-[#00142B] px-6 py-4 border-b border-white/10 flex items-center justify-between">
+            <div className="bg-gradient-to-r from-[#163359] to-[#0D2039] px-6 py-4 border-b border-white/10 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-amber-200/90">
                   <TrendingUp className="w-5 h-5" />
@@ -1119,7 +1119,7 @@ export default function AdminLogsPage() {
                     }
                   }}
                   required
-                  className="w-full bg-[#001021] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer"
+                  className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer"
                 >
                   <option value="">-- Seleccionar pieza del catálogo oficial --</option>
                   {catalogProducts.map((p) => (
@@ -1132,7 +1132,7 @@ export default function AdminLogsPage() {
 
               {/* Real-time Impact Preview */}
               {selectedProduct && (
-                <div className="bg-[#000E1C] border border-amber-500/30 rounded-xl p-4 space-y-3">
+                <div className="bg-[#091627] border border-amber-500/30 rounded-xl p-4 space-y-3">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-2">
                     <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
                       Impacto Patrimonial Proyectado en Bóveda
@@ -1143,21 +1143,21 @@ export default function AdminLogsPage() {
                   </div>
 
                   <div className="grid grid-cols-3 gap-3 text-center">
-                    <div className="bg-[#001833] p-2.5 rounded-lg border border-slate-800">
+                    <div className="bg-[#0F233E] p-2.5 rounded-lg border border-slate-800">
                       <span className="text-[10px] text-slate-400 block">Cotización Anterior</span>
                       <span className="text-sm font-bold text-slate-300 font-mono">
                         Bs. {Number(selectedProduct.price).toFixed(2)}
                       </span>
                     </div>
 
-                    <div className="bg-[#001833] p-2.5 rounded-lg border border-emerald-900/40">
+                    <div className="bg-[#0F233E] p-2.5 rounded-lg border border-emerald-900/40">
                       <span className="text-[10px] text-emerald-400 block">Nueva Cotización</span>
                       <span className="text-sm font-bold text-emerald-300 font-mono">
                         {revalPreview ? `Bs. ${revalPreview.newPrice.toFixed(2)}` : '--'}
                       </span>
                     </div>
 
-                    <div className="bg-[#001833] p-2.5 rounded-lg border border-cyan-900/40">
+                    <div className="bg-[#0F233E] p-2.5 rounded-lg border border-cyan-900/40">
                       <span className="text-[10px] text-cyan-400 block">Variación %</span>
                       <span className="text-sm font-bold text-cyan-300 font-mono">
                         {revalPreview
@@ -1194,7 +1194,7 @@ export default function AdminLogsPage() {
                     onChange={(e) => setNewPriceInput(e.target.value)}
                     placeholder="Ej. 185.00"
                     required
-                    className="w-full bg-[#001021] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 font-mono font-bold"
+                    className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 font-mono font-bold"
                   />
                 </div>
 
@@ -1205,7 +1205,7 @@ export default function AdminLogsPage() {
                   <select
                     value={revalReason}
                     onChange={(e) => setRevalReason(e.target.value)}
-                    className="w-full bg-[#001021] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer"
+                    className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer"
                   >
                     <option value="Actualización según Catálogo Internacional Scott / Yvert 2026">
                       Catálogo Internacional Scott / Yvert 2026
@@ -1235,7 +1235,7 @@ export default function AdminLogsPage() {
                     onChange={(e) => setRevalCustomReason(e.target.value)}
                     placeholder="Describa el motivo o resolución administrativa..."
                     required
-                    className="w-full bg-[#001021] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400"
+                    className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400"
                   />
                 </div>
               )}
@@ -1250,7 +1250,7 @@ export default function AdminLogsPage() {
                   value={revalNotes}
                   onChange={(e) => setRevalNotes(e.target.value)}
                   placeholder="Detalles sobre dentado, filigrana, procedencia o número de acta ministerial..."
-                  className="w-full bg-[#001021] border border-slate-700 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-amber-400 resize-none"
+                  className="w-full bg-[#0B1A2D] border border-slate-700 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-amber-400 resize-none"
                 />
               </div>
 

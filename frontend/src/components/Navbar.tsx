@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const roleLabel = getRoleLabel(currentUser);
 
   return (
-    <header className="sticky top-0 z-40 bg-[#002B5B]/95 backdrop-blur-md text-white border-b border-[#001A38] shadow-lg">
+    <header className="sticky top-0 z-40 bg-[#102542]/95 backdrop-blur-md text-white border-b border-[#102542] shadow-lg">
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 gap-4">
@@ -138,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               {/* Logo Corporativo Institucional */}
               <div className="border-l border-slate-700/80 pl-3 shrink-0">
-                <div className="text-[10px] tracking-widest text-[#FFD100] uppercase font-bold mt-0.5 flex items-center gap-1">
+                <div className="text-[10px] tracking-widest text-[#FECC36] uppercase font-bold mt-0.5 flex items-center gap-1">
                   <span>Filatelia Bolivia</span>
                 </div>
                 <div className="text-[9px] text-slate-300 font-medium uppercase tracking-wider">
@@ -158,8 +158,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   href={link.href}
                   className={`py-1 border-b-2 whitespace-nowrap text-xs lg:text-sm font-medium transition-colors duration-200 ${
                     isActive
-                      ? 'text-[#FFD100] border-[#FFCC00] font-black'
-                      : 'text-slate-200 border-transparent hover:text-[#FFD100] hover:border-[#FFCC00]/50'
+                      ? 'text-[#FECC36] border-[#FECC36] font-black'
+                      : 'text-slate-200 border-transparent hover:text-[#FECC36] hover:border-[#FECC36]/50'
                   }`}
                 >
                   {link.label}
@@ -180,14 +180,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                   title="Bóveda de Adquisiciones"
                 >
                   <div className="relative shrink-0 flex items-center justify-center">
-                    <ShoppingBag className="w-4.5 h-4.5 text-[#FFCC00] transition-transform duration-300 group-hover:scale-110" />
+                    <ShoppingBag className="w-4.5 h-4.5 text-[#FECC36] transition-transform duration-300 group-hover:scale-110" />
                     {cartCount > 0 && (
-                      <span className="absolute -top-1.5 -right-2 bg-[#FFCC00] text-[#002B5B] text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow">
+                      <span className="absolute -top-1.5 -right-2 bg-[#FECC36] text-[#102542] text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow">
                         {cartCount}
                       </span>
                     )}
                   </div>
-                  <span className="max-w-0 opacity-0 group-hover:max-w-[110px] group-hover:opacity-100 group-hover:ml-2.5 transition-all duration-300 ease-out text-xs font-semibold text-[#FFD100] overflow-hidden whitespace-nowrap">
+                  <span className="max-w-0 opacity-0 group-hover:max-w-[110px] group-hover:opacity-100 group-hover:ml-2.5 transition-all duration-300 ease-out text-xs font-semibold text-[#FECC36] overflow-hidden whitespace-nowrap">
                     Bóveda {cartCount > 0 ? `(${cartCount})` : ''}
                   </span>
                 </button>
@@ -201,7 +201,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     className={`flex items-center h-10 gap-2.5 px-3 rounded-xl border transition-all duration-200 shadow-sm shrink-0 cursor-pointer ${
                       isMenuOpen
-                        ? 'bg-[#001D3D] text-white border-amber-300/40'
+                        ? 'bg-[#122B4D] text-white border-amber-300/40'
                         : 'bg-white/[0.08] hover:bg-white/[0.12] text-white border-white/10 hover:border-white/20'
                     }`}
                     title="Menú de Custodia y Cuenta Oficial"
@@ -240,9 +240,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                   {/* Floating Luxury Dropdown Card */}
                   {isMenuOpen && (
-                    <div className="absolute right-0 top-full mt-2.5 w-80 sm:w-88 rounded-2xl bg-[#001630] border border-white/10 shadow-2xl shadow-black/90 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-200 backdrop-blur-xl">
+                    <div className="absolute right-0 top-full mt-2.5 w-80 sm:w-88 rounded-2xl bg-[#0E213B] border border-white/10 shadow-2xl shadow-black/90 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-200 backdrop-blur-xl">
                       {/* Card Header with Sovereign Texture & Credentials */}
-                      <div className="relative p-4 sm:p-5 bg-gradient-to-b from-[#00224a] to-[#001630] border-b border-white/10">
+                      <div className="relative p-4 sm:p-5 bg-gradient-to-b from-[#183D70] to-[#0E213B] border-b border-white/10">
                         <div className="flex items-center justify-between text-[10px] uppercase tracking-widest text-amber-200/90 font-medium mb-2">
                           <span className="flex items-center gap-1.5">
                             <Award className="w-3.5 h-3.5" />
@@ -297,7 +297,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             className="group flex items-center justify-between p-2.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 hover:border-white/20 transition-all duration-200 cursor-pointer shadow-sm"
                           >
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-lg bg-[#002B5B] border border-white/10 flex items-center justify-center shrink-0 text-amber-300/90 group-hover:scale-105 transition-transform">
+                              <div className="w-8 h-8 rounded-lg bg-[#102542] border border-white/10 flex items-center justify-center shrink-0 text-amber-300/90 group-hover:scale-105 transition-transform">
                                 <ShieldCheck className="w-4.5 h-4.5" />
                               </div>
                               <div className="flex flex-col text-left">
@@ -323,7 +323,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             className="w-full group flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.05] border border-transparent hover:border-white/10 transition-all duration-200 cursor-pointer text-left"
                           >
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-lg bg-[#001A38] border border-slate-700/60 flex items-center justify-center shrink-0 text-amber-300/80 group-hover:text-amber-200 transition-colors">
+                              <div className="w-8 h-8 rounded-lg bg-[#102542] border border-slate-700/60 flex items-center justify-center shrink-0 text-amber-300/80 group-hover:text-amber-200 transition-colors">
                                 <User className="w-4.5 h-4.5" />
                               </div>
                               <div className="flex flex-col">
@@ -348,7 +348,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           className="w-full group flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.05] border border-transparent hover:border-white/10 transition-all duration-200 cursor-pointer text-left"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-lg bg-[#001A38] border border-slate-700/60 flex items-center justify-center shrink-0 text-amber-300/80 group-hover:text-amber-200 transition-colors">
+                            <div className="w-8 h-8 rounded-lg bg-[#102542] border border-slate-700/60 flex items-center justify-center shrink-0 text-amber-300/80 group-hover:text-amber-200 transition-colors">
                               <TrendingUp className="w-4.5 h-4.5" />
                             </div>
                             <div className="flex flex-col">
@@ -376,13 +376,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                             className="w-full group flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.05] border border-transparent hover:border-white/10 transition-all duration-200 cursor-pointer text-left"
                           >
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-lg bg-[#001A38] border border-slate-700/60 flex items-center justify-center shrink-0 text-amber-300/80 group-hover:text-amber-200 transition-colors">
+                              <div className="w-8 h-8 rounded-lg bg-[#102542] border border-slate-700/60 flex items-center justify-center shrink-0 text-amber-300/80 group-hover:text-amber-200 transition-colors">
                                 <Truck className="w-4.5 h-4.5" />
                               </div>
                               <div className="flex flex-col">
                                 <span className="font-semibold text-slate-200 group-hover:text-white flex items-center gap-1.5">
                                   Rastreo de Envíos
-                                  <span className="bg-[#FFD100]/20 text-[#FFD100] text-[9px] font-bold px-1.5 py-0.5 rounded border border-[#FFD100]/30">
+                                  <span className="bg-[#FECC36]/20 text-[#FECC36] text-[9px] font-bold px-1.5 py-0.5 rounded border border-[#FECC36]/30">
                                     Guías
                                   </span>
                                 </span>
@@ -404,7 +404,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           className="w-full group flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.05] border border-transparent hover:border-white/10 transition-all duration-200 cursor-pointer text-left"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-lg bg-[#001A38] border border-slate-700/60 flex items-center justify-center shrink-0 text-rose-400 group-hover:scale-105 transition-transform">
+                            <div className="w-8 h-8 rounded-lg bg-[#102542] border border-slate-700/60 flex items-center justify-center shrink-0 text-rose-400 group-hover:scale-105 transition-transform">
                               <Heart className="w-4.5 h-4.5" />
                             </div>
                             <div className="flex flex-col">
@@ -433,7 +433,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           className="w-full group flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.05] border border-transparent hover:border-white/10 transition-all duration-200 cursor-pointer text-left"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-lg bg-[#001A38] border border-slate-700/60 flex items-center justify-center shrink-0 text-amber-300/80 group-hover:scale-105 transition-transform">
+                            <div className="w-8 h-8 rounded-lg bg-[#102542] border border-slate-700/60 flex items-center justify-center shrink-0 text-amber-300/80 group-hover:scale-105 transition-transform">
                               <ShoppingBag className="w-4.5 h-4.5" />
                             </div>
                             <div className="flex flex-col">
@@ -455,7 +455,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       </div>
 
                       {/* Dropdown Footer: Logout */}
-                      <div className="p-2.5 bg-[#001329] border-t border-slate-800">
+                      <div className="p-2.5 bg-[#0D1E36] border-t border-slate-800">
                         <button
                           onClick={() => {
                             setIsMenuOpen(false);
@@ -484,7 +484,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
       </div>
-      <div className="h-0.5 bg-gradient-to-r from-[#FFD100] via-[#FFCC00] to-[#E5B500] w-full" />
+      <div className="h-0.5 bg-gradient-to-r from-[#FECC36] via-[#FECC36] to-[#E5B728] w-full" />
     </header>
   );
 };

@@ -3,11 +3,11 @@
    ========================================================================== */
 
 :root {
-    --fil-azul-primary: #002B5B;
-    --fil-azul-dark: #001A38;
-    --fil-azul-light: #0A3B73;
-    --fil-oro: #F4C400;
-    --fil-oro-hover: #E2B300;
+    --fil-azul-primary: #102542;
+    --fil-azul-dark: #102542;
+    --fil-azul-light: #2C63AC;
+    --fil-oro: #FECC36;
+    --fil-oro-hover: #E5B728;
     --fil-marfil: #FAF8F0;
     --fil-card-bg-light: #FFFFFF;
     --fil-card-bg-dark: #FFFFFF;
@@ -158,7 +158,7 @@ svg.w-12, .w-12 { width: 3rem !important; height: 3rem !important; }
 
 /* Gradientes institucionales */
 .bg-gradient-to-r {
-    background-image: linear-gradient(to right, #002B5B, #0A3B73) !important;
+    background-image: linear-gradient(to right, #102542, #2C63AC) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -224,14 +224,14 @@ button:hover {
     filter: brightness(1.05);
 }
 
-.bg-\[\#002B5B\] {
-    background-color: #002B5B !important;
+.bg-\[\#102542\] {
+    background-color: #102542 !important;
 }
-.hover\:bg-\[\#0A3B73\]:hover {
-    background-color: #0A3B73 !important;
+.hover\:bg-\[\#2C63AC\]:hover {
+    background-color: #2C63AC !important;
 }
-.text-\[\#F4C400\] {
-    color: #F4C400 !important;
+.text-\[\#FECC36\] {
+    color: #FECC36 !important;
 }
 .bg-emerald-600 {
     background-color: #059669 !important;
@@ -272,8 +272,8 @@ input[type="text"], input[type="number"], select, textarea {
 }
 input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: #002B5B;
-    box-shadow: 0 0 0 3px rgba(0, 43, 91, 0.1);
+    border-color: #102542;
+    box-shadow: 0 0 0 3px rgba(16, 37, 66, 0.1);
 }
 
 /* ==========================================================================
@@ -282,7 +282,7 @@ input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:foc
 :root {
     --scrollbar-track: #F1F5F9;
     --scrollbar-thumb: #CBD5E1;
-    --scrollbar-thumb-hover: #002B5B;
+    --scrollbar-thumb-hover: #102542;
 }
 
 /* Soporte estándar W3C */
@@ -309,8 +309,8 @@ html, body, .fi-sidebar-nav, .fi-main, .fi-ta-content, .fi-modal-content, aside,
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #002B5B;
-    box-shadow: 0 0 8px rgba(0, 43, 91, 0.3);
+    background: #102542;
+    box-shadow: 0 0 8px rgba(16, 37, 66, 0.3);
 }
 
 ::-webkit-scrollbar-corner {

@@ -47,10 +47,10 @@ class DepartmentSalesChartWidget extends ChartWidget
         $values = array_values($deptOrders);
 
         $colors = [
-            '#002B5B',
-            '#0A3B73',
-            '#F4C400',
-            '#E2B300',
+            '#102542',
+            '#2C63AC',
+            '#FECC36',
+            '#E5B728',
             '#2E7D32',
             '#1565C0',
             '#6A1B9A',

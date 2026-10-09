@@ -197,13 +197,13 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#001A38]/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#102542]/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in">
       <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-[#E2DDD5] overflow-hidden">
         
         {/* Header */}
-        <div className="bg-[#002B5B] px-6 py-4 text-white flex items-center justify-between border-b border-[#0A3B73]">
+        <div className="bg-[#102542] px-6 py-4 text-white flex items-center justify-between border-b border-[#2C63AC]">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-[#F4C400]" />
+            <ShieldCheck className="w-5 h-5 text-[#FECC36]" />
             <h3 className="font-bold text-base">Despacho de Bóveda & Protocolo de Seguridad</h3>
           </div>
           <button 
@@ -222,10 +222,10 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
             </div>
 
             <div>
-              <span className="text-xs font-bold text-[#C99A00] tracking-widest uppercase">
+              <span className="text-xs font-bold text-[#8A6800] tracking-widest uppercase">
                 Adquisición Confirmada en Bóveda
               </span>
-              <h3 className="text-2xl font-extrabold text-[#002B5B] mt-1">
+              <h3 className="text-2xl font-extrabold text-[#102542] mt-1">
                 ¡Orden Filatélica Registrada!
               </h3>
               <p className="text-xs text-slate-500 mt-2 max-w-md mx-auto">
@@ -236,7 +236,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
             <div className="bg-[#FAF8F0] p-5 rounded-2xl border border-[#E2DDD5] max-w-md mx-auto text-xs text-left space-y-2.5">
               <div className="flex justify-between">
                 <span className="text-slate-500">N° de Orden Oficial:</span>
-                <strong className="text-[#002B5B] font-mono">{confirmedOrder.orderNumber}</strong>
+                <strong className="text-[#102542] font-mono">{confirmedOrder.orderNumber}</strong>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">Modalidad de Pago:</span>
@@ -246,7 +246,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">Total Liquidado:</span>
-                <strong className="text-[#002B5B] text-sm">
+                <strong className="text-[#102542] text-sm">
                   {confirmedOrder.totalAmount.toLocaleString('es-BO', { minimumFractionDigits: 2 })} BOB
                 </strong>
               </div>
@@ -261,7 +261,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 <button
                   type="button"
                   onClick={() => onViewCertificate(confirmedOrder.rawOrder)}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] text-[#F4C400] font-bold text-xs sm:text-sm shadow-md transition"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#102542] hover:bg-[#2C63AC] text-[#FECC36] font-bold text-xs sm:text-sm shadow-md transition"
                   title="Ver e imprimir certificado notarial"
                 >
                   <Award className="w-4 h-4 text-amber-400" />
@@ -298,7 +298,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     onClose();
                     openEmailVerificationModal('checkout');
                   }}
-                  className="px-3.5 py-1.5 bg-[#002B5B] hover:bg-[#0A3B73] text-amber-300 font-bold rounded-lg text-xs flex items-center justify-center gap-1.5 shrink-0 transition shadow-sm"
+                  className="px-3.5 py-1.5 bg-[#102542] hover:bg-[#2C63AC] text-amber-300 font-bold rounded-lg text-xs flex items-center justify-center gap-1.5 shrink-0 transition shadow-sm"
                 >
                   <MailCheck className="w-3.5 h-3.5" />
                   <span>Confirmar Ahora</span>
@@ -309,12 +309,12 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
             {/* Collector Information */}
             <div className="space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E2DDD5] pb-2">
-                <h4 className="text-xs font-bold text-[#002B5B] uppercase tracking-wider">
+                <h4 className="text-xs font-bold text-[#102542] uppercase tracking-wider">
                   1. Datos del Coleccionista y Destino
                 </h4>
                 {currentUser && (
-                  <span className="inline-flex items-center gap-1 text-[11px] text-[#002B5B] bg-[#002B5B]/5 px-2.5 py-0.5 rounded-full border border-[#002B5B]/10 font-medium">
-                    <ShieldCheck className="w-3 h-3 text-[#002B5B]/70" />
+                  <span className="inline-flex items-center gap-1 text-[11px] text-[#102542] bg-[#102542]/5 px-2.5 py-0.5 rounded-full border border-[#102542]/10 font-medium">
+                    <ShieldCheck className="w-3 h-3 text-[#102542]/70" />
                     Datos precargados de su cuenta oficial
                   </span>
                 )}
@@ -329,7 +329,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     placeholder="Ej. Dr. Fernando Arze"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#002B5B] text-[#002B5B] bg-white placeholder:text-slate-400"
+                    className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#102542] text-[#102542] bg-white placeholder:text-slate-400"
                   />
                 </div>
 
@@ -341,7 +341,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     placeholder="coleccionista@ejemplo.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#002B5B] text-[#002B5B] bg-white placeholder:text-slate-400"
+                    className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#102542] text-[#102542] bg-white placeholder:text-slate-400"
                   />
                 </div>
 
@@ -350,7 +350,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   <select
                     value={formData.department}
                     onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                    className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#002B5B] text-[#002B5B] bg-white"
+                    className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#102542] text-[#102542] bg-white"
                   >
                     <option value="La Paz">La Paz</option>
                     <option value="Santa Cruz">Santa Cruz</option>
@@ -371,7 +371,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     placeholder="+591 71234567"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#002B5B] text-[#002B5B] bg-white placeholder:text-slate-400"
+                    className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#102542] text-[#102542] bg-white placeholder:text-slate-400"
                   />
                 </div>
 
@@ -383,7 +383,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     placeholder="Ej. Av. Arce #2435, Edificio Los Laureles, Piso 8"
                     value={formData.address}
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                    className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#002B5B] text-[#002B5B] bg-white placeholder:text-slate-400"
+                    className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#102542] text-[#102542] bg-white placeholder:text-slate-400"
                   />
                 </div>
               </div>
@@ -391,12 +391,12 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
             {/* Payment Method */}
             <div className="space-y-3">
-              <h4 className="text-xs font-bold text-[#002B5B] uppercase tracking-wider border-b border-[#E2DDD5] pb-2">
+              <h4 className="text-xs font-bold text-[#102542] uppercase tracking-wider border-b border-[#E2DDD5] pb-2">
                 2. Método de Liquidación Segura
               </h4>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <label className={`p-3 rounded-xl border flex flex-col items-center text-center cursor-pointer transition ${formData.paymentMethod === 'QR_TRANSFER' ? 'border-[#002B5B] bg-[#FAF8F0] shadow-sm ring-2 ring-[#002B5B]/10' : 'border-[#E2DDD5]'}`}>
+                <label className={`p-3 rounded-xl border flex flex-col items-center text-center cursor-pointer transition ${formData.paymentMethod === 'QR_TRANSFER' ? 'border-[#102542] bg-[#FAF8F0] shadow-sm ring-2 ring-[#102542]/10' : 'border-[#E2DDD5]'}`}>
                   <input 
                     type="radio" 
                     name="payment" 
@@ -405,12 +405,12 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     onChange={() => setFormData({ ...formData, paymentMethod: 'QR_TRANSFER' })}
                     className="sr-only" 
                   />
-                  <QrCode className="w-5 h-5 text-[#002B5B] mb-1" />
-                  <span className="text-xs font-bold text-[#002B5B]">QR Simple / Banco</span>
+                  <QrCode className="w-5 h-5 text-[#102542] mb-1" />
+                  <span className="text-xs font-bold text-[#102542]">QR Simple / Banco</span>
                   <span className="text-[10px] text-slate-500 mt-0.5">Transferencia Inmediata</span>
                 </label>
 
-                <label className={`p-3 rounded-xl border flex flex-col items-center text-center cursor-pointer transition ${formData.paymentMethod === 'CREDIT_CARD' ? 'border-[#002B5B] bg-[#FAF8F0] shadow-sm ring-2 ring-[#002B5B]/10' : 'border-[#E2DDD5]'}`}>
+                <label className={`p-3 rounded-xl border flex flex-col items-center text-center cursor-pointer transition ${formData.paymentMethod === 'CREDIT_CARD' ? 'border-[#102542] bg-[#FAF8F0] shadow-sm ring-2 ring-[#102542]/10' : 'border-[#E2DDD5]'}`}>
                   <input 
                     type="radio" 
                     name="payment" 
@@ -419,12 +419,12 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     onChange={() => setFormData({ ...formData, paymentMethod: 'CREDIT_CARD' })}
                     className="sr-only" 
                   />
-                  <CreditCard className="w-5 h-5 text-[#002B5B] mb-1" />
-                  <span className="text-xs font-bold text-[#002B5B]">Tarjeta Visa/Master</span>
+                  <CreditCard className="w-5 h-5 text-[#102542] mb-1" />
+                  <span className="text-xs font-bold text-[#102542]">Tarjeta Visa/Master</span>
                   <span className="text-[10px] text-slate-500 mt-0.5">Nacional o Internacional</span>
                 </label>
 
-                <label className={`p-3 rounded-xl border flex flex-col items-center text-center cursor-pointer transition ${formData.paymentMethod === 'VAULT_PICKUP' ? 'border-[#002B5B] bg-[#FAF8F0] shadow-sm ring-2 ring-[#002B5B]/10' : 'border-[#E2DDD5]'}`}>
+                <label className={`p-3 rounded-xl border flex flex-col items-center text-center cursor-pointer transition ${formData.paymentMethod === 'VAULT_PICKUP' ? 'border-[#102542] bg-[#FAF8F0] shadow-sm ring-2 ring-[#102542]/10' : 'border-[#E2DDD5]'}`}>
                   <input 
                     type="radio" 
                     name="payment" 
@@ -433,8 +433,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     onChange={() => setFormData({ ...formData, paymentMethod: 'VAULT_PICKUP' })}
                     className="sr-only" 
                   />
-                  <Building2 className="w-5 h-5 text-[#002B5B] mb-1" />
-                  <span className="text-xs font-bold text-[#002B5B]">Retiro en Bóveda</span>
+                  <Building2 className="w-5 h-5 text-[#102542] mb-1" />
+                  <span className="text-xs font-bold text-[#102542]">Retiro en Bóveda</span>
                   <span className="text-[10px] text-slate-500 mt-0.5">Pago en Ventanilla</span>
                 </label>
               </div>
@@ -444,7 +444,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
             <div className="pt-4 border-t border-[#E2DDD5] flex items-center justify-between">
               <div>
                 <div className="text-xs text-slate-500">Monto Total a Pagar</div>
-                <div className="text-2xl font-black text-[#002B5B]">
+                <div className="text-2xl font-black text-[#102542]">
                   {totalAmount.toLocaleString('es-BO', { minimumFractionDigits: 2 })} <span className="text-xs font-semibold text-slate-600">BOB</span>
                 </div>
               </div>

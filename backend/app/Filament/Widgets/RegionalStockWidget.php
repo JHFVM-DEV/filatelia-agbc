@@ -36,8 +36,8 @@ class RegionalStockWidget extends ChartWidget
                 [
                     'label' => 'Unidades Custodiadas',
                     'data' => array_values($regions),
-                    'backgroundColor' => '#002B5B',
-                    'borderColor' => '#F4C400',
+                    'backgroundColor' => '#102542',
+                    'borderColor' => '#FECC36',
                     'borderWidth' => 1,
                 ],
             ],

@@ -98,8 +98,8 @@ const ShellContent: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     <div
       className={`min-h-screen flex flex-col ${
         isAdmin
-          ? 'bg-[#030d1d] selection:bg-[#F4C400] selection:text-[#001A38]'
-          : 'bg-[#FAF8F0] selection:bg-[#F4C400] selection:text-[#002B5B]'
+          ? 'bg-[#030d1d] selection:bg-[#FECC36] selection:text-[#102542]'
+          : 'bg-[#FAF8F0] selection:bg-[#FECC36] selection:text-[#102542]'
       }`}
     >
       {/* Persistent Navbar across public routes only */}

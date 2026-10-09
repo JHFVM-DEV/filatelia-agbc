@@ -46,7 +46,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col border-l border-[#E2DDD5]">
           
           {/* Header */}
-          <div className="bg-[#002B5B] px-6 py-5 text-white flex items-center justify-between border-b border-[#0A3B73]">
+          <div className="bg-[#102542] px-6 py-5 text-white flex items-center justify-between border-b border-[#2C63AC]">
             <div className="flex items-center gap-2.5">
               <ShoppingBag className="w-5 h-5 text-amber-300" />
               <h3 className="font-bold text-base tracking-wide">
@@ -66,7 +66,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             {items.length === 0 ? (
               <div className="text-center py-16">
                 <ShoppingBag className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-                <h4 className="text-base font-bold text-[#002B5B]">Su bóveda de compra está vacía</h4>
+                <h4 className="text-base font-bold text-[#102542]">Su bóveda de compra está vacía</h4>
                 <p className="text-xs text-slate-500 mt-1">Explore el catálogo para añadir piezas oficiales o accesorios de preservación.</p>
               </div>
             ) : (
@@ -86,10 +86,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <span className="text-[10px] font-bold text-[#C99A00] uppercase tracking-wider block">
+                    <span className="text-[10px] font-bold text-[#8A6800] uppercase tracking-wider block">
                       {stamp.catalog_code}
                     </span>
-                    <h4 className="font-bold text-xs text-[#002B5B] truncate mt-0.5">
+                    <h4 className="font-bold text-xs text-[#102542] truncate mt-0.5">
                       {stamp.name}
                     </h4>
                     <div className="text-xs text-slate-500 mt-0.5">
@@ -98,7 +98,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
                     <div className="flex items-center justify-between mt-2.5">
                       {/* Quantity Selector */}
-                      <div className="flex items-center border border-[#E2DDD5] rounded-lg bg-[#FAF8F0] text-xs font-semibold text-[#002B5B]">
+                      <div className="flex items-center border border-[#E2DDD5] rounded-lg bg-[#FAF8F0] text-xs font-semibold text-[#102542]">
                         <button
                           onClick={() => onUpdateQuantity(stamp.id, -1)}
                           className="px-2 py-0.5 hover:bg-slate-200 transition rounded-l-lg"
@@ -134,7 +134,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               <div className="space-y-1.5 text-xs text-slate-600">
                 <div className="flex justify-between">
                   <span>Subtotal Filatélico:</span>
-                  <span className="font-semibold text-[#002B5B]">
+                  <span className="font-semibold text-[#102542]">
                     {totalAmount.toLocaleString('es-BO', { minimumFractionDigits: 2 })} BOB
                   </span>
                 </div>
@@ -147,8 +147,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               </div>
 
               <div className="pt-2 border-t border-[#E2DDD5] flex justify-between items-baseline">
-                <span className="text-sm font-bold text-[#002B5B]">Total a Liquidar:</span>
-                <span className="text-2xl font-black text-[#002B5B]">
+                <span className="text-sm font-bold text-[#102542]">Total a Liquidar:</span>
+                <span className="text-2xl font-black text-[#102542]">
                   {totalAmount.toLocaleString('es-BO', { minimumFractionDigits: 2 })} <span className="text-xs font-bold text-slate-500">BOB</span>
                 </span>
               </div>
@@ -167,7 +167,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       onClose();
                       openEmailVerificationModal('checkout');
                     }}
-                    className="w-full py-2 px-3 bg-[#002B5B] hover:bg-[#0A3B73] text-amber-300 rounded-lg font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-sm"
+                    className="w-full py-2 px-3 bg-[#102542] hover:bg-[#2C63AC] text-amber-300 rounded-lg font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-sm"
                   >
                     <MailCheck className="w-3.5 h-3.5" />
                     <span>Confirmar mi correo ahora</span>

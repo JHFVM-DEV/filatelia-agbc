@@ -11,7 +11,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#002B5B",
+  themeColor: "#102542",
   width: "device-width",
   initialScale: 1,
 };
@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${plusJakartaSans.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans bg-[#FAF8F0] text-[#002B5B]">
+      <body className="min-h-full flex flex-col font-sans bg-[#FAF8F0] text-[#102542]">
         <AppShell>
           {children}
         </AppShell>

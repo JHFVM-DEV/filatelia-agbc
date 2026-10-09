@@ -208,27 +208,27 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
   const displayDate = profileData?.created_at || 'Registrado';
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#001A38]/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#102542]/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
       <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-[#E2DDD5] overflow-hidden">
         
         {/* Cabecera Formal Institucional Amarillo Postal */}
-        <div className="bg-[#FFCC00] px-6 py-4 text-[#002B5B] flex items-center justify-between border-b-2 border-[#E5B500]">
+        <div className="bg-[#FECC36] px-6 py-4 text-[#102542] flex items-center justify-between border-b-2 border-[#E5B728]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#002B5B] flex items-center justify-center text-[#FFD100] shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-[#102542] flex items-center justify-center text-[#FECC36] shadow-xs">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-black text-base tracking-wide text-[#002B5B] leading-tight">
+              <h3 className="font-black text-base tracking-wide text-[#102542] leading-tight">
                 Datos de la Cuenta
               </h3>
-              <p className="text-[11px] text-[#002B5B]/85 tracking-wider uppercase font-extrabold">
+              <p className="text-[11px] text-[#102542]/85 tracking-wider uppercase font-extrabold">
                 Correos de Bolivia — Expediente Filatélico
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-[#002B5B] hover:bg-black/10 rounded-lg transition-colors cursor-pointer"
+            className="p-1.5 text-[#102542] hover:bg-black/10 rounded-lg transition-colors cursor-pointer"
             title="Cerrar modal"
           >
             <X className="w-5 h-5" />
@@ -246,8 +246,8 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
               }}
               className={`py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeTab === 'profile'
-                  ? 'bg-[#002B5B] text-[#FFD100] shadow-sm'
-                  : 'text-[#475569] hover:text-[#002B5B]'
+                  ? 'bg-[#102542] text-[#FECC36] shadow-sm'
+                  : 'text-[#475569] hover:text-[#102542]'
               }`}
             >
               <User className="w-3.5 h-3.5" />
@@ -261,8 +261,8 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
               }}
               className={`py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeTab === 'edit'
-                  ? 'bg-[#002B5B] text-[#FFD100] shadow-sm'
-                  : 'text-[#475569] hover:text-[#002B5B]'
+                  ? 'bg-[#102542] text-[#FECC36] shadow-sm'
+                  : 'text-[#475569] hover:text-[#102542]'
               }`}
             >
               <Edit3 className="w-3.5 h-3.5" />
@@ -299,7 +299,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                 
                 <div className="flex items-start justify-between border-b border-[#F1EFEB] pb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-[#002B5B] text-[#FFD100] flex items-center justify-center font-bold text-lg border border-[#001A38] overflow-hidden relative">
+                    <div className="w-12 h-12 rounded-xl bg-[#102542] text-[#FECC36] flex items-center justify-center font-bold text-lg border border-[#102542] overflow-hidden relative">
                       {profileData?.avatar || currentUser?.avatar ? (
                         <img
                           src={profileData?.avatar || currentUser?.avatar}
@@ -316,7 +316,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                       </span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-[#002B5B] text-base leading-tight">
+                      <h4 className="font-bold text-[#102542] text-base leading-tight">
                         {displayName}
                       </h4>
                       <p className="text-xs text-[#64748B] flex items-center gap-1.5 mt-0.5">
@@ -352,7 +352,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                     <span className="block text-[10px] font-bold text-[#64748B] uppercase tracking-wider mb-1">
                       Rol Asignado
                     </span>
-                    <span className="font-bold text-[#002B5B]">
+                    <span className="font-bold text-[#102542]">
                       {displayRole === 'CLIENTE' ? 'CLIENTE (Coleccionista)' : displayRole}
                     </span>
                   </div>
@@ -361,7 +361,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                     <span className="block text-[10px] font-bold text-[#64748B] uppercase tracking-wider mb-1">
                       ID de Expediente
                     </span>
-                    <span className="font-bold text-[#002B5B] font-mono">
+                    <span className="font-bold text-[#102542] font-mono">
                       #{String(displayId).padStart(5, '0')}
                     </span>
                   </div>
@@ -370,7 +370,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                     <span className="block text-[10px] font-bold text-[#64748B] uppercase tracking-wider mb-1">
                       Fecha de Afiliación
                     </span>
-                    <span className="font-bold text-[#002B5B] flex items-center gap-1">
+                    <span className="font-bold text-[#102542] flex items-center gap-1">
                       <Calendar className="w-3 h-3 text-slate-400" />
                       {displayDate}
                     </span>
@@ -380,7 +380,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                     <span className="block text-[10px] font-bold text-[#64748B] uppercase tracking-wider mb-1">
                       Adquisiciones
                     </span>
-                    <span className="font-bold text-[#002B5B] flex items-center gap-1">
+                    <span className="font-bold text-[#102542] flex items-center gap-1">
                       <Package className="w-3 h-3 text-slate-400" />
                       {ordersCount} {ordersCount === 1 ? 'pedido' : 'pedidos'}
                     </span>
@@ -390,9 +390,9 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
               </div>
 
               {/* Garantía de Custodia Postal */}
-              <div className="p-4 rounded-2xl bg-[#002B5B]/[0.03] border border-[#002B5B]/10 text-xs space-y-2">
-                <div className="flex items-center gap-2 font-bold text-[#002B5B]">
-                  <Award className="w-4 h-4 text-[#C99A00]" />
+              <div className="p-4 rounded-2xl bg-[#102542]/[0.03] border border-[#102542]/10 text-xs space-y-2">
+                <div className="flex items-center gap-2 font-bold text-[#102542]">
+                  <Award className="w-4 h-4 text-[#8A6800]" />
                   <span>Protocolo de Custodia Notarial</span>
                 </div>
                 <p className="text-[#5A554E] leading-relaxed text-[11px]">
@@ -404,8 +404,8 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
               <div className="bg-white rounded-2xl border border-[#E2DDD5] p-5 shadow-sm space-y-3">
                 <div className="flex items-center justify-between pb-2 border-b border-[#F1EFEB]">
                   <div className="flex items-center gap-2">
-                    <Truck className="w-4 h-4 text-[#002B5B]" />
-                    <h5 className="font-bold text-xs text-[#002B5B] uppercase tracking-wider">
+                    <Truck className="w-4 h-4 text-[#102542]" />
+                    <h5 className="font-bold text-xs text-[#102542] uppercase tracking-wider">
                       Guías de Envío & Trazabilidad Postal
                     </h5>
                   </div>
@@ -417,7 +417,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                 {ordersList.length === 0 ? (
                   <div className="p-4 text-center text-xs text-slate-500 bg-[#FAF8F0] rounded-xl border border-[#E2DDD5]/70 space-y-1">
                     <Package className="w-5 h-5 mx-auto text-slate-400 mb-1" />
-                    <p className="font-semibold text-[#002B5B]">No registra guías postales activas</p>
+                    <p className="font-semibold text-[#102542]">No registra guías postales activas</p>
                     <p className="text-[11px] text-slate-400">
                       Al realizar una orden en la tienda filatélica, su código de valija postal oficial de Correos de Bolivia aparecerá aquí para su seguimiento inmediato.
                     </p>
@@ -434,7 +434,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                           <div>
                             <div className="flex items-center gap-2">
                               <span className="text-[10px] uppercase font-bold text-slate-400">Guía Postal:</span>
-                              <strong className="font-mono text-xs font-black text-[#002B5B]">
+                              <strong className="font-mono text-xs font-black text-[#102542]">
                                 {trk}
                               </strong>
                               {order.tracking_code && (
@@ -444,7 +444,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                                   className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-black transition cursor-pointer ${
                                     copiedProfileCode === order.tracking_code
                                       ? 'bg-emerald-600 text-white'
-                                      : 'bg-[#FFD100] hover:bg-[#FFE043] text-[#002B5B] border border-amber-400'
+                                      : 'bg-[#FECC36] hover:bg-[#FFD95E] text-[#102542] border border-amber-400'
                                   }`}
                                   title="Copiar guía de envío"
                                 >
@@ -473,7 +473,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                                 order.status === 'DELIVERED'
                                   ? 'bg-emerald-100 text-emerald-800'
                                   : order.status === 'SHIPPED' || order.status === 'IN_TRANSIT'
-                                  ? 'bg-[#FFD100] text-[#002B5B] border border-amber-400'
+                                  ? 'bg-[#FECC36] text-[#102542] border border-amber-400'
                                   : 'bg-amber-100 text-amber-900'
                               }`}
                             >
@@ -491,9 +491,9 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                                   onClose();
                                   openTracking(order.tracking_code);
                                 }}
-                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#FFD100] hover:bg-[#FFE043] text-[#002B5B] text-[11px] font-black transition cursor-pointer shadow-xs border border-amber-400"
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#FECC36] hover:bg-[#FFD95E] text-[#102542] text-[11px] font-black transition cursor-pointer shadow-xs border border-amber-400"
                               >
-                                <Search className="w-3 h-3 text-[#002B5B]" />
+                                <Search className="w-3 h-3 text-[#102542]" />
                                 <span>Rastrear</span>
                               </button>
                             )}
@@ -519,7 +519,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
             <form onSubmit={handleUpdateProfile} className="space-y-4">
               
               <div>
-                <label className="block text-xs font-bold text-[#002B5B] mb-1">
+                <label className="block text-xs font-bold text-[#102542] mb-1">
                   Nombre Completo y Apellidos
                 </label>
                 <div className="relative">
@@ -529,13 +529,13 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                     required
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
-                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#002B5B] focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 shadow-sm transition"
+                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#102542] focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 shadow-sm transition"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#002B5B] mb-1">
+                <label className="block text-xs font-bold text-[#102542] mb-1">
                   Correo Electrónico Registrado
                 </label>
                 <div className="relative">
@@ -554,7 +554,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
 
               {/* Sección Opcional: Cambio de Contraseña */}
               <div className="pt-2 border-t border-[#E2DDD5]/70 space-y-3">
-                <span className="block text-xs font-bold text-[#002B5B]">
+                <span className="block text-xs font-bold text-[#102542]">
                   Cambiar Contraseña <span className="font-normal text-slate-500">(opcional)</span>
                 </span>
 
@@ -569,12 +569,12 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                       placeholder="Ingrese su contraseña actual para confirmar"
                       value={currentPassword}
                       onChange={(e) => setCurrentPassword(e.target.value)}
-                      className="w-full pl-10 pr-10 py-2 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#002B5B] focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 shadow-sm transition"
+                      className="w-full pl-10 pr-10 py-2 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#102542] focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 shadow-sm transition"
                     />
                     <button
                       type="button"
                       onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#002B5B] transition p-1 cursor-pointer"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#102542] transition p-1 cursor-pointer"
                       tabIndex={-1}
                     >
                       {showCurrentPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5 text-slate-500" />}
@@ -594,12 +594,12 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                         placeholder="Mínimo 8 caracteres"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
-                        className="w-full pl-10 pr-10 py-2 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#002B5B] focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 shadow-sm transition"
+                        className="w-full pl-10 pr-10 py-2 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#102542] focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 shadow-sm transition"
                       />
                       <button
                         type="button"
                         onClick={() => setShowNewPassword(!showNewPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#002B5B] transition p-1 cursor-pointer"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#102542] transition p-1 cursor-pointer"
                         tabIndex={-1}
                       >
                         {showNewPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5 text-slate-500" />}
@@ -618,12 +618,12 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                         placeholder="Repita la nueva clave"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="w-full pl-10 pr-10 py-2 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#002B5B] focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 shadow-sm transition"
+                        className="w-full pl-10 pr-10 py-2 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#102542] focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 shadow-sm transition"
                       />
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#002B5B] transition p-1 cursor-pointer"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#102542] transition p-1 cursor-pointer"
                         tabIndex={-1}
                       >
                         {showConfirmPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5 text-slate-500" />}

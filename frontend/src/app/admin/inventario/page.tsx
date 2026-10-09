@@ -187,7 +187,7 @@ export default function AdminInventarioPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#001A38]/90 border border-slate-800 p-6 rounded-2xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#102542]/90 border border-slate-800 p-6 rounded-2xl">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-amber-200/90">
             <ClipboardList className="w-6 h-6" />
@@ -206,14 +206,14 @@ export default function AdminInventarioPage() {
           <button
             onClick={fetchInventory}
             disabled={loading}
-            className="p-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
+            className="p-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
             title="Actualizar existencias"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
           </button>
           <button
             onClick={exportCSV}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] border border-slate-700 text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] border border-slate-700 text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
           >
             <Download className="w-4 h-4 text-slate-400" />
             <span>Exportar Arqueo CSV</span>
@@ -230,7 +230,7 @@ export default function AdminInventarioPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-[#001A38] border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-[#102542] border border-slate-800 p-5 rounded-2xl">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Unidades en Bóveda
@@ -243,7 +243,7 @@ export default function AdminInventarioPage() {
           </div>
         </div>
 
-        <div className="bg-[#001A38] border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-[#102542] border border-slate-800 p-5 rounded-2xl">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Stock Crítico (≤ 2 un.)
@@ -256,7 +256,7 @@ export default function AdminInventarioPage() {
           </div>
         </div>
 
-        <div className="bg-[#001A38] border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-[#102542] border border-slate-800 p-5 rounded-2xl">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Tasación Total en Bóveda
@@ -298,7 +298,7 @@ export default function AdminInventarioPage() {
           onClick={() => setActiveTab('STOCK')}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium uppercase tracking-wider transition-all cursor-pointer ${
             activeTab === 'STOCK'
-              ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
+              ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
               : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
           }`}
         >
@@ -310,7 +310,7 @@ export default function AdminInventarioPage() {
           onClick={() => setActiveTab('MOVEMENTS')}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium uppercase tracking-wider transition-all cursor-pointer ${
             activeTab === 'MOVEMENTS'
-              ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
+              ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
               : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
           }`}
         >
@@ -329,14 +329,14 @@ export default function AdminInventarioPage() {
               placeholder="Buscar por código de catálogo o nombre de la pieza..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#001A38] border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#102542] border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
             />
           </div>
 
-          <div className="bg-[#001A38] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+          <div className="bg-[#102542] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#00142B] text-slate-400 border-b border-slate-800 uppercase tracking-wider font-semibold">
+                <thead className="bg-[#0D2039] text-slate-400 border-b border-slate-800 uppercase tracking-wider font-semibold">
                   <tr>
                     <th className="py-3.5 px-4">Cód. Catálogo</th>
                     <th className="py-3.5 px-4">Pieza Filatélica</th>
@@ -367,7 +367,7 @@ export default function AdminInventarioPage() {
                       const subtotal = p.price * p.stock;
 
                       return (
-                        <tr key={p.id} className="hover:bg-[#002B5B]/30 transition-colors">
+                        <tr key={p.id} className="hover:bg-[#102542]/30 transition-colors">
                           <td className="py-3.5 px-4">
                             <span className="font-mono font-bold text-amber-300">
                               {p.catalog_code}
@@ -409,14 +409,14 @@ export default function AdminInventarioPage() {
                             <div className="flex items-center justify-end gap-1.5">
                               <Link
                                 href={`/admin/fichas-almacen?search=${encodeURIComponent(p.catalog_code)}`}
-                                className="p-1.5 rounded-lg bg-[#002B5B] hover:bg-amber-400 hover:text-[#001A38] border border-slate-700 text-slate-300 transition-colors inline-flex items-center"
+                                className="p-1.5 rounded-lg bg-[#102542] hover:bg-amber-400 hover:text-[#102542] border border-slate-700 text-slate-300 transition-colors inline-flex items-center"
                                 title="Generar Ficha / Rótulo con QR"
                               >
                                 <QrCode className="w-3.5 h-3.5" />
                               </Link>
                               <button
                                 onClick={() => openAdjust(p)}
-                                className="px-3 py-1.5 rounded-lg bg-[#002B5B] hover:bg-amber-400 hover:text-[#001A38] border border-slate-700 text-xs font-semibold text-slate-200 transition-colors cursor-pointer"
+                                className="px-3 py-1.5 rounded-lg bg-[#102542] hover:bg-amber-400 hover:text-[#102542] border border-slate-700 text-xs font-semibold text-slate-200 transition-colors cursor-pointer"
                               >
                                 Ajustar
                               </button>
@@ -435,10 +435,10 @@ export default function AdminInventarioPage() {
 
       {/* Tab 2: Movimientos */}
       {activeTab === 'MOVEMENTS' && (
-        <div className="bg-[#001A38] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+        <div className="bg-[#102542] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#00142B] text-slate-400 border-b border-slate-800 uppercase tracking-wider font-semibold">
+              <thead className="bg-[#0D2039] text-slate-400 border-b border-slate-800 uppercase tracking-wider font-semibold">
                 <tr>
                   <th className="py-3.5 px-4">Fecha / Hora</th>
                   <th className="py-3.5 px-4">Pieza Filatélica</th>
@@ -468,7 +468,7 @@ export default function AdminInventarioPage() {
                     const isEgreso = m.type === 'OUT';
 
                     return (
-                      <tr key={m.id} className="hover:bg-[#002B5B]/30 transition-colors">
+                      <tr key={m.id} className="hover:bg-[#102542]/30 transition-colors">
                         <td className="py-3.5 px-4 text-slate-400 whitespace-nowrap">
                           {new Date(m.created_at).toLocaleString('es-BO')}
                         </td>
@@ -529,7 +529,7 @@ export default function AdminInventarioPage() {
       {/* Modal Ajustar Stock */}
       {showAdjustModal && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#001A38] border border-white/10 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
+          <div className="bg-[#102542] border border-white/10 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
             <button
               onClick={() => setShowAdjustModal(false)}
               className="absolute top-5 right-5 p-1 rounded-lg text-slate-400 hover:text-white"
@@ -559,7 +559,7 @@ export default function AdminInventarioPage() {
                 <select
                   value={adjustForm.type}
                   onChange={(e) => setAdjustForm({ ...adjustForm, type: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
                 >
                   <option value="IN">Ingreso (Adquisición / Reingreso a Bóveda)</option>
                   <option value="OUT">Egreso (Baja / Merma por Conservación)</option>
@@ -577,7 +577,7 @@ export default function AdminInventarioPage() {
                   required
                   value={adjustForm.quantity}
                   onChange={(e) => setAdjustForm({ ...adjustForm, quantity: parseInt(e.target.value) || 1 })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
                 />
               </div>
 
@@ -591,7 +591,7 @@ export default function AdminInventarioPage() {
                   value={adjustForm.reason}
                   onChange={(e) => setAdjustForm({ ...adjustForm, reason: e.target.value })}
                   placeholder="Especifique acta de recepción, donación o ajuste físico..."
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400 resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400 resize-none"
                 />
               </div>
 
@@ -599,7 +599,7 @@ export default function AdminInventarioPage() {
                 <button
                   type="button"
                   onClick={() => setShowAdjustModal(false)}
-                  className="px-4 py-2.5 rounded-xl bg-[#002B5B] text-slate-300 hover:text-white text-xs font-semibold"
+                  className="px-4 py-2.5 rounded-xl bg-[#102542] text-slate-300 hover:text-white text-xs font-semibold"
                 >
                   Cancelar
                 </button>

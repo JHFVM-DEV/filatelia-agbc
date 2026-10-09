@@ -136,11 +136,11 @@ export const ClientRegistrationForm: React.FC = () => {
         {/* Encabezado Institucional */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center mb-4">
-            <div className="w-16 h-16 rounded-2xl bg-[#002B5B] flex items-center justify-center border-2 border-[#D5CFBF] shadow-sm">
-              <ShieldCheck className="w-8 h-8 text-[#F4C400]" />
+            <div className="w-16 h-16 rounded-2xl bg-[#102542] flex items-center justify-center border-2 border-[#D5CFBF] shadow-sm">
+              <ShieldCheck className="w-8 h-8 text-[#FECC36]" />
             </div>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#002B5B] tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#102542] tracking-tight">
             Registro Oficial
           </h1>
           <p className="mt-1.5 text-xs sm:text-sm text-[#5A554E] max-w-md mx-auto">
@@ -152,9 +152,9 @@ export const ClientRegistrationForm: React.FC = () => {
         <div className="bg-white rounded-2xl border border-[#E2DDD5] shadow-lg overflow-hidden">
           
           {/* Barra Superior con Identidad Institucional */}
-          <div className="bg-[#002B5B] px-6 py-3.5 border-b border-[#0A3B73] flex items-center justify-between">
+          <div className="bg-[#102542] px-6 py-3.5 border-b border-[#2C63AC] flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <FileCheck2 className="w-4 h-4 text-[#F4C400]" />
+              <FileCheck2 className="w-4 h-4 text-[#FECC36]" />
               <span className="text-xs font-bold text-white tracking-wider uppercase">
                 Formulario de Afiliación Filatélica
               </span>
@@ -187,7 +187,7 @@ export const ClientRegistrationForm: React.FC = () => {
               
               {/* Campo: Nombre Completo */}
               <div>
-                <label className="block text-xs font-bold text-[#002B5B] mb-1.5">
+                <label className="block text-xs font-bold text-[#102542] mb-1.5">
                   Nombre Completo y Apellidos <span className="text-rose-600">*</span>
                 </label>
                 <div className="relative">
@@ -199,14 +199,14 @@ export const ClientRegistrationForm: React.FC = () => {
                     placeholder="Ej. Carlos Mendoza Flores"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#002B5B] placeholder:text-slate-400 focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 shadow-sm transition"
+                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#102542] placeholder:text-slate-400 focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 shadow-sm transition"
                   />
                 </div>
               </div>
 
               {/* Campo: Correo Electrónico */}
               <div>
-                <label className="block text-xs font-bold text-[#002B5B] mb-1.5">
+                <label className="block text-xs font-bold text-[#102542] mb-1.5">
                   Correo Electrónico <span className="text-rose-600">*</span>
                 </label>
                 <div className="relative">
@@ -217,7 +217,7 @@ export const ClientRegistrationForm: React.FC = () => {
                     placeholder="correo@ejemplo.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#002B5B] placeholder:text-slate-400 focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 shadow-sm transition"
+                    className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#102542] placeholder:text-slate-400 focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 shadow-sm transition"
                   />
                 </div>
                 <p className="mt-1 text-[11px] text-[#64748B]">
@@ -228,7 +228,7 @@ export const ClientRegistrationForm: React.FC = () => {
               {/* Campos Contraseña y Confirmación en Cuadrícula */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#002B5B] mb-1.5">
+                  <label className="block text-xs font-bold text-[#102542] mb-1.5">
                     Contraseña <span className="text-rose-600">*</span>
                   </label>
                   <div className="relative">
@@ -239,12 +239,12 @@ export const ClientRegistrationForm: React.FC = () => {
                       placeholder="Mínimo 8 caracteres"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#002B5B] placeholder:text-slate-400 focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 shadow-sm transition"
+                      className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#102542] placeholder:text-slate-400 focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 shadow-sm transition"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#002B5B] transition p-1 cursor-pointer"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#102542] transition p-1 cursor-pointer"
                       title={showPassword ? 'Ocultar contraseña' : 'Ver contraseña'}
                       tabIndex={-1}
                     >
@@ -254,7 +254,7 @@ export const ClientRegistrationForm: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#002B5B] mb-1.5">
+                  <label className="block text-xs font-bold text-[#102542] mb-1.5">
                     Confirmar Contraseña <span className="text-rose-600">*</span>
                   </label>
                   <div className="relative">
@@ -265,12 +265,12 @@ export const ClientRegistrationForm: React.FC = () => {
                       placeholder="Repita su contraseña"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
-                      className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#002B5B] placeholder:text-slate-400 focus:outline-none focus:border-[#002B5B] focus:ring-2 focus:ring-[#002B5B]/10 shadow-sm transition"
+                      className="w-full pl-10 pr-10 py-2.5 text-xs rounded-xl border border-[#E2DDD5] bg-white text-[#102542] placeholder:text-slate-400 focus:outline-none focus:border-[#102542] focus:ring-2 focus:ring-[#102542]/10 shadow-sm transition"
                     />
                     <button
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#002B5B] transition p-1 cursor-pointer"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#102542] transition p-1 cursor-pointer"
                       title={showConfirmPassword ? 'Ocultar contraseña' : 'Ver contraseña'}
                       tabIndex={-1}
                     >
@@ -287,7 +287,7 @@ export const ClientRegistrationForm: React.FC = () => {
                     type="checkbox"
                     checked={acceptTerms}
                     onChange={(e) => setAcceptTerms(e.target.checked)}
-                    className="mt-0.5 rounded border-[#CBD5E1] text-[#002B5B] focus:ring-0 cursor-pointer"
+                    className="mt-0.5 rounded border-[#CBD5E1] text-[#102542] focus:ring-0 cursor-pointer"
                   />
                   <span>
                     Acepto los términos de servicio, las normas de conservación de piezas filatélicas y el protocolo de custodia oficial de <strong>Correos de Bolivia</strong>.
@@ -345,7 +345,7 @@ export const ClientRegistrationForm: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => openLoginModal('login')}
-                  className="font-bold text-[#002B5B] hover:text-[#0A3B73] hover:underline cursor-pointer"
+                  className="font-bold text-[#102542] hover:text-[#2C63AC] hover:underline cursor-pointer"
                 >
                   Iniciar sesión aquí
                 </button>
@@ -357,11 +357,11 @@ export const ClientRegistrationForm: React.FC = () => {
           {/* Pie de Garantías Notariales */}
           <div className="bg-[#FAF8F0] px-6 py-4 border-t border-[#E2DDD5] grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-[#64748B]">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-[#002B5B] shrink-0" />
+              <ShieldCheck className="w-4 h-4 text-[#102542] shrink-0" />
               <span>Autenticidad pericial y archivo seguro</span>
             </div>
             <div className="flex items-center gap-2">
-              <Award className="w-4 h-4 text-[#002B5B] shrink-0" />
+              <Award className="w-4 h-4 text-[#102542] shrink-0" />
               <span>Envíos oficiales de Correos de Bolivia</span>
             </div>
           </div>

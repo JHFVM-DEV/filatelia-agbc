@@ -137,12 +137,12 @@ export default function AdminDashboardPage() {
         <div className="h-8 w-64 bg-slate-800 rounded-lg" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-28 bg-[#001A38] rounded-2xl border border-slate-800" />
+            <div key={i} className="h-28 bg-[#102542] rounded-2xl border border-slate-800" />
           ))}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 h-72 bg-[#001A38] rounded-2xl border border-slate-800" />
-          <div className="h-72 bg-[#001A38] rounded-2xl border border-slate-800" />
+          <div className="lg:col-span-2 h-72 bg-[#102542] rounded-2xl border border-slate-800" />
+          <div className="h-72 bg-[#102542] rounded-2xl border border-slate-800" />
         </div>
       </div>
     );
@@ -183,7 +183,7 @@ export default function AdminDashboardPage() {
         <button
           onClick={handleRefresh}
           disabled={refreshing}
-          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#001A38] hover:bg-[#002B5B] border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white transition-all cursor-pointer shrink-0 shadow-sm"
+          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#102542] hover:bg-[#102542] border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white transition-all cursor-pointer shrink-0 shadow-sm"
         >
           <RefreshCw className={`w-3.5 h-3.5 text-amber-200/90 ${refreshing ? 'animate-spin' : ''}`} />
           <span>{refreshing ? 'Actualizando...' : 'Actualizar Métricas'}</span>
@@ -208,7 +208,7 @@ export default function AdminDashboardPage() {
           </div>
           <button
             onClick={() => openLoginModal()}
-            className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#001A38] font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer shrink-0"
+            className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#102542] font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer shrink-0"
           >
             Iniciar Sesión de Personal
           </button>
@@ -218,7 +218,7 @@ export default function AdminDashboardPage() {
       {/* 4 Executive KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* KPI 1: Recaudación Total */}
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#001A38] to-[#002B5B]/80 border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
+        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542]/80 border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
           <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
             <Coins className="w-16 h-16 text-white" />
           </div>
@@ -238,7 +238,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* KPI 2: Tasación de Bóveda */}
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#001A38] to-[#002B5B]/80 border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
+        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542]/80 border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-semibold text-slate-300">Valoración de Bóveda</span>
             <div className="w-8 h-8 rounded-lg bg-white/[0.06] text-amber-200/90 flex items-center justify-center border border-white/10">
@@ -255,7 +255,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* KPI 3: Órdenes de Colección */}
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#001A38] to-[#002B5B]/80 border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
+        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542]/80 border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-semibold text-slate-300">Órdenes Totales</span>
             <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center border border-blue-500/30">
@@ -272,7 +272,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* KPI 4: Alertas de Existencia Crítica */}
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#001A38] to-[#002B5B]/80 border border-slate-700/80 shadow-lg relative overflow-hidden group hover:border-rose-500/50 transition-all duration-300">
+        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542]/80 border border-slate-700/80 shadow-lg relative overflow-hidden group hover:border-rose-500/50 transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-semibold text-slate-300">Stock Crítico (≤ 3)</span>
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center border ${
@@ -300,7 +300,7 @@ export default function AdminDashboardPage() {
         {/* Left 2 Columns */}
         <div className="lg:col-span-2 space-y-6">
           {/* Revenue Chart Section */}
-          <div className="p-6 rounded-2xl bg-[#001A38]/90 border border-slate-800 shadow-xl">
+          <div className="p-6 rounded-2xl bg-[#102542]/90 border border-slate-800 shadow-xl">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h2 className="text-sm font-bold text-white tracking-wide font-serif">
@@ -320,7 +320,7 @@ export default function AdminDashboardPage() {
                 return (
                   <div key={idx} className="flex-1 flex flex-col items-center gap-2 group h-full justify-end">
                     {/* Tooltip value */}
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-mono text-amber-200 bg-[#001A38] px-2 py-0.5 rounded border border-white/10 pointer-events-none mb-1 shadow">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-mono text-amber-200 bg-[#102542] px-2 py-0.5 rounded border border-white/10 pointer-events-none mb-1 shadow">
                       Bs. {Math.round(item.total).toLocaleString()}
                     </div>
 
@@ -328,7 +328,7 @@ export default function AdminDashboardPage() {
                     <div className="w-full max-w-[48px] bg-slate-800 rounded-t-lg relative overflow-hidden flex items-end">
                       <div
                         style={{ height: `${heightPercent}%` }}
-                        className="w-full rounded-t-lg bg-gradient-to-t from-[#002B5B] via-[#0A3B73] to-amber-300/80 transition-all duration-500 group-hover:brightness-110 shadow-lg"
+                        className="w-full rounded-t-lg bg-gradient-to-t from-[#102542] via-[#2C63AC] to-amber-300/80 transition-all duration-500 group-hover:brightness-110 shadow-lg"
                       />
                     </div>
 
@@ -343,7 +343,7 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* Recent Orders Table */}
-          <div className="p-6 rounded-2xl bg-[#001A38]/90 border border-slate-800 shadow-xl">
+          <div className="p-6 rounded-2xl bg-[#102542]/90 border border-slate-800 shadow-xl">
             <div className="flex items-center justify-between mb-5">
               <div>
                 <h2 className="text-sm font-bold text-white tracking-wide font-serif">
@@ -365,7 +365,7 @@ export default function AdminDashboardPage() {
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs text-slate-300">
-                <thead className="text-[11px] uppercase tracking-wider text-slate-400 bg-[#00244D]/50 border-y border-slate-800">
+                <thead className="text-[11px] uppercase tracking-wider text-slate-400 bg-[#1B4785]/50 border-y border-slate-800">
                   <tr>
                     <th className="py-2.5 px-3 font-semibold">Código Orden</th>
                     <th className="py-2.5 px-3 font-semibold">Coleccionista</th>
@@ -376,7 +376,7 @@ export default function AdminDashboardPage() {
                 </thead>
                 <tbody className="divide-y divide-slate-800/60">
                   {(data?.recent_orders || []).map((order: any) => (
-                    <tr key={order.id} className="hover:bg-[#002B5B]/30 transition-colors">
+                    <tr key={order.id} className="hover:bg-[#102542]/30 transition-colors">
                       <td className="py-3 px-3 font-mono font-bold text-amber-300">
                         {order.order_number}
                       </td>
@@ -409,7 +409,7 @@ export default function AdminDashboardPage() {
         {/* Right 1 Column */}
         <div className="space-y-6">
           {/* Department Distribution */}
-          <div className="p-6 rounded-2xl bg-[#001A38]/90 border border-slate-800 shadow-xl">
+          <div className="p-6 rounded-2xl bg-[#102542]/90 border border-slate-800 shadow-xl">
             <h2 className="text-sm font-bold text-white tracking-wide font-serif mb-1">
               Distribución por Departamento
             </h2>
@@ -430,7 +430,7 @@ export default function AdminDashboardPage() {
                     <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
                       <div
                         style={{ width: `${pct}%` }}
-                        className="h-full bg-gradient-to-r from-[#002B5B] via-[#0A3B73] to-amber-300/80 rounded-full transition-all duration-500"
+                        className="h-full bg-gradient-to-r from-[#102542] via-[#2C63AC] to-amber-300/80 rounded-full transition-all duration-500"
                       />
                     </div>
                   </div>
@@ -440,7 +440,7 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* Critical Stock Alert Box */}
-          <div className="p-6 rounded-2xl bg-[#001A38]/90 border border-white/10 shadow-xl relative overflow-hidden">
+          <div className="p-6 rounded-2xl bg-[#102542]/90 border border-white/10 shadow-xl relative overflow-hidden">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <AlertTriangle className="w-4 h-4 text-amber-200/90" />
@@ -460,7 +460,7 @@ export default function AdminDashboardPage() {
               {(data?.critical_products || []).map((product: any) => (
                 <div
                   key={product.id}
-                  className="flex items-center justify-between p-2.5 rounded-xl bg-[#00244D]/60 border border-slate-800"
+                  className="flex items-center justify-between p-2.5 rounded-xl bg-[#1B4785]/60 border border-slate-800"
                 >
                   <div className="min-w-0 pr-2">
                     <div className="text-xs font-bold text-white truncate">

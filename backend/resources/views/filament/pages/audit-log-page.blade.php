@@ -3,19 +3,19 @@
         
         {{-- KPI Cards Ejecutivas --}}
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0, 43, 91, 0.04);">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(16, 37, 66, 0.04);">
                 <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Eventos Auditados</div>
-                <div style="font-size: 1.5rem; font-weight: 900; color: #002B5B; margin-top: 0.25rem;">{{ number_format($totalLogs) }} registros</div>
+                <div style="font-size: 1.5rem; font-weight: 900; color: #102542; margin-top: 0.25rem;">{{ number_format($totalLogs) }} registros</div>
                 <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">Trazabilidad 100% inalterable</div>
             </div>
 
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0, 43, 91, 0.04);">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(16, 37, 66, 0.04);">
                 <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Revalorizaciones</div>
                 <div style="font-size: 1.5rem; font-weight: 900; color: #D97706; margin-top: 0.25rem;">{{ $totalRevaluations }} dictámenes</div>
                 <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">Ajustes de cotización de mercado</div>
             </div>
 
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0, 43, 91, 0.04);">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(16, 37, 66, 0.04);">
                 <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Plusvalía en Bóveda</div>
                 <div style="font-size: 1.5rem; font-weight: 900; color: {{ $totalVaultGain >= 0 ? '#059669' : '#e11d48' }}; margin-top: 0.25rem;">
                     {{ $totalVaultGain >= 0 ? '+' : '' }}Bs. {{ number_format($totalVaultGain, 2) }}
@@ -23,7 +23,7 @@
                 <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">Ganancia de capital acumulada</div>
             </div>
 
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0, 43, 91, 0.04);">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(16, 37, 66, 0.04);">
                 <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Ajustes Físicos de Stock</div>
                 <div style="font-size: 1.5rem; font-weight: 900; color: #2563eb; margin-top: 0.25rem;">{{ $totalStockAdjustments }} entradas/salidas</div>
                 <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">Movimientos de gaveta y custodio</div>
@@ -31,9 +31,9 @@
         </div>
 
         {{-- Formulario Oficial de Revalorización Filatélica --}}
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.05);">
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.05);">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: gap;">
-                <h3 style="font-size: 1rem; font-weight: 800; color: #002B5B; display: flex; align-items: center; gap: 0.5rem; margin: 0;">
+                <h3 style="font-size: 1rem; font-weight: 800; color: #102542; display: flex; align-items: center; gap: 0.5rem; margin: 0;">
                     <svg style="width: 1.25rem; height: 1.25rem; color: #D97706;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -78,8 +78,8 @@
 
                     {{-- Botón Guardar --}}
                     <div>
-                        <button type="submit" style="width: 100%; background: linear-gradient(135deg, #002B5B 0%, #0A3B73 100%); color: #ffffff; font-weight: 800; font-size: 0.875rem; padding: 0.65rem 1.25rem; border-radius: 0.75rem; border: 1px solid #F4C400; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.2);">
-                            <svg style="width: 1rem; height: 1rem; color: #F4C400;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <button type="submit" style="width: 100%; background: linear-gradient(135deg, #102542 0%, #2C63AC 100%); color: #ffffff; font-weight: 800; font-size: 0.875rem; padding: 0.65rem 1.25rem; border-radius: 0.75rem; border: 1px solid #FECC36; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.2);">
+                            <svg style="width: 1rem; height: 1rem; color: #FECC36;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             Registrar Revalorización
@@ -98,9 +98,9 @@
             <button 
                 type="button" 
                 wire:click="setTab('audit')" 
-                style="padding: 0.5rem 1.25rem; font-size: 0.875rem; font-weight: 700; border-radius: 0.75rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; {{ $activeTab === 'audit' ? 'background: #002B5B; color: #ffffff;' : 'background: transparent; color: #64748b;' }}"
+                style="padding: 0.5rem 1.25rem; font-size: 0.875rem; font-weight: 700; border-radius: 0.75rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; {{ $activeTab === 'audit' ? 'background: #102542; color: #ffffff;' : 'background: transparent; color: #64748b;' }}"
             >
-                <svg style="width: 1rem; height: 1rem; {{ $activeTab === 'audit' ? 'color: #F4C400;' : '' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg style="width: 1rem; height: 1rem; {{ $activeTab === 'audit' ? 'color: #FECC36;' : '' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
                 Bitácora de Auditoría (Audit Trail)
@@ -109,9 +109,9 @@
             <button 
                 type="button" 
                 wire:click="setTab('revaluations')" 
-                style="padding: 0.5rem 1.25rem; font-size: 0.875rem; font-weight: 700; border-radius: 0.75rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; {{ $activeTab === 'revaluations' ? 'background: #002B5B; color: #ffffff;' : 'background: transparent; color: #64748b;' }}"
+                style="padding: 0.5rem 1.25rem; font-size: 0.875rem; font-weight: 700; border-radius: 0.75rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; {{ $activeTab === 'revaluations' ? 'background: #102542; color: #ffffff;' : 'background: transparent; color: #64748b;' }}"
             >
-                <svg style="width: 1rem; height: 1rem; {{ $activeTab === 'revaluations' ? 'color: #F4C400;' : '' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg style="width: 1rem; height: 1rem; {{ $activeTab === 'revaluations' ? 'color: #FECC36;' : '' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
                 Historial de Revalorizaciones & Plusvalía ({{ $totalRevaluations }})
@@ -120,7 +120,7 @@
 
         {{-- CONTENIDO PESTAÑA 1: AUDIT TRAIL --}}
         @if($activeTab === 'audit')
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.05);">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.05);">
                 
                 {{-- Filtros y Buscador --}}
                 <div style="padding: 1rem 1.25rem; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;">
@@ -163,7 +163,7 @@
                                         {{ $l->created_at->format('d/m/Y H:i:s') }}
                                     </td>
                                     <td style="padding: 0.75rem 1rem; white-space: nowrap;">
-                                        <div style="font-weight: 700; color: #002B5B;">{{ $l->user_name }}</div>
+                                        <div style="font-weight: 700; color: #102542;">{{ $l->user_name }}</div>
                                         <div style="font-size: 0.7rem; color: #94a3b8;">{{ $l->user_role ?? 'SISTEMA' }}</div>
                                     </td>
                                     <td style="padding: 0.75rem 1rem; white-space: nowrap;">
@@ -189,7 +189,7 @@
                                             </span>
                                         @endif
                                     </td>
-                                    <td style="padding: 0.75rem 1rem; font-weight: 600; color: #002B5B;">
+                                    <td style="padding: 0.75rem 1rem; font-weight: 600; color: #102542;">
                                         {{ $l->model_name ?? '—' }}
                                     </td>
                                     <td style="padding: 0.75rem 1rem;">
@@ -219,7 +219,7 @@
 
         {{-- CONTENIDO PESTAÑA 2: HISTORIAL DE REVALORIZACIONES Y PLUSVALÍA --}}
         @if($activeTab === 'revaluations')
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.05);">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.05);">
                 <div style="padding: 1rem 1.25rem; background: #fffbeb; border-bottom: 1px solid #fef3c7; display: flex; align-items: center; justify-content: space-between;">
                     <div>
                         <h4 style="font-weight: 800; color: #92400e; margin: 0; font-size: 0.9rem;">Registro Histórico de Revalorización y Plusvalía Patrimonial</h4>
@@ -254,13 +254,13 @@
                                         {{ $r->created_at->format('d/m/Y H:i') }}
                                     </td>
                                     <td style="padding: 0.75rem 1rem;">
-                                        <div style="font-weight: 700; color: #002B5B;">{{ $r->product?->name }}</div>
+                                        <div style="font-weight: 700; color: #102542;">{{ $r->product?->name }}</div>
                                         <div style="font-size: 0.7rem; color: #d97706; font-mono font-bold;">{{ $r->product?->catalog_code }}</div>
                                     </td>
                                     <td style="padding: 0.75rem 1rem; white-space: nowrap; color: #64748b; font-family: monospace;">
                                         Bs. {{ number_format($r->previous_price, 2) }}
                                     </td>
-                                    <td style="padding: 0.75rem 1rem; white-space: nowrap; font-weight: 800; color: #002B5B; font-family: monospace;">
+                                    <td style="padding: 0.75rem 1rem; white-space: nowrap; font-weight: 800; color: #102542; font-family: monospace;">
                                         Bs. {{ number_format($r->new_price, 2) }}
                                     </td>
                                     <td style="padding: 0.75rem 1rem; white-space: nowrap;">
@@ -280,7 +280,7 @@
                                             <div style="font-size: 0.75rem; color: #64748b; font-style: italic;">"{{ $r->notes }}"</div>
                                         @endif
                                     </td>
-                                    <td style="padding: 0.75rem 1rem; white-space: nowrap; color: #002B5B; font-weight: 700;">
+                                    <td style="padding: 0.75rem 1rem; white-space: nowrap; color: #102542; font-weight: 700;">
                                         {{ $r->user_name }}
                                     </td>
                                 </tr>

@@ -157,7 +157,7 @@ export default function AdminOrdersPage() {
 
         <button
           onClick={fetchOrders}
-          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#001A38] hover:bg-[#002B5B] border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white transition-all cursor-pointer shrink-0 shadow-sm"
+          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#102542] hover:bg-[#102542] border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white transition-all cursor-pointer shrink-0 shadow-sm"
         >
           <RefreshCw className="w-3.5 h-3.5 text-amber-400" />
           <span>Actualizar Lista</span>
@@ -165,7 +165,7 @@ export default function AdminOrdersPage() {
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="p-4 rounded-2xl bg-[#001A38]/90 border border-slate-800 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="p-4 rounded-2xl bg-[#102542]/90 border border-slate-800 flex flex-col md:flex-row gap-4 items-center justify-between">
         {/* Search Input */}
         <form onSubmit={handleSearchSubmit} className="w-full md:w-96 relative">
           <input
@@ -173,7 +173,7 @@ export default function AdminOrdersPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar por orden, cliente, correo o guía..."
-            className="w-full pl-10 pr-4 py-2 bg-[#00244D]/80 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 transition-colors"
+            className="w-full pl-10 pr-4 py-2 bg-[#1B4785]/80 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 transition-colors"
           />
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
         </form>
@@ -186,8 +186,8 @@ export default function AdminOrdersPage() {
               onClick={() => setStatusFilter(opt.value)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 statusFilter === opt.value
-                  ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
-                  : 'bg-[#00244D] text-slate-300 hover:text-white hover:bg-[#002B5B] border border-slate-700/60'
+                  ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
+                  : 'bg-[#1B4785] text-slate-300 hover:text-white hover:bg-[#102542] border border-slate-700/60'
               }`}
             >
               {opt.label}
@@ -197,7 +197,7 @@ export default function AdminOrdersPage() {
       </div>
 
       {/* Orders Table */}
-      <div className="bg-[#001A38]/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden">
+      <div className="bg-[#102542]/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden">
         {loading ? (
           <div className="p-12 flex flex-col items-center justify-center text-slate-400">
             <div className="w-8 h-8 border-2 border-amber-400 border-t-transparent rounded-full animate-spin mb-3" />
@@ -212,7 +212,7 @@ export default function AdminOrdersPage() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs text-slate-300">
-              <thead className="text-[11px] uppercase tracking-wider text-slate-400 bg-[#00244D] border-b border-slate-800">
+              <thead className="text-[11px] uppercase tracking-wider text-slate-400 bg-[#1B4785] border-b border-slate-800">
                 <tr>
                   <th className="py-3.5 px-4 font-semibold">Código Orden</th>
                   <th className="py-3.5 px-4 font-semibold">Coleccionista</th>
@@ -225,7 +225,7 @@ export default function AdminOrdersPage() {
               </thead>
               <tbody className="divide-y divide-slate-800/60">
                 {orders.map((order) => (
-                  <tr key={order.id} className="hover:bg-[#002B5B]/30 transition-colors">
+                  <tr key={order.id} className="hover:bg-[#102542]/30 transition-colors">
                     <td className="py-3.5 px-4">
                       <button
                         onClick={() => setSelectedOrder(order)}
@@ -270,7 +270,7 @@ export default function AdminOrdersPage() {
                           disabled={updatingId === order.id}
                           value={order.status}
                           onChange={(e) => handleUpdateStatus(order.id, e.target.value)}
-                          className="bg-[#00244D] text-[11px] font-medium text-slate-200 border border-white/10 rounded-lg px-2.5 py-1 focus:outline-none focus:border-white/20 cursor-pointer disabled:opacity-50"
+                          className="bg-[#1B4785] text-[11px] font-medium text-slate-200 border border-white/10 rounded-lg px-2.5 py-1 focus:outline-none focus:border-white/20 cursor-pointer disabled:opacity-50"
                         >
                           <option value="VAULT_VERIFIED">Verificado en Bóveda</option>
                           <option value="PACKED_GLASSINE">Sobre Glassine</option>
@@ -281,7 +281,7 @@ export default function AdminOrdersPage() {
 
                         <button
                           onClick={() => setSelectedOrder(order)}
-                          className="p-1.5 rounded-lg bg-[#00244D] hover:bg-[#002B5B] text-slate-300 hover:text-white border border-slate-700"
+                          className="p-1.5 rounded-lg bg-[#1B4785] hover:bg-[#102542] text-slate-300 hover:text-white border border-slate-700"
                           title="Ver detalle completo de orden"
                         >
                           <FileText className="w-4 h-4" />
@@ -299,9 +299,9 @@ export default function AdminOrdersPage() {
       {/* Order Detail Inspection Modal */}
       {selectedOrder && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#001A38] border border-white/10 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-[#102542] border border-white/10 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col animate-in fade-in zoom-in-95 duration-200">
             {/* Modal Header */}
-            <div className="p-6 border-b border-slate-800 flex items-center justify-between sticky top-0 bg-[#001A38] z-10">
+            <div className="p-6 border-b border-slate-800 flex items-center justify-between sticky top-0 bg-[#102542] z-10">
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="text-base font-bold text-white font-serif">
@@ -316,7 +316,7 @@ export default function AdminOrdersPage() {
 
               <button
                 onClick={() => setSelectedOrder(null)}
-                className="p-2 rounded-xl bg-[#002B5B] text-slate-400 hover:text-white border border-slate-700 cursor-pointer"
+                className="p-2 rounded-xl bg-[#102542] text-slate-400 hover:text-white border border-slate-700 cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -325,7 +325,7 @@ export default function AdminOrdersPage() {
             {/* Modal Body */}
             <div className="p-6 space-y-6 flex-1 text-xs">
               {/* Customer & Shipping Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-2xl bg-[#00244D]/60 border border-slate-800">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-2xl bg-[#1B4785]/60 border border-slate-800">
                 <div>
                   <span className="text-[10px] font-medium uppercase tracking-wider text-amber-200/90 block mb-1">
                     Coleccionista Destinatario
@@ -362,7 +362,7 @@ export default function AdminOrdersPage() {
 
                 <div className="rounded-xl border border-slate-800 overflow-hidden">
                   <table className="w-full text-left text-xs text-slate-300">
-                    <thead className="bg-[#00244D] text-[10px] uppercase text-slate-400 border-b border-slate-800">
+                    <thead className="bg-[#1B4785] text-[10px] uppercase text-slate-400 border-b border-slate-800">
                       <tr>
                         <th className="p-2.5">Ejemplar</th>
                         <th className="p-2.5 text-center">Cantidad</th>
@@ -372,7 +372,7 @@ export default function AdminOrdersPage() {
                     </thead>
                     <tbody className="divide-y divide-slate-800/60">
                       {(selectedOrder.items || []).map((item: any) => (
-                        <tr key={item.id} className="hover:bg-[#002B5B]/30">
+                        <tr key={item.id} className="hover:bg-[#102542]/30">
                           <td className="p-2.5 font-semibold text-white">
                             {item.product_name}
                             {item.product?.catalog_code && (
@@ -393,7 +393,7 @@ export default function AdminOrdersPage() {
                         </tr>
                       ))}
                     </tbody>
-                    <tfoot className="bg-[#00244D]/80 border-t border-slate-700 font-bold text-white">
+                    <tfoot className="bg-[#1B4785]/80 border-t border-slate-700 font-bold text-white">
                       <tr>
                         <td colSpan={3} className="p-3 text-right uppercase text-[11px]">
                           Total Liquidado:
@@ -417,10 +417,10 @@ export default function AdminOrdersPage() {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 border-t border-slate-800 flex items-center justify-end gap-3 bg-[#001329]">
+            <div className="p-4 border-t border-slate-800 flex items-center justify-end gap-3 bg-[#0D1E36]">
               <button
                 onClick={() => setSelectedOrder(null)}
-                className="px-4 py-2 rounded-xl bg-[#00244D] text-slate-300 hover:text-white border border-slate-700 font-semibold text-xs cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-[#1B4785] text-slate-300 hover:text-white border border-slate-700 font-semibold text-xs cursor-pointer"
               >
                 Cerrar
               </button>

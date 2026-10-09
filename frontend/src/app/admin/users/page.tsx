@@ -194,7 +194,7 @@ export default function AdminUsersPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#001A38]/90 border border-slate-800 p-6 rounded-2xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#102542]/90 border border-slate-800 p-6 rounded-2xl">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-amber-200/90">
             <Users className="w-6 h-6" />
@@ -213,14 +213,14 @@ export default function AdminUsersPage() {
           <button
             onClick={fetchUsers}
             disabled={loading}
-            className="p-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
+            className="p-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
             title="Actualizar lista"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
           </button>
           <button
             onClick={handleOpenCreate}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#001A38] font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#102542] font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
           >
             <UserPlus className="w-4 h-4" />
             <span>Nuevo Funcionario / Usuario</span>
@@ -260,7 +260,7 @@ export default function AdminUsersPage() {
             placeholder="Buscar por nombre, correo electrónico o credencial..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#001A38] border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400/60"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#102542] border border-slate-700/80 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400/60"
           />
         </div>
 
@@ -268,7 +268,7 @@ export default function AdminUsersPage() {
           <select
             value={roleFilter}
             onChange={(e) => setRoleFilter(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl bg-[#001A38] border border-slate-700/80 text-xs text-white focus:outline-none focus:border-amber-400/60"
+            className="w-full px-4 py-2.5 rounded-xl bg-[#102542] border border-slate-700/80 text-xs text-white focus:outline-none focus:border-amber-400/60"
           >
             <option value="ALL">Todos los Roles Institucionales</option>
             <option value="SUPER_ADMIN">SUPER_ADMIN (Dirección General)</option>
@@ -279,10 +279,10 @@ export default function AdminUsersPage() {
       </div>
 
       {/* Users Table */}
-      <div className="bg-[#001A38] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+      <div className="bg-[#102542] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#00142B] text-slate-400 border-b border-slate-800 uppercase tracking-wider font-semibold">
+            <thead className="bg-[#0D2039] text-slate-400 border-b border-slate-800 uppercase tracking-wider font-semibold">
               <tr>
                 <th className="py-3.5 px-4">Funcionario / Usuario</th>
                 <th className="py-3.5 px-4">Rol Asignado</th>
@@ -314,7 +314,7 @@ export default function AdminUsersPage() {
                   const isStaff = roleName === 'ADMIN_PRODUCTOS_ALMACEN';
 
                   return (
-                    <tr key={user.id} className="hover:bg-[#002B5B]/30 transition-colors">
+                    <tr key={user.id} className="hover:bg-[#102542]/30 transition-colors">
                       <td className="py-3.5 px-4">
                         <div className="flex items-center gap-3">
                           <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${
@@ -357,7 +357,7 @@ export default function AdminUsersPage() {
                       </td>
 
                       <td className="py-3.5 px-4 text-center">
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#002B5B] text-slate-300 font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#102542] text-slate-300 font-medium">
                           <ShoppingBag className="w-3 h-3 text-slate-400" />
                           <span>{user.orders_count}</span>
                         </span>
@@ -367,7 +367,7 @@ export default function AdminUsersPage() {
                         <div className="inline-flex items-center gap-1.5">
                           <button
                             onClick={() => handleOpenEdit(user)}
-                            className="p-1.5 rounded-lg bg-[#002B5B] hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white transition-colors"
+                            className="p-1.5 rounded-lg bg-[#102542] hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white transition-colors"
                             title="Editar usuario"
                           >
                             <Edit2 className="w-3.5 h-3.5" />
@@ -398,7 +398,7 @@ export default function AdminUsersPage() {
       {/* Modal Crear / Editar */}
       {showModal && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#001A38] border border-white/10 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
+          <div className="bg-[#102542] border border-white/10 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
             <button
               onClick={() => setShowModal(false)}
               className="absolute top-5 right-5 p-1 rounded-lg text-slate-400 hover:text-white"
@@ -431,7 +431,7 @@ export default function AdminUsersPage() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Ej. Lic. Carlos Mendoza"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
                 />
               </div>
 
@@ -445,7 +445,7 @@ export default function AdminUsersPage() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="funcionario@filatelia.bo"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
                 />
               </div>
 
@@ -461,7 +461,7 @@ export default function AdminUsersPage() {
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     placeholder={editingUser ? 'Dejar en blanco para mantener' : 'Mínimo 6 caracteres'}
-                    className="w-full pl-9 pr-10 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
+                    className="w-full pl-9 pr-10 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
                   />
                   <button
                     type="button"
@@ -482,7 +482,7 @@ export default function AdminUsersPage() {
                 <select
                   value={formData.role}
                   onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
                 >
                   <option value="SUPER_ADMIN">SUPER_ADMIN (Acceso Total a Bóveda y Configuración)</option>
                   <option value="ADMIN_PRODUCTOS_ALMACEN">ADMIN_PRODUCTOS_ALMACEN (Gestión de Stock y Despacho)</option>
@@ -494,14 +494,14 @@ export default function AdminUsersPage() {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2.5 rounded-xl bg-[#002B5B] text-slate-300 hover:text-white text-xs font-semibold"
+                  className="px-4 py-2.5 rounded-xl bg-[#102542] text-slate-300 hover:text-white text-xs font-semibold"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#001A38] font-bold text-xs uppercase tracking-wider shadow-md transition-colors"
+                  className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#102542] font-bold text-xs uppercase tracking-wider shadow-md transition-colors"
                 >
                   {saving ? 'Guardando...' : editingUser ? 'Actualizar Usuario' : 'Crear Usuario'}
                 </button>

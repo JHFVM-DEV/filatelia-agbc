@@ -170,7 +170,7 @@ export default function AdminCategoriasPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#001A38]/90 border border-slate-800 p-6 rounded-2xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#102542]/90 border border-slate-800 p-6 rounded-2xl">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-amber-200/90">
             <Tag className="w-6 h-6" />
@@ -189,14 +189,14 @@ export default function AdminCategoriasPage() {
           <button
             onClick={fetchCategories}
             disabled={loading}
-            className="p-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
+            className="p-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
             title="Actualizar lista"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
           </button>
           <button
             onClick={handleOpenCreate}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#001A38] font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#102542] font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>Nueva Categoría</span>
@@ -235,15 +235,15 @@ export default function AdminCategoriasPage() {
           placeholder="Buscar categoría temática..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#001A38] border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+          className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#102542] border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
         />
       </div>
 
       {/* Categories Table */}
-      <div className="bg-[#001A38] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+      <div className="bg-[#102542] border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#00142B] text-slate-400 border-b border-slate-800 uppercase tracking-wider font-semibold">
+            <thead className="bg-[#0D2039] text-slate-400 border-b border-slate-800 uppercase tracking-wider font-semibold">
               <tr>
                 <th className="py-3.5 px-4 w-12 text-center">Orden</th>
                 <th className="py-3.5 px-4">Nombre de la Categoría</th>
@@ -269,7 +269,7 @@ export default function AdminCategoriasPage() {
                 </tr>
               ) : (
                 filteredCategories.map((cat) => (
-                  <tr key={cat.id} className="hover:bg-[#002B5B]/30 transition-colors">
+                  <tr key={cat.id} className="hover:bg-[#102542]/30 transition-colors">
                     <td className="py-3.5 px-4 text-center font-mono font-bold text-slate-400">
                       {cat.sort_order}
                     </td>
@@ -300,7 +300,7 @@ export default function AdminCategoriasPage() {
                       <div className="inline-flex items-center gap-1.5">
                         <button
                           onClick={() => handleOpenEdit(cat)}
-                          className="p-1.5 rounded-lg bg-[#002B5B] hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white transition-colors"
+                          className="p-1.5 rounded-lg bg-[#102542] hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white transition-colors"
                           title="Editar categoría"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
@@ -325,7 +325,7 @@ export default function AdminCategoriasPage() {
       {/* Modal Crear / Editar */}
       {showModal && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#001A38] border border-white/10 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
+          <div className="bg-[#102542] border border-white/10 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
             <button
               onClick={() => setShowModal(false)}
               className="absolute top-5 right-5 p-1 rounded-lg text-slate-400 hover:text-white"
@@ -358,7 +358,7 @@ export default function AdminCategoriasPage() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Ej. Bicentenario de Bolivia"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
                 />
               </div>
 
@@ -371,7 +371,7 @@ export default function AdminCategoriasPage() {
                   value={formData.slug}
                   onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
                   placeholder="bicentenario-de-bolivia"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400 font-mono"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400 font-mono"
                 />
               </div>
 
@@ -384,7 +384,7 @@ export default function AdminCategoriasPage() {
                   min="1"
                   value={formData.sort_order}
                   onChange={(e) => setFormData({ ...formData, sort_order: parseInt(e.target.value) || 1 })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
                 />
               </div>
 
@@ -397,7 +397,7 @@ export default function AdminCategoriasPage() {
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   placeholder="Descripción histórica o reseña de la categoría..."
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400 resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400 resize-none"
                 />
               </div>
 
@@ -405,14 +405,14 @@ export default function AdminCategoriasPage() {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2.5 rounded-xl bg-[#002B5B] text-slate-300 hover:text-white text-xs font-semibold"
+                  className="px-4 py-2.5 rounded-xl bg-[#102542] text-slate-300 hover:text-white text-xs font-semibold"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#001A38] font-bold text-xs uppercase tracking-wider shadow-md transition-colors"
+                  className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#102542] font-bold text-xs uppercase tracking-wider shadow-md transition-colors"
                 >
                   {saving ? 'Guardando...' : editingCategory ? 'Guardar Cambios' : 'Crear Categoría'}
                 </button>

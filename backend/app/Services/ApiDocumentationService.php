@@ -787,13 +787,13 @@ class ApiDocumentationService
                     width: 100%;
                     border-collapse: collapse;
                     margin-bottom: 25pt;
-                    border-bottom: 2pt solid #002B5B;
+                    border-bottom: 2pt solid #102542;
                     padding-bottom: 8pt;
                 }
                 .title-cover {
                     font-size: 20pt;
                     font-weight: bold;
-                    color: #002B5B;
+                    color: #102542;
                     text-align: center;
                     margin-top: 40pt;
                     margin-bottom: 10pt;
@@ -817,7 +817,7 @@ class ApiDocumentationService
                     font-size: 10pt;
                 }
                 .meta-table th {
-                    background-color: #002B5B;
+                    background-color: #102542;
                     color: #ffffff;
                     text-align: left;
                     font-weight: bold;
@@ -826,13 +826,13 @@ class ApiDocumentationService
                     background-color: #f8fafc;
                     font-weight: bold;
                     width: 30%;
-                    color: #002B5B;
+                    color: #102542;
                 }
                 h1 {
                     font-size: 15pt;
                     font-weight: bold;
-                    color: #002B5B;
-                    border-bottom: 1.5pt solid #002B5B;
+                    color: #102542;
+                    border-bottom: 1.5pt solid #102542;
                     padding-bottom: 4pt;
                     margin-top: 25pt;
                     margin-bottom: 12pt;
@@ -840,7 +840,7 @@ class ApiDocumentationService
                 h2 {
                     font-size: 12.5pt;
                     font-weight: bold;
-                    color: #0A3B73;
+                    color: #2C63AC;
                     margin-top: 18pt;
                     margin-bottom: 8pt;
                 }
@@ -859,7 +859,7 @@ class ApiDocumentationService
                 .code-box {
                     background-color: #f1f5f9;
                     border: 1pt solid #cbd5e1;
-                    border-left: 3pt solid #002B5B;
+                    border-left: 3pt solid #102542;
                     padding: 8pt 12pt;
                     font-family: 'Consolas', 'Courier New', monospace;
                     font-size: 9.5pt;
@@ -891,7 +891,7 @@ class ApiDocumentationService
                     padding: 6pt 8pt;
                 }
                 .data-table th {
-                    background-color: #0A3B73;
+                    background-color: #2C63AC;
                     color: #ffffff;
                     font-weight: bold;
                     text-align: left;
@@ -952,7 +952,7 @@ class ApiDocumentationService
                         </span>
                     </td>
                     <td style="width: 30%; text-align: right; vertical-align: middle;">
-                        <div style="font-size: 9pt; font-weight: bold; color: #002B5B; background: #f1f5f9; padding: 4pt 8pt; border: 1pt solid #cbd5e1; border-radius: 4pt; display: inline-block;">
+                        <div style="font-size: 9pt; font-weight: bold; color: #102542; background: #f1f5f9; padding: 4pt 8pt; border: 1pt solid #cbd5e1; border-radius: 4pt; display: inline-block;">
                             <?= htmlspecialchars($docCode) ?>
                         </div>
                     </td>
@@ -1118,7 +1118,7 @@ Authorization: Bearer <?= htmlspecialchars($displayToken) ?>
                                 };
                             ?>
                             <span class="badge <?= $badgeClass ?>"><?= $ep['method'] ?></span>
-                            <strong style="font-size: 11pt; color: #002B5B; margin-left: 6pt; font-family: monospace;"><?= htmlspecialchars($ep['path']) ?></strong>
+                            <strong style="font-size: 11pt; color: #102542; margin-left: 6pt; font-family: monospace;"><?= htmlspecialchars($ep['path']) ?></strong>
                         </div>
                         <p style="margin-bottom: 4pt;"><strong>Descripción:</strong> <?= htmlspecialchars($ep['description']) ?></p>
                         <p style="margin-bottom: 4pt; font-size: 9pt;">

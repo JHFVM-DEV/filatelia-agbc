@@ -93,43 +93,43 @@ function CatalogContent() {
   return (
     <div className="animate-in fade-in duration-300">
       {/* Institutional Catalog Header Banner - Amarillo Postal Dominante */}
-      <section className="bg-gradient-to-r from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] pt-10 pb-12 border-b-2 border-[#E5B500] relative overflow-hidden shadow-sm">
+      <section className="bg-gradient-to-r from-[#FFE58C] via-[#FECC36] to-[#E5B728] text-[#102542] pt-10 pb-12 border-b-2 border-[#E5B728] relative overflow-hidden shadow-sm">
         {/* Subtle Pattern */}
         <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
         <div className="absolute -top-24 right-1/4 w-96 h-96 bg-white/25 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb Navigation */}
-          <nav className="flex items-center gap-2 text-xs text-[#002B5B]/80 mb-4 font-bold">
+          <nav className="flex items-center gap-2 text-xs text-[#102542]/80 mb-4 font-bold">
             <Link href="/" className="hover:text-black transition-colors">
               Inicio
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#002B5B]/60" />
-            <span className="text-[#002B5B] font-extrabold">Catálogo y Emisiones</span>
+            <ChevronRight className="w-3.5 h-3.5 text-[#102542]/60" />
+            <span className="text-[#102542] font-extrabold">Catálogo y Emisiones</span>
           </nav>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-3 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#FFD100]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#102542] text-[#FECC36] text-xs font-bold tracking-wide shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#FECC36]" />
                 <span>Acervo Numismático & Postal Oficial</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#102542] tracking-tight">
                 Catálogo de Sellos y Emisiones
               </h1>
-              <p className="text-sm sm:text-base text-[#002B5B]/85 leading-relaxed font-medium">
+              <p className="text-sm sm:text-base text-[#102542]/85 leading-relaxed font-medium">
                 Explore nuestra colección de sellos conmemorativos, primeras emisiones de 1866, hojitas bloque de gala y material de conservación con peritaje científico y certificado notarial de autenticidad.
               </p>
             </div>
 
             {/* Quick Guarantees Pill */}
             <div className="flex flex-wrap md:flex-col gap-2 shrink-0 text-xs">
-              <div className="flex items-center gap-2 bg-[#002B5B] px-3.5 py-2 rounded-xl text-white text-xs font-bold shadow-sm">
-                <ShieldCheck className="w-4 h-4 text-[#FFD100]" />
+              <div className="flex items-center gap-2 bg-[#102542] px-3.5 py-2 rounded-xl text-white text-xs font-bold shadow-sm">
+                <ShieldCheck className="w-4 h-4 text-[#FECC36]" />
                 <span>Goma Original MNH Auditada</span>
               </div>
-              <div className="flex items-center gap-2 bg-[#002B5B] px-3.5 py-2 rounded-xl text-white text-xs font-bold shadow-sm">
-                <Award className="w-4 h-4 text-[#FFD100]" />
+              <div className="flex items-center gap-2 bg-[#102542] px-3.5 py-2 rounded-xl text-white text-xs font-bold shadow-sm">
+                <Award className="w-4 h-4 text-[#FECC36]" />
                 <span>Certificado Notarial Foliado</span>
               </div>
             </div>
@@ -148,35 +148,35 @@ function CatalogContent() {
       />
 
       {/* Trust & Dispatch Assurance Bar */}
-      <section className="bg-[#001A38] text-white py-10 border-t-4 border-[#FFCC00]">
+      <section className="bg-[#102542] text-white py-10 border-t-4 border-[#FECC36]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs text-slate-300">
-            <div className="flex items-center gap-3 bg-[#002B5B]/60 p-4 rounded-xl border border-slate-700">
-              <PackageCheck className="w-6 h-6 text-[#F4C400] shrink-0" />
+            <div className="flex items-center gap-3 bg-[#102542]/60 p-4 rounded-xl border border-slate-700">
+              <PackageCheck className="w-6 h-6 text-[#FECC36] shrink-0" />
               <div>
                 <strong className="block text-white font-bold">Valija Postal Asegurada</strong>
                 <span>Despacho oficial con código de rastreo en todo el país.</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 bg-[#002B5B]/60 p-4 rounded-xl border border-slate-700">
-              <ShieldCheck className="w-6 h-6 text-[#F4C400] shrink-0" />
+            <div className="flex items-center gap-3 bg-[#102542]/60 p-4 rounded-xl border border-slate-700">
+              <ShieldCheck className="w-6 h-6 text-[#FECC36] shrink-0" />
               <div>
                 <strong className="block text-white font-bold">Autenticidad Notarial</strong>
                 <span>Certificado físico sellado en seco para piezas de colección.</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 bg-[#002B5B]/60 p-4 rounded-xl border border-slate-700">
-              <Lock className="w-6 h-6 text-[#F4C400] shrink-0" />
+            <div className="flex items-center gap-3 bg-[#102542]/60 p-4 rounded-xl border border-slate-700">
+              <Lock className="w-6 h-6 text-[#FECC36] shrink-0" />
               <div>
                 <strong className="block text-white font-bold">Protección Glassine</strong>
                 <span>Empaque neutro libre de ácido para resguardar la goma.</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 bg-[#002B5B]/60 p-4 rounded-xl border border-slate-700">
-              <Award className="w-6 h-6 text-[#F4C400] shrink-0" />
+            <div className="flex items-center gap-3 bg-[#102542]/60 p-4 rounded-xl border border-slate-700">
+              <Award className="w-6 h-6 text-[#FECC36] shrink-0" />
               <div>
                 <strong className="block text-white font-bold">Garantía UPU</strong>
                 <span>Piezas homologadas bajo normas postales internacionales.</span>
@@ -201,7 +201,7 @@ export default function CatalogoPage() {
     <Suspense
       fallback={
         <div className="min-h-screen bg-[#FAF8F0] flex items-center justify-center p-12">
-          <div className="flex flex-col items-center gap-3 text-[#002B5B]">
+          <div className="flex flex-col items-center gap-3 text-[#102542]">
             <div className="w-10 h-10 border-4 border-amber-400 border-t-transparent rounded-full animate-spin" />
             <span className="text-xs font-bold tracking-wider uppercase">Cargando Bóveda Filatélica...</span>
           </div>

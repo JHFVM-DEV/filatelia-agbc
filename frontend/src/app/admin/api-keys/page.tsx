@@ -450,7 +450,7 @@ export default function ApiKeysManagementPage() {
   return (
     <div className="space-y-6 pb-12">
       {/* Encabezado Superior */}
-      <div className="bg-gradient-to-r from-[#001A38] via-[#002244] to-[#00142B] border border-amber-500/30 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-[#102542] via-[#163359] to-[#0D2039] border border-amber-500/30 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
             <span className="text-[11px] font-black tracking-wider uppercase text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-sm">
@@ -473,7 +473,7 @@ export default function ApiKeysManagementPage() {
           <button
             onClick={() => fetchData(true)}
             disabled={refreshing}
-            className="p-2.5 bg-[#001833] hover:bg-[#002B5B] border border-slate-700 text-slate-300 hover:text-white rounded-xl transition-all flex items-center gap-2 text-xs font-bold shadow-md cursor-pointer disabled:opacity-50"
+            className="p-2.5 bg-[#0F233E] hover:bg-[#102542] border border-slate-700 text-slate-300 hover:text-white rounded-xl transition-all flex items-center gap-2 text-xs font-bold shadow-md cursor-pointer disabled:opacity-50"
             title="Recargar datos"
           >
             <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
@@ -520,7 +520,7 @@ export default function ApiKeysManagementPage() {
                 <strong className="text-white">no se volverá a mostrar nunca más</strong>. Cópielo y almacénelo en su bóveda segura o entréguelo al integrador oficial ahora mismo.
               </p>
 
-              <div className="mt-4 flex items-center gap-2 bg-[#000E1C] border border-emerald-500/40 rounded-xl p-3 shadow-inner">
+              <div className="mt-4 flex items-center gap-2 bg-[#091627] border border-emerald-500/40 rounded-xl p-3 shadow-inner">
                 <code className="flex-1 font-mono text-xs sm:text-sm font-bold text-emerald-300 break-all select-all px-2">
                   {revealedToken}
                 </code>
@@ -561,7 +561,7 @@ export default function ApiKeysManagementPage() {
 
       {/* Tarjetas de Estadísticas Rápidas */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#001833] border border-slate-800 rounded-2xl p-5 shadow-lg relative overflow-hidden group">
+        <div className="bg-[#0F233E] border border-slate-800 rounded-2xl p-5 shadow-lg relative overflow-hidden group">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Total Emitidas</span>
             <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
@@ -572,7 +572,7 @@ export default function ApiKeysManagementPage() {
           <span className="text-[11px] text-slate-400 mt-1 block">Historial de credenciales emitidas</span>
         </div>
 
-        <div className="bg-[#001833] border border-slate-800 rounded-2xl p-5 shadow-lg relative overflow-hidden group">
+        <div className="bg-[#0F233E] border border-slate-800 rounded-2xl p-5 shadow-lg relative overflow-hidden group">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400">Claves Activas</span>
             <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
@@ -583,7 +583,7 @@ export default function ApiKeysManagementPage() {
           <span className="text-[11px] text-slate-400 mt-1 block">Habilitadas para consumo REST</span>
         </div>
 
-        <div className="bg-[#001833] border border-slate-800 rounded-2xl p-5 shadow-lg relative overflow-hidden group">
+        <div className="bg-[#0F233E] border border-slate-800 rounded-2xl p-5 shadow-lg relative overflow-hidden group">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-bold uppercase tracking-wider text-rose-400">Claves Caducadas</span>
             <div className="w-8 h-8 rounded-lg bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400">
@@ -594,7 +594,7 @@ export default function ApiKeysManagementPage() {
           <span className="text-[11px] text-slate-400 mt-1 block">Expiradas por límite de tiempo</span>
         </div>
 
-        <div className="bg-[#001833] border border-slate-800 rounded-2xl p-5 shadow-lg relative overflow-hidden group">
+        <div className="bg-[#0F233E] border border-slate-800 rounded-2xl p-5 shadow-lg relative overflow-hidden group">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400">Formatos Oficiales</span>
             <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
@@ -627,7 +627,7 @@ export default function ApiKeysManagementPage() {
               : 'border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700'
           }`}
         >
-          <Store className="w-4 h-4 text-[#FFCC00]" />
+          <Store className="w-4 h-4 text-[#FECC36]" />
           Vitrina Portal Correos (API)
         </button>
         <button
@@ -661,7 +661,7 @@ export default function ApiKeysManagementPage() {
 
       {/* TAB 1: LISTADO DE TOKENS */}
       {activeTab === 'tokens' && (
-        <div className="bg-[#00142B] border border-slate-800 rounded-2xl p-6 shadow-xl">
+        <div className="bg-[#0D2039] border border-slate-800 rounded-2xl p-6 shadow-xl">
           {/* Filtros y Búsqueda */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div className="relative flex-1 max-w-sm">
@@ -671,7 +671,7 @@ export default function ApiKeysManagementPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Buscar por nombre de cliente o integración..."
-                className="w-full pl-9 pr-4 py-2 bg-[#001021] border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-400"
+                className="w-full pl-9 pr-4 py-2 bg-[#0B1A2D] border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-400"
               />
             </div>
 
@@ -681,8 +681,8 @@ export default function ApiKeysManagementPage() {
                 onClick={() => setStatusFilter('ALL')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   statusFilter === 'ALL'
-                    ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
-                    : 'bg-[#001021] border border-slate-800 text-slate-400 hover:text-white hover:bg-[#002B5B]/40'
+                    ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
+                    : 'bg-[#0B1A2D] border border-slate-800 text-slate-400 hover:text-white hover:bg-[#102542]/40'
                 }`}
               >
                 Todas
@@ -691,8 +691,8 @@ export default function ApiKeysManagementPage() {
                 onClick={() => setStatusFilter('ACTIVE')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   statusFilter === 'ACTIVE'
-                    ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
-                    : 'bg-[#001021] border border-slate-800 text-slate-400 hover:text-white hover:bg-[#002B5B]/40'
+                    ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
+                    : 'bg-[#0B1A2D] border border-slate-800 text-slate-400 hover:text-white hover:bg-[#102542]/40'
                 }`}
               >
                 Activas
@@ -701,8 +701,8 @@ export default function ApiKeysManagementPage() {
                 onClick={() => setStatusFilter('EXPIRED')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   statusFilter === 'EXPIRED'
-                    ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
-                    : 'bg-[#001021] border border-slate-800 text-slate-400 hover:text-white hover:bg-[#002B5B]/40'
+                    ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
+                    : 'bg-[#0B1A2D] border border-slate-800 text-slate-400 hover:text-white hover:bg-[#102542]/40'
                 }`}
               >
                 Caducadas
@@ -717,7 +717,7 @@ export default function ApiKeysManagementPage() {
               <p className="text-xs text-slate-400 font-bold">Cargando credenciales oficiales...</p>
             </div>
           ) : filteredTokens.length === 0 ? (
-            <div className="py-16 text-center border-2 border-dashed border-slate-800 rounded-2xl bg-[#001021]/50">
+            <div className="py-16 text-center border-2 border-dashed border-slate-800 rounded-2xl bg-[#0B1A2D]/50">
               <Key className="w-10 h-10 text-slate-600 mx-auto mb-2" />
               <h4 className="text-sm font-black text-slate-300">No se encontraron API Keys</h4>
               <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
@@ -734,7 +734,7 @@ export default function ApiKeysManagementPage() {
             <div className="overflow-x-auto rounded-xl border border-slate-800">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-[#001021] border-b border-slate-800 text-[11px] font-black uppercase text-slate-400 tracking-wider">
+                  <tr className="bg-[#0B1A2D] border-b border-slate-800 text-[11px] font-black uppercase text-slate-400 tracking-wider">
                     <th className="py-3 px-4">Aplicación / Cliente</th>
                     <th className="py-3 px-4">Estado</th>
                     <th className="py-3 px-4">Permisos (*Scopes*)</th>
@@ -743,9 +743,9 @@ export default function ApiKeysManagementPage() {
                     <th className="py-3 px-4 text-right">Acción</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 text-xs bg-[#00142B]">
+                <tbody className="divide-y divide-slate-800/60 text-xs bg-[#0D2039]">
                   {filteredTokens.map((t) => (
-                    <tr key={t.id} className="hover:bg-[#001A38]/70 transition-colors">
+                    <tr key={t.id} className="hover:bg-[#102542]/70 transition-colors">
                       <td className="py-4 px-4">
                         <div className="font-bold text-white text-sm flex items-center gap-2">
                           <span className={`w-2 h-2 rounded-full ${t.is_expired ? 'bg-rose-500' : 'bg-emerald-400'}`} />
@@ -776,7 +776,7 @@ export default function ApiKeysManagementPage() {
                               className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold ${
                                 ab === '*'
                                   ? 'bg-amber-500/15 border border-amber-500/40 text-amber-300'
-                                  : 'bg-[#001021] border border-slate-700 text-slate-300'
+                                  : 'bg-[#0B1A2D] border border-slate-700 text-slate-300'
                               }`}
                             >
                               {ab}
@@ -834,7 +834,7 @@ export default function ApiKeysManagementPage() {
       {/* TAB 2: DOCUMENTACIÓN DE ENDPOINTS */}
       {activeTab === 'docs' && (
         <div className="space-y-6">
-          <div className="bg-[#00142B] border border-slate-800 rounded-2xl p-6 shadow-xl">
+          <div className="bg-[#0D2039] border border-slate-800 rounded-2xl p-6 shadow-xl">
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[10px] font-black uppercase text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded-full">
                 Especificación REST &bull; OAS 3.0
@@ -846,7 +846,7 @@ export default function ApiKeysManagementPage() {
             <p className="text-xs text-slate-300 mb-6 leading-relaxed">
               Consulte la especificación interactiva de los endpoints REST expuestos por la plataforma. Para consumir los
               servicios protegidos, incluya el encabezado{' '}
-              <code className="bg-[#000E1C] border border-amber-500/30 text-amber-300 px-2 py-0.5 rounded font-mono font-bold">
+              <code className="bg-[#091627] border border-amber-500/30 text-amber-300 px-2 py-0.5 rounded font-mono font-bold">
                 Authorization: Bearer &lt;API_TOKEN&gt;
               </code>
               .
@@ -854,8 +854,8 @@ export default function ApiKeysManagementPage() {
 
             <div className="space-y-6">
               {endpointGroups.map((group) => (
-                <div key={group.group} className="border border-slate-800 rounded-xl overflow-hidden bg-[#001021]/50 shadow-md">
-                  <div className="bg-[#001833] px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                <div key={group.group} className="border border-slate-800 rounded-xl overflow-hidden bg-[#0B1A2D]/50 shadow-md">
+                  <div className="bg-[#0F233E] px-4 py-3 border-b border-slate-800 flex items-center justify-between">
                     <h3 className="text-xs font-black uppercase tracking-wider text-slate-200">
                       {group.group}
                     </h3>
@@ -878,7 +878,7 @@ export default function ApiKeysManagementPage() {
                           : 'bg-rose-600';
 
                       return (
-                        <div key={ep.path + ep.method} className="bg-[#00142B]/90 border border-slate-800/90 rounded-xl p-4">
+                        <div key={ep.path + ep.method} className="bg-[#0D2039]/90 border border-slate-800/90 rounded-xl p-4">
                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                             <div className="flex items-center gap-2">
                               <span className={`${methodColor} text-white font-black text-[10px] px-2 py-0.5 rounded shadow-sm`}>
@@ -893,7 +893,7 @@ export default function ApiKeysManagementPage() {
                               {ep.required_scopes.map((s) => (
                                 <span
                                   key={s}
-                                  className="text-[10px] font-mono font-bold bg-[#001021] border border-slate-700 text-slate-300 px-1.5 py-0.5 rounded"
+                                  className="text-[10px] font-mono font-bold bg-[#0B1A2D] border border-slate-700 text-slate-300 px-1.5 py-0.5 rounded"
                                 >
                                   {s}
                                 </span>
@@ -905,7 +905,7 @@ export default function ApiKeysManagementPage() {
                           <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">{ep.description}</p>
 
                           {/* Bloque cURL */}
-                          <div className="mt-3 bg-[#000E1C] text-slate-100 border border-slate-800 rounded-xl p-3 font-mono text-xs relative overflow-x-auto shadow-inner">
+                          <div className="mt-3 bg-[#091627] text-slate-100 border border-slate-800 rounded-xl p-3 font-mono text-xs relative overflow-x-auto shadow-inner">
                             <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-800 text-[10px] text-slate-400 font-sans">
                               <span>Comando cURL de prueba</span>
                               <button
@@ -942,7 +942,7 @@ export default function ApiKeysManagementPage() {
 
       {/* TAB 3: DESCARGAS DE ESPECIFICACIONES */}
       {activeTab === 'downloads' && (
-        <div className="bg-[#00142B] border border-slate-800 rounded-2xl p-6 shadow-xl">
+        <div className="bg-[#0D2039] border border-slate-800 rounded-2xl p-6 shadow-xl">
           <div className="max-w-2xl mb-6">
             <span className="text-[10px] font-black uppercase text-amber-400 tracking-wider bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded-full inline-block mb-1.5">
               Documentación Descargable &bull; Integración Oficial
@@ -958,7 +958,7 @@ export default function ApiKeysManagementPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Tarjeta Informe Técnico Word */}
-            <div className="border-2 border-amber-500/40 bg-gradient-to-b from-[#001A38] to-[#001021] rounded-2xl p-6 flex flex-col justify-between hover:border-amber-400 hover:shadow-xl hover:shadow-amber-500/10 transition-all">
+            <div className="border-2 border-amber-500/40 bg-gradient-to-b from-[#102542] to-[#0B1A2D] rounded-2xl p-6 flex flex-col justify-between hover:border-amber-400 hover:shadow-xl hover:shadow-amber-500/10 transition-all">
               <div>
                 <div className="w-12 h-12 bg-amber-500/20 border border-amber-500/40 text-amber-400 rounded-xl flex items-center justify-center font-black text-sm mb-4 shadow-md">
                   <FileText className="w-6 h-6 text-amber-400" />
@@ -984,7 +984,7 @@ export default function ApiKeysManagementPage() {
             </div>
 
             {/* Tarjeta Postman */}
-            <div className="border border-orange-500/30 bg-gradient-to-b from-orange-950/20 via-[#001833] to-[#001021] rounded-2xl p-6 flex flex-col justify-between hover:border-orange-400/60 hover:shadow-xl hover:shadow-orange-500/10 transition-all">
+            <div className="border border-orange-500/30 bg-gradient-to-b from-orange-950/20 via-[#0F233E] to-[#0B1A2D] rounded-2xl p-6 flex flex-col justify-between hover:border-orange-400/60 hover:shadow-xl hover:shadow-orange-500/10 transition-all">
               <div>
                 <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/40 text-orange-400 rounded-xl flex items-center justify-center font-black text-sm mb-4 shadow-md">
                   POST
@@ -1011,7 +1011,7 @@ export default function ApiKeysManagementPage() {
             </div>
 
             {/* Tarjeta OpenAPI */}
-            <div className="border border-emerald-500/30 bg-gradient-to-b from-emerald-950/20 via-[#001833] to-[#001021] rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-400/60 hover:shadow-xl hover:shadow-emerald-500/10 transition-all">
+            <div className="border border-emerald-500/30 bg-gradient-to-b from-emerald-950/20 via-[#0F233E] to-[#0B1A2D] rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-400/60 hover:shadow-xl hover:shadow-emerald-500/10 transition-all">
               <div>
                 <div className="w-12 h-12 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 rounded-xl flex items-center justify-center font-black text-sm mb-4 shadow-md">
                   OAS
@@ -1038,7 +1038,7 @@ export default function ApiKeysManagementPage() {
             </div>
 
             {/* Tarjeta Markdown */}
-            <div className="border border-blue-500/30 bg-gradient-to-b from-blue-950/20 via-[#001833] to-[#001021] rounded-2xl p-6 flex flex-col justify-between hover:border-blue-400/60 hover:shadow-xl hover:shadow-blue-500/10 transition-all">
+            <div className="border border-blue-500/30 bg-gradient-to-b from-blue-950/20 via-[#0F233E] to-[#0B1A2D] rounded-2xl p-6 flex flex-col justify-between hover:border-blue-400/60 hover:shadow-xl hover:shadow-blue-500/10 transition-all">
               <div>
                 <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/40 text-blue-400 rounded-xl flex items-center justify-center font-black text-sm mb-4 shadow-md">
                   MD
@@ -1070,7 +1070,7 @@ export default function ApiKeysManagementPage() {
       {/* MODAL DE DETALLES COMPLETOS DE LA API SELECCIONADA */}
       {selectedDetailToken && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#00142B] border-2 border-slate-700/80 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl text-slate-100 my-8 animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
+          <div className="bg-[#0D2039] border-2 border-slate-700/80 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl text-slate-100 my-8 animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
             {/* Cabecera */}
             <div className="flex items-start justify-between pb-4 border-b border-slate-800 mb-6">
               <div>
@@ -1105,7 +1105,7 @@ export default function ApiKeysManagementPage() {
             </div>
 
             {/* Credencial / Token con opción de revelar y copiar */}
-            <div className="bg-[#001021] border border-slate-800 rounded-2xl p-5 mb-6 text-white shadow-inner">
+            <div className="bg-[#0B1A2D] border border-slate-800 rounded-2xl p-5 mb-6 text-white shadow-inner">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-black uppercase text-slate-300 tracking-wider flex items-center gap-1.5">
                   <Key className="w-3.5 h-3.5 text-amber-400" />
@@ -1158,13 +1158,13 @@ export default function ApiKeysManagementPage() {
               </div>
 
               {selectedDetailToken.token_value ? (
-                <div className="bg-[#000E1C] border border-slate-800 rounded-xl p-3 font-mono text-xs text-sky-300 break-all select-all font-bold">
+                <div className="bg-[#091627] border border-slate-800 rounded-xl p-3 font-mono text-xs text-sky-300 break-all select-all font-bold">
                   {showSecretToken
                     ? selectedDetailToken.token_value
                     : selectedDetailToken.token_preview || '••••••••••••••••••••••••••••••••••••••••••••••••••••••••'}
                 </div>
               ) : (
-                <div className="bg-[#000E1C] border border-slate-800 rounded-xl p-3 text-xs text-slate-400 italic">
+                <div className="bg-[#091627] border border-slate-800 rounded-xl p-3 text-xs text-slate-400 italic">
                   Token generado previamente sin copia cifrada reversible. Se recomienda generar una nueva clave si necesita ver el texto plano.
                 </div>
               )}
@@ -1176,19 +1176,19 @@ export default function ApiKeysManagementPage() {
 
             {/* Metadatos en Grilla */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-              <div className="bg-[#001021] border border-slate-800 rounded-xl p-3">
+              <div className="bg-[#0B1A2D] border border-slate-800 rounded-xl p-3">
                 <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider block">Fecha de Emisión</span>
                 <span className="text-xs font-black text-white mt-1 block">
                   {new Date(selectedDetailToken.created_at).toLocaleString()}
                 </span>
               </div>
-              <div className="bg-[#001021] border border-slate-800 rounded-xl p-3">
+              <div className="bg-[#0B1A2D] border border-slate-800 rounded-xl p-3">
                 <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider block">Expiración</span>
                 <span className={`text-xs font-black mt-1 block ${selectedDetailToken.is_expired ? 'text-rose-400' : 'text-slate-200'}`}>
                   {selectedDetailToken.expires_at ? new Date(selectedDetailToken.expires_at).toLocaleDateString() : 'Permanente'}
                 </span>
               </div>
-              <div className="bg-[#001021] border border-slate-800 rounded-xl p-3">
+              <div className="bg-[#0B1A2D] border border-slate-800 rounded-xl p-3">
                 <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider block">Último Acceso</span>
                 <span className="text-xs font-black text-white mt-1 block">
                   {selectedDetailToken.last_used_human}
@@ -1201,13 +1201,13 @@ export default function ApiKeysManagementPage() {
               <h3 className="text-xs font-black uppercase tracking-wider text-slate-300 mb-2">
                 Permisos Autorizados (*Scopes*) ({selectedDetailToken.abilities.length})
               </h3>
-              <div className="max-h-48 overflow-y-auto border border-slate-800 rounded-xl p-2.5 bg-[#001021]/80 space-y-1.5">
+              <div className="max-h-48 overflow-y-auto border border-slate-800 rounded-xl p-2.5 bg-[#0B1A2D]/80 space-y-1.5">
                 {selectedDetailToken.detailed_scopes && selectedDetailToken.detailed_scopes.length > 0 ? (
                   selectedDetailToken.detailed_scopes.map((sc) => (
-                    <div key={sc.key} className="bg-[#001833] border border-slate-800 rounded-lg p-2.5">
+                    <div key={sc.key} className="bg-[#0F233E] border border-slate-800 rounded-lg p-2.5">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-black text-white">{sc.label}</span>
-                        <code className="text-[10px] font-mono bg-[#001021] border border-slate-700 text-amber-300 px-1.5 py-0.5 rounded font-bold">
+                        <code className="text-[10px] font-mono bg-[#0B1A2D] border border-slate-700 text-amber-300 px-1.5 py-0.5 rounded font-bold">
                           {sc.key}
                         </code>
                       </div>
@@ -1218,9 +1218,9 @@ export default function ApiKeysManagementPage() {
                   ))
                 ) : (
                   selectedDetailToken.abilities.map((ab) => (
-                    <div key={ab} className="bg-[#001833] border border-slate-800 rounded-lg p-2 flex items-center justify-between">
+                    <div key={ab} className="bg-[#0F233E] border border-slate-800 rounded-lg p-2 flex items-center justify-between">
                       <span className="text-xs font-bold text-white">{ab}</span>
-                      <code className="text-[10px] font-mono bg-[#001021] border border-slate-700 text-amber-300 px-1.5 py-0.5 rounded">
+                      <code className="text-[10px] font-mono bg-[#0B1A2D] border border-slate-700 text-amber-300 px-1.5 py-0.5 rounded">
                         {ab}
                       </code>
                     </div>
@@ -1230,7 +1230,7 @@ export default function ApiKeysManagementPage() {
             </div>
 
             {/* Descargas Específicas de esta API */}
-            <div className="bg-[#001021] border border-amber-500/30 rounded-2xl p-5 mb-6">
+            <div className="bg-[#0B1A2D] border border-amber-500/30 rounded-2xl p-5 mb-6">
               <span className="text-[10px] font-black uppercase tracking-wider text-amber-400">
                 Paquete de Integración Directa
               </span>
@@ -1281,7 +1281,7 @@ export default function ApiKeysManagementPage() {
               </button>
               <button
                 onClick={() => setSelectedDetailToken(null)}
-                className="px-5 py-2 bg-[#001833] hover:bg-[#002B5B] border border-slate-700 text-slate-200 text-xs font-bold rounded-xl transition-colors cursor-pointer"
+                className="px-5 py-2 bg-[#0F233E] hover:bg-[#102542] border border-slate-700 text-slate-200 text-xs font-bold rounded-xl transition-colors cursor-pointer"
               >
                 Cerrar Ventana
               </button>
@@ -1293,7 +1293,7 @@ export default function ApiKeysManagementPage() {
       {/* MODAL PARA EMITIR NUEVA API KEY */}
       {isCreateModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#00142B] border-2 border-slate-700/80 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl text-slate-100 my-8 animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-[#0D2039] border-2 border-slate-700/80 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl text-slate-100 my-8 animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
               <div>
                 <span className="text-xs font-black text-amber-400 uppercase tracking-wider">
@@ -1329,7 +1329,7 @@ export default function ApiKeysManagementPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Ej. Aduana Postal, App Móvil, Courier"
-                    className="w-full px-3 py-2 bg-[#001021] border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-400"
+                    className="w-full px-3 py-2 bg-[#0B1A2D] border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-400"
                     required
                   />
                   <span className="text-[10px] text-slate-400 mt-1 block">
@@ -1344,14 +1344,14 @@ export default function ApiKeysManagementPage() {
                   <select
                     value={expiresInDays}
                     onChange={(e) => setExpiresInDays(Number(e.target.value))}
-                    className="w-full px-3 py-2 bg-[#001021] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-400"
+                    className="w-full px-3 py-2 bg-[#0B1A2D] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-400"
                   >
-                    <option value={30} className="bg-[#001021] text-white">30 Días (1 Mes)</option>
-                    <option value={60} className="bg-[#001021] text-white">60 Días (2 Meses)</option>
-                    <option value={90} className="bg-[#001021] text-white">90 Días (3 Meses - Recomendado)</option>
-                    <option value={180} className="bg-[#001021] text-white">180 Días (6 Meses)</option>
-                    <option value={365} className="bg-[#001021] text-white">365 Días (1 Año Institucional)</option>
-                    <option value={0} className="bg-[#001021] text-white">Sin Expiración (Permanente)</option>
+                    <option value={30} className="bg-[#0B1A2D] text-white">30 Días (1 Mes)</option>
+                    <option value={60} className="bg-[#0B1A2D] text-white">60 Días (2 Meses)</option>
+                    <option value={90} className="bg-[#0B1A2D] text-white">90 Días (3 Meses - Recomendado)</option>
+                    <option value={180} className="bg-[#0B1A2D] text-white">180 Días (6 Meses)</option>
+                    <option value={365} className="bg-[#0B1A2D] text-white">365 Días (1 Año Institucional)</option>
+                    <option value={0} className="bg-[#0B1A2D] text-white">Sin Expiración (Permanente)</option>
                   </select>
                   <span className="text-[10px] text-slate-400 mt-1 block">
                     Tiempo tras el cual la clave quedará inactiva.
@@ -1388,14 +1388,14 @@ export default function ApiKeysManagementPage() {
                     <button
                       type="button"
                       onClick={handleClearScopes}
-                      className="px-2.5 py-1 bg-[#001021] border border-slate-700 text-slate-400 text-[11px] font-bold rounded-lg hover:bg-slate-800 hover:text-slate-200 cursor-pointer"
+                      className="px-2.5 py-1 bg-[#0B1A2D] border border-slate-700 text-slate-400 text-[11px] font-bold rounded-lg hover:bg-slate-800 hover:text-slate-200 cursor-pointer"
                     >
                       Limpiar
                     </button>
                   </div>
                 </div>
 
-                <div className="max-h-64 overflow-y-auto border border-slate-800 rounded-xl p-3 bg-[#001021]/80 space-y-2">
+                <div className="max-h-64 overflow-y-auto border border-slate-800 rounded-xl p-3 bg-[#0B1A2D]/80 space-y-2">
                   {availableScopes.map((scope) => {
                     const isChecked = selectedScopes.includes(scope.key) || selectedScopes.includes('*');
 
@@ -1404,8 +1404,8 @@ export default function ApiKeysManagementPage() {
                         key={scope.key}
                         className={`flex items-start gap-3 p-2.5 rounded-lg border transition-all cursor-pointer ${
                           isChecked
-                            ? 'bg-[#001A38] border-amber-500/40 text-white shadow-sm'
-                            : 'bg-[#00142B]/80 border-slate-800 text-slate-300 hover:bg-[#001A38]/50'
+                            ? 'bg-[#102542] border-amber-500/40 text-white shadow-sm'
+                            : 'bg-[#0D2039]/80 border-slate-800 text-slate-300 hover:bg-[#102542]/50'
                         }`}
                       >
                         <input
@@ -1417,7 +1417,7 @@ export default function ApiKeysManagementPage() {
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
                             <span className="text-xs font-black text-white">{scope.label}</span>
-                            <code className="text-[10px] font-mono bg-[#001021] border border-slate-700 px-1.5 py-0.5 rounded text-amber-300">
+                            <code className="text-[10px] font-mono bg-[#0B1A2D] border border-slate-700 px-1.5 py-0.5 rounded text-amber-300">
                               {scope.key}
                             </code>
                           </div>

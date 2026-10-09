@@ -163,11 +163,11 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#001A38]/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#102542]/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
       <div className="relative w-full max-w-6xl bg-[#FAF8F0] rounded-3xl shadow-2xl border-2 border-[#E5DFC8] overflow-hidden flex flex-col max-h-[92vh]">
         
         {/* Modal Header */}
-        <div className="bg-[#002B5B] px-6 py-4 text-white flex items-center justify-between border-b border-[#0A3B73]">
+        <div className="bg-[#102542] px-6 py-4 text-white flex items-center justify-between border-b border-[#2C63AC]">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-white/10 text-amber-200">
               <Sparkles className="w-5 h-5" />
@@ -211,8 +211,8 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                   onClick={() => setViewSide('front')}
                   className={`px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1 cursor-pointer ${
                     viewSide === 'front'
-                      ? 'bg-[#002B5B] text-white shadow-xs'
-                      : 'text-[#5A554E] hover:text-[#002B5B]'
+                      ? 'bg-[#102542] text-white shadow-xs'
+                      : 'text-[#5A554E] hover:text-[#102542]'
                   }`}
                 >
                   <span>Anverso</span>
@@ -221,8 +221,8 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                   onClick={() => setViewSide('back')}
                   className={`px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1 cursor-pointer ${
                     viewSide === 'back'
-                      ? 'bg-[#002B5B] text-white shadow-xs'
-                      : 'text-[#5A554E] hover:text-[#002B5B]'
+                      ? 'bg-[#102542] text-white shadow-xs'
+                      : 'text-[#5A554E] hover:text-[#102542]'
                   }`}
                 >
                   <span>Reverso (Goma)</span>
@@ -245,8 +245,8 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                     }}
                     className={`px-2.5 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
                       zoomLevel === z.level && !isFullZoomMode
-                        ? 'bg-[#002B5B] text-white shadow-xs'
-                        : 'text-slate-600 hover:text-[#002B5B]'
+                        ? 'bg-[#102542] text-white shadow-xs'
+                        : 'text-slate-600 hover:text-[#102542]'
                     }`}
                   >
                     {z.label}
@@ -260,7 +260,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                     setFullscreenZoom(1);
                     setPanOffset({ x: 0, y: 0 });
                   }}
-                  className="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1.5 cursor-pointer bg-[#002B5B] text-white hover:bg-[#0A3B73] shadow-xs active:scale-95"
+                  className="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1.5 cursor-pointer bg-[#102542] text-white hover:bg-[#2C63AC] shadow-xs active:scale-95"
                   title="Abrir imagen en pantalla completa (100% HD)"
                 >
                   <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
@@ -289,7 +289,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                   setFullscreenZoom(1);
                   setPanOffset({ x: 0, y: 0 });
                 }}
-                className="absolute top-3 right-3 z-20 px-3 py-1.5 rounded-xl bg-[#001A38]/85 hover:bg-[#002B5B] text-white border border-white/15 backdrop-blur-md transition-all shadow-md cursor-pointer flex items-center gap-1.5 text-xs font-semibold active:scale-95"
+                className="absolute top-3 right-3 z-20 px-3 py-1.5 rounded-xl bg-[#102542]/85 hover:bg-[#102542] text-white border border-white/15 backdrop-blur-md transition-all shadow-md cursor-pointer flex items-center gap-1.5 text-xs font-semibold active:scale-95"
                 title="Ampliar a pantalla completa (100% HD)"
               >
                 <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
@@ -315,7 +315,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
               {/* Lente de Aumento Virtual 10x Triplete Acromático */}
               {isZooming && !isFullZoomMode && (
                 <div 
-                  className="absolute pointer-events-none w-44 h-44 rounded-full border-2 border-slate-700/60 shadow-[0_10px_35px_rgba(0,0,0,0.45)] bg-[#FAF8F0] overflow-hidden ring-4 ring-[#002B5B]/30 hidden sm:block z-30"
+                  className="absolute pointer-events-none w-44 h-44 rounded-full border-2 border-slate-700/60 shadow-[0_10px_35px_rgba(0,0,0,0.45)] bg-[#FAF8F0] overflow-hidden ring-4 ring-[#102542]/30 hidden sm:block z-30"
                   style={{
                     left: `${mousePos.x}px`,
                     top: `${mousePos.y}px`,
@@ -334,14 +334,14 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                   </div>
 
                   {/* Indicador de Aumento en la Esquina Superior */}
-                  <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-[#001A38]/90 text-[10px] font-mono text-amber-200 font-bold">
+                  <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-[#102542]/90 text-[10px] font-mono text-amber-200 font-bold">
                     {zoomLevel}x
                   </div>
                 </div>
               )}
 
               {/* Tooltip de Guía Inferior */}
-              <div className="absolute bottom-3 left-3 bg-[#001A38]/90 text-[11px] text-slate-200 px-3 py-1.5 rounded-full backdrop-blur-sm flex items-center gap-2 shadow-md">
+              <div className="absolute bottom-3 left-3 bg-[#102542]/90 text-[11px] text-slate-200 px-3 py-1.5 rounded-full backdrop-blur-sm flex items-center gap-2 shadow-md">
                 <ZoomIn className="w-3.5 h-3.5 text-amber-300" />
                 <span>
                   Desplace el cursor sobre el sello para peritaje con lupa {zoomLevel}x o pulse <strong>100% HD</strong> para pantalla completa
@@ -371,10 +371,10 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                 </span>
                 <span className="text-xs text-[#5A554E]">Año: <strong>{stamp.year}</strong></span>
                 <span className="text-slate-400">•</span>
-                <span className="text-xs font-semibold text-[#002B5B]">{stamp.country}</span>
+                <span className="text-xs font-semibold text-[#102542]">{stamp.country}</span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-extrabold text-[#002B5B] leading-snug">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#102542] leading-snug">
                 {stamp.name}
               </h2>
 
@@ -384,26 +384,26 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
 
               {/* Ficha Técnica Tabular Exhaustiva */}
               <div className="mt-4 bg-white rounded-2xl border border-[#E2DDD5] overflow-hidden text-xs shadow-xs">
-                <div className="bg-[#FAF8F0] px-4 py-2 font-bold text-[#002B5B] border-b border-[#E2DDD5] uppercase tracking-wider text-[10px] flex items-center justify-between">
+                <div className="bg-[#FAF8F0] px-4 py-2 font-bold text-[#102542] border-b border-[#E2DDD5] uppercase tracking-wider text-[10px] flex items-center justify-between">
                   <span>Ficha Técnica Filatélica</span>
                   <span className="text-amber-800 font-semibold">Resolución Oficial</span>
                 </div>
                 <div className="divide-y divide-[#E2DDD5]">
                   <div className="px-4 py-2 flex justify-between items-center">
                     <span className="text-slate-500">Valor Facial Original</span>
-                    <strong className="text-[#002B5B] font-mono">{stamp.face_value}</strong>
+                    <strong className="text-[#102542] font-mono">{stamp.face_value}</strong>
                   </div>
                   <div className="px-4 py-2 flex justify-between items-center">
                     <span className="text-slate-500">Dentado / Perforación</span>
-                    <strong className="text-[#002B5B]">{stamp.perforation}</strong>
+                    <strong className="text-[#102542]">{stamp.perforation}</strong>
                   </div>
                   <div className="px-4 py-2 flex justify-between items-center">
                     <span className="text-slate-500">Técnica de Impresión</span>
-                    <strong className="text-[#002B5B] text-right">{stamp.printing_technique}</strong>
+                    <strong className="text-[#102542] text-right">{stamp.printing_technique}</strong>
                   </div>
                   <div className="px-4 py-2 flex justify-between items-center">
                     <span className="text-slate-500">Tipo de Papel</span>
-                    <strong className="text-[#002B5B] text-right">{stamp.paper_type}</strong>
+                    <strong className="text-[#102542] text-right">{stamp.paper_type}</strong>
                   </div>
                   <div className="px-4 py-2 flex justify-between items-center">
                     <span className="text-slate-500">Estado de Goma</span>
@@ -411,7 +411,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                   </div>
                   <div className="px-4 py-2 flex justify-between items-center">
                     <span className="text-slate-500">Dimensiones de Plancha</span>
-                    <strong className="text-[#002B5B]">{stamp.dimensions}</strong>
+                    <strong className="text-[#102542]">{stamp.dimensions}</strong>
                   </div>
                   <div className="px-4 py-2 flex justify-between items-center">
                     <span className="text-slate-500">Existencia en Custodia</span>
@@ -423,7 +423,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
               {/* Contexto Histórico Oficial */}
               <div className="mt-4 p-4 rounded-2xl bg-amber-50/70 border border-amber-200/60">
                 <h4 className="text-xs font-bold text-amber-950 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                  <Award className="w-3.5 h-3.5 text-[#C99A00]" />
+                  <Award className="w-3.5 h-3.5 text-[#8A6800]" />
                   Reseña Histórica & Documental
                 </h4>
                 <p className="text-xs text-amber-900/90 leading-relaxed italic">
@@ -436,7 +436,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
             <div className="pt-4 border-t border-[#E2DDD5] flex items-center justify-between">
               <div>
                 <span className="text-[10px] uppercase tracking-wider text-slate-500 font-medium">Cotización Actual</span>
-                <div className="text-2xl font-black text-[#002B5B]">
+                <div className="text-2xl font-black text-[#102542]">
                   {stamp.price.toLocaleString('es-BO', { minimumFractionDigits: 2 })} <span className="text-xs font-semibold text-slate-600">BOB</span>
                 </div>
               </div>
@@ -468,7 +468,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
           onWheel={handleWheelFullscreen}
         >
           {/* Header Superior en Pantalla Completa */}
-          <div className="bg-[#001730]/90 border-b border-white/10 px-4 sm:px-6 py-3 flex items-center justify-between gap-4 z-20 shadow-lg">
+          <div className="bg-[#0E223C]/90 border-b border-white/10 px-4 sm:px-6 py-3 flex items-center justify-between gap-4 z-20 shadow-lg">
             <div className="flex items-center gap-3 min-w-0">
               <div className="w-9 h-9 rounded-xl bg-white/[0.08] border border-white/10 flex items-center justify-center text-amber-200 shrink-0">
                 <Sparkles className="w-4 h-4" />
@@ -489,12 +489,12 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
             </div>
 
             {/* Selector Anverso / Reverso en Pantalla Completa */}
-            <div className="flex items-center gap-1 bg-[#001021] p-1 rounded-xl border border-white/10 shrink-0">
+            <div className="flex items-center gap-1 bg-[#0B1A2D] p-1 rounded-xl border border-white/10 shrink-0">
               <button
                 onClick={() => setViewSide('front')}
                 className={`px-3 py-1 rounded-lg text-xs font-semibold transition cursor-pointer ${
                   viewSide === 'front'
-                    ? 'bg-[#002B5B] text-white border border-white/10 shadow-xs'
+                    ? 'bg-[#102542] text-white border border-white/10 shadow-xs'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -504,7 +504,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                 onClick={() => setViewSide('back')}
                 className={`px-3 py-1 rounded-lg text-xs font-semibold transition cursor-pointer ${
                   viewSide === 'back'
-                    ? 'bg-[#002B5B] text-white border border-white/10 shadow-xs'
+                    ? 'bg-[#102542] text-white border border-white/10 shadow-xs'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -515,7 +515,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
             {/* Controles de Zoom y Salir */}
             <div className="flex items-center gap-2 shrink-0">
               {/* Controles de Zoom */}
-              <div className="hidden md:flex items-center gap-1 bg-[#001021] p-1 rounded-xl border border-white/10 text-xs">
+              <div className="hidden md:flex items-center gap-1 bg-[#0B1A2D] p-1 rounded-xl border border-white/10 text-xs">
                 <button
                   onClick={() => setFullscreenZoom((prev) => Math.max(0.5, Number((prev - 0.25).toFixed(2))))}
                   className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition cursor-pointer"
@@ -549,7 +549,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
               {/* Botón Pantalla Completa de Monitor */}
               <button
                 onClick={toggleNativeFullscreen}
-                className="p-2 rounded-xl bg-[#001021] hover:bg-[#002B5B] text-slate-300 hover:text-white border border-white/10 transition cursor-pointer hidden sm:flex items-center justify-center"
+                className="p-2 rounded-xl bg-[#0B1A2D] hover:bg-[#102542] text-slate-300 hover:text-white border border-white/10 transition cursor-pointer hidden sm:flex items-center justify-center"
                 title={isNativeFullscreen ? "Salir de pantalla completa del monitor" : "Pantalla completa de monitor"}
               >
                 {isNativeFullscreen ? <Shrink className="w-4 h-4" /> : <Expand className="w-4 h-4" />}
@@ -604,7 +604,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
           </div>
 
           {/* Footer Inferior con Ayuda y Accesos Rápidos */}
-          <div className="bg-[#001730]/90 border-t border-white/10 px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs text-slate-400 z-20">
+          <div className="bg-[#0E223C]/90 border-t border-white/10 px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs text-slate-400 z-20">
             <div className="flex items-center gap-2 text-[11px]">
               <Move className="w-3.5 h-3.5 text-amber-300" />
               <span>Arrastre con el ratón para mover la pieza • Rueda o doble clic para ampliar</span>

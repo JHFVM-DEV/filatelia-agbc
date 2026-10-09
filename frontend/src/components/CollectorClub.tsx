@@ -18,46 +18,46 @@ export const CollectorClub: React.FC = () => {
     <section id="club" className="py-20 bg-[#FAF8F0] border-b border-[#E2DDD5] relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="bg-gradient-to-br from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] rounded-3xl p-8 sm:p-12 border-2 border-[#E5B500] shadow-2xl">
+        <div className="bg-gradient-to-br from-[#FFE58C] via-[#FECC36] to-[#E5B728] text-[#102542] rounded-3xl p-8 sm:p-12 border-2 border-[#E5B728] shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Column: Information */}
             <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#FFD100]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#102542] text-[#FECC36] text-xs font-bold tracking-wide shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#FECC36]" />
                 <span>Círculo Exclusivo de Bóveda</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#002B5B] leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#102542] leading-tight">
                 Acceso Prioritario a Nuevas Emisiones y Pliegos Conmemorativos
               </h2>
 
-              <p className="text-xs sm:text-sm text-[#002B5B]/85 font-medium leading-relaxed">
-                Suscríbase al boletín oficial de Correos de Bolivia para recibir avisos de primer día de emisión (FDC), liberación de ejemplares conmemorativos del <strong className="text-[#002B5B] font-black">Bicentenario</strong> y piezas históricas de bóveda antes de su publicación general.
+              <p className="text-xs sm:text-sm text-[#102542]/85 font-medium leading-relaxed">
+                Suscríbase al boletín oficial de Correos de Bolivia para recibir avisos de primer día de emisión (FDC), liberación de ejemplares conmemorativos del <strong className="text-[#102542] font-black">Bicentenario</strong> y piezas históricas de bóveda antes de su publicación general.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-[#002B5B] font-bold">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-[#102542] font-bold">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#002B5B] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#102542] shrink-0" />
                   <span>Avisos de FDC de Primer Día</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#002B5B] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#102542] shrink-0" />
                   <span>Pliegos Limitados y Bloques</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#002B5B] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#102542] shrink-0" />
                   <span>Catálogo Anual en PDF Oficial</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#002B5B] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#102542] shrink-0" />
                   <span>Sin Spam ni Comunicaciones Comerciales</span>
                 </div>
               </div>
             </div>
 
             {/* Right Column: Form */}
-            <div className="lg:col-span-5 bg-[#002B5B] p-6 sm:p-8 rounded-2xl border border-[#001A38] shadow-xl text-white">
+            <div className="lg:col-span-5 bg-[#102542] p-6 sm:p-8 rounded-2xl border border-[#102542] shadow-xl text-white">
               {isSubmitted ? (
                 <div className="text-center py-6 space-y-3 animate-in fade-in">
                   <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto">
@@ -67,7 +67,7 @@ export const CollectorClub: React.FC = () => {
                     ¡Suscripción Confirmada!
                   </h3>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    Hemos registrado su correo <strong className="text-[#F4C400]">{email}</strong> en el registro de coleccionistas prioritarios. Recibirá nuestra próxima circular ministerial.
+                    Hemos registrado su correo <strong className="text-[#FECC36]">{email}</strong> en el registro de coleccionistas prioritarios. Recibirá nuestra próxima circular ministerial.
                   </p>
                   <button
                     onClick={() => {
@@ -93,7 +93,7 @@ export const CollectorClub: React.FC = () => {
                         placeholder="ejemplo@coleccionista.bo"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-slate-700 bg-[#001A38] focus:outline-none focus:border-amber-400 text-white shadow-inner"
+                        className="w-full pl-10 pr-3.5 py-2.5 text-xs rounded-xl border border-slate-700 bg-[#102542] focus:outline-none focus:border-amber-400 text-white shadow-inner"
                       />
                     </div>
                   </div>
@@ -105,7 +105,7 @@ export const CollectorClub: React.FC = () => {
                     <select
                       value={interestArea}
                       onChange={(e) => setInterestArea(e.target.value)}
-                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-700 bg-[#001A38] text-slate-200 focus:outline-none focus:border-amber-400"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-700 bg-[#102542] text-slate-200 focus:outline-none focus:border-amber-400"
                     >
                       <option value="ALL">Todas las Emisiones y Clásicos</option>
                       <option value="BICENTENARIO">Emisiones del Bicentenario 2025</option>

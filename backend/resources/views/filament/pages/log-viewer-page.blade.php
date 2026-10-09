@@ -1,8 +1,8 @@
 <x-filament-panels::page>
     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.05);">
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.05);">
             <div>
-                <h2 style="font-size: 1.25rem; font-weight: 900; color: #002B5B; margin: 0;">Auditoría y Registro de Eventos en Tiempo Real</h2>
+                <h2 style="font-size: 1.25rem; font-weight: 900; color: #102542; margin: 0;">Auditoría y Registro de Eventos en Tiempo Real</h2>
                 <p style="font-size: 0.8125rem; color: #64748b; margin-top: 0.25rem;">Monitoreo de excepciones, consultas e interacción de usuarios en el servidor.</p>
             </div>
             <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -28,7 +28,7 @@
             @foreach(['ALL' => 'Todos los Eventos', 'INFO' => 'Informativos', 'WARNING' => 'Advertencias', 'ERROR' => 'Errores'] as $key => $label)
             <button 
                 wire:click="$set('logFilter', '{{ $key }}')" 
-                style="padding: 0.5rem 1rem; border-radius: 0.75rem; font-size: 0.75rem; font-weight: 800; border: 1px solid {{ $logFilter === $key ? '#002B5B' : '#e2e8f0' }}; background: {{ $logFilter === $key ? '#002B5B' : '#ffffff' }}; color: {{ $logFilter === $key ? '#F4C400' : '#475569' }}; cursor: pointer; transition: all 0.2s; box-shadow: {{ $logFilter === $key ? '0 2px 6px rgba(0, 43, 91, 0.2)' : 'none' }};"
+                style="padding: 0.5rem 1rem; border-radius: 0.75rem; font-size: 0.75rem; font-weight: 800; border: 1px solid {{ $logFilter === $key ? '#102542' : '#e2e8f0' }}; background: {{ $logFilter === $key ? '#102542' : '#ffffff' }}; color: {{ $logFilter === $key ? '#FECC36' : '#475569' }}; cursor: pointer; transition: all 0.2s; box-shadow: {{ $logFilter === $key ? '0 2px 6px rgba(16, 37, 66, 0.2)' : 'none' }};"
             >
                 {{ $label }}
             </button>
@@ -36,7 +36,7 @@
         </div>
 
         {{-- Visor de Consola Límpido y Elegante --}}
-        <div style="background: #ffffff; color: #0F172A; padding: 1.25rem; border-radius: 1.25rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.75rem; box-shadow: 0 4px 12px rgba(0, 43, 91, 0.05); overflow-x: auto; max-height: 550px; display: flex; flex-direction: column; gap: 0.5rem; border: 1px solid #e2e8f0;">
+        <div style="background: #ffffff; color: #0F172A; padding: 1.25rem; border-radius: 1.25rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.75rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.05); overflow-x: auto; max-height: 550px; display: flex; flex-direction: column; gap: 0.5rem; border: 1px solid #e2e8f0;">
             @forelse($logs as $l)
                 <div style="padding: 0.625rem 0.875rem; border-radius: 0.5rem; line-height: 1.5; display: flex; align-items: flex-start; gap: 0.5rem; border: 1px solid {{ $l['level'] === 'ERROR' ? '#FECDD3' : ($l['level'] === 'WARNING' ? '#FEF08A' : '#E2E8F0') }}; background: {{ $l['level'] === 'ERROR' ? '#FFF1F2' : ($l['level'] === 'WARNING' ? '#FFFBEB' : '#F8FAFC') }};">
                     <span style="padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.625rem; font-weight: 900; text-transform: uppercase; flex-shrink: 0; background: {{ $l['level'] === 'ERROR' ? '#FFE4E6' : ($l['level'] === 'WARNING' ? '#FEF3C7' : '#DBEAFE') }}; color: {{ $l['level'] === 'ERROR' ? '#9F1239' : ($l['level'] === 'WARNING' ? '#92400E' : '#1E40AF') }};">

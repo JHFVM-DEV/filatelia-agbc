@@ -90,7 +90,7 @@ export default function AdminDispatchPage() {
 
         <button
           onClick={fetchShipments}
-          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#001A38] hover:bg-[#002B5B] border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white transition-all cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#102542] hover:bg-[#102542] border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white transition-all cursor-pointer"
         >
           <RefreshCw className="w-3.5 h-3.5 text-amber-400" />
           <span>Actualizar Valijas</span>
@@ -98,7 +98,7 @@ export default function AdminDispatchPage() {
       </div>
 
       {/* Shipments Table */}
-      <div className="bg-[#001A38]/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden">
+      <div className="bg-[#102542]/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden">
         {loading ? (
           <div className="p-12 flex flex-col items-center justify-center text-slate-400">
             <div className="w-8 h-8 border-2 border-amber-400 border-t-transparent rounded-full animate-spin mb-3" />
@@ -113,7 +113,7 @@ export default function AdminDispatchPage() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs text-slate-300">
-              <thead className="text-[11px] uppercase tracking-wider text-slate-400 bg-[#00244D] border-b border-slate-800">
+              <thead className="text-[11px] uppercase tracking-wider text-slate-400 bg-[#1B4785] border-b border-slate-800">
                 <tr>
                   <th className="py-3.5 px-4">Guía Postal de Rastreo</th>
                   <th className="py-3.5 px-4">Orden / Destinatario</th>
@@ -125,7 +125,7 @@ export default function AdminDispatchPage() {
               </thead>
               <tbody className="divide-y divide-slate-800/60">
                 {shipments.map((shipment) => (
-                  <tr key={shipment.id} className="hover:bg-[#002B5B]/30 transition-colors">
+                  <tr key={shipment.id} className="hover:bg-[#102542]/30 transition-colors">
                     <td className="py-3 px-4 font-mono font-bold text-amber-300">
                       {shipment.tracking_number}
                     </td>
@@ -167,7 +167,7 @@ export default function AdminDispatchPage() {
                         <button
                           disabled={updatingId === shipment.id}
                           onClick={() => handleUpdateStatus(shipment.id, 'DELIVERED')}
-                          className="px-3 py-1 rounded-lg bg-[#00244D] hover:bg-emerald-600 text-emerald-300 hover:text-white border border-emerald-500/40 font-semibold text-[11px] transition-colors cursor-pointer"
+                          className="px-3 py-1 rounded-lg bg-[#1B4785] hover:bg-emerald-600 text-emerald-300 hover:text-white border border-emerald-500/40 font-semibold text-[11px] transition-colors cursor-pointer"
                         >
                           Confirmar Entrega
                         </button>

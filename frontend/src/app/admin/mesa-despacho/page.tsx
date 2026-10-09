@@ -159,7 +159,7 @@ export default function AdminMesaDespachoPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#001A38]/90 border border-slate-800 p-6 rounded-2xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#102542]/90 border border-slate-800 p-6 rounded-2xl">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-amber-200/90">
             <Box className="w-6 h-6" />
@@ -183,7 +183,7 @@ export default function AdminMesaDespachoPage() {
           <button
             onClick={fetchQueue}
             disabled={loading}
-            className="p-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
+            className="p-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
             title="Actualizar cola"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -224,12 +224,12 @@ export default function AdminMesaDespachoPage() {
         </div>
 
         {loading ? (
-          <div className="bg-[#001A38] border border-slate-800 p-12 rounded-2xl text-center text-slate-400">
+          <div className="bg-[#102542] border border-slate-800 p-12 rounded-2xl text-center text-slate-400">
             <RefreshCw className="w-5 h-5 animate-spin text-amber-400 inline-block mr-2" />
             Consultando órdenes de la mesa postal...
           </div>
         ) : queueOrders.length === 0 ? (
-          <div className="bg-[#001A38] border border-slate-800 p-12 rounded-2xl text-center text-slate-400">
+          <div className="bg-[#102542] border border-slate-800 p-12 rounded-2xl text-center text-slate-400">
             <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
             <p className="font-semibold text-white">Mesa de Despacho al Día</p>
             <p className="text-xs text-slate-500 mt-1">No hay órdenes pendientes de empaque o salida postal.</p>
@@ -242,7 +242,7 @@ export default function AdminMesaDespachoPage() {
               return (
                 <div
                   key={order.id}
-                  className={`bg-[#001A38] border rounded-2xl p-5 flex flex-col justify-between transition-all ${
+                  className={`bg-[#102542] border rounded-2xl p-5 flex flex-col justify-between transition-all ${
                     isPacked
                       ? 'border-emerald-500/40 shadow-emerald-950/20 shadow-lg'
                       : 'border-slate-800 hover:border-slate-700'
@@ -287,7 +287,7 @@ export default function AdminMesaDespachoPage() {
                     </div>
 
                     {/* Items */}
-                    <div className="bg-[#00142B] p-3 rounded-xl border border-slate-800/80 mb-4">
+                    <div className="bg-[#0D2039] p-3 rounded-xl border border-slate-800/80 mb-4">
                       <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
                         Piezas a Empacar ({order.items?.length || 0}):
                       </div>
@@ -314,7 +314,7 @@ export default function AdminMesaDespachoPage() {
                       {!isPacked ? (
                         <button
                           onClick={() => handleMarkGlassine(order.id, order.order_number)}
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#002B5B] hover:bg-[#0A3B73] border border-white/10 text-xs font-medium text-slate-200 hover:text-white transition-colors cursor-pointer"
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#102542] hover:bg-[#2C63AC] border border-white/10 text-xs font-medium text-slate-200 hover:text-white transition-colors cursor-pointer"
                         >
                           <Sparkles className="w-3.5 h-3.5 text-amber-200/90" />
                           <span>Empacar Glassine</span>
@@ -322,7 +322,7 @@ export default function AdminMesaDespachoPage() {
                       ) : (
                         <button
                           onClick={() => handleOpenDispatch(order)}
-                          className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-[#001A38] text-xs font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer"
+                          className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-[#102542] text-xs font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer"
                         >
                           <Send className="w-3.5 h-3.5" />
                           <span>Emitir Guía Postal</span>
@@ -340,7 +340,7 @@ export default function AdminMesaDespachoPage() {
       {/* Modal Despachar Valija */}
       {showDispatchModal && selectedOrder && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#001A38] border border-white/10 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
+          <div className="bg-[#102542] border border-white/10 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
             <button
               onClick={() => setShowDispatchModal(false)}
               className="absolute top-5 right-5 p-1 rounded-lg text-slate-400 hover:text-white"
@@ -370,7 +370,7 @@ export default function AdminMesaDespachoPage() {
                 <select
                   value={carrier}
                   onChange={(e) => setCarrier(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-400"
                 >
                   <option value="Correos de Bolivia - Valija Postal">
                     Correos de Bolivia - Valija Postal Oficial
@@ -393,7 +393,7 @@ export default function AdminMesaDespachoPage() {
                   required
                   value={trackingCode}
                   onChange={(e) => setTrackingCode(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#00142B] border border-slate-700 text-xs text-white font-mono focus:outline-none focus:border-amber-400"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0D2039] border border-slate-700 text-xs text-white font-mono focus:outline-none focus:border-amber-400"
                 />
               </div>
 
@@ -405,14 +405,14 @@ export default function AdminMesaDespachoPage() {
                 <button
                   type="button"
                   onClick={() => setShowDispatchModal(false)}
-                  className="px-4 py-2.5 rounded-xl bg-[#002B5B] text-slate-300 hover:text-white text-xs font-semibold"
+                  className="px-4 py-2.5 rounded-xl bg-[#102542] text-slate-300 hover:text-white text-xs font-semibold"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
                   disabled={dispatching}
-                  className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#001A38] font-bold text-xs uppercase tracking-wider shadow-md transition-colors"
+                  className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#102542] font-bold text-xs uppercase tracking-wider shadow-md transition-colors"
                 >
                   {dispatching ? 'Despachando...' : 'Confirmar Salida Postal'}
                 </button>

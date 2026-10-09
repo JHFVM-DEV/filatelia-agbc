@@ -124,7 +124,7 @@ export default function AdminReportesPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#001A38]/90 border border-slate-800 p-6 rounded-2xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#102542]/90 border border-slate-800 p-6 rounded-2xl">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-amber-200/90">
             <BarChart3 className="w-6 h-6" />
@@ -143,14 +143,14 @@ export default function AdminReportesPage() {
           <button
             onClick={fetchReports}
             disabled={loading}
-            className="p-2.5 rounded-xl bg-[#002B5B] hover:bg-[#0A3B73] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
+            className="p-2.5 rounded-xl bg-[#102542] hover:bg-[#2C63AC] border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
             title="Actualizar datos"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
           </button>
           <button
             onClick={exportSalesCSV}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#001A38] font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#102542] font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
           >
             <FileSpreadsheet className="w-4 h-4" />
             <span>Descargar Libro Matriz</span>
@@ -176,7 +176,7 @@ export default function AdminReportesPage() {
 
       {/* Financial KPIs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#001A38] border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-[#102542] border border-slate-800 p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider">
             <span>Recaudación Neta</span>
             <DollarSign className="w-4 h-4 text-slate-400" />
@@ -187,7 +187,7 @@ export default function AdminReportesPage() {
           <span className="text-[10px] text-slate-400 mt-1 block">Órdenes confirmadas en plataforma</span>
         </div>
 
-        <div className="bg-[#001A38] border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-[#102542] border border-slate-800 p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider">
             <span>Volumen de Órdenes</span>
             <ShoppingBag className="w-4 h-4 text-blue-400" />
@@ -201,7 +201,7 @@ export default function AdminReportesPage() {
           </span>
         </div>
 
-        <div className="bg-[#001A38] border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-[#102542] border border-slate-800 p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider">
             <span>Ticket Promedio (AOV)</span>
             <TrendingUp className="w-4 h-4 text-emerald-400" />
@@ -212,7 +212,7 @@ export default function AdminReportesPage() {
           <span className="text-[10px] text-slate-400 mt-1 block">Promedio por coleccionista</span>
         </div>
 
-        <div className="bg-[#001A38] border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-[#102542] border border-slate-800 p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider">
             <span>Tasación de Bóveda</span>
             <Tag className="w-4 h-4 text-purple-400" />
@@ -227,7 +227,7 @@ export default function AdminReportesPage() {
       {/* Two Column Breakdowns */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Department Breakdown */}
-        <div className="bg-[#001A38] border border-slate-800 rounded-2xl p-6 shadow-xl">
+        <div className="bg-[#102542] border border-slate-800 rounded-2xl p-6 shadow-xl">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
               <MapPin className="w-4 h-4 text-amber-400" />
@@ -253,7 +253,7 @@ export default function AdminReportesPage() {
                 const percentage = Math.min(100, Math.round((dept.total_dept / total) * 100));
 
                 return (
-                  <div key={idx} className="p-3.5 rounded-xl bg-[#00142B] border border-slate-800/80 space-y-2">
+                  <div key={idx} className="p-3.5 rounded-xl bg-[#0D2039] border border-slate-800/80 space-y-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-semibold text-white">
                         {dept.department || 'Envíos Nacionales'}
@@ -268,7 +268,7 @@ export default function AdminReportesPage() {
 
                     <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
                       <div
-                        className="bg-gradient-to-r from-[#002B5B] via-[#0A3B73] to-amber-300/80 h-full rounded-full transition-all duration-500"
+                        className="bg-gradient-to-r from-[#102542] via-[#2C63AC] to-amber-300/80 h-full rounded-full transition-all duration-500"
                         style={{ width: `${percentage}%` }}
                       />
                     </div>
@@ -280,7 +280,7 @@ export default function AdminReportesPage() {
         </div>
 
         {/* Category Breakdown */}
-        <div className="bg-[#001A38] border border-slate-800 rounded-2xl p-6 shadow-xl">
+        <div className="bg-[#102542] border border-slate-800 rounded-2xl p-6 shadow-xl">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
               <Tag className="w-4 h-4 text-slate-400" />
@@ -302,7 +302,7 @@ export default function AdminReportesPage() {
               </div>
             ) : (
               reportData.categoryBreakdown.map((cat, idx) => (
-                <div key={idx} className="p-3.5 rounded-xl bg-[#00142B] border border-slate-800/80 flex items-center justify-between text-xs">
+                <div key={idx} className="p-3.5 rounded-xl bg-[#0D2039] border border-slate-800/80 flex items-center justify-between text-xs">
                   <div>
                     <div className="font-semibold text-white">{cat.name}</div>
                     <div className="text-[10px] text-slate-400">

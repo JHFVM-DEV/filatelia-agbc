@@ -59,7 +59,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
         width: 240,
         margin: 1,
         color: {
-          dark: '#002B5B',
+          dark: '#102542',
           light: '#FFFFFF',
         },
       })
@@ -160,7 +160,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
               max-width: 100% !important;
               margin: 0 auto !important;
               padding: 6mm 8mm !important;
-              border: 3px double #C99A00 !important;
+              border: 3px double #8A6800 !important;
               border-radius: 8px !important;
               background-color: #FAF8F0 !important;
               box-shadow: none !important;
@@ -186,7 +186,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
         <div className="certificate-card-wrapper relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col">
           
           {/* Sticky Top Control Bar (Hidden when printing) */}
-          <div className="sticky top-0 z-30 bg-[#001A38]/95 backdrop-blur-md px-4 sm:px-6 py-3.5 text-white flex items-center justify-between border-b border-amber-500/30 shadow-lg print:hidden">
+          <div className="sticky top-0 z-30 bg-[#102542]/95 backdrop-blur-md px-4 sm:px-6 py-3.5 text-white flex items-center justify-between border-b border-amber-500/30 shadow-lg print:hidden">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 shrink-0">
                 <Award className="w-4 h-4" />
@@ -204,7 +204,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
             <div className="flex items-center gap-2">
               <button
                 onClick={handlePrint}
-                className="flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-[#C99A00] to-[#F4C400] hover:from-[#B88900] hover:to-[#E0B000] text-slate-950 font-black text-xs shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-[#8A6800] to-[#FECC36] hover:from-[#755800] hover:to-[#D9AB24] text-slate-950 font-black text-xs shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all cursor-pointer"
                 title="Imprimir o descargar en formato PDF oficial"
               >
                 <Printer className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -229,27 +229,27 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
             {/* The Printable Notarial Certificate Document */}
             <div 
               id="official-certificate-document"
-              className="border-4 border-double border-[#C99A00]/50 rounded-2xl p-6 sm:p-10 relative bg-white shadow-md"
+              className="border-4 border-double border-[#8A6800]/50 rounded-2xl p-6 sm:p-10 relative bg-white shadow-md"
             >
               
               {/* Background Watermark Emblem */}
               <div className="absolute inset-0 flex items-center justify-center opacity-[0.035] pointer-events-none select-none">
-                <ShieldCheck className="w-[30rem] h-[30rem] text-[#002B5B]" />
+                <ShieldCheck className="w-[30rem] h-[30rem] text-[#102542]" />
               </div>
 
               {/* Document Header */}
               <div className="text-center pb-6 border-b border-[#E2DDD5]">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B]/5 border border-[#002B5B]/10 text-[#002B5B] text-[11px] font-medium tracking-widest uppercase mb-2">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#002B5B]/70" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#102542]/5 border border-[#102542]/10 text-[#102542] text-[11px] font-medium tracking-widest uppercase mb-2">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#102542]/70" />
                   <span>Estado Plurinacional de Bolivia</span>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#002B5B] uppercase font-serif">
+                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#102542] uppercase font-serif">
                   Correos de Bolivia
                 </h2>
-                <p className="text-xs font-semibold tracking-wider text-[#C99A00] uppercase mt-0.5">
+                <p className="text-xs font-semibold tracking-wider text-[#8A6800] uppercase mt-0.5">
                   Dirección Nacional de Filatelia & Custodia de Bóveda
                 </p>
-                <div className="w-24 h-0.5 bg-[#C99A00] mx-auto mt-3" />
+                <div className="w-24 h-0.5 bg-[#8A6800] mx-auto mt-3" />
                 <h3 className="text-xs sm:text-sm font-bold text-slate-800 tracking-widest uppercase mt-3">
                   Acta Oficial de Peritaje & Certificado de Autenticidad
                 </h3>
@@ -259,11 +259,11 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-5 border-b border-[#E2DDD5] text-xs">
                 <div>
                   <span className="block text-slate-400 text-[10px] uppercase font-bold tracking-wider">Folio de Seguridad</span>
-                  <strong className="text-[#002B5B] font-mono font-bold text-xs">{certificateFolio}</strong>
+                  <strong className="text-[#102542] font-mono font-bold text-xs">{certificateFolio}</strong>
                 </div>
                 <div>
                   <span className="block text-slate-400 text-[10px] uppercase font-bold tracking-wider">N° de Orden</span>
-                  <strong className="text-[#002B5B] font-mono font-bold text-xs">{orderNumber}</strong>
+                  <strong className="text-[#102542] font-mono font-bold text-xs">{orderNumber}</strong>
                 </div>
                 <div>
                   <span className="block text-slate-400 text-[10px] uppercase font-bold tracking-wider">Fecha de Emisión</span>
@@ -291,7 +291,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
               {items.length > 0 && (
                 <div className="py-3">
                   <table className="w-full text-left text-xs border border-[#E2DDD5] rounded-xl overflow-hidden">
-                    <thead className="bg-[#FAF8F0] text-[#002B5B] font-bold text-[11px] uppercase tracking-wider border-b border-[#E2DDD5]">
+                    <thead className="bg-[#FAF8F0] text-[#102542] font-bold text-[11px] uppercase tracking-wider border-b border-[#E2DDD5]">
                       <tr>
                         <th className="py-2.5 px-3 sm:px-4">Pieza Filatélica Certificada</th>
                         <th className="py-2.5 px-3 text-center">Cant.</th>
@@ -302,7 +302,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                       {items.map((item: any, idx: number) => (
                         <tr key={idx} className="hover:bg-amber-50/40">
                           <td className="py-2.5 px-3 sm:px-4">
-                            <strong className="text-[#002B5B]">
+                            <strong className="text-[#102542]">
                               {item.product_name || item.name || `Pieza Filatélica #${idx + 1}`}
                             </strong>
                           </td>
@@ -328,17 +328,17 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                 {/* Signature 1 */}
                 <div className="flex flex-col items-center">
                   <div className="border-b-2 border-slate-400 w-36 mb-1.5" />
-                  <span className="block text-[11px] font-bold text-[#002B5B]">Lic. Mario Argandoña</span>
+                  <span className="block text-[11px] font-bold text-[#102542]">Lic. Mario Argandoña</span>
                   <span className="block text-[10px] text-slate-500">Curador en Jefe de Bóveda</span>
                   <span className="text-[9px] text-slate-400 font-mono mt-0.5">Matrícula FIL-BOL-0084</span>
                 </div>
 
                 {/* Security Seal Emblem */}
                 <div className="flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-full border-2 border-dashed border-[#C99A00] p-1 flex items-center justify-center shadow-inner">
-                    <div className="w-full h-full rounded-full bg-gradient-to-br from-amber-400/20 to-amber-500/10 flex flex-col items-center justify-center text-[8px] font-black text-[#002B5B] uppercase leading-tight border border-[#C99A00]/30">
+                  <div className="w-16 h-16 rounded-full border-2 border-dashed border-[#8A6800] p-1 flex items-center justify-center shadow-inner">
+                    <div className="w-full h-full rounded-full bg-gradient-to-br from-amber-400/20 to-amber-500/10 flex flex-col items-center justify-center text-[8px] font-black text-[#102542] uppercase leading-tight border border-[#8A6800]/30">
                       <span>Sello</span>
-                      <span className="text-[#C99A00] font-black">Oficial</span>
+                      <span className="text-[#8A6800] font-black">Oficial</span>
                       <span>UPU</span>
                     </div>
                   </div>
@@ -348,7 +348,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                 {/* Signature 2 */}
                 <div className="flex flex-col items-center">
                   <div className="border-b-2 border-slate-400 w-36 mb-1.5" />
-                  <span className="block text-[11px] font-bold text-[#002B5B]">Dr. Fernando Velasco</span>
+                  <span className="block text-[11px] font-bold text-[#102542]">Dr. Fernando Velasco</span>
                   <span className="block text-[10px] text-slate-500">Perito Notarial Colegiado</span>
                   <span className="text-[9px] text-slate-400 font-mono mt-0.5">Registro Notarial #142</span>
                 </div>
@@ -362,15 +362,15 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                     <img 
                       src={qrDataUrl} 
                       alt="Código QR de Verificación" 
-                      className="w-16 h-16 rounded-lg border border-[#C99A00]/40 p-0.5 bg-white shadow-sm"
+                      className="w-16 h-16 rounded-lg border border-[#8A6800]/40 p-0.5 bg-white shadow-sm"
                     />
                   ) : (
-                    <div className="w-16 h-16 rounded-lg border border-[#C99A00]/40 flex items-center justify-center bg-white">
-                      <QrCode className="w-8 h-8 text-[#002B5B]" />
+                    <div className="w-16 h-16 rounded-lg border border-[#8A6800]/40 flex items-center justify-center bg-white">
+                      <QrCode className="w-8 h-8 text-[#102542]" />
                     </div>
                   )}
                   <div className="text-left">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#002B5B] block">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#102542] block">
                       Verificación Notarial en Línea
                     </span>
                     <span className="text-[10px] text-slate-500 block">

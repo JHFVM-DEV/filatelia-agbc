@@ -1,18 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  /* Paleta Oficial Filatelia de Lujo */
+  /* Paleta corporativa: principal, secundario y acento. */
+  --brand-primary: #102542;
+  --brand-secondary: #102542;
+  --brand-accent: #FECC36;
   --marfil: #FAF8F0;
   --marfil-suave: #FDFBF7;
   --marfil-card: #FFFFFF;
   --marfil-border: #E5DFC8;
-  --azul-marino: #002B5B;
-  --azul-marino-dark: #001A38;
-  --azul-marino-light: #0B3E7A;
-  --oro-dorado: #F4C400;
-  --oro-oscuro: #C99A00;
+  --azul-marino: var(--brand-primary);
+  --azul-marino-dark: var(--brand-secondary);
+  --azul-marino-light: #2C63AC;
+  --oro-dorado: var(--brand-accent);
+  --oro-oscuro: #8A6800;
   --oro-suave: #FEF7D6;
-  --oro-brillo: #FFE57F;
+  --oro-brillo: #FFE58C;
   --gris-calido: #5A554E;
   --gris-borde: #E2DDD5;
 
@@ -31,7 +34,7 @@ body {
 .stamp-border {
   position: relative;
   background: white;
-  filter: drop-shadow(0 4px 14px rgba(0, 43, 91, 0.08));
+  filter: drop-shadow(0 4px 14px rgba(16, 37, 66, 0.08));
 }
 
 .stamp-border::before {
@@ -48,20 +51,20 @@ body {
 
 /* Texturas de seguridad, guilloche y lujo */
 .bg-guilloche {
-  background-color: #002B5B;
-  background-image: radial-gradient(rgba(244, 196, 0, 0.12) 1px, transparent 0);
+  background-color: #102542;
+  background-image: radial-gradient(rgba(254, 204, 54, 0.12) 1px, transparent 0);
   background-size: 24px 24px;
 }
 
 .bg-vault-pattern {
-  background-color: #001A38;
-  background-image: linear-gradient(rgba(10, 59, 115, 0.3) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(10, 59, 115, 0.3) 1px, transparent 1px);
+  background-color: #102542;
+  background-image: linear-gradient(rgba(44, 99, 172, 0.3) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(44, 99, 172, 0.3) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #F4C400 0%, #E8B500 50%, #C99A00 100%);
+  background: linear-gradient(135deg, #FECC36 0%, #E5B728 50%, #8A6800 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -73,16 +76,16 @@ body {
 }
 
 .gold-button {
-  background: linear-gradient(135deg, #F4C400 0%, #E2B300 100%);
-  color: #002B5B;
+  background: linear-gradient(135deg, #FECC36 0%, #E5B728 100%);
+  color: #102542;
   font-weight: 700;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 14px rgba(244, 196, 0, 0.35);
+  box-shadow: 0 4px 14px rgba(254, 204, 54, 0.35);
 }
 
 .gold-button:hover {
-  background: linear-gradient(135deg, #FFD54F 0%, #E2B300 100%);
-  box-shadow: 0 6px 22px rgba(201, 154, 0, 0.45);
+  background: linear-gradient(135deg, #FFD95E 0%, #E5B728 100%);
+  box-shadow: 0 6px 22px rgba(138, 104, 0, 0.45);
   transform: translateY(-1.5px);
 }
 
@@ -126,8 +129,8 @@ body {
 
 .catalog-scroll-card.is-visible:hover {
   transform: translateY(-4px) scale(1.005);
-  box-shadow: 0 20px 35px -10px rgba(0, 43, 91, 0.12), 0 0 0 1px rgba(244, 196, 0, 0.35);
-  border-color: rgba(244, 196, 0, 0.6);
+  box-shadow: 0 20px 35px -10px rgba(16, 37, 66, 0.12), 0 0 0 1px rgba(254, 204, 54, 0.35);
+  border-color: rgba(254, 204, 54, 0.6);
 }
 
 .museum-card {
@@ -138,8 +141,8 @@ body {
 
 .museum-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 35px -10px rgba(0, 43, 91, 0.12), 0 0 0 1px rgba(244, 196, 0, 0.35);
-  border-color: rgba(244, 196, 0, 0.6);
+  box-shadow: 0 20px 35px -10px rgba(16, 37, 66, 0.12), 0 0 0 1px rgba(254, 204, 54, 0.35);
+  border-color: rgba(254, 204, 54, 0.6);
 }
 
 /* ==========================================================================
@@ -162,7 +165,7 @@ body::-webkit-scrollbar {
 /* 2. Scrollbar universal ultra-compacto (4px) para todos los elementos internos */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 43, 91, 0.35) transparent;
+  scrollbar-color: rgba(16, 37, 66, 0.35) transparent;
 }
 
 *::-webkit-scrollbar {
@@ -175,17 +178,17 @@ body::-webkit-scrollbar {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: rgba(0, 43, 91, 0.35);
+  background: rgba(16, 37, 66, 0.35);
   border-radius: 9999px;
   transition: background-color 0.2s ease;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 43, 91, 0.65);
+  background: rgba(16, 37, 66, 0.65);
 }
 
 *::-webkit-scrollbar-thumb:active {
-  background: rgba(201, 154, 0, 0.7); /* Toque oro suave al arrastrar */
+  background: rgba(138, 104, 0, 0.7); /* Toque oro suave al arrastrar */
 }
 
 *::-webkit-scrollbar-corner {
@@ -195,16 +198,18 @@ body::-webkit-scrollbar {
 /* 3. Scrollbar para temas oscuros (Panel de Admin, modales oscuros, inspectores de bóveda) */
 .dark-theme,
 .dark,
-[class*="bg-[#001"],
-[class*="bg-[#002"],
+[class*="bg-[#0"],
+[class*="bg-[#102542"],
+[class*="bg-[#1"],
 [class*="bg-slate-900"],
 [class*="bg-slate-950"],
 [class*="bg-black"] {
   scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
 }
 
-[class*="bg-[#001"] *::-webkit-scrollbar-thumb,
-[class*="bg-[#002"] *::-webkit-scrollbar-thumb,
+[class*="bg-[#0"] *::-webkit-scrollbar-thumb,
+[class*="bg-[#102542"] *::-webkit-scrollbar-thumb,
+[class*="bg-[#1"] *::-webkit-scrollbar-thumb,
 [class*="bg-slate-900"] *::-webkit-scrollbar-thumb,
 [class*="bg-slate-950"] *::-webkit-scrollbar-thumb,
 [class*="bg-black"] *::-webkit-scrollbar-thumb,
@@ -212,8 +217,9 @@ body::-webkit-scrollbar {
   background: rgba(255, 255, 255, 0.16);
 }
 
-[class*="bg-[#001"] *::-webkit-scrollbar-thumb:hover,
-[class*="bg-[#002"] *::-webkit-scrollbar-thumb:hover,
+[class*="bg-[#0"] *::-webkit-scrollbar-thumb:hover,
+[class*="bg-[#102542"] *::-webkit-scrollbar-thumb:hover,
+[class*="bg-[#1"] *::-webkit-scrollbar-thumb:hover,
 [class*="bg-slate-900"] *::-webkit-scrollbar-thumb:hover,
 [class*="bg-slate-950"] *::-webkit-scrollbar-thumb:hover,
 [class*="bg-black"] *::-webkit-scrollbar-thumb:hover,
@@ -262,7 +268,7 @@ body::-webkit-scrollbar {
 /* 6. Variante custom-scrollbar para fondos claros (marfil / blanco) */
 .custom-scrollbar-light {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 43, 91, 0.25) transparent;
+  scrollbar-color: rgba(16, 37, 66, 0.25) transparent;
 }
 
 .custom-scrollbar-light::-webkit-scrollbar {
@@ -275,12 +281,12 @@ body::-webkit-scrollbar {
 }
 
 .custom-scrollbar-light::-webkit-scrollbar-thumb {
-  background: rgba(0, 43, 91, 0.22);
+  background: rgba(16, 37, 66, 0.22);
   border-radius: 9999px;
 }
 
 .custom-scrollbar-light::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 43, 91, 0.45);
+  background: rgba(16, 37, 66, 0.45);
 }
 
 

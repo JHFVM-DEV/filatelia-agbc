@@ -300,12 +300,12 @@ export const ShowcaseManager: React.FC = () => {
   return (
     <div className="space-y-8 pb-12">
       {/* 1. Header con Banner Informativo y Controles Principales */}
-      <div className="bg-gradient-to-r from-[#001A38] via-[#002B5B] to-[#0A3B73] rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-white/10 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFCC00]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="bg-gradient-to-r from-[#102542] via-[#102542] to-[#2C63AC] rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-white/10 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FECC36]/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFCC00] text-[#002B5B] text-xs font-black shadow-sm tracking-wide">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FECC36] text-[#102542] text-xs font-black shadow-sm tracking-wide">
               <Store className="w-4 h-4" />
               <span>INTEGRACIÓN OFICIAL — CORREOS MARKET</span>
             </div>
@@ -325,7 +325,7 @@ export const ShowcaseManager: React.FC = () => {
               className={`px-6 py-3 rounded-xl font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer ${
                 saveSuccess
                   ? 'bg-emerald-500 text-white'
-                  : 'bg-[#FFCC00] hover:bg-[#FFD700] text-[#002B5B] hover:scale-105 active:scale-95'
+                  : 'bg-[#FECC36] hover:bg-[#FFD95E] text-[#102542] hover:scale-105 active:scale-95'
               }`}
             >
               {saving ? (
@@ -350,7 +350,7 @@ export const ShowcaseManager: React.FC = () => {
               onClick={handleViewJson}
               className="px-4 py-2.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/15 flex items-center justify-center gap-2 transition cursor-pointer"
             >
-              <FileJson className="w-4 h-4 text-[#FFCC00]" />
+              <FileJson className="w-4 h-4 text-[#FECC36]" />
               <span>Ver Respuesta JSON API</span>
             </button>
 
@@ -368,7 +368,7 @@ export const ShowcaseManager: React.FC = () => {
         {/* Barra de Endpoint e Información Técnica */}
         <div className="mt-6 pt-6 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs">
           <div className="flex items-center gap-2 text-slate-300">
-            <Globe className="w-4 h-4 text-[#FFCC00]" />
+            <Globe className="w-4 h-4 text-[#FECC36]" />
             <span className="font-medium">Endpoint API Público:</span>
             <code className="bg-black/40 px-2.5 py-1 rounded-md text-amber-300 font-mono text-[11px]">
               GET /api/external/showcase
@@ -401,8 +401,8 @@ export const ShowcaseManager: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#E2DDD5]">
           <div>
             <div className="flex items-center gap-2">
-              <Eye className="w-5 h-5 text-[#002B5B]" />
-              <h3 className="text-lg font-black text-[#002B5B]">
+              <Eye className="w-5 h-5 text-[#102542]" />
+              <h3 className="text-lg font-black text-[#102542]">
                 Simulador en Tiempo Real — Portal General de Correos
               </h3>
             </div>
@@ -410,7 +410,7 @@ export const ShowcaseManager: React.FC = () => {
               Así se renderizará exactamente la sección <strong>Correos Market</strong> en la página de inicio del sistema general.
             </p>
           </div>
-          <span className="px-3 py-1 rounded-full bg-[#FFCC00]/20 text-[#002B5B] text-xs font-bold border border-[#FFCC00]/40 self-start sm:self-auto">
+          <span className="px-3 py-1 rounded-full bg-[#FECC36]/20 text-[#102542] text-xs font-bold border border-[#FECC36]/40 self-start sm:self-auto">
             {showcaseItems.length} {showcaseItems.length === 1 ? 'estampa expuesta' : 'estampas expuestas'}
           </span>
         </div>
@@ -419,11 +419,11 @@ export const ShowcaseManager: React.FC = () => {
         <div className="bg-gradient-to-b from-[#F3F6FA] to-[#FFFFFF] rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-inner">
           {/* Header de la sección Correos Market */}
           <div className="flex items-center gap-3.5 mb-8">
-            <div className="w-12 h-12 rounded-2xl bg-[#FFCC00] flex items-center justify-center text-[#002B5B] shadow-md shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-[#FECC36] flex items-center justify-center text-[#102542] shadow-md shrink-0">
               <Store className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-2xl font-black text-[#002B5B] tracking-tight">
+              <h4 className="text-2xl font-black text-[#102542] tracking-tight">
                 Correos Market / Filatelia
               </h4>
               <p className="text-xs sm:text-sm text-slate-500 font-medium">
@@ -451,7 +451,7 @@ export const ShowcaseManager: React.FC = () => {
                     {/* Badge y Wishlist */}
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase bg-[#FFCC00]/25 text-[#002B5B] border border-[#FFCC00]/50 tracking-wider">
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase bg-[#FECC36]/25 text-[#102542] border border-[#FECC36]/50 tracking-wider">
                           {item.showcase_badge || item.category?.name || 'COLECCIÓN OFICIAL'}
                         </span>
                         <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-rose-500 transition">
@@ -473,7 +473,7 @@ export const ShowcaseManager: React.FC = () => {
                       </div>
 
                       {/* Título y Descripción */}
-                      <h5 className="font-extrabold text-sm text-[#002B5B] line-clamp-1 group-hover:text-[#0A3B73] transition">
+                      <h5 className="font-extrabold text-sm text-[#102542] line-clamp-1 group-hover:text-[#2C63AC] transition">
                         {item.name}
                       </h5>
                       <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
@@ -484,17 +484,17 @@ export const ShowcaseManager: React.FC = () => {
                     {/* Precio y Botón Carrito */}
                     <div className="flex items-center justify-between pt-4 mt-4 border-t border-slate-100">
                       <div>
-                        <span className="text-base font-black text-[#002B5B]">
+                        <span className="text-base font-black text-[#102542]">
                           Bs. {Number(item.price).toFixed(2)}
                         </span>
                       </div>
-                      <div className="w-10 h-10 rounded-full bg-[#FFCC00] hover:bg-[#FFD700] text-[#002B5B] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform cursor-pointer">
+                      <div className="w-10 h-10 rounded-full bg-[#FECC36] hover:bg-[#FFD95E] text-[#102542] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform cursor-pointer">
                         <ShoppingBag className="w-4 h-4" />
                       </div>
                     </div>
 
                     {/* Tag de Posición flotante */}
-                    <div className="absolute -top-2.5 -right-2.5 bg-[#002B5B] text-[#FFCC00] text-[10px] font-black w-6 h-6 rounded-full flex items-center justify-center shadow-md border-2 border-white">
+                    <div className="absolute -top-2.5 -right-2.5 bg-[#102542] text-[#FECC36] text-[10px] font-black w-6 h-6 rounded-full flex items-center justify-center shadow-md border-2 border-white">
                       #{idx + 1}
                     </div>
                   </div>
@@ -510,8 +510,8 @@ export const ShowcaseManager: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#E2DDD5]">
           <div>
             <div className="flex items-center gap-2">
-              <Sliders className="w-5 h-5 text-[#002B5B]" />
-              <h3 className="text-lg font-black text-[#002B5B]">
+              <Sliders className="w-5 h-5 text-[#102542]" />
+              <h3 className="text-lg font-black text-[#102542]">
                 Secuencia y Etiquetas de la API ({showcaseItems.length} Estampas)
               </h3>
             </div>
@@ -523,9 +523,9 @@ export const ShowcaseManager: React.FC = () => {
           <button
             onClick={handleSaveShowcase}
             disabled={saving}
-            className="px-4 py-2 rounded-xl text-xs font-bold bg-[#002B5B] text-white hover:bg-[#0A3B73] transition flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
+            className="px-4 py-2 rounded-xl text-xs font-bold bg-[#102542] text-white hover:bg-[#2C63AC] transition flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
           >
-            <Check className="w-3.5 h-3.5 text-[#FFCC00]" />
+            <Check className="w-3.5 h-3.5 text-[#FECC36]" />
             <span>Guardar Este Orden</span>
           </button>
         </div>
@@ -539,11 +539,11 @@ export const ShowcaseManager: React.FC = () => {
               return (
                 <div
                   key={item.id}
-                  className="bg-[#FAF8F0]/70 rounded-2xl p-4 border border-[#E5DFC8] flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#002B5B]/30 transition group"
+                  className="bg-[#FAF8F0]/70 rounded-2xl p-4 border border-[#E5DFC8] flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#102542]/30 transition group"
                 >
                   {/* Posición e Imagen */}
                   <div className="flex items-center gap-3.5 min-w-0">
-                    <span className="w-8 h-8 rounded-xl bg-[#002B5B] text-[#FFCC00] font-black text-xs flex items-center justify-center shrink-0 shadow-sm">
+                    <span className="w-8 h-8 rounded-xl bg-[#102542] text-[#FECC36] font-black text-xs flex items-center justify-center shrink-0 shadow-sm">
                       #{index + 1}
                     </span>
 
@@ -559,7 +559,7 @@ export const ShowcaseManager: React.FC = () => {
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold text-[#C99A00] font-mono">
+                        <span className="text-[10px] font-bold text-[#8A6800] font-mono">
                           {item.catalog_code || `ID #${item.id}`}
                         </span>
                         <span className="text-[10px] text-slate-500">•</span>
@@ -567,7 +567,7 @@ export const ShowcaseManager: React.FC = () => {
                           {item.category?.name || 'Oficial'}
                         </span>
                       </div>
-                      <h4 className="font-bold text-sm text-[#002B5B] truncate mt-0.5" title={item.name}>
+                      <h4 className="font-bold text-sm text-[#102542] truncate mt-0.5" title={item.name}>
                         {item.name}
                       </h4>
                       <span className="text-xs font-black text-slate-700">
@@ -584,7 +584,7 @@ export const ShowcaseManager: React.FC = () => {
                       <select
                         value={item.showcase_badge || 'COLECCIÓN OFICIAL'}
                         onChange={(e) => handleBadgeChange(item.id, e.target.value)}
-                        className="px-3 py-1.5 text-xs rounded-xl border border-[#E2DDD5] bg-white font-bold text-[#002B5B] focus:outline-none focus:border-[#002B5B]"
+                        className="px-3 py-1.5 text-xs rounded-xl border border-[#E2DDD5] bg-white font-bold text-[#102542] focus:outline-none focus:border-[#102542]"
                       >
                         {BADGE_SUGGESTIONS.map((badge) => (
                           <option key={badge} value={badge}>
@@ -603,7 +603,7 @@ export const ShowcaseManager: React.FC = () => {
                         className={`p-1.5 rounded-lg transition ${
                           index === 0
                             ? 'text-slate-300 cursor-not-allowed'
-                            : 'text-[#002B5B] hover:bg-[#FAF8F0] active:scale-90 cursor-pointer'
+                            : 'text-[#102542] hover:bg-[#FAF8F0] active:scale-90 cursor-pointer'
                         }`}
                       >
                         <ArrowUp className="w-4 h-4" />
@@ -615,7 +615,7 @@ export const ShowcaseManager: React.FC = () => {
                         className={`p-1.5 rounded-lg transition ${
                           index === showcaseItems.length - 1
                             ? 'text-slate-300 cursor-not-allowed'
-                            : 'text-[#002B5B] hover:bg-[#FAF8F0] active:scale-90 cursor-pointer'
+                            : 'text-[#102542] hover:bg-[#FAF8F0] active:scale-90 cursor-pointer'
                         }`}
                       >
                         <ArrowDown className="w-4 h-4" />
@@ -643,8 +643,8 @@ export const ShowcaseManager: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#E2DDD5]">
           <div>
             <div className="flex items-center gap-2">
-              <Layers className="w-5 h-5 text-[#002B5B]" />
-              <h3 className="text-lg font-black text-[#002B5B]">
+              <Layers className="w-5 h-5 text-[#102542]" />
+              <h3 className="text-lg font-black text-[#102542]">
                 Catálogo de Piezas Disponibles ({filteredCatalog.length} Piezas)
               </h3>
             </div>
@@ -662,14 +662,14 @@ export const ShowcaseManager: React.FC = () => {
                 placeholder="Buscar por sello o código..."
                 value={searchCatalog}
                 onChange={(e) => setSearchCatalog(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-[#E2DDD5] bg-[#FAF8F0]/40 text-[#002B5B] focus:outline-none focus:border-[#002B5B]"
+                className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-[#E2DDD5] bg-[#FAF8F0]/40 text-[#102542] focus:outline-none focus:border-[#102542]"
               />
             </div>
 
             <select
               value={selectedCategoryFilter}
               onChange={(e) => setSelectedCategoryFilter(e.target.value)}
-              className="px-3 py-2 text-xs rounded-xl border border-[#E2DDD5] bg-[#FAF8F0]/40 text-[#002B5B] focus:outline-none focus:border-[#002B5B]"
+              className="px-3 py-2 text-xs rounded-xl border border-[#E2DDD5] bg-[#FAF8F0]/40 text-[#102542] focus:outline-none focus:border-[#102542]"
             >
               <option value="all">Todas las Categorías</option>
               {availableCategories.map((c) => (
@@ -693,7 +693,7 @@ export const ShowcaseManager: React.FC = () => {
                 key={prod.id}
                 className={`p-4 rounded-2xl border transition flex flex-col justify-between ${
                   inShowcase
-                    ? 'bg-amber-50/50 border-[#FFCC00] shadow-sm'
+                    ? 'bg-amber-50/50 border-[#FECC36] shadow-sm'
                     : 'bg-white border-[#E2DDD5] hover:border-slate-300'
                 }`}
               >
@@ -707,16 +707,16 @@ export const ShowcaseManager: React.FC = () => {
                       className="object-contain"
                     />
                     {inShowcase && (
-                      <span className="absolute top-2 right-2 bg-[#002B5B] text-[#FFCC00] text-[10px] font-black px-2 py-0.5 rounded-full shadow-sm">
+                      <span className="absolute top-2 right-2 bg-[#102542] text-[#FECC36] text-[10px] font-black px-2 py-0.5 rounded-full shadow-sm">
                         En Vitrina #{showcaseIdx + 1}
                       </span>
                     )}
                   </div>
 
-                  <span className="text-[10px] font-bold text-[#C99A00] uppercase font-mono block">
+                  <span className="text-[10px] font-bold text-[#8A6800] uppercase font-mono block">
                     {prod.catalog_code || 'OFICIAL'}
                   </span>
-                  <h4 className="font-bold text-xs text-[#002B5B] line-clamp-1 mt-0.5" title={prod.name}>
+                  <h4 className="font-bold text-xs text-[#102542] line-clamp-1 mt-0.5" title={prod.name}>
                     {prod.name}
                   </h4>
                   <div className="text-[11px] text-slate-500 font-medium mt-1">
@@ -736,7 +736,7 @@ export const ShowcaseManager: React.FC = () => {
                   ) : (
                     <button
                       onClick={() => handleAddToShowcase(prod)}
-                      className="w-full py-1.5 px-3 rounded-xl text-xs font-bold bg-[#FFCC00] hover:bg-[#FFD700] text-[#002B5B] shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="w-full py-1.5 px-3 rounded-xl text-xs font-bold bg-[#FECC36] hover:bg-[#FFD95E] text-[#102542] shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <Plus className="w-3.5 h-3.5" />
                       <span>Agregar a Vitrina</span>
@@ -752,10 +752,10 @@ export const ShowcaseManager: React.FC = () => {
       {/* 5. Modal de Respuesta JSON en Vivo */}
       {showJsonModal && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#001A38] text-white rounded-3xl max-w-3xl w-full max-h-[85vh] flex flex-col border border-white/10 shadow-2xl overflow-hidden">
+          <div className="bg-[#102542] text-white rounded-3xl max-w-3xl w-full max-h-[85vh] flex flex-col border border-white/10 shadow-2xl overflow-hidden">
             <div className="p-5 border-b border-white/10 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <FileJson className="w-5 h-5 text-[#FFCC00]" />
+                <FileJson className="w-5 h-5 text-[#FECC36]" />
                 <h4 className="text-base font-bold text-white">
                   Respuesta en Vivo — GET /api/external/showcase
                 </h4>
@@ -781,13 +781,13 @@ export const ShowcaseManager: React.FC = () => {
               )}
             </div>
 
-            <div className="p-4 bg-[#001328] border-t border-white/10 flex items-center justify-between text-xs">
+            <div className="p-4 bg-[#0D1E35] border-t border-white/10 flex items-center justify-between text-xs">
               <span className="text-slate-400">
                 Esta es la carga JSON exacta que recibirá el portal de Correos de Bolivia.
               </span>
               <button
                 onClick={() => copyToClipboard(JSON.stringify(apiJsonResponse, null, 2))}
-                className="px-4 py-2 rounded-xl bg-[#FFCC00] text-[#002B5B] font-bold flex items-center gap-1.5 hover:bg-[#FFD700] transition"
+                className="px-4 py-2 rounded-xl bg-[#FECC36] text-[#102542] font-bold flex items-center gap-1.5 hover:bg-[#FFD95E] transition"
               >
                 <Copy className="w-3.5 h-3.5" />
                 <span>Copiar JSON</span>

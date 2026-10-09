@@ -115,18 +115,18 @@ export const HistoricalTimeline: React.FC = () => {
   return (
     <section id="historia" className="relative overflow-hidden">
       {/* Header Banner - Amarillo Postal Dominante de Correos de Bolivia */}
-      <div className="bg-gradient-to-r from-[#FFE875] via-[#FFD100] to-[#F5B800] text-[#002B5B] py-14 border-b-2 border-[#E5B500] relative overflow-hidden shadow-sm">
+      <div className="bg-gradient-to-r from-[#FFE58C] via-[#FECC36] to-[#E5B728] text-[#102542] py-14 border-b-2 border-[#E5B728] relative overflow-hidden shadow-sm">
         <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#002B5B] text-[#FFD100] text-xs font-bold tracking-wide mb-3 shadow-sm">
-            <Landmark className="w-4 h-4 text-[#FFD100]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#102542] text-[#FECC36] text-xs font-bold tracking-wide mb-3 shadow-sm">
+            <Landmark className="w-4 h-4 text-[#FECC36]" />
             <span>Memoria Postal & Archivo Nacional</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#002B5B] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#102542] tracking-tight">
             Hitos de la Filatelia Boliviana
           </h1>
-          <p className="mt-3 text-sm sm:text-base text-[#002B5B]/85 max-w-3xl mx-auto font-medium leading-relaxed">
-            Desde los primeros <strong className="text-[#002B5B] font-black">Cóndores de 1866</strong> grabados en cobre hasta la <strong className="text-[#002B5B] font-black">Magna Emisión del Bicentenario</strong>. Descubra la evolución gráfica y soberana de nuestra patria.
+          <p className="mt-3 text-sm sm:text-base text-[#102542]/85 max-w-3xl mx-auto font-medium leading-relaxed">
+            Desde los primeros <strong className="text-[#102542] font-black">Cóndores de 1866</strong> grabados en cobre hasta la <strong className="text-[#102542] font-black">Magna Emisión del Bicentenario</strong>. Descubra la evolución gráfica y soberana de nuestra patria.
           </p>
         </div>
       </div>
@@ -144,8 +144,8 @@ export const HistoricalTimeline: React.FC = () => {
                     onClick={() => setActiveIdx(idx)}
                     className={`relative flex flex-col items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all duration-200 text-center min-w-[105px] sm:min-w-[130px] cursor-pointer ${
                       isActive
-                        ? 'bg-[#FFCC00] text-[#002B5B] border border-[#E5B500] shadow-md font-extrabold'
-                        : 'text-slate-600 hover:text-[#002B5B] hover:bg-[#FAF5E6] border border-transparent font-medium'
+                        ? 'bg-[#FECC36] text-[#102542] border border-[#E5B728] shadow-md font-extrabold'
+                        : 'text-slate-600 hover:text-[#102542] hover:bg-[#FAF5E6] border border-transparent font-medium'
                     }`}
                   >
                     <span className="text-base sm:text-lg font-black font-mono tracking-wider">
@@ -161,16 +161,16 @@ export const HistoricalTimeline: React.FC = () => {
           </div>
 
           {/* Active Event Showcase Card */}
-          <div className="bg-[#002B5B] rounded-3xl border-2 border-[#FFCC00] p-6 sm:p-10 shadow-2xl transition-all duration-500 text-white">
+          <div className="bg-[#102542] rounded-3xl border-2 border-[#FECC36] p-6 sm:p-10 shadow-2xl transition-all duration-500 text-white">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-5">
               <div className="flex items-center gap-3">
-                <span className="px-3.5 py-1.5 rounded-xl bg-[#FFCC00] text-[#002B5B] font-black font-mono text-sm tracking-widest border border-[#E5B500] shadow-md">
+                <span className="px-3.5 py-1.5 rounded-xl bg-[#FECC36] text-[#102542] font-black font-mono text-sm tracking-widest border border-[#E5B728] shadow-md">
                   AÑO {currentEvent.year}
                 </span>
-                <span className="text-xs text-[#FFD100] font-bold tracking-wide uppercase">
+                <span className="text-xs text-[#FECC36] font-bold tracking-wide uppercase">
                   {currentEvent.period}
                 </span>
               </div>
@@ -179,7 +179,7 @@ export const HistoricalTimeline: React.FC = () => {
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
                   {currentEvent.title}
                 </h3>
-                <p className="text-sm font-bold text-[#FFD100] mt-1">
+                <p className="text-sm font-bold text-[#FECC36] mt-1">
                   {currentEvent.subtitle}
                 </p>
               </div>
@@ -189,20 +189,20 @@ export const HistoricalTimeline: React.FC = () => {
               </p>
 
               {/* Curatorial Quote */}
-              <div className="border-l-4 border-[#FFCC00] pl-4 py-2 italic bg-white/[0.05] rounded-r-xl">
+              <div className="border-l-4 border-[#FECC36] pl-4 py-2 italic bg-white/[0.05] rounded-r-xl">
                 <p className="text-xs text-slate-200">
                   &ldquo;{currentEvent.quote}&rdquo;
                 </p>
-                <p className="text-[11px] text-[#FFD100] font-bold mt-1.5 not-italic">
+                <p className="text-[11px] text-[#FECC36] font-bold mt-1.5 not-italic">
                   — {currentEvent.quoteAuthor}
                 </p>
               </div>
             </div>
 
             {/* Right Technical Specification Column */}
-            <div className="lg:col-span-5 bg-[#001A38] rounded-2xl border-2 border-[#FFCC00]/50 p-6 space-y-4 shadow-xl">
+            <div className="lg:col-span-5 bg-[#102542] rounded-2xl border-2 border-[#FECC36]/50 p-6 space-y-4 shadow-xl">
               <div className="flex items-center gap-2 pb-3 border-b border-slate-700/80">
-                <Award className="w-5 h-5 text-[#FFCC00]" />
+                <Award className="w-5 h-5 text-[#FECC36]" />
                 <h4 className="text-xs font-bold text-white uppercase tracking-wider">
                   Ficha Técnica de Bóveda
                 </h4>
@@ -216,7 +216,7 @@ export const HistoricalTimeline: React.FC = () => {
 
                 <div>
                   <span className="block text-slate-400 text-[11px]">Grado de Rareza:</span>
-                  <span className="inline-block px-3 py-1 rounded-lg bg-[#FFCC00]/15 text-[#FFD100] font-bold text-[11px] mt-0.5 border border-[#FFCC00]/30">
+                  <span className="inline-block px-3 py-1 rounded-lg bg-[#FECC36]/15 text-[#FECC36] font-bold text-[11px] mt-0.5 border border-[#FECC36]/30">
                     {currentEvent.technicalDetails.rarity}
                   </span>
                 </div>
@@ -237,7 +237,7 @@ export const HistoricalTimeline: React.FC = () => {
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   Catalogación UPU Verificada
                 </span>
-                <span className="font-mono text-[#FFCC00] font-black">
+                <span className="font-mono text-[#FECC36] font-black">
                   REG. OFICIAL #{activeIdx + 1}/5
                 </span>
               </div>

@@ -232,7 +232,7 @@ export default function AdminProductsPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={fetchProducts}
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#001A38] hover:bg-[#002B5B] border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#102542] hover:bg-[#102542] border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white transition-all cursor-pointer"
           >
             <RefreshCw className="w-3.5 h-3.5 text-amber-400" />
             <span>Refrescar</span>
@@ -240,7 +240,7 @@ export default function AdminProductsPage() {
 
           <Link
             href="/admin/fichas-almacen"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#00244D] hover:bg-[#002B5B] border border-slate-700 text-amber-300 hover:text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1B4785] hover:bg-[#102542] border border-slate-700 text-amber-300 hover:text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
           >
             <QrCode className="w-4 h-4 text-amber-400" />
             <span>Fichas & Rótulos QR</span>
@@ -257,7 +257,7 @@ export default function AdminProductsPage() {
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="p-4 rounded-2xl bg-[#001A38]/90 border border-slate-800 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="p-4 rounded-2xl bg-[#102542]/90 border border-slate-800 flex flex-col md:flex-row gap-4 items-center justify-between">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -270,7 +270,7 @@ export default function AdminProductsPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar por título, código Scott/Yvert o año..."
-            className="w-full pl-10 pr-4 py-2 bg-[#00244D]/80 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 transition-colors"
+            className="w-full pl-10 pr-4 py-2 bg-[#1B4785]/80 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 transition-colors"
           />
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
         </form>
@@ -282,8 +282,8 @@ export default function AdminProductsPage() {
               onClick={() => setRarityFilter(r)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 rarityFilter === r
-                  ? 'bg-[#002B5B] text-white border border-white/10 shadow-sm'
-                  : 'bg-[#00244D] text-slate-300 hover:text-white hover:bg-[#002B5B] border border-slate-700/60'
+                  ? 'bg-[#102542] text-white border border-white/10 shadow-sm'
+                  : 'bg-[#1B4785] text-slate-300 hover:text-white hover:bg-[#102542] border border-slate-700/60'
               }`}
             >
               {r === 'ALL'
@@ -301,7 +301,7 @@ export default function AdminProductsPage() {
       </div>
 
       {/* Products Table */}
-      <div className="bg-[#001A38]/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden">
+      <div className="bg-[#102542]/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden">
         {loading ? (
           <div className="p-12 flex flex-col items-center justify-center text-slate-400">
             <div className="w-8 h-8 border-2 border-amber-400 border-t-transparent rounded-full animate-spin mb-3" />
@@ -315,7 +315,7 @@ export default function AdminProductsPage() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs text-slate-300">
-              <thead className="text-[11px] uppercase tracking-wider text-slate-400 bg-[#00244D] border-b border-slate-800">
+              <thead className="text-[11px] uppercase tracking-wider text-slate-400 bg-[#1B4785] border-b border-slate-800">
                 <tr>
                   <th className="py-3.5 px-4">Ejemplar Filatélico</th>
                   <th className="py-3.5 px-4">Código / Año</th>
@@ -328,7 +328,7 @@ export default function AdminProductsPage() {
               </thead>
               <tbody className="divide-y divide-slate-800/60">
                 {products.map((product) => (
-                  <tr key={product.id} className="hover:bg-[#002B5B]/30 transition-colors">
+                  <tr key={product.id} className="hover:bg-[#102542]/30 transition-colors">
                     {/* Image & Title */}
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-3">
@@ -364,11 +364,11 @@ export default function AdminProductsPage() {
 
                     {/* Fast Stock Controls */}
                     <td className="py-3 px-4 text-center">
-                      <div className="inline-flex items-center gap-2 bg-[#00244D] px-2 py-1 rounded-xl border border-slate-700">
+                      <div className="inline-flex items-center gap-2 bg-[#1B4785] px-2 py-1 rounded-xl border border-slate-700">
                         <button
                           onClick={() => handleStockDelta(product.id, product.stock, -1)}
                           disabled={product.stock <= 0}
-                          className="w-5 h-5 rounded bg-[#001A38] text-amber-300 hover:text-white font-bold flex items-center justify-center cursor-pointer disabled:opacity-30"
+                          className="w-5 h-5 rounded bg-[#102542] text-amber-300 hover:text-white font-bold flex items-center justify-center cursor-pointer disabled:opacity-30"
                         >
                           -
                         </button>
@@ -379,7 +379,7 @@ export default function AdminProductsPage() {
                         </span>
                         <button
                           onClick={() => handleStockDelta(product.id, product.stock, 1)}
-                          className="w-5 h-5 rounded bg-[#001A38] text-amber-300 hover:text-white font-bold flex items-center justify-center cursor-pointer"
+                          className="w-5 h-5 rounded bg-[#102542] text-amber-300 hover:text-white font-bold flex items-center justify-center cursor-pointer"
                         >
                           +
                         </button>
@@ -405,14 +405,14 @@ export default function AdminProductsPage() {
                       <div className="flex items-center justify-end gap-1.5">
                         <Link
                           href={`/admin/fichas-almacen?search=${encodeURIComponent(product.catalog_code)}`}
-                          className="p-1.5 rounded-lg bg-[#00244D] hover:bg-white/10 text-slate-300 hover:text-white border border-slate-700 cursor-pointer transition-colors inline-flex items-center"
+                          className="p-1.5 rounded-lg bg-[#1B4785] hover:bg-white/10 text-slate-300 hover:text-white border border-slate-700 cursor-pointer transition-colors inline-flex items-center"
                           title="Imprimir Ficha con QR para Almacén"
                         >
                           <QrCode className="w-4 h-4" />
                         </Link>
                         <button
                           onClick={() => setEditingProduct(product)}
-                          className="p-1.5 rounded-lg bg-[#00244D] hover:bg-[#002B5B] text-slate-300 hover:text-white border border-slate-700 cursor-pointer"
+                          className="p-1.5 rounded-lg bg-[#1B4785] hover:bg-[#102542] text-slate-300 hover:text-white border border-slate-700 cursor-pointer"
                           title="Editar parámetros del sello"
                         >
                           <Edit2 className="w-4 h-4" />
@@ -432,7 +432,7 @@ export default function AdminProductsPage() {
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           <form
             onSubmit={handleSaveEdit}
-            className="bg-[#001A38] border border-white/10 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 text-xs"
+            className="bg-[#102542] border border-white/10 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 text-xs"
           >
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="text-base font-bold text-white font-serif">
@@ -458,7 +458,7 @@ export default function AdminProductsPage() {
                   onChange={(e) =>
                     setEditingProduct({ ...editingProduct, name: e.target.value })
                   }
-                  className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white focus:outline-none focus:border-amber-400"
+                  className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white focus:outline-none focus:border-amber-400"
                   required
                 />
               </div>
@@ -475,7 +475,7 @@ export default function AdminProductsPage() {
                     onChange={(e) =>
                       setEditingProduct({ ...editingProduct, price: e.target.value })
                     }
-                    className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white font-mono"
+                    className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white font-mono"
                     required
                   />
                 </div>
@@ -490,7 +490,7 @@ export default function AdminProductsPage() {
                     onChange={(e) =>
                       setEditingProduct({ ...editingProduct, stock: parseInt(e.target.value) || 0 })
                     }
-                    className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white font-mono"
+                    className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white font-mono"
                     required
                   />
                 </div>
@@ -506,7 +506,7 @@ export default function AdminProductsPage() {
                     onChange={(e) =>
                       setEditingProduct({ ...editingProduct, condition: e.target.value })
                     }
-                    className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white"
+                    className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white"
                   >
                     <option value="MINT_NH">MINT NH (Goma Intacta)</option>
                     <option value="MINT_H">MINT H (Con Charnela)</option>
@@ -524,7 +524,7 @@ export default function AdminProductsPage() {
                     onChange={(e) =>
                       setEditingProduct({ ...editingProduct, rarity: e.target.value })
                     }
-                    className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white"
+                    className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white"
                   >
                     <option value="MUSEUM_PIECE">Pieza de Museo</option>
                     <option value="VERY_RARE">Muy Rara (Gala)</option>
@@ -540,14 +540,14 @@ export default function AdminProductsPage() {
               <button
                 type="button"
                 onClick={() => setEditingProduct(null)}
-                className="px-4 py-2 rounded-xl bg-[#00244D] text-slate-300 hover:text-white"
+                className="px-4 py-2 rounded-xl bg-[#1B4785] text-slate-300 hover:text-white"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#001A38] font-bold cursor-pointer transition-colors"
+                className="px-5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#102542] font-bold cursor-pointer transition-colors"
               >
                 {isSubmitting ? 'Guardando...' : 'Guardar Cambios'}
               </button>
@@ -561,7 +561,7 @@ export default function AdminProductsPage() {
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           <form
             onSubmit={handleCreateProduct}
-            className="bg-[#001A38] border border-white/10 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 text-xs"
+            className="bg-[#102542] border border-white/10 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 text-xs"
           >
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="text-base font-bold text-white font-serif">
@@ -586,7 +586,7 @@ export default function AdminProductsPage() {
                   placeholder="Ej: Bicentenario de Bolivia — Bloque Gala"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white focus:outline-none focus:border-amber-400"
+                  className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white focus:outline-none focus:border-amber-400"
                   required
                 />
               </div>
@@ -601,7 +601,7 @@ export default function AdminProductsPage() {
                     placeholder="Ej: SCOTT-BO-2026-X1"
                     value={formData.catalog_code}
                     onChange={(e) => setFormData({ ...formData, catalog_code: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white font-mono"
+                    className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white font-mono"
                     required
                   />
                 </div>
@@ -614,7 +614,7 @@ export default function AdminProductsPage() {
                     type="number"
                     value={formData.year}
                     onChange={(e) => setFormData({ ...formData, year: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white font-mono"
+                    className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white font-mono"
                     required
                   />
                 </div>
@@ -631,7 +631,7 @@ export default function AdminProductsPage() {
                     placeholder="150.00"
                     value={formData.price}
                     onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white font-mono"
+                    className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white font-mono"
                     required
                   />
                 </div>
@@ -645,7 +645,7 @@ export default function AdminProductsPage() {
                     placeholder="20"
                     value={formData.stock}
                     onChange={(e) => setFormData({ ...formData, stock: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white font-mono"
+                    className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white font-mono"
                     required
                   />
                 </div>
@@ -659,7 +659,7 @@ export default function AdminProductsPage() {
                   <select
                     value={formData.rarity}
                     onChange={(e) => setFormData({ ...formData, rarity: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white"
+                    className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white"
                   >
                     <option value="MUSEUM_PIECE">Pieza de Museo</option>
                     <option value="VERY_RARE">Muy Rara (Gala)</option>
@@ -678,7 +678,7 @@ export default function AdminProductsPage() {
                     placeholder="13.5 x 13.5 mm"
                     value={formData.perforation}
                     onChange={(e) => setFormData({ ...formData, perforation: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#00244D] border border-slate-700 rounded-xl text-white"
+                    className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white"
                   />
                 </div>
               </div>
@@ -688,14 +688,14 @@ export default function AdminProductsPage() {
               <button
                 type="button"
                 onClick={() => setIsCreateModalOpen(false)}
-                className="px-4 py-2 rounded-xl bg-[#00244D] text-slate-300 hover:text-white"
+                className="px-4 py-2 rounded-xl bg-[#1B4785] text-slate-300 hover:text-white"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#001A38] font-bold cursor-pointer transition-colors"
+                className="px-5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#102542] font-bold cursor-pointer transition-colors"
               >
                 {isSubmitting ? 'Registrando...' : 'Registrar en Bóveda'}
               </button>
