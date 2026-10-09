@@ -18,7 +18,7 @@ export const CollectorClub: React.FC = () => {
     <section id="club" className="py-20 bg-[#FAF8F0] border-b border-[#E2DDD5] relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="bg-gradient-to-br from-[#FFE58C] via-[#FECC36] to-[#E5B728] text-[#102542] rounded-3xl p-8 sm:p-12 border-2 border-[#E5B728] shadow-2xl">
+        <div className="bg-[#FECC36] text-[#102542] rounded-3xl p-8 sm:p-12 border-2 border-[#E5B728] shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Column: Information */}

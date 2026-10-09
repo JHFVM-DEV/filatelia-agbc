@@ -450,7 +450,7 @@ export default function ApiKeysManagementPage() {
   return (
     <div className="space-y-6 pb-12">
       {/* Encabezado Superior */}
-      <div className="bg-gradient-to-r from-[#102542] via-[#163359] to-[#0D2039] border border-amber-500/30 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-[#102542] border border-amber-500/30 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
             <span className="text-[11px] font-black tracking-wider uppercase text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-sm">
@@ -494,7 +494,7 @@ export default function ApiKeysManagementPage() {
 
       {/* Alerta de Token Generado (Bóveda Segura) */}
       {revealedToken && (
-        <div className="bg-gradient-to-r from-emerald-950/70 via-[#00281b]/80 to-emerald-950/70 border-2 border-emerald-500/50 rounded-2xl p-6 shadow-2xl shadow-emerald-950/50 animate-in fade-in slide-in-from-top-4 duration-300 backdrop-blur-md">
+        <div className="bg-emerald-950/70 border-2 border-emerald-500/50 rounded-2xl p-6 shadow-2xl shadow-emerald-950/50 animate-in fade-in slide-in-from-top-4 duration-300 backdrop-blur-md">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 bg-emerald-600 text-white rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-emerald-600/30">
               <Sparkles className="w-6 h-6 text-emerald-100" />
@@ -958,7 +958,7 @@ export default function ApiKeysManagementPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Tarjeta Informe Técnico Word */}
-            <div className="border-2 border-amber-500/40 bg-gradient-to-b from-[#102542] to-[#0B1A2D] rounded-2xl p-6 flex flex-col justify-between hover:border-amber-400 hover:shadow-xl hover:shadow-amber-500/10 transition-all">
+            <div className="border-2 border-amber-500/40 bg-[#102542] rounded-2xl p-6 flex flex-col justify-between hover:border-amber-400 hover:shadow-xl hover:shadow-amber-500/10 transition-all">
               <div>
                 <div className="w-12 h-12 bg-amber-500/20 border border-amber-500/40 text-amber-400 rounded-xl flex items-center justify-center font-black text-sm mb-4 shadow-md">
                   <FileText className="w-6 h-6 text-amber-400" />
@@ -984,7 +984,7 @@ export default function ApiKeysManagementPage() {
             </div>
 
             {/* Tarjeta Postman */}
-            <div className="border border-orange-500/30 bg-gradient-to-b from-orange-950/20 via-[#0F233E] to-[#0B1A2D] rounded-2xl p-6 flex flex-col justify-between hover:border-orange-400/60 hover:shadow-xl hover:shadow-orange-500/10 transition-all">
+            <div className="border border-orange-500/30 bg-orange-950/20 rounded-2xl p-6 flex flex-col justify-between hover:border-orange-400/60 hover:shadow-xl hover:shadow-orange-500/10 transition-all">
               <div>
                 <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/40 text-orange-400 rounded-xl flex items-center justify-center font-black text-sm mb-4 shadow-md">
                   POST
@@ -1011,7 +1011,7 @@ export default function ApiKeysManagementPage() {
             </div>
 
             {/* Tarjeta OpenAPI */}
-            <div className="border border-emerald-500/30 bg-gradient-to-b from-emerald-950/20 via-[#0F233E] to-[#0B1A2D] rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-400/60 hover:shadow-xl hover:shadow-emerald-500/10 transition-all">
+            <div className="border border-emerald-500/30 bg-emerald-950/20 rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-400/60 hover:shadow-xl hover:shadow-emerald-500/10 transition-all">
               <div>
                 <div className="w-12 h-12 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 rounded-xl flex items-center justify-center font-black text-sm mb-4 shadow-md">
                   OAS
@@ -1038,7 +1038,7 @@ export default function ApiKeysManagementPage() {
             </div>
 
             {/* Tarjeta Markdown */}
-            <div className="border border-blue-500/30 bg-gradient-to-b from-blue-950/20 via-[#0F233E] to-[#0B1A2D] rounded-2xl p-6 flex flex-col justify-between hover:border-blue-400/60 hover:shadow-xl hover:shadow-blue-500/10 transition-all">
+            <div className="border border-blue-500/30 bg-blue-950/20 rounded-2xl p-6 flex flex-col justify-between hover:border-blue-400/60 hover:shadow-xl hover:shadow-blue-500/10 transition-all">
               <div>
                 <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/40 text-blue-400 rounded-xl flex items-center justify-center font-black text-sm mb-4 shadow-md">
                   MD

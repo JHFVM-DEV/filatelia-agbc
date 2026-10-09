@@ -16,7 +16,7 @@
             <div>
                 <button 
                     onclick="window.print()" 
-                    style="padding: 0.625rem 1.25rem; border-radius: 0.75rem; background: linear-gradient(135deg, #102542 0%, #2C63AC 100%); color: #ffffff; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.2);"
+                    style="padding: 0.625rem 1.25rem; border-radius: 0.75rem; background: #102542; color: #ffffff; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.2);"
                 >
                     <svg style="width: 1rem; height: 1rem; color: #FECC36;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
@@ -83,7 +83,7 @@
                         <button 
                             wire:click="exportSalesBook"
                             wire:loading.attr="disabled"
-                            style="width: 100%; padding: 0.625rem 1rem; border-radius: 0.75rem; background: linear-gradient(135deg, #102542 0%, #2C63AC 100%); color: #ffffff; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 10px rgba(16, 37, 66, 0.2);"
+                            style="width: 100%; padding: 0.625rem 1rem; border-radius: 0.75rem; background: #102542; color: #ffffff; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 10px rgba(16, 37, 66, 0.2);"
                         >
                             <svg style="width: 1rem; height: 1rem; color: #FECC36;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />

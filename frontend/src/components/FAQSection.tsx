@@ -58,8 +58,7 @@ export const FAQSection: React.FC = () => {
   return (
     <section id="faqs" className="relative overflow-hidden">
       {/* Header Banner - Amarillo Postal Dominante de Correos de Bolivia */}
-      <div className="bg-gradient-to-r from-[#FFE58C] via-[#FECC36] to-[#E5B728] text-[#102542] py-14 border-b-2 border-[#E5B728] relative overflow-hidden shadow-sm">
-        <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
+      <div className="bg-[#FECC36] text-[#102542] py-14 border-b-2 border-[#E5B728] relative overflow-hidden shadow-sm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#102542] text-[#FECC36] text-xs font-bold tracking-wide mb-3 shadow-sm">
             <HelpCircle className="w-4 h-4 text-[#FECC36]" />

@@ -218,7 +218,7 @@ export default function AdminDashboardPage() {
       {/* 4 Executive KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* KPI 1: Recaudación Total */}
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542]/80 border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
+        <div className="p-5 rounded-2xl bg-[#102542] border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
           <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
             <Coins className="w-16 h-16 text-white" />
           </div>
@@ -238,7 +238,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* KPI 2: Tasación de Bóveda */}
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542]/80 border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
+        <div className="p-5 rounded-2xl bg-[#102542] border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-semibold text-slate-300">Valoración de Bóveda</span>
             <div className="w-8 h-8 rounded-lg bg-white/[0.06] text-amber-200/90 flex items-center justify-center border border-white/10">
@@ -255,7 +255,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* KPI 3: Órdenes de Colección */}
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542]/80 border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
+        <div className="p-5 rounded-2xl bg-[#102542] border border-white/10 shadow-lg relative overflow-hidden group hover:border-white/20 transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-semibold text-slate-300">Órdenes Totales</span>
             <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center border border-blue-500/30">
@@ -272,7 +272,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* KPI 4: Alertas de Existencia Crítica */}
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542]/80 border border-slate-700/80 shadow-lg relative overflow-hidden group hover:border-rose-500/50 transition-all duration-300">
+        <div className="p-5 rounded-2xl bg-[#102542] border border-slate-700/80 shadow-lg relative overflow-hidden group hover:border-rose-500/50 transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-semibold text-slate-300">Stock Crítico (≤ 3)</span>
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center border ${
@@ -328,7 +328,7 @@ export default function AdminDashboardPage() {
                     <div className="w-full max-w-[48px] bg-slate-800 rounded-t-lg relative overflow-hidden flex items-end">
                       <div
                         style={{ height: `${heightPercent}%` }}
-                        className="w-full rounded-t-lg bg-gradient-to-t from-[#102542] via-[#2C63AC] to-amber-300/80 transition-all duration-500 group-hover:brightness-110 shadow-lg"
+                        className="w-full rounded-t-lg bg-[#102542] transition-all duration-500 group-hover:brightness-110 shadow-lg"
                       />
                     </div>
 
@@ -430,7 +430,7 @@ export default function AdminDashboardPage() {
                     <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
                       <div
                         style={{ width: `${pct}%` }}
-                        className="h-full bg-gradient-to-r from-[#102542] via-[#2C63AC] to-amber-300/80 rounded-full transition-all duration-500"
+                        className="h-full bg-[#102542] rounded-full transition-all duration-500"
                       />
                     </div>
                   </div>

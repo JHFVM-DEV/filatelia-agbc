@@ -407,9 +407,9 @@ export default function AdminLogsPage() {
   return (
     <div className="space-y-6">
       {/* Top Banner Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-[#102542] via-[#163359] to-[#0D2039] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#102542] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542] border border-white/10 flex items-center justify-center text-amber-200 shadow-lg shadow-black/40">
+          <div className="w-14 h-14 rounded-2xl bg-[#102542] border border-white/10 flex items-center justify-center text-amber-200 shadow-lg shadow-black/40">
             <Shield className="w-7 h-7" />
           </div>
           <div>
@@ -754,7 +754,7 @@ export default function AdminLogsPage() {
         <div className="space-y-6">
           {/* 3 Executive Metrics */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-gradient-to-br from-[#142E52] to-[#0D2039] border-2 border-emerald-500/40 p-6 rounded-2xl shadow-xl">
+            <div className="bg-[#102542] border-2 border-emerald-500/40 p-6 rounded-2xl shadow-xl">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-emerald-300 font-bold uppercase tracking-wider">
                   Plusvalía Acumulada en Bóveda
@@ -771,7 +771,7 @@ export default function AdminLogsPage() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-[#142E52] to-[#0D2039] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
+            <div className="bg-[#102542] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-amber-300 font-bold uppercase tracking-wider">
                   Revalorizaciones Oficiales
@@ -788,7 +788,7 @@ export default function AdminLogsPage() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-[#142E52] to-[#0D2039] border border-cyan-500/30 p-6 rounded-2xl shadow-xl">
+            <div className="bg-[#102542] border border-cyan-500/30 p-6 rounded-2xl shadow-xl">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-cyan-300 font-bold uppercase tracking-wider">
                   Variación Media de Cotización
@@ -819,7 +819,7 @@ export default function AdminLogsPage() {
 
             <button
               onClick={() => setShowRevalModal(true)}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
             >
               <PlusCircle className="w-4 h-4" />
               <span>Ejecutar Nueva Revalorización</span>
@@ -1078,7 +1078,7 @@ export default function AdminLogsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
           <div className="bg-[#0E223C] border border-white/10 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-[#163359] to-[#0D2039] px-6 py-4 border-b border-white/10 flex items-center justify-between">
+            <div className="bg-[#102542] px-6 py-4 border-b border-white/10 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-amber-200/90">
                   <TrendingUp className="w-5 h-5" />
@@ -1266,7 +1266,7 @@ export default function AdminLogsPage() {
                 <button
                   type="submit"
                   disabled={isSubmittingReval}
-                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-lg shadow-emerald-600/30 transition-all cursor-pointer disabled:opacity-50"
+                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg shadow-emerald-600/30 transition-all cursor-pointer disabled:opacity-50"
                 >
                   {isSubmittingReval ? (
                     <>

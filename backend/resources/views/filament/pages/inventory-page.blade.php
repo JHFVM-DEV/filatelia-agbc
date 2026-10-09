@@ -62,7 +62,7 @@
                     </div>
 
                     <div>
-                        <button type="submit" style="width: 100%; padding: 0.625rem 1.25rem; border-radius: 0.75rem; background: linear-gradient(135deg, #102542 0%, #2C63AC 100%); color: #ffffff; font-weight: 800; font-size: 0.875rem; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.2);">
+                        <button type="submit" style="width: 100%; padding: 0.625rem 1.25rem; border-radius: 0.75rem; background: #102542; color: #ffffff; font-weight: 800; font-size: 0.875rem; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.2);">
                             Registrar Movimiento
                         </button>
                     </div>

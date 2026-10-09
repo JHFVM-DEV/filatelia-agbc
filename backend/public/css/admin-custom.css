@@ -156,9 +156,10 @@ svg.w-12, .w-12 { width: 3rem !important; height: 3rem !important; }
     border-color: #CBD5E1 !important;
 }
 
-/* Gradientes institucionales */
+/* Fondo institucional sólido */
 .bg-gradient-to-r {
-    background-image: linear-gradient(to right, #102542, #2C63AC) !important;
+    background-image: none !important;
+    background-color: #102542 !important;
 }
 
 /* --------------------------------------------------------------------------

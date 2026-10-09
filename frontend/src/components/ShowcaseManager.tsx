@@ -300,8 +300,7 @@ export const ShowcaseManager: React.FC = () => {
   return (
     <div className="space-y-8 pb-12">
       {/* 1. Header con Banner Informativo y Controles Principales */}
-      <div className="bg-gradient-to-r from-[#102542] via-[#102542] to-[#2C63AC] rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-white/10 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FECC36]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="bg-[#102542] rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-white/10 relative overflow-hidden">
         
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
@@ -416,7 +415,7 @@ export const ShowcaseManager: React.FC = () => {
         </div>
 
         {/* Marco de Simulación Visual idéntico a la imagen del portal general */}
-        <div className="bg-gradient-to-b from-[#F3F6FA] to-[#FFFFFF] rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-inner">
+        <div className="bg-[#F3F6FA] rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-inner">
           {/* Header de la sección Correos Market */}
           <div className="flex items-center gap-3.5 mb-8">
             <div className="w-12 h-12 rounded-2xl bg-[#FECC36] flex items-center justify-center text-[#102542] shadow-md shrink-0">

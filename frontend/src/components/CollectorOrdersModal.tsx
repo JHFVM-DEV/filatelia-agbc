@@ -213,9 +213,9 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
       <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-[#E2DDD5] overflow-hidden flex flex-col max-h-[92vh]">
         
         {/* Luxury Header */}
-        <div className="bg-gradient-to-r from-[#102542] via-[#102542] to-[#102542] px-6 py-5 text-white flex items-center justify-between border-b border-[#2C63AC]">
+        <div className="bg-[#102542] px-6 py-5 text-white flex items-center justify-between border-b border-[#2C63AC]">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-amber-400 to-[#8A6800] text-[#102542] shadow-md">
+            <div className="p-2.5 rounded-xl bg-[#FECC36] text-[#102542] shadow-md">
               <TrendingUp className="w-5 h-5" />
             </div>
             <div>
@@ -407,7 +407,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
               </div>
 
               {/* Garantía Soberana de Resguardo */}
-              <div className="bg-gradient-to-r from-[#102542] to-[#102542] text-white p-6 rounded-2xl border border-white/10 shadow-md flex flex-col sm:flex-row items-center justify-between gap-5">
+              <div className="bg-[#102542] text-white p-6 rounded-2xl border border-white/10 shadow-md flex flex-col sm:flex-row items-center justify-between gap-5">
                 <div className="space-y-1.5 text-center sm:text-left">
                   <div className="inline-flex items-center gap-1.5 text-amber-200/90 font-medium text-xs">
                     <ShieldCheck className="w-4 h-4 text-amber-300/80" />
@@ -509,7 +509,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
                       </div>
 
                       {/* Guía Postal de Despacho Oficial — Amarillo Dominante */}
-                      <div className="p-4 rounded-xl bg-gradient-to-r from-[#FFFBE6] via-amber-50 to-[#FFFDF5] border-2 border-[#FECC36] space-y-3 shadow-xs">
+                      <div className="p-4 rounded-xl bg-[#FFFBE6] border-2 border-[#FECC36] space-y-3 shadow-xs">
                         <div className="flex flex-wrap items-center justify-between gap-3">
                           <div className="flex items-center gap-2.5">
                             <div className="w-8 h-8 rounded-lg bg-[#102542] text-[#FECC36] flex items-center justify-center font-bold shrink-0 shadow-xs border border-[#102542]">
@@ -686,7 +686,7 @@ export const CollectorOrdersModal: React.FC<CollectorOrdersModalProps> = ({
             /* TAB 3: SEGUIMIENTO Y GUÍAS DE ENVÍO POSTAL */
             <div className="space-y-4">
               {/* Card de Búsqueda Rápida de Guía — Amarillo Dominante */}
-              <div className="bg-gradient-to-r from-[#FECC36] via-[#FECC36] to-[#E5B728] rounded-2xl p-5 text-[#102542] shadow-sm space-y-3 border-2 border-amber-400">
+              <div className="bg-[#FECC36] rounded-2xl p-5 text-[#102542] shadow-sm space-y-3 border-2 border-amber-400">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-[#102542] text-[#FECC36] flex items-center justify-center font-bold shadow-md border-2 border-[#102542]">

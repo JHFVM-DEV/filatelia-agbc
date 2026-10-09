@@ -22,7 +22,7 @@
                 <button 
                     type="button"
                     wire:click="$toggle('showCreateModal')" 
-                    style="padding: 0.625rem 1.25rem; border-radius: 0.75rem; background: linear-gradient(135deg, #102542 0%, #2C63AC 100%); color: #ffffff; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.25);"
+                    style="padding: 0.625rem 1.25rem; border-radius: 0.75rem; background: #102542; color: #ffffff; font-weight: 800; font-size: 0.8125rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.25);"
                 >
                     <svg style="width: 1rem; height: 1rem; color: #FECC36;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -665,7 +665,7 @@
                             <button 
                                 type="button" 
                                 wire:click="downloadWord"
-                                style="margin-top: 1rem; padding: 0.55rem 1rem; border-radius: 0.625rem; background: linear-gradient(135deg, #102542 0%, #2C63AC 100%); color: #ffffff; font-weight: 800; font-size: 0.75rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.35rem; box-shadow: 0 4px 10px rgba(16, 37, 66, 0.2);"
+                                style="margin-top: 1rem; padding: 0.55rem 1rem; border-radius: 0.625rem; background: #102542; color: #ffffff; font-weight: 800; font-size: 0.75rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.35rem; box-shadow: 0 4px 10px rgba(16, 37, 66, 0.2);"
                             >
                                 <svg style="width: 0.875rem; height: 0.875rem; color: #FECC36;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />

@@ -8,21 +8,21 @@ import { ShieldCheck, Mail, Phone, MapPin, Award, CheckCircle2, FileText, Lock }
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-[#102542] text-white border-t-4 border-[#FECC36] relative">
-      <div className="h-2 bg-gradient-to-r from-[#FECC36] via-[#FECC36] to-[#E5B728] w-full absolute top-0 left-0" />
+      <div className="h-2 bg-[#FECC36] w-full absolute top-0 left-0" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="relative w-12 h-14 flex items-center justify-center">
+            <div className="flex items-center gap-3.5">
+              <div className="relative h-14 w-12 sm:w-[52px] bg-white rounded-xl p-1 shadow-md border border-white/20 flex items-center justify-center shrink-0">
                 <Image 
-                  src="/images/FILATELIA-1.png" 
+                  src="/images/FILATELIA-1.png?v=3"
                   alt="Logo Filatelia Oficial" 
-                  width={44} 
-                  height={44} 
-                  style={{ width: 'auto', height: 'auto' }}
-                  className="max-h-12 object-contain"
+                  width={56}
+                  height={56}
+                  style={{ width: 'auto', height: '100%' }}
+                  className="h-full w-auto object-contain"
                 />
               </div>
 

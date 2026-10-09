@@ -49,24 +49,17 @@ body {
   border-radius: 4px;
 }
 
-/* Texturas de seguridad, guilloche y lujo */
+/* Fondos institucionales sólidos */
 .bg-guilloche {
   background-color: #102542;
-  background-image: radial-gradient(rgba(254, 204, 54, 0.12) 1px, transparent 0);
-  background-size: 24px 24px;
 }
 
 .bg-vault-pattern {
   background-color: #102542;
-  background-image: linear-gradient(rgba(44, 99, 172, 0.3) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(44, 99, 172, 0.3) 1px, transparent 1px);
-  background-size: 32px 32px;
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #FECC36 0%, #E5B728 50%, #8A6800 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--brand-accent);
 }
 
 .gold-gradient-badge {
@@ -76,7 +69,7 @@ body {
 }
 
 .gold-button {
-  background: linear-gradient(135deg, #FECC36 0%, #E5B728 100%);
+  background: var(--brand-accent);
   color: #102542;
   font-weight: 700;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -84,7 +77,7 @@ body {
 }
 
 .gold-button:hover {
-  background: linear-gradient(135deg, #FFD95E 0%, #E5B728 100%);
+  background: #FFD95E;
   box-shadow: 0 6px 22px rgba(138, 104, 0, 0.45);
   transform: translateY(-1.5px);
 }

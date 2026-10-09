@@ -16,7 +16,7 @@
             <div>
                 <button 
                     wire:click="saveMatrix" 
-                    style="background: linear-gradient(135deg, #102542 0%, #2C63AC 100%); color: #ffffff; font-weight: 800; font-size: 0.8125rem; padding: 0.625rem 1.25rem; border-radius: 0.875rem; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.2);"
+                    style="background: #102542; color: #ffffff; font-weight: 800; font-size: 0.8125rem; padding: 0.625rem 1.25rem; border-radius: 0.875rem; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.2);"
                 >
                     <svg style="width: 1.125rem; height: 1.125rem; color: #FECC36;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />

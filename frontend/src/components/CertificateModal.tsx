@@ -204,7 +204,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
             <div className="flex items-center gap-2">
               <button
                 onClick={handlePrint}
-                className="flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-[#8A6800] to-[#FECC36] hover:from-[#755800] hover:to-[#D9AB24] text-slate-950 font-black text-xs shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-[#FECC36] hover:bg-[#FFD95E] text-slate-950 font-black text-xs shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all cursor-pointer"
                 title="Imprimir o descargar en formato PDF oficial"
               >
                 <Printer className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -336,7 +336,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                 {/* Security Seal Emblem */}
                 <div className="flex flex-col items-center justify-center">
                   <div className="w-16 h-16 rounded-full border-2 border-dashed border-[#8A6800] p-1 flex items-center justify-center shadow-inner">
-                    <div className="w-full h-full rounded-full bg-gradient-to-br from-amber-400/20 to-amber-500/10 flex flex-col items-center justify-center text-[8px] font-black text-[#102542] uppercase leading-tight border border-[#8A6800]/30">
+                    <div className="w-full h-full rounded-full bg-[#FECC36]/20 flex flex-col items-center justify-center text-[8px] font-black text-[#102542] uppercase leading-tight border border-[#8A6800]/30">
                       <span>Sello</span>
                       <span className="text-[#8A6800] font-black">Oficial</span>
                       <span>UPU</span>

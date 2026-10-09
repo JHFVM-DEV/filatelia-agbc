@@ -93,10 +93,8 @@ function CatalogContent() {
   return (
     <div className="animate-in fade-in duration-300">
       {/* Institutional Catalog Header Banner - Amarillo Postal Dominante */}
-      <section className="bg-gradient-to-r from-[#FFE58C] via-[#FECC36] to-[#E5B728] text-[#102542] pt-10 pb-12 border-b-2 border-[#E5B728] relative overflow-hidden shadow-sm">
+      <section className="bg-[#FECC36] text-[#102542] pt-10 pb-12 border-b-2 border-[#E5B728] relative overflow-hidden shadow-sm">
         {/* Subtle Pattern */}
-        <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
-        <div className="absolute -top-24 right-1/4 w-96 h-96 bg-white/25 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb Navigation */}

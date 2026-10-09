@@ -87,14 +87,7 @@ export const Hero: React.FC<HeroProps> = ({
   const currentStamp = carouselItems[currentIndex] || carouselItems[0];
 
   return (
-    <section className="relative bg-gradient-to-br from-[#FFE58C] via-[#FECC36] to-[#E5B728] text-[#102542] overflow-hidden py-12 lg:py-18 border-b-2 border-[#E5B728] select-none">
-      {/* Subtle Guilloche Texture */}
-      <div className="absolute inset-0 bg-guilloche opacity-15 pointer-events-none mix-blend-multiply" />
-      
-      {/* Ambient Gradient Glow */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-white/30 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#102542]/15 rounded-full blur-3xl pointer-events-none" />
-
+    <section className="relative bg-[#FECC36] text-[#102542] overflow-hidden py-12 lg:py-18 border-b-2 border-[#E5B728] select-none">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Section Content */}

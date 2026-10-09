@@ -268,7 +268,7 @@ export default function AdminReportesPage() {
 
                     <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
                       <div
-                        className="bg-gradient-to-r from-[#102542] via-[#2C63AC] to-amber-300/80 h-full rounded-full transition-all duration-500"
+                        className="bg-[#102542] h-full rounded-full transition-all duration-500"
                         style={{ width: `${percentage}%` }}
                       />
                     </div>

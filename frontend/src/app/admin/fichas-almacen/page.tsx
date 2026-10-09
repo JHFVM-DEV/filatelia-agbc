@@ -335,9 +335,9 @@ export default function FichasAlmacenPage() {
       {/* ========================================================================= */}
       <div className="print:hidden space-y-6">
         {/* Header Banner */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-[#102542] via-[#163359] to-[#0D2039] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#102542] border border-amber-500/30 p-6 rounded-2xl shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#102542] to-[#102542] border border-white/10 flex items-center justify-center text-amber-200 shadow-lg shadow-black/40">
+            <div className="w-14 h-14 rounded-2xl bg-[#102542] border border-white/10 flex items-center justify-center text-amber-200 shadow-lg shadow-black/40">
               <QrCode className="w-7 h-7" />
             </div>
             <div>
@@ -967,7 +967,7 @@ export default function FichasAlmacenPage() {
       {editingProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm print:hidden animate-fadeIn">
           <div className="bg-[#0E223C] border border-white/10 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl">
-            <div className="bg-gradient-to-r from-[#163359] to-[#0D2039] px-6 py-4 border-b border-white/10 flex items-center justify-between">
+            <div className="bg-[#102542] px-6 py-4 border-b border-white/10 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-white/[0.08] border border-white/10 flex items-center justify-center text-amber-200/90">
                   <Building2 className="w-5 h-5" />

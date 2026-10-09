@@ -155,7 +155,7 @@ export const TrackingModal: React.FC<TrackingModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Cabecera Oficial Correos de Bolivia — Amarillo Dominante */}
-        <div className="relative bg-gradient-to-r from-[#FECC36] via-[#FECC36] to-[#E5B728] text-[#102542] p-5 sm:p-6 border-b-4 border-[#102542] shadow-sm shrink-0">
+        <div className="relative bg-[#FECC36] text-[#102542] p-5 sm:p-6 border-b-4 border-[#102542] shadow-sm shrink-0">
           <button
             onClick={onClose}
             className="absolute right-4 top-4 p-2 rounded-full bg-[#102542]/10 hover:bg-[#102542]/20 text-[#102542] transition cursor-pointer"
@@ -240,7 +240,7 @@ export const TrackingModal: React.FC<TrackingModalProps> = ({
             <div className="space-y-6 animate-in fade-in duration-200">
               
               {/* Tarjeta de Guía Postal y Estado General — Amarillo Dominante */}
-              <div className="bg-gradient-to-b from-[#FFFBE6] via-[#FFFDF5] to-white rounded-2xl border-2 border-[#FECC36] p-5 shadow-sm space-y-4">
+              <div className="bg-[#FFFBE6] rounded-2xl border-2 border-[#FECC36] p-5 shadow-sm space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-amber-200/80">
                   <div>
                     <span className="text-[10px] font-black uppercase tracking-widest text-amber-900 block mb-0.5">
@@ -328,7 +328,7 @@ export const TrackingModal: React.FC<TrackingModalProps> = ({
 
               {/* Bitácora de Itinerario Postal (Timeline Stepper) */}
               <div className="bg-white rounded-2xl border-2 border-[#FECC36]/70 p-5 sm:p-6 shadow-sm space-y-5">
-                <div className="flex items-center justify-between pb-3 border-b border-amber-200/80 bg-gradient-to-r from-[#FFFBE6] to-transparent p-3 rounded-xl">
+                <div className="flex items-center justify-between pb-3 border-b border-amber-200/80 bg-[#FFFBE6] p-3 rounded-xl">
                   <h3 className="font-black text-sm text-[#102542] uppercase tracking-wider flex items-center gap-2">
                     <Clock className="w-4 h-4 text-amber-600" />
                     <span>Línea de Tiempo y Puntos de Control Postal</span>
@@ -362,7 +362,7 @@ export const TrackingModal: React.FC<TrackingModalProps> = ({
                       <div
                         className={`p-3.5 rounded-xl border transition ${
                           event.current
-                            ? 'bg-gradient-to-r from-[#FFFBE6] to-[#FFF9D6] border-2 border-[#FECC36] shadow-sm'
+                            ? 'bg-[#FFFBE6] border-2 border-[#FECC36] shadow-sm'
                             : event.completed
                             ? 'bg-white border-amber-200/80 shadow-2xs'
                             : 'bg-slate-50/50 border-slate-200/50 opacity-70'
@@ -436,7 +436,7 @@ export const TrackingModal: React.FC<TrackingModalProps> = ({
         </div>
 
         {/* Footer — Amarillo Dominante */}
-        <div className="p-4 bg-gradient-to-r from-[#FFFBE6] via-[#FFF9D6] to-[#FFFBE6] border-t-2 border-[#FECC36] flex items-center justify-between shrink-0 text-xs">
+        <div className="p-4 bg-[#FFFBE6] border-t-2 border-[#FECC36] flex items-center justify-between shrink-0 text-xs">
           <span className="text-[11px] text-[#102542] font-bold flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
             <span>Valija sellada bajo precinto de seguridad postal inviolable.</span>

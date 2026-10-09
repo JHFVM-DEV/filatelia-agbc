@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   title: "Filatelia Bolivia — Bóveda Oficial & Catálogo Postal Soberano",
   description: "Exclusiva galería filatélica y catálogo oficial de piezas postales de colección, emisiones conmemorativas y custodia institucional de Bolivia.",
   icons: {
-    icon: "/images/FILATELIA-1.png",
-    shortcut: "/images/FILATELIA-1.png",
-    apple: "/images/FILATELIA-1.png",
+    icon: { url: "/images/FILATELIA-1.png?v=3", type: "image/png" },
+    shortcut: "/images/FILATELIA-1.png?v=3",
+    apple: "/images/FILATELIA-1.png?v=3",
   },
 };
 

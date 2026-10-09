@@ -323,10 +323,10 @@ export default function AdminLayout({
   // Si el usuario no está autenticado o no cuenta con roles de staff
   if (!currentUser || !isStaff()) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#0D2039] via-[#102542] to-[#0D2039] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#102542] flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-[#102542]/90 backdrop-blur-xl border border-amber-400/30 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
           {/* Acento dorado decorativo superior */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-amber-200/30 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-1 bg-amber-200/30" />
 
           <div className="w-16 h-16 rounded-2xl bg-[#102542] border border-white/10 flex items-center justify-center mx-auto mb-5 text-amber-200/90 shadow-lg">
             <Lock className="w-8 h-8" />
@@ -395,9 +395,9 @@ export default function AdminLayout({
 
   if (requiredModule && !hasAccess(requiredModule)) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#0D2039] via-[#102542] to-[#0D2039] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#102542] flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-[#102542]/90 backdrop-blur-xl border border-rose-500/30 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-rose-500 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-1 bg-rose-500" />
 
           <div className="w-16 h-16 rounded-2xl bg-[#102542] border border-rose-500/40 flex items-center justify-center mx-auto mb-5 text-rose-400 shadow-lg">
             <Lock className="w-8 h-8" />
@@ -436,15 +436,17 @@ export default function AdminLayout({
     <div className="min-h-screen bg-[#030d1d] text-slate-100 flex flex-col md:flex-row antialiased selection:bg-amber-400/30 selection:text-amber-200 print:bg-white print:text-black print:block print:min-h-0 print:p-0 print:m-0">
       {/* Mobile Header Bar */}
       <div className="md:hidden bg-[#102542] border-b border-slate-800 p-4 flex items-center justify-between sticky top-0 z-30 print:hidden">
-        <div className="flex items-center gap-2">
-          <Image
-            src="/images/FILATELIA-1.png"
-            alt="Logo Filatelia"
-            width={32}
-            height={32}
-            className="w-8 h-8 object-contain"
-            unoptimized
-          />
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-lg bg-white p-0.5 flex items-center justify-center shrink-0 shadow-sm border border-white/20">
+            <Image
+              src="/images/FILATELIA-1.png?v=3"
+              alt="Logo Filatelia"
+              width={32}
+              height={32}
+              className="h-full w-auto object-contain"
+              unoptimized
+            />
+          </div>
           <div>
             <h1 className="text-xs font-bold text-white uppercase tracking-wider font-serif">
               Bóveda Postal
@@ -472,13 +474,13 @@ export default function AdminLayout({
       >
         {/* Brand Header */}
         <div className="p-5 border-b border-slate-800/80 flex items-center gap-3.5">
-          <div className="relative w-11 h-11 rounded-xl bg-[#102542] border border-white/10 p-1 flex items-center justify-center shrink-0 shadow-md">
+          <div className="relative w-12 h-12 rounded-xl bg-white border border-white/20 p-1 flex items-center justify-center shrink-0 shadow-md">
             <Image
-              src="/images/FILATELIA-1.png"
+              src="/images/FILATELIA-1.png?v=3"
               alt="Escudo Filatélico"
-              width={36}
-              height={36}
-              className="max-h-9 object-contain"
+              width={40}
+              height={40}
+              className="h-full w-auto object-contain"
               unoptimized
             />
           </div>

@@ -1,7 +1,7 @@
 <x-filament-panels::page>
     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
         {{-- Banner informativo y estado --}}
-        <div style="background: linear-gradient(135deg, #102542 0%, #2C63AC 100%); padding: 1.5rem; border-radius: 1.25rem; color: #ffffff; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border: 1px solid #2C63AC;">
+        <div style="background: #102542; padding: 1.5rem; border-radius: 1.25rem; color: #ffffff; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border: 1px solid #2C63AC;">
             <div>
                 <h2 style="font-size: 1.25rem; font-weight: 900; color: #FECC36; margin: 0;">Mesa de Embalaje Glassine & Asignación de Valijas</h2>
                 <p style="font-size: 0.8125rem; color: #cbd5e1; margin-top: 0.25rem;">Gestión operativa de pedidos listos para peritaje, estuche protector y precinto oficial de Correos de Bolivia.</p>
@@ -89,7 +89,7 @@
 
                     <button 
                         wire:click="$set('dispatchOrderId', {{ $order->id }})" 
-                        style="padding: 0.625rem 1.25rem; border-radius: 0.75rem; font-size: 0.8125rem; font-weight: 800; background: linear-gradient(135deg, #102542 0%, #2C63AC 100%); color: #ffffff; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.2);"
+                        style="padding: 0.625rem 1.25rem; border-radius: 0.75rem; font-size: 0.8125rem; font-weight: 800; background: #102542; color: #ffffff; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(16, 37, 66, 0.2);"
                     >
                         Despachar Valija
                     </button>

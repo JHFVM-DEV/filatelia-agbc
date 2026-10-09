@@ -217,7 +217,7 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 2. ¿QUÉ ES LA FILATELIA? (EL UNIVERSO DEL COLECCIONISMO POSTAL)          */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-gradient-to-b from-[#FFFDF0] via-[#FFF9DC] to-[#FAF8F0] text-[#102542] border-b border-[#E2DDD5]">
+      <section className="py-20 bg-[#FFFDF0] text-[#102542] border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -296,8 +296,7 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 3. ANATOMÍA DE UN SELLO POSTAL (MÓDULO EDUCATIVO VISUAL)                 */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-gradient-to-b from-[#FFFDF2] via-[#FFF9DC] to-[#FFF1BA] text-[#102542] border-t-4 border-[#FECC36] border-b-2 border-[#E5B728] relative overflow-hidden">
-        <div className="absolute inset-0 bg-guilloche opacity-5 pointer-events-none mix-blend-multiply" />
+      <section className="py-20 bg-[#FFFDF2] text-[#102542] border-t-4 border-[#FECC36] border-b-2 border-[#E5B728] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -491,7 +490,7 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 5. CÓMO INICIAR TU COLECCIÓN (PASO A PASO DIDÁCTICO)                     */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-gradient-to-b from-[#FAF8F0] to-[#F3EEE0] text-[#102542] border-b border-[#E2DDD5]">
+      <section className="py-20 bg-[#FAF8F0] text-[#102542] border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -574,8 +573,7 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 6. GARANTÍA POSTAL Y SERVICIOS OFICIALES DE BÓVEDA                      */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE58C] via-[#FECC36] to-[#E5B728] text-[#102542] border-t-4 border-[#E5B728] border-b-2 border-[#E5B728] relative overflow-hidden">
-        <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none mix-blend-multiply" />
+      <section className="py-20 bg-[#FECC36] text-[#102542] border-t-4 border-[#E5B728] border-b-2 border-[#E5B728] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">

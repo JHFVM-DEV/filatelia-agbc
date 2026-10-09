@@ -273,15 +273,12 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
             {/* Escenario de Inspección Filatélica (Adaptive Passepartout) */}
             <div 
               ref={stageRef}
-              className={`relative w-full h-[360px] sm:h-[440px] md:h-[480px] bg-gradient-to-b from-[#FAF8F0] to-[#F3EDE0] rounded-3xl border-2 border-[#E5DFC8] shadow-inner p-4 sm:p-6 flex items-center justify-center overflow-hidden select-none ${
+              className={`relative w-full h-[360px] sm:h-[440px] md:h-[480px] bg-[#FAF8F0] rounded-3xl border-2 border-[#E5DFC8] shadow-inner p-4 sm:p-6 flex items-center justify-center overflow-hidden select-none ${
                 isFullZoomMode ? 'overflow-auto cursor-grab active:cursor-grabbing' : 'cursor-crosshair'
               }`}
               onMouseMove={handleMouseMove}
               onMouseLeave={() => setIsZooming(false)}
             >
-              {/* Marca de agua / Fondo de seguridad */}
-              <div className="absolute inset-0 bg-guilloche opacity-10 pointer-events-none" />
-
               {/* Botón flotante para pantalla completa rápida */}
               <button
                 onClick={() => {
@@ -581,9 +578,6 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
             onMouseLeave={handleMouseUpFullscreen}
             onDoubleClick={handleDoubleClickFullscreen}
           >
-            {/* Guilloche sutil en el fondo de pantalla completa */}
-            <div className="absolute inset-0 bg-guilloche opacity-5 pointer-events-none" />
-
             {/* Imagen centrada y transformable */}
             <div 
               style={{

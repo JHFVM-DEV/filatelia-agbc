@@ -114,14 +114,14 @@ class AdminPanelProvider extends PanelProvider
                     }
                     /* Botones primarios en Azul Institucional con Acentos Oro */
                     .fi-btn-primary {
-                        background: linear-gradient(135deg, #102542 0%, #2C63AC 100%) !important;
+                        background: #102542 !important;
                         color: #FFFFFF !important;
                         font-weight: 700 !important;
                         box-shadow: 0 3px 8px rgba(16, 37, 66, 0.2) !important;
                         border: none !important;
                     }
                     .fi-btn-primary:hover {
-                        background: linear-gradient(135deg, #2C63AC 0%, #102542 100%) !important;
+                        background: #102542 !important;
                         color: #FECC36 !important;
                     }
                     /* Insignias */

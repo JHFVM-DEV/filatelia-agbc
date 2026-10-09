@@ -32,11 +32,7 @@ export const SecurityProtocol: React.FC = () => {
   ];
 
   return (
-    <section id="seguridad" className="py-20 bg-gradient-to-b from-[#FFFDF0] via-[#FFF9DB] to-[#FFF0B3] text-[#102542] border-t-4 border-[#FECC36] border-b-2 border-[#E5B728] relative overflow-hidden">
-      {/* Guilloche Texture de seguridad */}
-      <div className="absolute inset-0 bg-guilloche opacity-5 pointer-events-none mix-blend-multiply" />
-      <div className="absolute -top-32 -left-32 w-80 h-80 bg-white/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-[#FECC36]/30 rounded-full blur-3xl pointer-events-none" />
+    <section id="seguridad" className="py-20 bg-[#FFFDF0] text-[#102542] border-t-4 border-[#FECC36] border-b-2 border-[#E5B728] relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -91,7 +87,7 @@ export const SecurityProtocol: React.FC = () => {
         </div>
 
         {/* Certification Banner */}
-        <div className="mt-12 bg-gradient-to-r from-[#FECC36] via-[#FFD95E] to-[#E5B728] rounded-2xl p-6 sm:p-8 border-2 border-[#E5B728] shadow-xl text-[#102542] flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-12 bg-[#FECC36] rounded-2xl p-6 sm:p-8 border-2 border-[#E5B728] shadow-xl text-[#102542] flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-left space-y-1">
             <h4 className="font-black text-base text-[#102542] flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-[#102542]" />
