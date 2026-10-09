@@ -117,8 +117,8 @@ class AdminController extends Controller
             $superAdmin->syncPermissions($allPermissions);
         }
 
-        // Si Almacén aún no tiene ningún permiso inicializado, asignar los valores por defecto
-        if ($almacen->permissions()->count() === 0) {
+        // Initialize new roles only; an empty matrix can be an intentional revocation.
+        if ($almacen->wasRecentlyCreated) {
             $defaultAlmacenModules = [
                 'Emisiones', 'Productos', 'Categorías', 'Pedidos',
                 'Inventario', 'Despacho', 'Envíos', 'Reportes',
@@ -147,22 +147,27 @@ class AdminController extends Controller
 
         // 1. Serie histórica de ingresos (últimos 6 meses)
         $startLimit = now()->subMonths(5)->startOfMonth();
+        $monthExpression = match (DB::connection()->getDriverName()) {
+            'pgsql' => "TO_CHAR(created_at, 'YYYY-MM')",
+            'mysql', 'mariadb' => "DATE_FORMAT(created_at, '%Y-%m')",
+            default => "strftime('%Y-%m', created_at)",
+        };
         $monthlySums = Order::whereNotIn('status', ['CANCELLED'])
             ->where('created_at', '>=', $startLimit)
-            ->selectRaw("TO_CHAR(created_at, 'YYYY-MM') as ym, SUM(total_amount) as total")
+            ->selectRaw("{$monthExpression} as ym, SUM(total_amount) as total")
             ->groupBy('ym')
             ->pluck('total', 'ym')
             ->toArray();
 
         $revenueTimeline = [];
         for ($i = 5; $i >= 0; $i--) {
-            $month = now()->subMonths($i);
+            $month = $startLimit->copy()->addMonths(5 - $i);
             $ymKey = $month->format('Y-m');
             $sum = (float) ($monthlySums[$ymKey] ?? 0);
             $revenueTimeline[] = [
                 'month' => ucfirst($month->translatedFormat('M Y')),
                 'short' => ucfirst($month->translatedFormat('M')),
-                'total' => $sum > 0 ? $sum : (rand(1800, 4900) + rand(10, 90) / 100),
+                'total' => $sum,
             ];
         }
 
@@ -185,7 +190,7 @@ class AdminController extends Controller
         ];
         foreach ($allDepartments as $dept => $val) {
             if (!isset($deptOrders[$dept])) {
-                $deptOrders[$dept] = $val;
+                $deptOrders[$dept] = 0;
             }
         }
         arsort($deptOrders);
@@ -247,12 +252,12 @@ class AdminController extends Controller
         $query = Order::with(['items.product', 'user', 'shipment']);
 
         // Search by order_number, customer_name, customer_email, tracking_code
-        if ($search = $request->query('search')) {
+        if (($search = trim((string) $request->query('search', ''))) !== '') {
             $query->where(function ($q) use ($search) {
-                $q->where('order_number', 'ilike', "%{$search}%")
-                  ->orWhere('customer_name', 'ilike', "%{$search}%")
-                  ->orWhere('customer_email', 'ilike', "%{$search}%")
-                  ->orWhere('tracking_code', 'ilike', "%{$search}%");
+                $q->whereLike('order_number', "%{$search}%")
+                  ->orWhereLike('customer_name', "%{$search}%")
+                  ->orWhereLike('customer_email', "%{$search}%")
+                  ->orWhereLike('tracking_code', "%{$search}%");
             });
         }
 
@@ -280,52 +285,59 @@ class AdminController extends Controller
         if ($deny = $this->authorizeModule($request, 'Pedidos')) return $deny;
 
         $request->validate([
-            'status' => 'required|string',
+            'status' => 'required|in:PENDING,PAYMENT_VERIFIED,VAULT_VERIFIED,VAULT_PREPARATION,PACKED_GLASSINE,SHIPPED,DELIVERED,CANCELLED',
         ]);
 
-        $order = Order::findOrFail($id);
-        $prevStatus = $order->status;
-        $order->status = $request->status;
+        return DB::transaction(function () use ($request, $id) {
+            $order = Order::lockForUpdate()->findOrFail($id);
+            $prevStatus = $order->status;
+            $order->status = $request->status;
 
-        // Auto generate tracking code if needed when shipped
-        if ($request->status === 'SHIPPED' && empty($order->tracking_code)) {
-            $order->tracking_code = 'BOL-EXP-' . strtoupper(Str::random(8));
-        }
-
-        $order->save();
-
-        if ($prevStatus !== $order->status) {
-            AuditService::logOrderStatus(
-                order: $order,
-                previousStatus: $prevStatus,
-                newStatus: $order->status,
-                notes: 'Actualización ejecutada desde suite administrativa.',
-                user: $request->user()
-            );
-        }
-
-        // If shipment exists or status is in transit, sync shipment
-        if ($request->status === 'SHIPPED' || $request->status === 'DELIVERED') {
-            $shipment = Shipment::firstOrCreate(
-                ['order_id' => $order->id],
-                [
-                    'tracking_code' => $order->tracking_code ?? ('BOL-EXP-' . strtoupper(Str::random(8))),
-                    'carrier' => 'Agencia Postal de Bolivia (Correos Bolivia)',
-                    'status' => $request->status === 'DELIVERED' ? 'DELIVERED' : 'IN_TRANSIT',
-                ]
-            );
-            if ($request->status === 'DELIVERED') {
-                $shipment->status = 'DELIVERED';
-                $shipment->delivered_at = now();
-                $shipment->save();
+            // Auto generate tracking code if needed when shipped
+            if ($request->status === 'SHIPPED' && empty($order->tracking_code)) {
+                $order->tracking_code = 'BOL-EXP-' . strtoupper(Str::random(8));
             }
-        }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Estado de la orden actualizado exitosamente.',
-            'order' => $order->fresh()->load(['items.product', 'shipment']),
-        ]);
+            $order->save();
+
+            if ($prevStatus !== $order->status) {
+                AuditService::logOrderStatus(
+                    order: $order,
+                    previousStatus: $prevStatus,
+                    newStatus: $order->status,
+                    notes: 'Actualización ejecutada desde suite administrativa.',
+                    user: $request->user()
+                );
+            }
+
+            // If shipment exists or status is in transit, sync shipment
+            if ($request->status === 'SHIPPED' || $request->status === 'DELIVERED') {
+                $shipment = Shipment::firstOrCreate(
+                    ['order_id' => $order->id],
+                    [
+                        'tracking_code' => $order->tracking_code ?? ('BOL-EXP-' . strtoupper(Str::random(8))),
+                        'carrier' => 'Agencia Postal de Bolivia (Correos Bolivia)',
+                        'status' => $request->status === 'DELIVERED' ? 'DELIVERED' : 'IN_TRANSIT',
+                        'origin_department' => 'La Paz',
+                        'destination_department' => $order->department,
+                        'shipped_at' => now(),
+                    ]
+                );
+                if ($request->status === 'DELIVERED') {
+                    $shipment->status = 'DELIVERED';
+                    $shipment->delivered_at = now();
+                    $shipment->save();
+                } else {
+                    $shipment->update(['status' => 'IN_TRANSIT', 'delivered_at' => null]);
+                }
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Estado de la orden actualizado exitosamente.',
+                'order' => $order->fresh()->load(['items.product', 'shipment']),
+            ]);
+        });
     }
 
     /**
@@ -337,11 +349,11 @@ class AdminController extends Controller
 
         $query = Product::with(['category', 'emission']);
 
-        if ($search = $request->query('search')) {
+        if (($search = trim((string) $request->query('search', ''))) !== '') {
             $query->where(function ($q) use ($search) {
-                $q->where('name', 'ilike', "%{$search}%")
-                  ->orWhere('catalog_code', 'ilike', "%{$search}%")
-                  ->orWhere('year', 'ilike', "%{$search}%");
+                $q->whereLike('name', "%{$search}%")
+                  ->orWhereLike('catalog_code', "%{$search}%")
+                  ->orWhereRaw('CAST(year AS TEXT) LIKE ?', ["%{$search}%"]);
             });
         }
 
@@ -373,7 +385,7 @@ class AdminController extends Controller
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
             'year' => 'required|integer',
-            'category_id' => 'nullable|exists:categories,id',
+            'category_id' => 'required|exists:categories,id',
             'emission_id' => 'nullable|exists:emissions,id',
             'condition' => 'required|string',
             'rarity' => 'required|string',
@@ -473,25 +485,34 @@ class AdminController extends Controller
         if ($deny = $this->authorizeModule($request, 'Envíos')) return $deny;
 
         $request->validate([
-            'status' => 'required|string',
-            'tracking_number' => 'nullable|string',
+            'status' => 'required|in:PENDING,DISPATCHED,IN_TRANSIT,DELIVERED,RETURNED',
+            'tracking_code' => 'nullable|string|unique:shipments,tracking_code,' . $id,
         ]);
 
-        $shipment = Shipment::findOrFail($id);
-        $shipment->status = $request->status;
-        if ($request->filled('tracking_number')) {
-            $shipment->tracking_number = $request->tracking_number;
-        }
-        if ($request->status === 'DELIVERED') {
-            $shipment->delivered_at = now();
-        }
-        $shipment->save();
+        return DB::transaction(function () use ($request, $id) {
+            $shipment = Shipment::lockForUpdate()->findOrFail($id);
+            $shipment->status = $request->status;
+            if ($request->filled('tracking_code')) {
+                $shipment->tracking_code = $request->tracking_code;
+            }
+            if ($request->status === 'DELIVERED') {
+                $shipment->delivered_at = now();
+            } else {
+                $shipment->delivered_at = null;
+            }
+            $shipment->save();
+            if ($shipment->order) {
+                $updates = ['tracking_code' => $shipment->tracking_code];
+                if ($shipment->status === 'DELIVERED') $updates['status'] = 'DELIVERED';
+                $shipment->order->update($updates);
+            }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Estado de valija postal actualizado.',
-            'shipment' => $shipment->fresh()->load('order'),
-        ]);
+            return response()->json([
+                'success' => true,
+                'message' => 'Estado de valija postal actualizado.',
+                'shipment' => $shipment->fresh()->load('order'),
+            ]);
+        });
     }
 
     // --- USERS & STAFF MANAGEMENT ---
@@ -618,6 +639,7 @@ class AdminController extends Controller
         if ($deny = $this->authorizeModule($request, 'Permisos')) return $deny;
         $this->ensurePermissionsAndRoles();
 
+        $request->validate(['matrix' => 'present|array']);
         $matrix = $request->input('matrix', []);
         $almacenRole = Role::findByName('ADMIN_PRODUCTOS_ALMACEN', 'web');
 
@@ -679,47 +701,52 @@ class AdminController extends Controller
         $request->validate([
             'product_id' => 'required|exists:products,id',
             'type' => 'required|in:IN,OUT,ADJUST',
-            'quantity' => 'required|integer|min:1',
+            'quantity' => 'required|integer|min:' . ($request->input('type') === 'ADJUST' ? '0' : '1'),
             'reason' => 'required|string|min:3',
         ]);
-        $product = Product::findOrFail($request->product_id);
-        $prev = $product->stock;
-        $qty = (int) $request->quantity;
-        if ($request->type === 'IN') {
-            $new = $prev + $qty;
-        } elseif ($request->type === 'OUT') {
-            $new = max(0, $prev - $qty);
-        } else {
-            $new = $qty;
-        }
-        $product->update(['stock' => $new]);
-        $movement = InventoryMovement::create([
-            'product_id' => $product->id,
-            'user_id' => $request->user()->id,
-            'type' => $request->type,
-            'quantity' => $qty,
-            'previous_stock' => $prev,
-            'new_stock' => $new,
-            'department' => 'La Paz (Bóveda Central)',
-            'reason' => $request->reason,
-            'notes' => 'Ajuste manual ejecutado desde Suite Administrativa.',
-        ]);
+        return DB::transaction(function () use ($request) {
+            $product = Product::lockForUpdate()->findOrFail($request->product_id);
+            $prev = $product->stock;
+            $qty = (int) $request->quantity;
+            if ($request->type === 'IN') {
+                $new = $prev + $qty;
+            } elseif ($request->type === 'OUT') {
+                if ($qty > $prev) {
+                    return response()->json(['success' => false, 'message' => 'La salida supera el stock disponible.'], 422);
+                }
+                $new = $prev - $qty;
+            } else {
+                $new = $qty;
+            }
+            $product->update(['stock' => $new]);
+            $movement = InventoryMovement::create([
+                'product_id' => $product->id,
+                'user_id' => $request->user()->id,
+                'type' => $request->type,
+                'quantity' => $qty,
+                'previous_stock' => $prev,
+                'new_stock' => $new,
+                'department' => 'La Paz (Bóveda Central)',
+                'reason' => $request->reason,
+                'notes' => 'Ajuste manual ejecutado desde Suite Administrativa.',
+            ]);
 
-        AuditService::logStockAdjustment(
-            product: $product,
-            previousStock: $prev,
-            newStock: $new,
-            type: $request->type,
-            reason: $request->reason,
-            user: $request->user()
-        );
+            AuditService::logStockAdjustment(
+                product: $product,
+                previousStock: $prev,
+                newStock: $new,
+                type: $request->type,
+                reason: $request->reason,
+                user: $request->user()
+            );
 
-        return response()->json([
-            'success' => true,
-            'message' => "Stock de '{$product->name}' actualizado a {$new} unidades.",
-            'product' => $product,
-            'movement' => $movement->load('user'),
-        ]);
+            return response()->json([
+                'success' => true,
+                'message' => "Stock de '{$product->name}' actualizado a {$new} unidades.",
+                'product' => $product,
+                'movement' => $movement->load('user'),
+            ]);
+        });
     }
 
     // --- MESA DE DESPACHO (PACKING TABLE) ---
@@ -755,41 +782,43 @@ class AdminController extends Controller
     public function confirmDispatch(Request $request): JsonResponse
     {
         if ($deny = $this->authorizeModule($request, 'Despacho')) return $deny;
+        $existingShipmentId = Shipment::where('order_id', $request->input('order_id'))->value('id');
         $request->validate([
             'order_id' => 'required|exists:orders,id',
             'carrier' => 'required|string',
-            'tracking_code' => 'required|string|min:4',
+            'tracking_code' => 'required|string|min:4|unique:shipments,tracking_code,' . ($existingShipmentId ?? 'NULL'),
         ]);
-        $order = Order::findOrFail($request->order_id);
-        $prevStatus = $order->status;
-        $order->update([
-            'status' => 'SHIPPED',
-            'tracking_code' => $request->tracking_code,
-        ]);
-        $shipment = Shipment::create([
-            'order_id' => $order->id,
-            'carrier' => $request->carrier,
-            'tracking_code' => $request->tracking_code,
-            'status' => 'IN_TRANSIT',
-            'origin_department' => 'La Paz',
-            'destination_department' => $order->department ?? 'Bolivia',
-            'shipped_at' => now(),
-            'notes' => 'Despachado desde la mesa de operaciones postales.',
-        ]);
+        return DB::transaction(function () use ($request) {
+            $order = Order::lockForUpdate()->findOrFail($request->order_id);
+            $prevStatus = $order->status;
+            $order->update([
+                'status' => 'SHIPPED',
+                'tracking_code' => $request->tracking_code,
+            ]);
+            $shipment = Shipment::updateOrCreate(['order_id' => $order->id], [
+                'carrier' => $request->carrier,
+                'tracking_code' => $request->tracking_code,
+                'status' => 'IN_TRANSIT',
+                'origin_department' => 'La Paz',
+                'destination_department' => $order->department ?? 'Bolivia',
+                'shipped_at' => now(),
+                'notes' => 'Despachado desde la mesa de operaciones postales.',
+            ]);
 
-        AuditService::logOrderStatus(
-            order: $order,
-            previousStatus: $prevStatus,
-            newStatus: 'SHIPPED',
-            notes: "Despachado con guía {$request->tracking_code} por {$request->carrier}.",
-            user: $request->user()
-        );
-        return response()->json([
-            'success' => true,
-            'message' => "Orden {$order->order_number} despachada exitosamente con guía {$request->tracking_code}.",
-            'order' => $order,
-            'shipment' => $shipment,
-        ]);
+            AuditService::logOrderStatus(
+                order: $order,
+                previousStatus: $prevStatus,
+                newStatus: 'SHIPPED',
+                notes: "Despachado con guía {$request->tracking_code} por {$request->carrier}.",
+                user: $request->user()
+            );
+            return response()->json([
+                'success' => true,
+                'message' => "Orden {$order->order_number} despachada exitosamente con guía {$request->tracking_code}.",
+                'order' => $order,
+                'shipment' => $shipment,
+            ]);
+        });
     }
 
     // --- REPORTES & ESTADÍSTICAS ---

@@ -275,8 +275,8 @@ export const ShowcaseManager: React.FC = () => {
     return allProducts.filter((prod) => {
       const matchesSearch =
         searchCatalog === '' ||
-        prod.name.toLowerCase().includes(searchCatalog.toLowerCase()) ||
-        (prod.catalog_code && prod.catalog_code.toLowerCase().includes(searchCatalog.toLowerCase()));
+        prod.name.toLowerCase().includes(searchCatalog.trim().toLowerCase()) ||
+        (prod.catalog_code && prod.catalog_code.toLowerCase().includes(searchCatalog.trim().toLowerCase()));
 
       const matchesCategory =
         selectedCategoryFilter === 'all' ||

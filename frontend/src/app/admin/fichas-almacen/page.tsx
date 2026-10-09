@@ -221,7 +221,7 @@ export default function FichasAlmacenPage() {
         return false;
       }
       if (searchTerm.trim() !== '') {
-        const q = searchTerm.toLowerCase();
+        const q = searchTerm.trim().toLowerCase();
         const mName = p.name.toLowerCase().includes(q);
         const mCode = p.catalog_code?.toLowerCase().includes(q);
         const mDrawer = p.vault_drawer?.toLowerCase().includes(q);

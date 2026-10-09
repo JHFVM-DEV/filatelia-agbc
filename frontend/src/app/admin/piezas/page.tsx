@@ -1,7 +1,9 @@
 'use client';
 import { API_BASE_URL } from '@/config/api';
+import { useAdminList } from '@/hooks/useAdminList';
+import { readAdminResponse } from '@/lib/admin-api';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -20,18 +22,21 @@ import {
 } from 'lucide-react';
 
 export default function AdminProductsPage() {
-  const [products, setProducts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [rarityFilter, setRarityFilter] = useState('ALL');
+  const { items: products, setItems: setProducts, loading, error, setError, refresh: fetchProducts } = useAdminList<any>('/api/admin/products', 'products', { rarity: rarityFilter, search: search.trim() });
+  const { items: categories, error: categoryError } = useAdminList<{ id: number; name: string }>('/api/categories', 'data');
   const [editingProduct, setEditingProduct] = useState<any | null>(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [updatingStockId, setUpdatingStockId] = useState<number | null>(null);
+  const stockUpdatePending = useRef(false);
 
   // New product form state
   const [formData, setFormData] = useState({
     name: '',
     catalog_code: '',
+    category_id: '',
     price: '',
     stock: '',
     year: '2025',
@@ -44,38 +49,15 @@ export default function AdminProductsPage() {
     description: '',
   });
 
-  const fetchProducts = async () => {
-    try {
-      setLoading(true);
-      const token = typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
-      let url = `${API_BASE_URL}/api/admin/products?rarity=${rarityFilter}`;
-      if (search.trim()) {
-        url += `&search=${encodeURIComponent(search.trim())}`;
-      }
-
-      const res = await fetch(url, {
-        headers: {
-          Accept: 'application/json',
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        },
-      });
-
-      if (res.ok) {
-        const json = await res.json();
-        setProducts(json.products || []);
-      }
-    } catch (err) {
-      console.error('Error al cargar piezas:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchProducts();
-  }, [rarityFilter]);
+    setSearch(new URLSearchParams(window.location.search).get('search') || '');
+  }, []);
 
   const handleStockDelta = async (productId: number, currentStock: number, delta: number) => {
+    if (stockUpdatePending.current) return;
+    stockUpdatePending.current = true;
+    setUpdatingStockId(productId);
+    setError(null);
     const newStock = Math.max(0, currentStock + delta);
     try {
       const token = typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
@@ -89,13 +71,17 @@ export default function AdminProductsPage() {
         body: JSON.stringify({ stock: newStock }),
       });
 
+      if (!res.ok) await readAdminResponse(res);
       if (res.ok) {
         setProducts((prev) =>
           prev.map((p) => (p.id === productId ? { ...p, stock: newStock } : p))
         );
       }
     } catch (err) {
-      console.error('Error al actualizar stock:', err);
+      setError(err instanceof Error ? err.message : 'No se pudo completar la operación.');
+    } finally {
+      stockUpdatePending.current = false;
+      setUpdatingStockId(null);
     }
   };
 
@@ -105,6 +91,7 @@ export default function AdminProductsPage() {
 
     try {
       setIsSubmitting(true);
+      setError(null);
       const token = typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
       const res = await fetch(`${API_BASE_URL}/api/admin/products/${editingProduct.id}`, {
         method: 'PUT',
@@ -124,15 +111,17 @@ export default function AdminProductsPage() {
         }),
       });
 
+      if (!res.ok) await readAdminResponse(res);
       if (res.ok) {
         const json = await res.json();
         setProducts((prev) =>
           prev.map((p) => (p.id === editingProduct.id ? { ...p, ...json.product } : p))
         );
         setEditingProduct(null);
+        await fetchProducts();
       }
     } catch (err) {
-      console.error('Error al guardar pieza:', err);
+      setError(err instanceof Error ? err.message : 'No se pudo completar la operación.');
     } finally {
       setIsSubmitting(false);
     }
@@ -142,6 +131,7 @@ export default function AdminProductsPage() {
     e.preventDefault();
     try {
       setIsSubmitting(true);
+      setError(null);
       const token = typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
       const res = await fetch(`${API_BASE_URL}/api/admin/products`, {
         method: 'POST',
@@ -158,13 +148,16 @@ export default function AdminProductsPage() {
         }),
       });
 
+      if (!res.ok) await readAdminResponse(res);
       if (res.ok) {
         const json = await res.json();
         setProducts((prev) => [json.product, ...prev]);
         setIsCreateModalOpen(false);
+        await fetchProducts();
         setFormData({
           name: '',
           catalog_code: '',
+          category_id: '',
           price: '',
           stock: '',
           year: '2025',
@@ -178,7 +171,7 @@ export default function AdminProductsPage() {
         });
       }
     } catch (err) {
-      console.error('Error al crear pieza:', err);
+      setError(err instanceof Error ? err.message : 'No se pudo completar la operación.');
     } finally {
       setIsSubmitting(false);
     }
@@ -215,6 +208,11 @@ export default function AdminProductsPage() {
 
   return (
     <div className="space-y-6 pb-12">
+      {(error || categoryError) && (
+        <div role="alert" className="rounded-xl border border-red-400/30 bg-red-950/40 p-4 text-sm text-red-200">
+          {error || categoryError}
+        </div>
+      )}
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -270,6 +268,7 @@ export default function AdminProductsPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar por título, código Scott/Yvert o año..."
+            aria-label="Buscar piezas por título, código o año"
             className="w-full pl-10 pr-4 py-2 bg-[#1B4785]/80 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 transition-colors"
           />
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
@@ -367,7 +366,7 @@ export default function AdminProductsPage() {
                       <div className="inline-flex items-center gap-2 bg-[#1B4785] px-2 py-1 rounded-xl border border-slate-700">
                         <button
                           onClick={() => handleStockDelta(product.id, product.stock, -1)}
-                          disabled={product.stock <= 0}
+                          disabled={product.stock <= 0 || updatingStockId !== null}
                           className="w-5 h-5 rounded bg-[#102542] text-amber-300 hover:text-white font-bold flex items-center justify-center cursor-pointer disabled:opacity-30"
                         >
                           -
@@ -379,6 +378,7 @@ export default function AdminProductsPage() {
                         </span>
                         <button
                           onClick={() => handleStockDelta(product.id, product.stock, 1)}
+                          disabled={updatingStockId !== null}
                           className="w-5 h-5 rounded bg-[#102542] text-amber-300 hover:text-white font-bold flex items-center justify-center cursor-pointer"
                         >
                           +
@@ -448,6 +448,7 @@ export default function AdminProductsPage() {
             </div>
 
             <div className="space-y-3">
+              {error && <p role="alert" className="text-sm text-red-300">{error}</p>}
               <div>
                 <label className="block text-[11px] font-semibold text-slate-300 mb-1">
                   Nombre Oficial del Sello
@@ -589,6 +590,21 @@ export default function AdminProductsPage() {
                   className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white focus:outline-none focus:border-amber-400"
                   required
                 />
+              </div>
+
+              <div>
+                <label htmlFor="product-category" className="block text-[11px] font-semibold text-slate-300 mb-1">Categoría</label>
+                <select
+                  id="product-category"
+                  value={formData.category_id}
+                  onChange={(e) => setFormData({ ...formData, category_id: e.target.value })}
+                  className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white"
+                  required
+                >
+                  <option value="">Selecciona una categoría</option>
+                  {categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}
+                </select>
+                {(error || categoryError) && <p role="alert" className="mt-2 text-sm text-red-300">{error || categoryError}</p>}
               </div>
 
               <div className="grid grid-cols-2 gap-3">

@@ -164,7 +164,7 @@ export default function AdminCategoriasPage() {
   };
 
   const filteredCategories = categories.filter((c) =>
-    c.name.toLowerCase().includes(search.toLowerCase())
+    c.name.toLowerCase().includes(search.trim().toLowerCase())
   );
 
   return (

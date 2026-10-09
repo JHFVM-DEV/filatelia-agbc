@@ -5,6 +5,8 @@
 # Scratch scripts & temporary notes
 scratch/
 implementation_plan.md
+/*.js
+/*.json
 
 # OS generated files
 .DS_Store

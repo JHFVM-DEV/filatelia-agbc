@@ -55,49 +55,21 @@ class FilamentModulesAndRolesTest extends TestCase
         }
     }
 
-    public function test_admin_filatelia_dashboard_and_modules(): void
+    public function test_warehouse_can_access_its_modules_and_not_security(): void
     {
-        $user = $this->getUserWithRole('ADMIN_FILATELIA');
-
-        // Dashboard
-        $resp = $this->actingAs($user)->get('/admin');
-        $resp->assertStatus(200);
-
-        // Módulos filatélicos permitidos
-        $this->actingAs($user)->get('/admin/emissions')->assertStatus(200);
-        $this->actingAs($user)->get('/admin/products')->assertStatus(200);
-        $this->actingAs($user)->get('/admin/categories')->assertStatus(200);
-        $this->actingAs($user)->get('/admin/orders')->assertStatus(200);
-        $this->actingAs($user)->get('/admin/inventory-page')->assertStatus(200);
-        $this->actingAs($user)->get('/admin/reports-page')->assertStatus(200);
+        $user = $this->getUserWithRole('ADMIN_PRODUCTOS_ALMACEN');
+        $this->actingAs($user)->get('/admin')->assertOk();
+        foreach (['products', 'orders', 'inventory-page', 'dispatch-page', 'shipments', 'reports-page'] as $module) {
+            $this->actingAs($user)->get('/admin/' . $module)->assertOk();
+        }
+        foreach (['role-permission-page', 'system-health-page', 'log-viewer-page'] as $module) {
+            $this->actingAs($user)->get('/admin/' . $module)->assertForbidden();
+        }
     }
 
-    public function test_almacen_dashboard_and_modules(): void
+    public function test_client_cannot_access_the_admin_panel(): void
     {
-        $user = $this->getUserWithRole('ALMACEN');
-
-        // Dashboard
-        $resp = $this->actingAs($user)->get('/admin');
-        $resp->assertStatus(200);
-
-        // Módulos de almacén y despacho permitidos
-        $this->actingAs($user)->get('/admin/products')->assertStatus(200);
-        $this->actingAs($user)->get('/admin/orders')->assertStatus(200);
-        $this->actingAs($user)->get('/admin/inventory-page')->assertStatus(200);
-        $this->actingAs($user)->get('/admin/dispatch-page')->assertStatus(200);
-        $this->actingAs($user)->get('/admin/shipments')->assertStatus(200);
-    }
-
-    public function test_atencion_dashboard_and_modules(): void
-    {
-        $user = $this->getUserWithRole('ATENCION');
-
-        // Dashboard
-        $resp = $this->actingAs($user)->get('/admin');
-        $resp->assertStatus(200);
-
-        // Módulos de soporte y atención permitidos
-        $this->actingAs($user)->get('/admin/orders')->assertStatus(200);
-        $this->actingAs($user)->get('/admin/support-tickets')->assertStatus(200);
+        $user = $this->getUserWithRole('CLIENTE');
+        $this->actingAs($user)->get('/admin')->assertForbidden();
     }
 }

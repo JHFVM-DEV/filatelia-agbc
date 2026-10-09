@@ -175,8 +175,8 @@ export default function AdminEmisionesPage() {
 
   const filteredEmissions = emissions.filter(
     (e) =>
-      e.name.toLowerCase().includes(search.toLowerCase()) ||
-      (e.official_decree && e.official_decree.toLowerCase().includes(search.toLowerCase())) ||
+      e.name.toLowerCase().includes(search.trim().toLowerCase()) ||
+      (e.official_decree && e.official_decree.toLowerCase().includes(search.trim().toLowerCase())) ||
       e.year.toString().includes(search)
   );
 

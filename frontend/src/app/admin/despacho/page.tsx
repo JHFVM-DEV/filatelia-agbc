@@ -1,7 +1,9 @@
 'use client';
 import { API_BASE_URL } from '@/config/api';
+import { useAdminList } from '@/hooks/useAdminList';
+import { readAdminResponse } from '@/lib/admin-api';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Truck,
   Search,
@@ -15,39 +17,13 @@ import {
 } from 'lucide-react';
 
 export default function AdminDispatchPage() {
-  const [shipments, setShipments] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { items: shipments, setItems: setShipments, loading, error, setError, refresh: fetchShipments } = useAdminList<any>('/api/admin/shipments', 'shipments');
   const [updatingId, setUpdatingId] = useState<number | null>(null);
-
-  const fetchShipments = async () => {
-    try {
-      setLoading(true);
-      const token = typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
-      const res = await fetch(`${API_BASE_URL}/api/admin/shipments`, {
-        headers: {
-          Accept: 'application/json',
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        },
-      });
-
-      if (res.ok) {
-        const json = await res.json();
-        setShipments(json.shipments || []);
-      }
-    } catch (err) {
-      console.error('Error al cargar valijas:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchShipments();
-  }, []);
 
   const handleUpdateStatus = async (shipmentId: number, status: string) => {
     try {
       setUpdatingId(shipmentId);
+      setError(null);
       const token = typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
       const res = await fetch(`${API_BASE_URL}/api/admin/shipments/${shipmentId}/status`, {
         method: 'PATCH',
@@ -59,6 +35,7 @@ export default function AdminDispatchPage() {
         body: JSON.stringify({ status }),
       });
 
+      if (!res.ok) await readAdminResponse(res);
       if (res.ok) {
         const json = await res.json();
         setShipments((prev) =>
@@ -66,7 +43,7 @@ export default function AdminDispatchPage() {
         );
       }
     } catch (err) {
-      console.error('Error al actualizar valija:', err);
+      setError(err instanceof Error ? err.message : 'No se pudo actualizar el envío.');
     } finally {
       setUpdatingId(null);
     }
@@ -74,6 +51,7 @@ export default function AdminDispatchPage() {
 
   return (
     <div className="space-y-6 pb-12">
+      {error && <div role="alert" className="rounded-xl border border-red-400/30 bg-red-950/40 p-4 text-sm text-red-200">{error}</div>}
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -127,7 +105,7 @@ export default function AdminDispatchPage() {
                 {shipments.map((shipment) => (
                   <tr key={shipment.id} className="hover:bg-[#102542]/30 transition-colors">
                     <td className="py-3 px-4 font-mono font-bold text-amber-300">
-                      {shipment.tracking_number}
+                      {shipment.tracking_code}
                     </td>
 
                     <td className="py-3 px-4">

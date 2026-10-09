@@ -439,7 +439,7 @@ export default function ApiKeysManagementPage() {
 
   // Filtrado de tokens
   const filteredTokens = tokens.filter((t) => {
-    const matchesSearch = t.name.toLowerCase().includes(search.toLowerCase());
+    const matchesSearch = t.name.toLowerCase().includes(search.trim().toLowerCase());
     if (statusFilter === 'ALL') return matchesSearch;
     return matchesSearch && t.status === statusFilter;
   });

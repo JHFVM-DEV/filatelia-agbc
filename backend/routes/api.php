@@ -104,6 +104,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::get('/emissions', [\App\Http\Controllers\Api\AdminController::class, 'getEmissions']);
     Route::post('/emissions', [\App\Http\Controllers\Api\AdminController::class, 'storeEmission']);
     Route::put('/emissions/{id}', [\App\Http\Controllers\Api\AdminController::class, 'updateEmission']);
+    Route::delete('/emissions/{id}', [\App\Http\Controllers\Api\AdminController::class, 'deleteEmission']);
     // Gestión de APIs & Integraciones (Exclusivo Super Administrador)
     Route::get('/api-tokens', [\App\Http\Controllers\Api\ApiTokenController::class, 'index']);
     Route::post('/api-tokens', [\App\Http\Controllers\Api\ApiTokenController::class, 'store']);

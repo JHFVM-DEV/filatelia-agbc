@@ -1,5 +1,7 @@
 'use client';
 import { API_BASE_URL } from '@/config/api';
+import { useAdminList } from '@/hooks/useAdminList';
+import { readAdminResponse } from '@/lib/admin-api';
 
 import React, { useState, useEffect } from 'react';
 import {
@@ -21,43 +23,15 @@ import {
 } from 'lucide-react';
 
 export default function AdminOrdersPage() {
-  const [orders, setOrders] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL');
+  const { items: orders, setItems: setOrders, loading, error, setError, refresh: fetchOrders } = useAdminList<any>('/api/admin/orders', 'orders', { status: statusFilter, search: search.trim() });
   const [selectedOrder, setSelectedOrder] = useState<any | null>(null);
   const [updatingId, setUpdatingId] = useState<number | null>(null);
 
-  const fetchOrders = async () => {
-    try {
-      setLoading(true);
-      const token = typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
-      let url = `${API_BASE_URL}/api/admin/orders?status=${statusFilter}`;
-      if (search.trim()) {
-        url += `&search=${encodeURIComponent(search.trim())}`;
-      }
-
-      const res = await fetch(url, {
-        headers: {
-          Accept: 'application/json',
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        },
-      });
-
-      if (res.ok) {
-        const json = await res.json();
-        setOrders(json.orders || []);
-      }
-    } catch (err) {
-      console.error('Error al cargar pedidos:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchOrders();
-  }, [statusFilter]);
+    setSearch(new URLSearchParams(window.location.search).get('search') || '');
+  }, []);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,6 +41,7 @@ export default function AdminOrdersPage() {
   const handleUpdateStatus = async (orderId: number, newStatus: string) => {
     try {
       setUpdatingId(orderId);
+      setError(null);
       const token = typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
       const res = await fetch(`${API_BASE_URL}/api/admin/orders/${orderId}/status`, {
         method: 'PATCH',
@@ -78,6 +53,7 @@ export default function AdminOrdersPage() {
         body: JSON.stringify({ status: newStatus }),
       });
 
+      if (!res.ok) await readAdminResponse(res);
       if (res.ok) {
         const json = await res.json();
         // Actualizar en el estado local
@@ -87,9 +63,10 @@ export default function AdminOrdersPage() {
         if (selectedOrder && selectedOrder.id === orderId) {
           setSelectedOrder((prev: any) => ({ ...prev, ...json.order }));
         }
+        await fetchOrders();
       }
     } catch (err) {
-      console.error('Error al actualizar estado:', err);
+      setError(err instanceof Error ? err.message : 'No se pudo actualizar el pedido.');
     } finally {
       setUpdatingId(null);
     }
@@ -141,6 +118,7 @@ export default function AdminOrdersPage() {
 
   return (
     <div className="space-y-6 pb-12">
+      {error && <div role="alert" className="rounded-xl border border-red-400/30 bg-red-950/40 p-4 text-sm text-red-200">{error}</div>}
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -173,6 +151,7 @@ export default function AdminOrdersPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar por orden, cliente, correo o guía..."
+            aria-label="Buscar pedidos por orden, cliente, correo o guía"
             className="w-full pl-10 pr-4 py-2 bg-[#1B4785]/80 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 transition-colors"
           />
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />

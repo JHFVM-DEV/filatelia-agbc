@@ -180,8 +180,8 @@ export default function AdminInventarioPage() {
 
   const filteredProducts = products.filter(
     (p) =>
-      p.name.toLowerCase().includes(search.toLowerCase()) ||
-      p.catalog_code.toLowerCase().includes(search.toLowerCase())
+      p.name.toLowerCase().includes(search.trim().toLowerCase()) ||
+      (p.catalog_code || '').toLowerCase().includes(search.trim().toLowerCase())
   );
 
   return (
@@ -573,7 +573,7 @@ export default function AdminInventarioPage() {
                 </label>
                 <input
                   type="number"
-                  min="1"
+                  min={adjustForm.type === 'ADJUST' ? 0 : 1}
                   required
                   value={adjustForm.quantity}
                   onChange={(e) => setAdjustForm({ ...adjustForm, quantity: parseInt(e.target.value) || 1 })}
