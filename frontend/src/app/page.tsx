@@ -55,7 +55,7 @@ export default function Home() {
               category: p.category?.slug || 'sellos-y-series',
               category_name: p.category?.name || 'Sellos Oficiales',
               price: parseFloat(p.price),
-              face_value: p.face_value || '10.00 BOB',
+              face_value: p.face_value || '',
               year: p.year,
               country: p.country,
               condition: p.condition,
@@ -68,7 +68,7 @@ export default function Home() {
                       ? 'Usado / Matasellado'
                       : p.condition === 'FDC'
                         ? 'Sobre Primer Día (FDC)'
-                        : p.condition || 'Conservación Oficial',
+                        : p.condition || 'Consultar ficha',
               rarity: p.rarity,
               rarity_label:
                 p.rarity === 'MUSEUM_PIECE'
@@ -82,7 +82,7 @@ export default function Home() {
                         : 'Emisión Conmemorativa',
               certified: p.certified,
               stock: p.stock,
-              perforation: p.perforation ? p.perforation.replace(/milímetros|milimetros/gi, 'mm').trim() : '13.5 x 13.5 mm',
+              perforation: p.perforation ? p.perforation.replace(/milímetros|milimetros/gi, 'mm').trim() : '',
               printing_technique: p.printing_technique || 'Calcografía Oficial',
               paper_type: p.paper_type || 'Papel verjurado',
               gum_condition: p.gum_condition || 'Goma original intacta',
