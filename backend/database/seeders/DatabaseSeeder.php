@@ -4,15 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Emission;
-use App\Models\InventoryMovement;
-use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Product;
-use App\Models\Shipment;
-use App\Models\SupportTicket;
-use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -26,7 +19,7 @@ class DatabaseSeeder extends Seeder
         // 1. Crear Únicamente los 3 Roles Oficiales
         $superAdminRole = Role::firstOrCreate(['name' => 'SUPER_ADMIN']);
         $almacenRole    = Role::firstOrCreate(['name' => 'ADMIN_PRODUCTOS_ALMACEN']);
-        $clientRole     = Role::firstOrCreate(['name' => 'CLIENTE']);
+        Role::firstOrCreate(['name' => 'CLIENTE']);
 
         foreach (\App\Http\Controllers\Api\AdminController::MODULES as $module) {
             Permission::firstOrCreate(['name' => $module, 'guard_name' => 'web']);
@@ -39,45 +32,8 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // Eliminar roles y asignaciones obsoletas
-        Role::whereNotIn('name', ['SUPER_ADMIN', 'ADMIN_PRODUCTOS_ALMACEN', 'CLIENTE'])->delete();
-
-        // 2. Usuarios Base para los 3 Roles Oficiales
-        // Super Admin
-        $admin = User::firstOrCreate(
-            ['email' => 'admin@filatelia.bo'],
-            [
-                'name' => 'Super Admin (Director General)',
-                'password' => Hash::make('Admin12345!'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $admin->syncRoles([$superAdminRole]);
-
-        // Encargado de Almacén y Productos
-        $almacen = User::firstOrCreate(
-            ['email' => 'almacen@filatelia.bo'],
-            [
-                'name' => 'Encargado de Almacén y Productos',
-                'password' => Hash::make('Almacen12345!'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $almacen->syncRoles([$almacenRole]);
-
-        // Cliente / Coleccionista
-        $cliente = User::firstOrCreate(
-            ['email' => 'coleccionista@filatelia.bo'],
-            [
-                'name' => 'Dr. Fernando Arze (Coleccionista)',
-                'password' => Hash::make('Cliente12345!'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $cliente->syncRoles([$clientRole]);
-
-        // Remover usuarios de roles eliminados si existen
-        User::whereIn('email', ['filatelia@filatelia.bo', 'soporte@filatelia.bo'])->delete();
+        // Las tres cuentas iniciales autorizadas, sin pedidos ni movimientos de demostración.
+        $this->call(InitialAccountsSeeder::class);
 
         // 3. Categorías Filatélicas
         $catSellos = Category::firstOrCreate(
@@ -142,47 +98,12 @@ class DatabaseSeeder extends Seeder
 
 
         // 4. Emisiones Oficiales
-        $emisionBicentenario = Emission::firstOrCreate(
-            ['slug' => 'emision-bicentenario-bolivia-2025'],
-            [
-                'name' => 'Emisión Conmemorativa Bicentenario de Bolivia (1825-2025)',
-                'year' => 2025,
-                'issue_date' => '2025-08-06',
-                'description' => 'Serie de gala en honor a los 200 años de la fundación de la República.',
-                'official_decree' => 'D.S. 4920-2025',
-            ]
-        );
-
-        $emisionFauna = Emission::firstOrCreate(
-            ['slug' => 'fauna-andina-2024'],
-            [
-                'name' => 'Flora & Fauna Andina en Peligro de Conservación',
-                'year' => 2024,
-                'issue_date' => '2024-05-18',
-                'description' => 'Homenaje a la biodiversidad del Altiplano y Yungas bolivianos.',
-                'official_decree' => 'R.M. 082/2024',
-            ]
-        );
-
-        $emisionClasica = Emission::firstOrCreate(
-            ['slug' => 'condor-andes-1866'],
-            [
-                'name' => 'Emisión Clásica Cóndor de Los Andes (1866)',
-                'year' => 1866,
-                'issue_date' => '1866-10-01',
-                'description' => 'La primera emisión postal soberana de Bolivia, grabada por Reuschel en París.',
-                'official_decree' => 'Decreto Supremo Melgarejo 1866',
-            ]
-        );
-
         $emisionHistoria = Emission::firstOrCreate(
             ['slug' => 'patrimonio-historico-efemerides'],
             [
                 'name' => 'Patrimonio Histórico y Efemérides Nacionales',
                 'year' => 2017,
-                'issue_date' => '2017-08-06',
                 'description' => 'Homenaje a los próceres, batallas libertarias y símbolos sagrados de la nación.',
-                'official_decree' => 'D.S. Oficial Correos de Bolivia',
             ]
         );
 
@@ -191,9 +112,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Flora, Fauna y Riqueza Botánica Boliviana',
                 'year' => 2017,
-                'issue_date' => '2017-03-20',
                 'description' => 'Especies de fauna en peligro de extinción y frutos emblemáticos de los 9 departamentos.',
-                'official_decree' => 'D.S. 29799 y Resoluciones Ministeriales',
             ]
         );
 
@@ -202,9 +121,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Soberanía Hídrica y Recursos Naturales',
                 'year' => 2016,
-                'issue_date' => '2016-10-15',
                 'description' => 'Preservación de las aguas manantiales del Silala y soberanía de los recursos naturales.',
-                'official_decree' => 'D.S. DireSilala',
             ]
         );
 
@@ -213,9 +130,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Cultura, Arte Sacro, Folclore y Navidad',
                 'year' => 2022,
-                'issue_date' => '2022-12-01',
                 'description' => 'Patrimonio de la Humanidad de Oruro, pinturas de arte sacro virreinal y tradiciones navideñas.',
-                'official_decree' => 'R.M. Culturas y Correos',
             ]
         );
 
@@ -224,24 +139,13 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Educación, Ciencia y Desarrollo Nacional',
                 'year' => 2017,
-                'issue_date' => '2017-05-15',
                 'description' => 'Centenarios educativos, aeronáutica, desarrollo industrial y medios pedagógicos.',
-                'official_decree' => 'D.S. Conmemorativo',
             ]
         );
 
 
-        // 5. Eliminar productos de ejemplo / ficticios iniciales si existieran
-        Product::whereIn('slug', [
-            'condor-1866-10c-verde',
-            'bicentenario-hojita-bloque-gala',
-            'fauna-andina-serie-completa-2024',
-            'fdc-bicentenario-sucre-2025',
-            'clasificador-lujo-64-paginas',
-        ])->delete();
-
-        // Colección Oficial de Sellos de Bolivia (48 piezas catalogadas - BO.AGBC-1 a BO.AGBC-48)
-        Product::updateOrCreate(
+        // Catálogo original. Conservar los registros existentes y crear piezas nuevas sin inventar existencias.
+        Product::firstOrCreate(
             ['slug' => 'correo-aereo-50-aniversario-fab-1994'],
             [
                 'name' => 'Correo Aéreo Histórico — 50 Aniversario de la Fuerza Aérea Boliviana (FAB)',
@@ -255,7 +159,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 12,
+                'stock' => 0,
                 'perforation' => '12 x 12',
                 'printing_technique' => 'Litografía a color por La Papelera S.A. 1994',
                 'paper_type' => 'Papel de seguridad nacional 1994',
@@ -270,7 +174,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'iv-centenario-orden-franciscana-tarija-2006'],
             [
                 'name' => 'IV Centenario de la Orden Franciscana en Tarija — Basílica Menor de San Francisco',
@@ -284,7 +188,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 19,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset de precisión arquitectónica con dorados cálidos',
                 'paper_type' => 'Papel filatélico estucado de seguridad',
@@ -299,7 +203,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'navidad-adhesion-pastores-2006'],
             [
                 'name' => 'Pintura Colonial de Gala — Navidad Boliviana 2006 (Adhesión de los Pastores)',
@@ -313,7 +217,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 20,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset cuatricromía sobre lienzo al óleo virreinal',
                 'paper_type' => 'Papel filatélico estucado',
@@ -328,7 +232,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'centenario-fni-mineria-oruro-2006'],
             [
                 'name' => 'Centenario de la Facultad Nacional de Ingeniería (FNI Oruro 1906 - 2006)',
@@ -342,7 +246,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 15,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset duotono sepia y dorado conmemorativo',
                 'paper_type' => 'Papel estucado de seguridad',
@@ -357,7 +261,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'fauna-domestica-perro-criollo-2006'],
             [
                 'name' => 'Fauna Doméstica de Bolivia — El Perro Criollo Boliviano (2006)',
@@ -371,7 +275,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 20,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset cuatricromía sobre fondo azul cielo límpido',
                 'paper_type' => 'Papel satinado libre de ácido',
@@ -386,7 +290,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'centenario-fundacion-puerto-bahia-cobija-2006'],
             [
                 'name' => 'Centenario de Puerto Bahía (Cobija - Pando) — Puente de la Amistad Bolivia-Brasil',
@@ -400,7 +304,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 18,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset cuatricromía sobre fotografía de ingeniería vial',
                 'paper_type' => 'Papel tizado postal de seguridad',
@@ -415,7 +319,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'centenario-scouts-de-bolivia-2007'],
             [
                 'name' => 'Centenario del Movimiento Scout Mundial — Asociación de Scouts de Bolivia (1907 - 2007)',
@@ -429,7 +333,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 21,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset cuatricromía sobre insignia de la flor de lis',
                 'paper_type' => 'Papel estucado de seguridad',
@@ -444,7 +348,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'creacion-primera-bandera-boliviana-2006'],
             [
                 'name' => 'Patrimonio Patrio — Creación de la Primera Bandera Boliviana (1825)',
@@ -458,7 +362,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 16,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset cuatricromía sobre fotografía patrimonial',
                 'paper_type' => 'Papel de seguridad filatélico',
@@ -473,7 +377,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'buho-real-andino-bubo-virginianus-2007'],
             [
                 'name' => 'Aves Rapaces de Bolivia — Búho Real Andino (Bubo virginianus)',
@@ -487,7 +391,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 26,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset policromía en alta resolución',
                 'paper_type' => 'Papel satinado libre de ácido',
@@ -502,7 +406,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => '50-anos-abolicion-pongueaje-mita-1995'],
             [
                 'name' => '50 Años de la Abolición del Pongueaje y Mitaje (1945 - 1995) — Sello 2.90 Bs',
@@ -516,7 +420,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'VERY_RARE',
                 'certified' => true,
-                'stock' => 7,
+                'stock' => 0,
                 'perforation' => '12.5 x 12.5 dentado clásico',
                 'printing_technique' => 'Offset policromado por Industrias Offset Color S.R.L.',
                 'paper_type' => 'Papel filatélico sin filigrana 1995',
@@ -531,7 +435,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => '50-anos-abolicion-pongueaje-mitaje-1995-190'],
             [
                 'name' => '50 Años de la Abolición del Pongueaje y Mitaje (1945 - 1995) — Sello 1.90 Bs',
@@ -560,7 +464,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'bodas-de-oro-cefilco-cochabamba-2007'],
             [
                 'name' => 'Díptico Bodas de Oro CEFILCO — Centro Filatélico Cochabamba (1957 - 2007) 6.00 Bs',
@@ -574,7 +478,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'VERY_RARE',
                 'certified' => true,
-                'stock' => 11,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5 continuo',
                 'printing_technique' => 'Offset a todo color con fotografía panorámica de Cochabamba',
                 'paper_type' => 'Papel couché filatélico brillante',
@@ -589,7 +493,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'cefilco-homenaje-cfc-cochabamba-2007'],
             [
                 'name' => 'Díptico Bodas de Oro CEFILCO — Homenaje Centro Filatélico Cochabamba 3.50 Bs',
@@ -618,7 +522,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'camara-nacional-industrias-75-anos-2007'],
             [
                 'name' => '75 Años Cámara Nacional de Industrias — Desarrollo Nacional 12.00 Bs',
@@ -632,7 +536,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'VERY_RARE',
                 'certified' => true,
-                'stock' => 10,
+                'stock' => 0,
                 'perforation' => '14 x 14 peine continuo',
                 'printing_technique' => 'Offset polícromo sobre diseño conceptual metalmecánico y mapa nacional',
                 'paper_type' => 'Papel satinado de seguridad CNI',
@@ -647,7 +551,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'camara-nacional-industrias-75-anos-2007-9bs'],
             [
                 'name' => '75 Años Cámara Nacional de Industrias — Promoviendo la Producción 9.00 Bs',
@@ -676,7 +580,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'navidad-arte-sacro-triptico-2007'],
             [
                 'name' => 'Tríptico Arte Sacro — Adoración de los Pastores (Navidad 2007) 4.00 Bs',
@@ -690,7 +594,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'VERY_RARE',
                 'certified' => true,
-                'stock' => 6,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5 peine',
                 'printing_technique' => 'Offset polícromo de alta resolución sobre arte barroco virreinal',
                 'paper_type' => 'Papel tizado postal de seguridad 102g',
@@ -705,7 +609,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'navidad-arte-sacro-epifania-2007'],
             [
                 'name' => 'Tríptico Arte Sacro — Epifanía (Navidad 2007) 6.50 Bs',
@@ -734,7 +638,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'navidad-arte-sacro-sagrada-familia-2007'],
             [
                 'name' => 'Tríptico Arte Sacro — Sagrada Familia (Navidad 2007) 3.50 Bs',
@@ -763,7 +667,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'conjefamer-xlvii-fuerzas-aereas-2007'],
             [
                 'name' => 'Cooperación Hemisférica — XLVII CONJEFAMER Santa Cruz de la Sierra (2007)',
@@ -777,7 +681,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 17,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset polícromo con orla de banderas americanas',
                 'paper_type' => 'Papel tizado de seguridad',
@@ -792,7 +696,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'colibri-cometa-sappho-sparganurus-potosi-2007'],
             [
                 'name' => 'Fauna Silvestre de Potosí — Cernícalo Americano (Falco sparverius)',
@@ -806,7 +710,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 23,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset cuatricromía de precisión con reflejos metálicos',
                 'paper_type' => 'Papel couché postal 105g',
@@ -821,7 +725,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'trogon-melanurus-ave-pando-2007'],
             [
                 'name' => 'Fauna de la Amazonía — Ave Trogon melanurus (Pando)',
@@ -835,7 +739,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 25,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset a seis tintas con pigmentos resistentes a la luz',
                 'paper_type' => 'Papel couché filatélico 105g',
@@ -850,7 +754,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'ciguenuela-cuellinegra-himantopus-mexicanus-2007'],
             [
                 'name' => 'Aves Acuáticas de los Salares — Cigüeñuela Cuellinegra (Himantopus mexicanus)',
@@ -864,7 +768,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 21,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset cuatricromía sobre foto de campo',
                 'paper_type' => 'Papel filatélico satinado',
@@ -879,7 +783,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'valle-de-zongo-paisajes-la-paz-2007'],
             [
                 'name' => 'Paisajes Naturales de Bolivia — Valle de Zongo (La Paz)',
@@ -893,7 +797,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 24,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset cuatricromía de paisaje',
                 'paper_type' => 'Papel engomado de seguridad',
@@ -908,7 +812,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'campana-de-la-libertad-sucre-2009'],
             [
                 'name' => 'Bicentenario de la Gesta Libertaria — Campana de la Libertad (Sucre 1809 - 2009)',
@@ -922,7 +826,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 20,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset cuatricromía nocturna de alta gama con foco luminoso',
                 'paper_type' => 'Papel engomado de seguridad 105g',
@@ -937,7 +841,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'frutas-mango-boliviano-2012'],
             [
                 'name' => 'Frutas Nativas y Tropicales — Mango Criollo de los Valles Calientes (D.S. 29799)',
@@ -951,7 +855,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'COMMON',
                 'certified' => true,
-                'stock' => 32,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset cuatricromía botánica',
                 'paper_type' => 'Papel satinado libre de ácido',
@@ -966,7 +870,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'frutas-nativas-papaya-tropical-2011'],
             [
                 'name' => 'Frutas Nativas de Bolivia — Papaya Tropical de los Valles (D.S. 29799)',
@@ -980,7 +884,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 22,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset cuatricromía con barniz de brillo',
                 'paper_type' => 'Papel tizado mate de seguridad',
@@ -995,7 +899,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'frutas-platano-boliviano-2012'],
             [
                 'name' => 'Frutas Tropicales de Bolivia — Plátano de los Llanos y Yungas (D.S. 29799)',
@@ -1009,7 +913,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'COMMON',
                 'certified' => true,
-                'stock' => 35,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset policromía con barniz UV protector',
                 'paper_type' => 'Papel engomado de seguridad',
@@ -1024,7 +928,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'frutas-nativas-naranja-boliviana-2012'],
             [
                 'name' => 'Frutas Nativas y Cítricos de los Yungas — Naranja Boliviana (D.S. 29799)',
@@ -1038,7 +942,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 30,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset cuatricromía con barniz UV de protección',
                 'paper_type' => 'Papel satinado libre de ácido 105g',
@@ -1053,7 +957,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'campana-filatelica-feliz-sello-postal-2001'],
             [
                 'name' => 'Campaña Filatélica Juvenil — Estoy feliz porque soy un sello postal (2001)',
@@ -1067,7 +971,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 16,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset monocromo en verde selva esmeralda',
                 'paper_type' => 'Papel de seguridad filatélico',
@@ -1082,7 +986,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'energia-solar-energia-sostenible-2012'],
             [
                 'name' => 'Energías Renovables — Generación de Energía Solar Fotovoltaica (2012)',
@@ -1096,7 +1000,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 25,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset cuatricromía sobre paisaje del nevado Illimani y comunidades rurales',
                 'paper_type' => 'Papel de seguridad ecológico',
@@ -1111,7 +1015,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'revolucion-educativa-escuela-warisata-2012'],
             [
                 'name' => 'Revolución Educativa — Escuela Indígena de Warisata y Ley Avelino Siñani (2012)',
@@ -1125,7 +1029,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 25,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset en viraje sepia histórico y detalles tricolor por Artes Gráficas Sagitario S.R.L.',
                 'paper_type' => 'Papel mate de seguridad postal',
@@ -1140,7 +1044,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'navidad-cefilco-arbol-infantil-2012'],
             [
                 'name' => 'Navidad 2012 CEFILCO — Concurso Infantil de Arte Postal (Árbol y Pesebre)',
@@ -1154,7 +1058,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 28,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset a todo color sobre acuarela infantil',
                 'paper_type' => 'Papel engomado de seguridad',
@@ -1169,7 +1073,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'mmaya-octubre-agua-y-vida-2012'],
             [
                 'name' => 'Preservación Ambiental — Octubre, Mes del Agua y de la Vida (MMAyA)',
@@ -1183,7 +1087,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 22,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset cuatricromía brillante',
                 'paper_type' => 'Papel ecológico de seguridad',
@@ -1198,7 +1102,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'carnaval-de-oruro-morenada-zona-norte-2006'],
             [
                 'name' => 'Obra Maestra Oral e Intangible — Carnaval de Oruro (Morenada Zona Norte)',
@@ -1212,7 +1116,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 15,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset de alto contraste cromático sobre fotografía folclórica',
                 'paper_type' => 'Papel couché brillante 110g',
@@ -1227,7 +1131,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'att-soberania-postal-telecomunicaciones-2015'],
             [
                 'name' => 'Soberanía Postal y Telecomunicaciones ATT — Patrimonio de Bolivia (D.S. 29799)',
@@ -1241,7 +1145,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 25,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset litográfico cuatricromía',
                 'paper_type' => 'Papel engomado fosforescente de seguridad',
@@ -1256,7 +1160,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'sesquicentenario-mariscal-andres-santa-cruz-2015'],
             [
                 'name' => 'Sesquicentenario de la Muerte del Mcal. Andrés de Santa Cruz y Calahumana (1792 - 1865)',
@@ -1270,7 +1174,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 19,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset de gala sobre fondo carmesí con filigranas doradas',
                 'paper_type' => 'Papel couché de seguridad filatélico',
@@ -1285,7 +1189,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'manantiales-del-silala-potosi-18bs-2016'],
             [
                 'name' => 'Soberanía Hídrica — Manantiales del Silala (Potosí) 18.00 Bs',
@@ -1299,7 +1203,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 18,
+                'stock' => 0,
                 'perforation' => '14 x 14 micro-perforado',
                 'printing_technique' => 'Offset policromía en alta fidelidad fotográfica',
                 'paper_type' => 'Papel de seguridad con fibras ópticas invisibles',
@@ -1314,7 +1218,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'manantiales-del-silala-potosi-14bs-2016'],
             [
                 'name' => 'Manantiales del Silala — Soberanía Hídrica Potosí 14.00 Bs',
@@ -1328,7 +1232,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 20,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset cuatricromía de paisaje',
                 'paper_type' => 'Papel de seguridad con microtexto',
@@ -1343,7 +1247,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => '50-anos-fe-y-alegria-bolivia-2016'],
             [
                 'name' => 'Emisión Filatélica de Beneficencia — 50 Años Fe y Alegría Bolivia (1966 - 2016)',
@@ -1357,7 +1261,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'VERY_RARE',
                 'certified' => true,
-                'stock' => 9,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset de alta gama con barniz sectorizado',
                 'paper_type' => 'Papel especial filatélico de alta seguridad con fibrillas fluorescentes',
@@ -1372,7 +1276,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'palkachupa-phibalura-boliviana-2017'],
             [
                 'name' => 'Joya Alada Endémica — Palkachupa en Peligro Crítico (Phibalura boliviana)',
@@ -1386,7 +1290,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 30,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset polícromo sobre ilustración zoológica de precisión',
                 'paper_type' => 'Papel couché postal de seguridad',
@@ -1401,7 +1305,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'paujil-copete-de-piedra-pauxi-unicornis-2017'],
             [
                 'name' => 'Fauna en Peligro de Extinción — Paujil Copete de Piedra (Pauxi unicornis)',
@@ -1415,7 +1319,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 18,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Ilustración científica ornitológica en cuatricromía offset',
                 'paper_type' => 'Papel de seguridad con filigrana',
@@ -1430,7 +1334,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'personalidades-filatelia-barrientos-peredo-2017'],
             [
                 'name' => 'Personalidades de la Filatelia Boliviana — Don José Barrientos y Martha V. de Peredo',
@@ -1444,7 +1348,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 14,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset polícromo con collage de sellos clásicos y lupa de peritaje',
                 'paper_type' => 'Papel de seguridad con filigrana institucional',
@@ -1459,7 +1363,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'bicentenario-batalla-de-la-tablada-2017'],
             [
                 'name' => 'Bicentenario de la Batalla de La Tablada (1817 - 2017) — Tarija',
@@ -1473,7 +1377,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 14,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Litografía offset en cuatricromía sobre óleo histórico del Cnel. Eustaquio Moto Méndez',
                 'paper_type' => 'Papel tizado de 110g de seguridad',
@@ -1488,7 +1392,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => '150-anos-primer-sello-postal-boliviano-2017'],
             [
                 'name' => 'Sesquicentenario del Primer Sello Postal Boliviano (1867 - 2017) — Cóndor 5 Centavos',
@@ -1502,7 +1406,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'MUSEUM_PIECE',
                 'certified' => true,
-                'stock' => 8,
+                'stock' => 0,
                 'perforation' => '13.5 x 13.5',
                 'printing_technique' => 'Offset de alta definición con reproducción facsimilar del grabado original de 1867',
                 'paper_type' => 'Papel pergamino filatélico con fibrillas de seguridad',
@@ -1517,7 +1421,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'goyi-suplemento-estudiantil-50-anos-2017'],
             [
                 'name' => 'Prensa y Educación Juvenil — 50 Años de GOYI Suplemento Estudiantil (1967 - 2017)',
@@ -1531,7 +1435,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 22,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset cuatricromía a colores vivos',
                 'paper_type' => 'Papel couché de seguridad',
@@ -1546,7 +1450,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'presidente-gonzalo-sanchez-de-lozada-1994'],
             [
                 'name' => 'Mandatarios Constitucionales — Lic. Gonzalo Sánchez de Lozada (1994)',
@@ -1560,7 +1464,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 14,
+                'stock' => 0,
                 'perforation' => '12.5 x 12.5',
                 'printing_technique' => 'Offset litográfico con escudo nacional en dorado por La Papelera S.A.',
                 'paper_type' => 'Papel satinado de seguridad nacional 1994',
@@ -1575,7 +1479,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'centenario-escuela-maestros-simon-bolivar-2017'],
             [
                 'name' => 'Centenario de la Escuela Superior de Formación de Maestros Simón Bolívar (1917 - 2017)',
@@ -1589,7 +1493,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'SCARCE',
                 'certified' => true,
-                'stock' => 20,
+                'stock' => 0,
                 'perforation' => '14 x 14',
                 'printing_technique' => 'Offset con grabado del blasón ',
                 'paper_type' => 'Papel estucado 105g',
@@ -1604,7 +1508,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Product::updateOrCreate(
+        Product::firstOrCreate(
             ['slug' => 'navidad-pluricultural-ekeko-potosi-2022'],
             [
                 'name' => 'Tradición e Identidad — Navidad Pluricultural 2022 (Illa del Ekeko y Cerro Rico)',
@@ -1618,7 +1522,7 @@ class DatabaseSeeder extends Seeder
                 'condition' => 'MINT_NH',
                 'rarity' => 'RARE',
                 'certified' => true,
-                'stock' => 15,
+                'stock' => 0,
                 'perforation' => '14 x 14 micro-dentado',
                 'printing_technique' => 'Impresión offset digital de alta definición',
                 'paper_type' => 'Papel tizado de seguridad con fibras de seguridad 2022',
@@ -1633,228 +1537,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 6. Órdenes Realistas con Envíos y Estados Variados sobre Sellos Reales de Bolivia
-        $prodReal1 = Product::where('slug', 'navidad-arte-sacro-triptico-2007')->first() ?? Product::first();
-        $prodReal2 = Product::where('slug', 'att-soberania-postal-telecomunicaciones-2015')->first() ?? Product::first();
-        $prodReal3 = Product::where('slug', 'frutas-nativas-naranja-boliviana-2012')->first() ?? Product::first();
-        $prodReal4 = Product::where('slug', 'centenario-fuerza-aerea-boliviana-2023')->first() ?? Product::first();
-        $prodReal5 = Product::where('slug', 'bicentenario-batalla-de-la-tablada-2017')->first() ?? Product::first();
-
-        $ordersData = [
-            [
-                'order_number' => 'ORD-2026-0101',
-                'customer_name' => 'Lic. Carlos Mesa Gisbert',
-                'customer_email' => 'cmesa@historiabolivia.org',
-                'customer_phone' => '+591 72011223',
-                'shipping_address' => 'Zona Sopocachi, Calle Guachalla #450',
-                'city' => 'La Paz',
-                'department' => 'La Paz',
-                'total_amount' => 185.00,
-                'status' => 'DELIVERED',
-                'payment_method' => 'QR_TRANSFER',
-                'tracking_code' => 'BO-CORREOS-LPZ-001',
-                'product' => $prodReal1,
-            ],
-            [
-                'order_number' => 'ORD-2026-0102',
-                'customer_name' => 'Ing. Roberto Justiniano',
-                'customer_email' => 'roberto.justiniano@empresa.bo',
-                'customer_phone' => '+591 77344556',
-                'shipping_address' => 'Equipetrol Norte, Calle 7 Este #89',
-                'city' => 'Santa Cruz de la Sierra',
-                'department' => 'Santa Cruz',
-                'total_amount' => 90.00,
-                'status' => 'SHIPPED',
-                'payment_method' => 'CREDIT_CARD',
-                'tracking_code' => 'BO-CORREOS-SCZ-002',
-                'product' => $prodReal2,
-            ],
-            [
-                'order_number' => 'ORD-2026-0103',
-                'customer_name' => 'Dra. Elena Torrico',
-                'customer_email' => 'elena.torrico@medicina.bo',
-                'customer_phone' => '+591 70788990',
-                'shipping_address' => 'Av. Ballivián #670, El Prado',
-                'city' => 'Cochabamba',
-                'department' => 'Cochabamba',
-                'total_amount' => 76.00,
-                'status' => 'PACKED_GLASSINE',
-                'payment_method' => 'QR_TRANSFER',
-                'tracking_code' => 'BO-CORREOS-CBB-003',
-                'product' => $prodReal3,
-            ],
-            [
-                'order_number' => 'ORD-2026-0104',
-                'customer_name' => 'Dr. Fernando Arze',
-                'customer_email' => 'coleccionista@filatelia.bo',
-                'customer_phone' => '+591 71234567',
-                'shipping_address' => 'Calle Calvo #112, Centro Histórico',
-                'city' => 'Sucre',
-                'department' => 'Chuquisaca',
-                'total_amount' => 120.00,
-                'status' => 'VAULT_PREPARATION',
-                'payment_method' => 'QR_TRANSFER',
-                'tracking_code' => 'BO-CORREOS-CHQ-004',
-                'product' => $prodReal4,
-            ],
-            [
-                'order_number' => 'ORD-2026-0105',
-                'customer_name' => 'Arq. Mauricio Vaca',
-                'customer_email' => 'mvaca@tarijapatrimonio.org',
-                'customer_phone' => '+591 76199887',
-                'shipping_address' => 'Barrio San Roque, Calle Corrado #210',
-                'city' => 'Tarija',
-                'department' => 'Tarija',
-                'total_amount' => 140.00,
-                'status' => 'PENDING',
-                'payment_method' => 'VAULT_PICKUP',
-                'tracking_code' => null,
-                'product' => $prodReal5,
-            ],
-            [
-                'order_number' => 'ORD-2026-0106',
-                'customer_name' => 'Lic. Patricia Beltrán',
-                'customer_email' => 'pbeltran@cultura.gob.bo',
-                'customer_phone' => '+591 75200334',
-                'shipping_address' => 'Calle 6 de Octubre #1450',
-                'city' => 'Oruro',
-                'department' => 'Oruro',
-                'total_amount' => 76.00,
-                'status' => 'SHIPPED',
-                'payment_method' => 'QR_TRANSFER',
-                'tracking_code' => 'BO-CORREOS-ORU-005',
-                'product' => $prodReal3,
-            ],
-        ];
-
-        foreach ($ordersData as $oData) {
-            $order = Order::firstOrCreate(
-                ['order_number' => $oData['order_number']],
-                [
-                    'user_id' => $cliente->id,
-                    'customer_name' => $oData['customer_name'],
-                    'customer_email' => $oData['customer_email'],
-                    'customer_phone' => $oData['customer_phone'],
-                    'shipping_address' => $oData['shipping_address'],
-                    'city' => $oData['city'],
-                    'department' => $oData['department'],
-                    'total_amount' => $oData['total_amount'],
-                    'status' => $oData['status'],
-                    'payment_method' => $oData['payment_method'],
-                    'tracking_code' => $oData['tracking_code'],
-                    'special_notes' => 'Manipular exclusivamente con guantes de algodón. Bóveda Central Correos.',
-                ]
-            );
-
-            OrderItem::firstOrCreate(
-                ['order_id' => $order->id, 'product_id' => $oData['product']->id],
-                [
-                    'product_name' => $oData['product']->name,
-                    'unit_price' => $oData['product']->price,
-                    'quantity' => 1,
-                    'subtotal' => $oData['product']->price,
-                ]
-            );
-
-            // Si tiene tracking code, registrar en tabla de envíos
-            if ($oData['tracking_code']) {
-                Shipment::firstOrCreate(
-                    ['tracking_code' => $oData['tracking_code']],
-                    [
-                        'order_id' => $order->id,
-                        'carrier' => 'Correos de Bolivia - Valija Diplomática / Postal',
-                        'status' => $oData['status'] === 'DELIVERED' ? 'DELIVERED' : ($oData['status'] === 'SHIPPED' ? 'IN_TRANSIT' : 'DISPATCHED'),
-                        'origin_department' => 'La Paz',
-                        'destination_department' => $oData['department'],
-                        'shipped_at' => now()->subDays(rand(1, 4)),
-                        'delivered_at' => $oData['status'] === 'DELIVERED' ? now()->subHours(6) : null,
-                        'notes' => 'Custodia postal en valija sellada con precinto numismático.',
-                    ]
-                );
-            }
-        }
-
-        // 7. Casos y Tickets de Soporte
-        SupportTicket::firstOrCreate(
-            ['ticket_code' => 'TCK-2026-001'],
-            [
-                'customer_name' => 'Lic. Carlos Mesa Gisbert',
-                'customer_email' => 'cmesa@historiabolivia.org',
-                'customer_phone' => '+591 72011223',
-                'order_id' => 1,
-                'subject' => 'Consulta de Autenticidad y Peritaje Tríptico Arte Sacro',
-                'message' => 'Solicito copia digital del certificado de la Dirección Filatélica para mi archivo histórico.',
-                'priority' => 'HIGH',
-                'status' => 'IN_PROGRESS',
-                'assigned_user_id' => $almacen->id,
-                'resolution_notes' => 'Se envió PDF con sello notarial y resolución de peritaje oficial.',
-            ]
-        );
-
-        SupportTicket::firstOrCreate(
-            ['ticket_code' => 'TCK-2026-002'],
-            [
-                'customer_name' => 'Ing. Roberto Justiniano',
-                'customer_email' => 'roberto.justiniano@empresa.bo',
-                'customer_phone' => '+591 77344556',
-                'order_id' => 2,
-                'subject' => 'Confirmación de Horario de Entrega Postal en Santa Cruz',
-                'message' => '¿Podrían entregar el paquete en oficina central de Correos Santa Cruz para retiro personal?',
-                'priority' => 'NORMAL',
-                'status' => 'PENDING',
-                'assigned_user_id' => $almacen->id,
-                'resolution_notes' => null,
-            ]
-        );
-
-        SupportTicket::firstOrCreate(
-            ['ticket_code' => 'TCK-2026-003'],
-            [
-                'customer_name' => 'Dra. Elena Torrico',
-                'customer_email' => 'elena.torrico@medicina.bo',
-                'customer_phone' => '+591 70788990',
-                'order_id' => 3,
-                'subject' => 'Embalaje Especial en Papel Pergamino / Glassine',
-                'message' => 'Deseo verificar que la serie filatélica venga con doble protección contra la humedad.',
-                'priority' => 'NORMAL',
-                'status' => 'RESOLVED',
-                'assigned_user_id' => $almacen->id,
-                'resolution_notes' => 'Confirmado con Jefe de Bóveda: embalaje con doble sobre glassine libre de ácido.',
-            ]
-        );
-
-        // 8. Movimientos de Inventario
-        InventoryMovement::firstOrCreate(
-            ['reason' => 'Ingreso inicial por decreto supremo de emisión'],
-            [
-                'product_id' => $prodReal1->id,
-                'user_id' => $almacen->id,
-                'type' => 'IN',
-                'quantity' => 10,
-                'previous_stock' => 0,
-                'new_stock' => 10,
-                'department' => 'La Paz',
-                'notes' => 'Custodia en Bóveda A1 - Caja de Seguridad Oficial.',
-            ]
-        );
-
-        InventoryMovement::firstOrCreate(
-            ['reason' => 'Despacho por orden ORD-2026-0101'],
-            [
-                'product_id' => $prodReal1->id,
-                'user_id' => $almacen->id,
-                'type' => 'OUT',
-                'quantity' => 1,
-                'previous_stock' => 10,
-                'new_stock' => 9,
-                'department' => 'La Paz',
-                'notes' => 'Salida para embalaje en valija asegurada.',
-            ]
-        );
-
         $this->call(CatalogPriceSeeder::class);
-
-        // 9. Simulación de Guías Postales y Envíos para jhefersonveizagamujica@gmail.com
-        $this->call(SimulationUserTrackingSeeder::class);
     }
 }

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test tests/admin-api.test.cjs"
+    "test": "node --test tests/*.test.cjs"
   },
   "dependencies": {
     "@types/qrcode": "^1.5.6",

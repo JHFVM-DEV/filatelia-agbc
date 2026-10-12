@@ -116,13 +116,6 @@ export default function AdminLayout({
       userRoles.push(currentUser.primary_role);
     }
 
-    // Cuentas institucionales oficiales
-    if (currentUser.email === 'admin@filatelia.bo') {
-      userRoles.push('SUPER_ADMIN');
-    } else if (currentUser.email === 'almacen@filatelia.bo') {
-      userRoles.push('ADMIN_PRODUCTOS_ALMACEN');
-    }
-
     return userRoles.some((roleName: string) =>
       [
         'SUPER_ADMIN',
@@ -141,7 +134,6 @@ export default function AdminLayout({
       roles = Object.values(currentUser.roles).map((r: any) => (typeof r === 'string' ? r : r?.name || ''));
     }
     if (currentUser.primary_role) roles.push(currentUser.primary_role);
-    if (currentUser.email === 'admin@filatelia.bo') roles.push('SUPER_ADMIN');
 
     return roles.includes('SUPER_ADMIN');
   };
@@ -150,7 +142,6 @@ export default function AdminLayout({
     if (!currentUser) return 'Funcionario';
     if (isSuperAdmin()) return 'Super Administrador';
     if (
-      currentUser.email === 'almacen@filatelia.bo' ||
       currentUser.primary_role === 'ADMIN_PRODUCTOS_ALMACEN' ||
       (Array.isArray(currentUser.roles) && currentUser.roles.includes('ADMIN_PRODUCTOS_ALMACEN'))
     ) {

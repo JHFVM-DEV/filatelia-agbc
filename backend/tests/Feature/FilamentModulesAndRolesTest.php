@@ -18,7 +18,9 @@ class FilamentModulesAndRolesTest extends TestCase
 
     private function getUserWithRole(string $roleName): User
     {
-        return User::role($roleName)->first();
+        $user = User::factory()->create();
+        $user->assignRole($roleName);
+        return $user;
     }
 
     public function test_super_admin_can_access_all_15_modules(): void

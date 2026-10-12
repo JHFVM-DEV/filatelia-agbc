@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\AuditLog;
 use App\Models\PriceRevaluation;
 use App\Services\AuditService;
+use App\Services\ProductImageStorage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -61,7 +62,7 @@ class AdminController extends Controller
     protected function authorizeSuperAdmin(Request $request): ?JsonResponse
     {
         $user = $request->user();
-        if (!$user || (!$user->hasRole('SUPER_ADMIN') && $user->email !== 'admin@filatelia.bo')) {
+        if (!$user || !$user->hasRole('SUPER_ADMIN')) {
             return response()->json([
                 'success' => false,
                 'message' => 'Acceso denegado: Este módulo requiere privilegios exclusivos de SUPER_ADMIN (Dirección General).',
@@ -84,7 +85,7 @@ class AdminController extends Controller
         }
 
         // Super Admin always has full bypass immunity
-        if ($user->hasRole('SUPER_ADMIN') || $user->email === 'admin@filatelia.bo') {
+        if ($user->hasRole('SUPER_ADMIN')) {
             return null;
         }
 
@@ -393,6 +394,9 @@ class AdminController extends Controller
             'face_value' => 'nullable|string',
             'perforation' => 'nullable|string',
             'front_image' => 'nullable|string',
+            'back_image' => 'nullable|string',
+            'front_image_file' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'back_image_file' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'description' => 'nullable|string',
         ]);
 
@@ -400,7 +404,15 @@ class AdminController extends Controller
         $validated['country'] = $validated['country'] ?? 'Bolivia';
         $validated['is_active'] = true;
 
-        $product = Product::create($validated);
+        $images = app(ProductImageStorage::class);
+        $storedPaths = [];
+        try {
+            $validated = $images->store($request, $validated, $storedPaths);
+            $product = DB::transaction(fn () => Product::create($validated));
+        } catch (\Throwable $exception) {
+            $images->cleanup($storedPaths);
+            throw $exception;
+        }
 
         return response()->json([
             'success' => true,
@@ -427,6 +439,9 @@ class AdminController extends Controller
             'certified' => 'sometimes|boolean',
             'perforation' => 'nullable|string',
             'front_image' => 'nullable|string',
+            'back_image' => 'nullable|string',
+            'front_image_file' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'back_image_file' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'description' => 'nullable|string',
             'is_active' => 'sometimes|boolean',
             'vault_room' => 'nullable|string',
@@ -437,7 +452,15 @@ class AdminController extends Controller
             'vault_notes' => 'nullable|string',
         ]);
 
-        $product->update($validated);
+        $images = app(ProductImageStorage::class);
+        $storedPaths = [];
+        try {
+            $validated = $images->store($request, $validated, $storedPaths);
+            DB::transaction(fn () => $product->update($validated));
+        } catch (\Throwable $exception) {
+            $images->cleanup($storedPaths);
+            throw $exception;
+        }
 
         return response()->json([
             'success' => true,
@@ -454,6 +477,9 @@ class AdminController extends Controller
         if ($deny = $this->authorizeModule($request, 'Productos')) return $deny;
 
         $product = Product::findOrFail($id);
+        if ($product->orderItems()->exists() || InventoryMovement::where('product_id', $id)->exists()) {
+            return response()->json(['success' => false, 'message' => 'La pieza tiene pedidos o movimientos de inventario. Desactívala para conservar su historial.'], 422);
+        }
         $product->delete();
 
         return response()->json([
@@ -597,7 +623,7 @@ class AdminController extends Controller
         $this->ensurePermissionsAndRoles();
 
         $user = $request->user();
-        if ($user->hasRole('SUPER_ADMIN') || $user->email === 'admin@filatelia.bo') {
+        if ($user->hasRole('SUPER_ADMIN')) {
             $permissions = self::MODULES;
         } else {
             $permissions = $user->getAllPermissions()->pluck('name')->toArray();
@@ -606,7 +632,7 @@ class AdminController extends Controller
         return response()->json([
             'success' => true,
             'permissions' => $permissions,
-            'is_super_admin' => $user->hasRole('SUPER_ADMIN') || $user->email === 'admin@filatelia.bo',
+            'is_super_admin' => $user->hasRole('SUPER_ADMIN'),
         ]);
     }
 
@@ -828,9 +854,11 @@ class AdminController extends Controller
         $totalRevenue = (float) Order::whereNotIn('status', ['CANCELLED'])->sum('total_amount');
         $totalOrders = Order::count();
         $deliveredOrders = Order::where('status', 'DELIVERED')->count();
-        $avgTicket = $totalOrders > 0 ? round($totalRevenue / $totalOrders, 2) : 0;
+        $revenueOrders = Order::whereNotIn('status', ['CANCELLED'])->count();
+        $avgTicket = $revenueOrders > 0 ? round($totalRevenue / $revenueOrders, 2) : 0;
         $vaultValuation = (float) (Product::selectRaw('SUM(price * stock) as total')->value('total') ?? 0);
         $departmentBreakdown = Order::selectRaw('department, COUNT(*) as orders_count, SUM(total_amount) as total_dept')
+            ->whereNotIn('status', ['CANCELLED'])
             ->groupBy('department')
             ->orderBy('total_dept', 'desc')
             ->get();

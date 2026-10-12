@@ -14,6 +14,10 @@ Plataforma oficial de catalogación, peritaje numismático/filatélico, venta y 
 
 ## 🚀 Guía de Despliegue en Servidor de Producción
 
+**Si el sistema ya está instalado**, utiliza la [guía de actualización](docs/actualizar-produccion.md).
+Los pasos de inicialización que incluyen crear la base, generar `APP_KEY` y ejecutar
+el seeder completo no son pasos de actualización de una base en uso.
+
 ### 1. Requisitos Previos en el Servidor (Ubuntu / Debian / RHEL)
 * **PHP:** >= 8.2 con extensiones `php-pgsql`, `php-mbstring`, `php-xml`, `php-curl`, `php-zip`, `php-gd`.
 * **Composer:** >= 2.x

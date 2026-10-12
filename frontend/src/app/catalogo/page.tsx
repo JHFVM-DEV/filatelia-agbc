@@ -19,6 +19,8 @@ const StampInspectorModal = dynamic(
 function CatalogContent() {
   const searchParams = useSearchParams();
   const urlCategory = searchParams.get('categoria') || undefined;
+  const linkedPiece = searchParams.get('pieza');
+  const [dismissedPiece, setDismissedPiece] = useState<string | null>(null);
 
   const [stamps, setStamps] = useState<StampItem[]>(INITIAL_STAMPS);
   const [inspectingStamp, setInspectingStamp] = useState<StampItem | null>(null);
@@ -186,8 +188,8 @@ function CatalogContent() {
 
       {/* Stamp Inspector Modal with 10x Magnifier */}
       <StampInspectorModal
-        stamp={inspectingStamp}
-        onClose={() => setInspectingStamp(null)}
+        stamp={inspectingStamp || (linkedPiece !== dismissedPiece ? stamps.find((stamp) => stamp.slug === linkedPiece) ?? null : null)}
+        onClose={() => { setInspectingStamp(null); setDismissedPiece(linkedPiece); }}
         onAddToCart={addToCart}
       />
     </div>

@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+const backendOrigin = (process.env.BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000').replace(/\/+$/, '');
+
 const nextConfig: NextConfig = {
   compress: true,
   // Permite conexiones HMR (Fast Refresh) y recursos dev desde túneles ngrok y dominios de desarrollo
@@ -51,11 +53,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://127.0.0.1:8000/api/:path*",
+        destination: `${backendOrigin}/api/:path*`,
       },
       {
         source: "/storage/:path*",
-        destination: "http://127.0.0.1:8000/storage/:path*",
+        destination: `${backendOrigin}/storage/:path*`,
       },
     ];
   },

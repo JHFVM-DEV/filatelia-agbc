@@ -1,5 +1,7 @@
 'use client';
-import { API_BASE_URL } from '@/config/api';
+import { ProductImageFields } from '@/components/ProductImageFields';
+import { productFormData, type ProductImages } from '@/lib/product-form';
+import { API_BASE_URL, normalizeImageUrl } from '@/config/api';
 import { useAdminList } from '@/hooks/useAdminList';
 import { readAdminResponse } from '@/lib/admin-api';
 
@@ -32,6 +34,9 @@ export default function AdminProductsPage() {
   const [updatingStockId, setUpdatingStockId] = useState<number | null>(null);
   const stockUpdatePending = useRef(false);
 
+  const [createImages, setCreateImages] = useState<ProductImages>({ front: null, back: null });
+  const [editImages, setEditImages] = useState<ProductImages>({ front: null, back: null });
+
   // New product form state
   const [formData, setFormData] = useState({
     name: '',
@@ -39,13 +44,13 @@ export default function AdminProductsPage() {
     category_id: '',
     price: '',
     stock: '',
-    year: '2025',
+    year: String(new Date().getFullYear()),
     condition: 'MINT_NH',
     rarity: 'RARE',
     certified: true,
-    face_value: '10.00 BOB',
-    perforation: '13.5 x 13.5',
-    front_image: '/images/stamps/sello-150-anos-primer-sello-postal-boliviano-2017.png',
+    face_value: '',
+    perforation: '',
+    front_image: '',
     description: '',
   });
 
@@ -94,13 +99,12 @@ export default function AdminProductsPage() {
       setError(null);
       const token = typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
       const res = await fetch(`${API_BASE_URL}/api/admin/products/${editingProduct.id}`, {
-        method: 'PUT',
+        method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           Accept: 'application/json',
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
-        body: JSON.stringify({
+        body: productFormData({
           name: editingProduct.name,
           price: editingProduct.price,
           stock: editingProduct.stock,
@@ -108,7 +112,8 @@ export default function AdminProductsPage() {
           rarity: editingProduct.rarity,
           certified: editingProduct.certified,
           description: editingProduct.description,
-        }),
+          is_active: editingProduct.is_active,
+        }, editImages, true),
       });
 
       if (!res.ok) await readAdminResponse(res);
@@ -136,16 +141,15 @@ export default function AdminProductsPage() {
       const res = await fetch(`${API_BASE_URL}/api/admin/products`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           Accept: 'application/json',
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
-        body: JSON.stringify({
+        body: productFormData({
           ...formData,
-          price: parseFloat(formData.price) || 0,
-          stock: parseInt(formData.stock) || 0,
-          year: parseInt(formData.year) || 2025,
-        }),
+          price: Number(formData.price),
+          stock: Number(formData.stock),
+          year: Number(formData.year),
+        }, createImages),
       });
 
       if (!res.ok) await readAdminResponse(res);
@@ -153,6 +157,7 @@ export default function AdminProductsPage() {
         const json = await res.json();
         setProducts((prev) => [json.product, ...prev]);
         setIsCreateModalOpen(false);
+        setCreateImages({ front: null, back: null });
         await fetchProducts();
         setFormData({
           name: '',
@@ -160,13 +165,13 @@ export default function AdminProductsPage() {
           category_id: '',
           price: '',
           stock: '',
-          year: '2025',
+          year: String(new Date().getFullYear()),
           condition: 'MINT_NH',
           rarity: 'RARE',
           certified: true,
-          face_value: '10.00 BOB',
-          perforation: '13.5 x 13.5',
-          front_image: '/images/stamps/sello-150-anos-primer-sello-postal-boliviano-2017.png',
+          face_value: '',
+          perforation: '',
+          front_image: '',
           description: '',
         });
       }
@@ -245,7 +250,7 @@ export default function AdminProductsPage() {
           </Link>
 
           <button
-            onClick={() => setIsCreateModalOpen(true)}
+            onClick={() => { setCreateImages({ front: null, back: null }); setError(null); setIsCreateModalOpen(true); }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
           >
             <Plus className="w-4 h-4" />
@@ -333,7 +338,7 @@ export default function AdminProductsPage() {
                       <div className="flex items-center gap-3">
                         <div className="w-11 h-11 rounded-lg bg-slate-900 border border-white/10 overflow-hidden relative shrink-0">
                           <Image
-                            src={product.front_image || '/images/stamps/sello-150-anos-primer-sello-postal-boliviano-2017.png'}
+                            src={normalizeImageUrl(product.front_image || '/images/FILATELIA-1.png')}
                             alt={product.name}
                             fill
                             sizes="44px"
@@ -411,7 +416,7 @@ export default function AdminProductsPage() {
                           <QrCode className="w-4 h-4" />
                         </Link>
                         <button
-                          onClick={() => setEditingProduct(product)}
+                          onClick={() => { setEditImages({ front: null, back: null }); setError(null); setEditingProduct(product); }}
                           className="p-1.5 rounded-lg bg-[#1B4785] hover:bg-[#102542] text-slate-300 hover:text-white border border-slate-700 cursor-pointer"
                           title="Editar parámetros del sello"
                         >
@@ -432,7 +437,7 @@ export default function AdminProductsPage() {
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           <form
             onSubmit={handleSaveEdit}
-            className="bg-[#102542] border border-white/10 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 text-xs"
+            className="bg-[#102542] border border-white/10 rounded-3xl max-w-lg max-h-[calc(100dvh-2rem)] overflow-y-auto w-full p-6 shadow-2xl space-y-4 text-xs"
           >
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="text-base font-bold text-white font-serif">
@@ -500,7 +505,7 @@ export default function AdminProductsPage() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[11px] font-semibold text-slate-300 mb-1">
-                    Condición Numismática
+                    Estado de conservación
                   </label>
                   <select
                     value={editingProduct.condition}
@@ -510,7 +515,7 @@ export default function AdminProductsPage() {
                     className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white"
                   >
                     <option value="MINT_NH">MINT NH (Goma Intacta)</option>
-                    <option value="MINT_H">MINT H (Con Charnela)</option>
+                    <option value="MINT_LH">MINT H (Con Charnela)</option>
                     <option value="USED">Usado / Matasellado</option>
                     <option value="FDC">Sobre Primer Día (FDC)</option>
                   </select>
@@ -537,6 +542,8 @@ export default function AdminProductsPage() {
               </div>
             </div>
 
+            <ProductImageFields images={editImages} onChange={setEditImages} frontImage={editingProduct.front_image} backImage={editingProduct.back_image} disabled={isSubmitting} />
+            <label className="flex items-center gap-2 text-slate-300"><input type="checkbox" checked={editingProduct.is_active !== false} onChange={(event) => setEditingProduct({ ...editingProduct, is_active: event.target.checked })} />Publicar en el catálogo</label>
             <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-800">
               <button
                 type="button"
@@ -562,7 +569,7 @@ export default function AdminProductsPage() {
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           <form
             onSubmit={handleCreateProduct}
-            className="bg-[#102542] border border-white/10 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 text-xs"
+            className="bg-[#102542] border border-white/10 rounded-3xl max-w-lg max-h-[calc(100dvh-2rem)] overflow-y-auto w-full p-6 shadow-2xl space-y-4 text-xs"
           >
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="text-base font-bold text-white font-serif">
@@ -610,11 +617,11 @@ export default function AdminProductsPage() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[11px] font-semibold text-slate-300 mb-1">
-                    Código de Catálogo (Scott/Yvert)
+                    Código de catálogo oficial
                   </label>
                   <input
                     type="text"
-                    placeholder="Ej: SCOTT-BO-2026-X1"
+                    placeholder="Ej: BO.AGBC-49"
                     value={formData.catalog_code}
                     onChange={(e) => setFormData({ ...formData, catalog_code: e.target.value })}
                     className="w-full px-3 py-2 bg-[#1B4785] border border-slate-700 rounded-xl text-white font-mono"
@@ -700,6 +707,7 @@ export default function AdminProductsPage() {
               </div>
             </div>
 
+            <ProductImageFields images={createImages} onChange={setCreateImages} disabled={isSubmitting} />
             <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-800">
               <button
                 type="button"

@@ -25,7 +25,7 @@ export const getApiUrl = (endpoint: string): string => {
  * que se carguen correctamente a través de ngrok, HTTPS o dispositivos móviles sin errores de Mixed Content.
  */
 export const normalizeImageUrl = (url?: string | null): string => {
-  if (!url) return '/images/stamps/sello-150-anos-primer-sello-postal-boliviano-2017.png';
+  if (!url) return '/images/FILATELIA-1.png';
   // Si apunta a localhost o 127.0.0.1 con o sin puerto, convertir a ruta relativa
   return url.replace(/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?/, '');
 };

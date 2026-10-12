@@ -24,8 +24,11 @@ También se puede ejecutar únicamente `CatalogPriceSeeder`:
 php artisan db:seed --class=CatalogPriceSeeder --force
 ```
 
-No ejecutar el seeder completo para actualizar precios en una base en uso:
-incluye usuarios, inventarios y pedidos de demostración.
+Para actualizar únicamente precios en una base en uso, preferir este seeder
+específico. El `DatabaseSeeder` conserva el catálogo original y la configuración
+de roles y permisos, junto con las tres cuentas iniciales autorizadas. No crea
+pedidos, envíos ni movimientos de demostración. Las piezas nuevas empiezan sin stock y los registros existentes
+conservan sus existencias, imágenes y estado de publicación.
 
 ## Correspondencias pendientes
 

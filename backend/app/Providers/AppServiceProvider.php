@@ -22,6 +22,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $invalidateProduct = function (\App\Models\Product $product): void {
+            \Illuminate\Support\Facades\Cache::forget('public_catalog_default');
+            \Illuminate\Support\Facades\Cache::forget('product_slug_' . $product->slug);
+            if ($product->getOriginal('slug')) {
+                \Illuminate\Support\Facades\Cache::forget('product_slug_' . $product->getOriginal('slug'));
+            }
+        };
+        \App\Models\Product::saved($invalidateProduct);
+        \App\Models\Product::deleted($invalidateProduct);
+
         // Al cerrar sesión en web o Filament, revocar todos los tokens de API de ese usuario
         \Illuminate\Support\Facades\Event::listen(\Illuminate\Auth\Events\Logout::class, function ($event) {
             if ($event->user && method_exists($event->user, 'tokens')) {
