@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { API_BASE_URL } from '@/config/api';
 import { readAdminResponse } from '@/lib/admin-api';
+import { analyticsTrackingAllowed, getAnalyticsStatus } from '@/lib/site-analytics';
 
 type Ranking = { name?: string; path?: string; views: number; sessions: number; code?: string };
 interface Metrics {
@@ -27,14 +27,26 @@ export default function MetricsPage() {
   const [from, setFrom] = useState(() => date(29)); const [to, setTo] = useState(() => date());
   const [range, setRange] = useState({ from, to }); const [refresh, setRefresh] = useState(0);
   const [data, setData] = useState<Metrics | null>(null); const [loading, setLoading] = useState(true); const [error, setError] = useState('');
+  const [trackingAllowed, setTrackingAllowed] = useState(true);
+  const [trackingStatus, setTrackingStatus] = useState('loading');
+  useEffect(() => {
+    const update = () => setTrackingStatus(getAnalyticsStatus());
+    update(); const timer = setInterval(update, 3000);
+    return () => clearInterval(timer);
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => { if (document.visibilityState === 'visible') setRefresh(value => value + 1); }, 30000);
+    return () => clearInterval(timer);
+  }, []);
   useEffect(() => {
     const controller = new AbortController();
     async function load() {
       setLoading(true); setError('');
+      setTrackingAllowed(analyticsTrackingAllowed());
       try {
         const token = localStorage.getItem('filatelia_token');
         if (!token) throw new Error('Inicia sesión para consultar las métricas.');
-        const response = await fetch(`${API_BASE_URL}/api/admin/analytics?${new URLSearchParams(range)}`, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' }, signal: controller.signal });
+        const response = await fetch(`/api/admin/analytics?${new URLSearchParams(range)}`, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' }, signal: controller.signal });
         const result = await readAdminResponse(response);
         if (!controller.signal.aborted) setData(result.data);
       } catch (err) { if (!controller.signal.aborted) setError(err instanceof Error ? err.message : 'No se pudieron cargar las métricas.'); }
@@ -52,6 +64,8 @@ export default function MetricsPage() {
   const cards = [['Visitas (sesiones)', number(k.sessions)], ['Páginas vistas', number(k.page_views)], ['Navegadores únicos', number(k.unique_browsers)], ['Actividad en últimos 5 minutos', number(k.active_sessions)], ['Conversión a pedido', number(k.conversion_percent) + '%'], ['Pedidos no cancelados', number(k.orders)], ['Valor de pedidos', 'Bs. ' + number(k.order_value)], ['Valor con pago verificado', 'Bs. ' + number(k.verified_order_value)], ['Clientes nuevos', number(k.new_customers)], ['Páginas por sesión', number(k.pages_per_session)], ['Sesiones de una página', number(k.single_page_sessions_percent) + '%'], ['Duración observada promedio', number(k.average_observed_session_seconds) + ' s']];
   return <div className="space-y-6 p-4 text-slate-100 sm:p-8">
     <header><h1 className="text-2xl font-bold sm:text-3xl">Métricas web y negocio</h1><p className="mt-2 text-slate-400">Conoce el interés de los coleccionistas y el resultado comercial del catálogo.</p></header>
+    {!trackingAllowed && <p className="rounded-lg border border-amber-500/40 bg-amber-950/40 p-4 text-amber-100">Este navegador solicita privacidad. Sus páginas, categorías y sellos se cuentan de forma anónima, sin identificar navegadores ni relacionar visitas con pedidos.</p>}
+    {(trackingStatus === 'loading' || trackingStatus.startsWith('error') || trackingStatus === 'network-error' || trackingStatus === 'unconfirmed') && <p role="status" className="rounded-lg border border-amber-500/40 p-4 text-amber-100">{trackingStatus === 'loading' ? 'El registro de visitas no ha cargado en este navegador. Recarga la página para cargar la versión actual.' : `El último envío de visitas no se confirmó (${trackingStatus}). Las consultas no confirmadas no aparecen en el informe.`}</p>}
     <form className={`${panel} flex flex-wrap items-end gap-3`} onSubmit={event => { event.preventDefault(); setRange({ from, to }); setRefresh(value => value + 1); }}>
       <label className="text-sm">Desde<input required type="date" value={from} max={to} onChange={event => setFrom(event.target.value)} className="mt-1 block rounded-lg bg-slate-950 p-2 [color-scheme:dark]" /></label>
       <label className="text-sm">Hasta<input required type="date" value={to} min={from} onChange={event => setTo(event.target.value)} className="mt-1 block rounded-lg bg-slate-950 p-2 [color-scheme:dark]" /></label>
@@ -69,7 +83,7 @@ export default function MetricsPage() {
       <section className={panel}><h2 className="text-lg font-semibold">Recorrido de compra · sesiones</h2><div className="mt-4 grid gap-3 sm:grid-cols-5">{Object.entries({ 'Visitan el sitio': data.funnel.sessions, 'Consultan una ficha': data.funnel.product_sessions, 'Agregan al carrito': data.funnel.cart_sessions, 'Inician compra': data.funnel.checkout_sessions, 'Crean un pedido': data.funnel.order_sessions }).map(([label, value]) => <div key={label} className="rounded-lg bg-slate-950 p-3"><p className="text-sm text-slate-400">{label}</p><p className="mt-2 text-xl text-[#FECC36]">{number(value)}</p></div>)}</div><p className="mt-3 text-xs text-slate-400">Cada etapa cuenta sesiones únicas con esa acción; no exige que sucedan en orden. Crear un pedido no equivale a confirmar su pago.</p></section>
       <div className="grid gap-5 lg:grid-cols-3">{[{ title: 'Origen de las visitas', rows: data.referrers.map(row => ({ label: row.referrer_host ?? 'Directo / sin referencia', views: row.views })) }, { title: 'Dispositivos', rows: data.devices.map(row => ({ label: ({ desktop: 'Computadora', mobile: 'Móvil', tablet: 'Tableta', unknown: 'Desconocido' } as Record<string, string>)[row.device] ?? row.device, views: row.views })) }, { title: 'Idioma del navegador', rows: data.languages.map(row => ({ label: row.language ?? 'Desconocido', views: row.views })) }].map(group => <section key={group.title} className={panel}><h2 className="mb-4 font-semibold">{group.title}</h2>{!group.rows.length && <p className="text-slate-400">Sin datos.</p>}{group.rows.map(row => <div key={row.label} className="flex justify-between gap-3 border-t border-white/10 py-3 text-sm"><span className="break-all">{row.label}</span><span>{number(row.views)} páginas</span></div>)}</section>)}</div>
       <section className={panel}><h2 className="mb-4 text-lg font-semibold">Últimas visitas del período</h2>{data.recent_visits.map((row, i) => <div key={i} className="flex flex-wrap justify-between gap-2 border-t border-white/10 py-3 text-sm"><span>{row.path}</span><span className="text-slate-400">{timestamp(row.occurred_at)}</span></div>)}{!data.recent_visits.length && <p className="text-slate-400">Sin visitas registradas.</p>}</section>
-      <p className="text-sm text-slate-400">Las métricas comienzan con esta actualización. Una sesión termina tras 30 minutos de inactividad. Navegadores únicos no equivalen a personas. La duración observada mide el tiempo entre acciones registradas. Se excluyen las páginas administrativas y los navegadores que solicitan no ser rastreados.</p>
+      <p className="text-sm text-slate-400">El informe se actualiza cada 30 segundos. Páginas vistas sin identificación en este período: {number(k.anonymous_page_views)}. Los conteos anónimos se incluyen en páginas y rankings, pero no en sesiones, navegadores únicos ni conversiones. Una sesión termina tras 30 minutos de inactividad. La duración observada mide el tiempo entre acciones registradas. Se excluyen las páginas administrativas.</p>
     </>}
   </div>;
 }

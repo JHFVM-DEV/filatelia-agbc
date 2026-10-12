@@ -51,6 +51,37 @@ class SiteAnalyticsTest extends TestCase
         $this->assertDatabaseHas('site_events', ['category_slug' => 'fauna', 'product_slug' => 'paujil']);
     }
 
+    public function test_category_and_piece_consultations_appear_in_the_rankings(): void
+    {
+        $category = Category::create(['slug' => 'sellos-y-series', 'name' => 'Sellos y Series']);
+        Product::create(['slug' => 'fab', 'name' => 'Fuerza Aérea Boliviana', 'catalog_code' => 'BO.AGBC-1',
+            'category_id' => $category->id, 'price' => 3.8, 'stock' => 3, 'year' => 1994]);
+        $event = $this->event(['event_type' => 'category_view', 'category_slug' => $category->slug]);
+        $this->postJson('/api/analytics/events', $event)->assertNoContent()->assertHeader('X-Analytics-Status', 'recorded');
+        $this->postJson('/api/analytics/events', $event)->assertNoContent();
+        $this->postJson('/api/analytics/events', $this->event(['event_type' => 'product_view', 'product_slug' => 'fab']))->assertNoContent();
+        $this->admin();
+        $this->getJson('/api/admin/analytics')->assertOk()->assertJsonPath('data.categories.0.name', 'Sellos y Series')
+            ->assertJsonPath('data.categories.0.views', 1)->assertJsonPath('data.products.0.name', 'Fuerza Aérea Boliviana')
+            ->assertJsonPath('data.products.0.code', 'BO.AGBC-1')->assertJsonPath('data.products.0.views', 1);
+    }
+
+    public function test_privacy_visits_are_counted_without_browser_or_session_identifiers(): void
+    {
+        Category::create(['slug' => 'sellos-y-series', 'name' => 'Sellos y Series']);
+        $page = $this->event();
+        $this->withHeader('Sec-GPC', '1')->postJson('/api/site-events', $page)->assertNoContent()->assertHeader('X-Analytics-Status', 'recorded-anonymous');
+        $this->assertDatabaseHas('site_events', ['event_id' => $page['event_id'], 'visitor_hash' => null, 'session_hash' => null]);
+        $category = $this->event(['event_type' => 'category_view', 'category_slug' => 'sellos-y-series']);
+        unset($category['visitor_id'], $category['session_id']);
+        $this->postJson('/api/site-events', $category)->assertNoContent();
+        $this->admin();
+        $this->getJson('/api/admin/analytics')->assertOk()->assertJsonPath('data.kpis.page_views', 1)
+            ->assertJsonPath('data.kpis.anonymous_page_views', 1)->assertJsonPath('data.kpis.sessions', 0)
+            ->assertJsonPath('data.kpis.unique_browsers', 0)->assertJsonPath('data.kpis.pages_per_session', 0)
+            ->assertJsonPath('data.categories.0.views', 1)->assertJsonPath('data.categories.0.sessions', 0);
+    }
+
     public function test_reports_require_staff_permission_and_validate_ranges(): void
     {
         $this->getJson('/api/admin/analytics')->assertUnauthorized();

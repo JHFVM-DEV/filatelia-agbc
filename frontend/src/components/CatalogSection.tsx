@@ -1,10 +1,9 @@
 'use client';
 import { PurchaseBanner, canPurchase } from './PurchaseBanner';
-import { trackSiteEvent } from '@/lib/site-analytics';
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { Search, SlidersHorizontal, ZoomIn, ShoppingBag, Heart, Check, Sparkles, Filter } from 'lucide-react';
+import { Search, ZoomIn, ShoppingBag, Heart, Sparkles, Filter } from 'lucide-react';
 import { StampItem, CATEGORIES_LIST } from '@/data/stamps';
 
 interface CatalogSectionProps {
@@ -41,8 +40,8 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
     if (!el) return;
 
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setIsVisible(true);
-      return;
+      const timer = setTimeout(() => setIsVisible(true), 0);
+      return () => clearTimeout(timer);
     }
 
     const observer = new IntersectionObserver(
@@ -118,7 +117,7 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
         </button>
 
         {/* Montura Passepartout del sello */}
-        <div className="relative w-44 h-48 bg-white p-3 rounded shadow-md border border-[#E5DFC8] flex items-center justify-center group-hover:scale-[1.025] group-hover:border-[#8A6800]/40 group-hover:shadow-lg transition-all duration-500 ease-out">
+        <button type="button" data-site-product={stamp.slug} onClick={() => onInspect(stamp)} aria-label={`Consultar ficha de ${stamp.name}`} className="relative w-44 h-48 bg-white p-3 rounded shadow-md border border-[#E5DFC8] flex items-center justify-center group-hover:scale-[1.025] group-hover:border-[#8A6800]/40 group-hover:shadow-lg transition-all duration-500 ease-out cursor-pointer focus-visible:outline-2 focus-visible:outline-[#102542]">
           <div className="relative w-full h-full">
             <Image 
               src={stamp.front_image}
@@ -129,12 +128,13 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
               className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.01]"
             />
           </div>
-        </div>
+        </button>
 
         {/* Botón Examinar Pieza al pasar el cursor */}
         <button
+          data-site-product={stamp.slug}
           onClick={() => onInspect(stamp)}
-          className="absolute bottom-3 bg-[#102542]/95 hover:bg-[#102542] text-white text-xs font-semibold px-3.5 py-1.5 rounded-full opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1.5 shadow-md backdrop-blur-sm"
+          className="absolute bottom-3 bg-[#102542]/95 hover:bg-[#102542] text-white text-xs font-semibold px-3.5 py-1.5 rounded-full transition-colors duration-300 flex items-center gap-1.5 shadow-md backdrop-blur-sm"
         >
           <ZoomIn className="w-3.5 h-3.5 text-amber-300" />
           <span>Examinar Pieza</span>
@@ -216,22 +216,13 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
   initialCategory,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'all');
-  const trackedCategory = useRef('');
-  useEffect(() => {
-    if (trackedCategory.current === selectedCategory) return;
-    trackedCategory.current = selectedCategory;
-    if (selectedCategory !== 'all') trackSiteEvent('category_view', { category_slug: selectedCategory });
-  }, [selectedCategory]);
+  const selectCategory = (category: string) => {
+    setSelectedCategory(category);
+  };
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCondition, setSelectedCondition] = useState<string>('all');
   const [selectedRarity, setSelectedRarity] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('featured');
-
-  useEffect(() => {
-    if (initialCategory) {
-      setSelectedCategory(initialCategory);
-    }
-  }, [initialCategory]);
 
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerVisible, setHeaderVisible] = useState(false);
@@ -241,8 +232,8 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
     if (!el) return;
 
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setHeaderVisible(true);
-      return;
+      const timer = setTimeout(() => setHeaderVisible(true), 0);
+      return () => clearTimeout(timer);
     }
 
     const observer = new IntersectionObserver(
@@ -319,7 +310,8 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
             return (
               <button
                 key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
+                data-site-category={cat.id}
+                onClick={() => selectCategory(cat.id)}
                 className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm whitespace-nowrap transition flex items-center gap-2 border cursor-pointer ${
                   isActive
                     ? 'bg-[#FECC36] text-[#102542] font-black border-[#E5B728] shadow-sm'

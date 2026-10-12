@@ -129,6 +129,7 @@ function CatalogContent() {
       {linkedError && <p role="alert" className="mx-auto max-w-7xl px-6 py-4 text-sm text-red-700">{linkedError}</p>}
       {/* Main Catalog with Filters & Museum Cards */}
       <CatalogSection
+        key={urlCategory || 'all'}
         stamps={stamps}
         onInspect={(stamp) => setInspectingStamp(stamp)}
         onAddToCart={addToCart}

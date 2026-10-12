@@ -1,6 +1,5 @@
 'use client';
 import { PurchaseBanner, canPurchase } from './PurchaseBanner';
-import { trackSiteEvent } from '@/lib/site-analytics';
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
@@ -52,13 +51,6 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
 
   const stageRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
-  const trackedProduct = useRef<number | null>(null);
-  useEffect(() => {
-    if (!stamp) { trackedProduct.current = null; return; }
-    if (trackedProduct.current === stamp.id) return;
-    trackedProduct.current = stamp.id;
-    trackSiteEvent('product_view', { product_slug: stamp.slug });
-  }, [stamp]);
 
   // Cerrar con Escape y detector de pantalla completa nativa
   useEffect(() => {

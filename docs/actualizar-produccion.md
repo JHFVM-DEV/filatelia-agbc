@@ -21,6 +21,7 @@ Desde `backend`:
 composer install --no-dev --optimize-autoloader
 php artisan migrate --path=database/migrations/2026_10_12_120000_add_customer_details_to_users.php --force
 php artisan migrate --path=database/migrations/2026_10_12_180000_create_site_analytics.php --force
+php artisan migrate --path=database/migrations/2026_10_13_090000_allow_anonymous_site_events.php --force
 php artisan db:seed --class=DatabaseSeeder --force
 php artisan catalog:update-prices
 php artisan catalog:update-prices --apply

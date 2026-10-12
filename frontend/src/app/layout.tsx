@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { AppShell } from "@/components/AppShell";
+import Script from 'next/script';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -33,6 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${plusJakartaSans.variable} h-full antialiased`}>
+      <head>
+        <Script src="/site-activity.js" strategy="beforeInteractive" />
+      </head>
       <body className="min-h-full flex flex-col font-sans bg-[#FAF8F0] text-[#102542]">
         <AppShell>
           {children}

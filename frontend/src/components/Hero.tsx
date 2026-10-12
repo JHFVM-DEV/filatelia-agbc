@@ -55,7 +55,9 @@ export function Hero({ stamps, onInspect }: HeroProps) {
   const carouselItems = pieces;
   const carouselMode = selection;
   const setCarouselMode = (mode: Selection) => { setSelection(mode); setIndex(0); };
-  const handleSelectSlide = (position: number) => setIndex(position);
+  const handleSelectSlide = (position: number) => {
+    setIndex(position);
+  };
 
   return (
     <section aria-labelledby="collector-hero-title" aria-roledescription="carrusel" className="border-b border-[#102542]/15 bg-[#FECC36] text-[#102542]">
@@ -75,7 +77,7 @@ export function Hero({ stamps, onInspect }: HeroProps) {
               <Link href="/catalogo" className={`inline-flex items-center justify-center gap-3 rounded-xl bg-[#102542] px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#18395f] ${focus}`}>
                 <BookOpen className="h-4 w-4" /> Explorar catálogo <ArrowRight className="h-4 w-4" />
               </Link>
-              <button type="button" onClick={() => onInspect(stamp)} className={`inline-flex items-center justify-center gap-2 rounded-xl border border-[#102542]/30 px-5 py-3.5 text-sm font-bold transition-colors hover:bg-white/35 ${focus}`}>
+              <button type="button" data-site-product={stamp.slug} onClick={() => onInspect(stamp)} className={`inline-flex items-center justify-center gap-2 rounded-xl border border-[#102542]/30 px-5 py-3.5 text-sm font-bold transition-colors hover:bg-white/35 ${focus}`}>
                 <ZoomIn className="h-4 w-4" /> Examinar sello
               </button>
             </div>
@@ -84,7 +86,7 @@ export function Hero({ stamps, onInspect }: HeroProps) {
               <dl className="grid grid-cols-2 gap-x-5 gap-y-5 text-sm">
                 {details.map(([label, value]) => <div key={label}><dt className="mb-1 text-xs text-[#102542]/70">{label}</dt><dd className="font-semibold">{value}</dd></div>)}
               </dl>
-              <button type="button" onClick={() => onInspect(stamp)} aria-haspopup="dialog" className={`mt-5 inline-flex items-center gap-2 text-left text-sm font-bold underline decoration-[#102542]/35 underline-offset-4 hover:decoration-[#102542] ${focus}`}>
+              <button type="button" data-site-product={stamp.slug} onClick={() => onInspect(stamp)} aria-haspopup="dialog" className={`mt-5 inline-flex items-center gap-2 text-left text-sm font-bold underline decoration-[#102542]/35 underline-offset-4 hover:decoration-[#102542] ${focus}`}>
                 Consultar ficha de esta pieza <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </div>
@@ -135,6 +137,7 @@ export function Hero({ stamps, onInspect }: HeroProps) {
                       className="w-full shrink-0 flex justify-center px-3"
                     >
                       <div
+                        data-site-category={carouselMode === 'collections' ? stamp.category : undefined}
                         onClick={() => handleSelectSlide(idx)}
                         className={`relative w-full max-w-md bg-[#FAF8F0] p-6 sm:p-7 rounded-3xl shadow-2xl border-2 transition-all duration-500 cursor-pointer ${isSelected
                           ? 'border-[#102542] ring-4 ring-white/10 scale-100 shadow-2xl'
@@ -193,6 +196,7 @@ export function Hero({ stamps, onInspect }: HeroProps) {
                           </div>
 
                           <button
+                            data-site-product={stamp.slug}
                             onClick={(e) => {
                               e.stopPropagation();
                               onInspect(stamp);
@@ -216,6 +220,7 @@ export function Hero({ stamps, onInspect }: HeroProps) {
               {carouselItems.map((stamp, idx) => (
                 <button
                   key={`dot-${stamp.id}-${idx}`}
+                  data-site-category={carouselMode === 'collections' ? stamp.category : undefined}
                   onClick={() => handleSelectSlide(idx)}
                   className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${currentIndex === idx
                     ? 'w-8 bg-[#102542] shadow-sm'

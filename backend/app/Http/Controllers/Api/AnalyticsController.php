@@ -21,7 +21,7 @@ class AnalyticsController extends AdminController
     public function record(Request $request): \Illuminate\Http\Response
     {
         $data = $request->validate([
-            'event_id' => 'required|uuid', 'visitor_id' => 'required|uuid', 'session_id' => 'required|uuid',
+            'event_id' => 'required|uuid', 'visitor_id' => 'required_with:session_id|nullable|uuid', 'session_id' => 'required_with:visitor_id|nullable|uuid',
             'event_type' => 'required|in:page_view,category_view,product_view,add_to_cart,checkout_started',
             'path' => ['required', 'string', 'max:255', 'regex:~^/(?!/)[^?#]*$~'],
             'category_slug' => 'required_if:event_type,category_view|nullable|string|max:255|exists:categories,slug',
@@ -29,16 +29,18 @@ class AnalyticsController extends AdminController
             'referrer_host' => 'nullable|string|max:255|regex:/^[a-zA-Z0-9.-]+$/',
             'device' => 'required|in:desktop,tablet,mobile,unknown', 'language' => 'nullable|string|max:30',
         ]);
-        if (preg_match('~^/(admin|api|auth)(/|$)~', $data['path']) || preg_match('/bot|crawler|spider/i', $request->userAgent() ?? '')) return response()->noContent();
+        if (preg_match('~^/(admin|api|auth)(/|$)~', $data['path'])) return response()->noContent()->header('X-Analytics-Status', 'ignored-private');
+        if (preg_match('/bot|crawler|spider/i', $request->userAgent() ?? '')) return response()->noContent()->header('X-Analytics-Status', 'ignored-bot');
         $product = isset($data['product_slug']) ? Product::where('slug', $data['product_slug'])->with('category')->first() : null;
+        $anonymous = $request->header('Sec-GPC') === '1' || $request->header('DNT') === '1' || empty($data['visitor_id']);
         DB::table('site_events')->insertOrIgnore([
-            'event_id' => $data['event_id'], 'visitor_hash' => self::sessionHash($data['visitor_id']),
-            'session_hash' => self::sessionHash($data['session_id']), 'event_type' => $data['event_type'], 'path' => $data['path'],
+            'event_id' => $data['event_id'], 'visitor_hash' => $anonymous ? null : self::sessionHash($data['visitor_id']),
+            'session_hash' => $anonymous ? null : self::sessionHash($data['session_id']), 'event_type' => $data['event_type'], 'path' => $data['path'],
             'category_slug' => $data['category_slug'] ?? $product?->category?->slug,
-            'product_slug' => $data['product_slug'] ?? null, 'referrer_host' => $data['referrer_host'] ?? null,
-            'device' => $data['device'], 'language' => $data['language'] ?? null, 'occurred_at' => now('UTC'),
+            'product_slug' => $data['product_slug'] ?? null, 'referrer_host' => $anonymous ? null : ($data['referrer_host'] ?? null),
+            'device' => $data['device'], 'language' => $anonymous ? null : ($data['language'] ?? null), 'occurred_at' => now('UTC'),
         ]);
-        return response()->noContent();
+        return response()->noContent()->header('X-Analytics-Status', $anonymous ? 'recorded-anonymous' : 'recorded');
     }
 
     public function summary(Request $request): JsonResponse
@@ -83,9 +85,9 @@ class AnalyticsController extends AdminController
         $orders = Order::whereBetween('created_at', [$start, $end]);
         $validOrders = (clone $orders)->where('status', '!=', 'CANCELLED');
         $convertingSessions = (clone $validOrders)->whereIn('analytics_session_hash', (clone $events)->select('session_hash'))->distinct()->count('analytics_session_hash');
-        $singlePages = (clone $views)->select('session_hash')->groupBy('session_hash')->havingRaw('COUNT(*) = 1')->get()->count();
+        $singlePages = (clone $views)->whereNotNull('session_hash')->select('session_hash')->groupBy('session_hash')->havingRaw('COUNT(*) = 1')->get()->count();
         $pageSessions = (clone $views)->distinct()->count('session_hash');
-        $sessionDetails = (clone $events)->select('session_hash')->selectRaw('MIN(occurred_at) as started, MAX(occurred_at) as ended')->groupBy('session_hash')->get();
+        $sessionDetails = (clone $events)->whereNotNull('session_hash')->select('session_hash')->selectRaw('MIN(occurred_at) as started, MAX(occurred_at) as ended')->groupBy('session_hash')->get();
         $duration = $sessionDetails->avg(fn ($row) => Carbon::parse($row->started, 'UTC')->diffInSeconds(Carbon::parse($row->ended, 'UTC'))) ?? 0;
         $breakdown = fn ($column) => (clone $views)->select($column)->selectRaw('COUNT(*) as views')->groupBy($column)->orderByDesc('views')->limit(10)->get();
         return response()->json(['success' => true, 'data' => [
@@ -94,9 +96,10 @@ class AnalyticsController extends AdminController
             'last_visit' => DB::table('site_events')->where('event_type', 'page_view')->max('occurred_at'),
             'totals' => ['page_views' => DB::table('site_events')->where('event_type', 'page_view')->count(), 'sessions' => DB::table('site_events')->distinct()->count('session_hash')],
             'kpis' => ['page_views' => $pageViews, 'sessions' => $sessions, 'unique_browsers' => (clone $events)->distinct()->count('visitor_hash'),
+                'anonymous_page_views' => (clone $views)->whereNull('session_hash')->count(),
                 'active_sessions' => DB::table('site_events')->where('occurred_at', '>=', now('UTC')->subMinutes(5))->distinct()->count('session_hash'),
                 'views_change_percent' => $previousViews ? round(($pageViews - $previousViews) / $previousViews * 100, 1) : null,
-                'pages_per_session' => $pageSessions ? round($pageViews / $pageSessions, 2) : 0,
+                'pages_per_session' => $pageSessions ? round((clone $views)->whereNotNull('session_hash')->count() / $pageSessions, 2) : 0,
                 'single_page_sessions_percent' => $pageSessions ? round($singlePages / $pageSessions * 100, 1) : 0,
                 'average_observed_session_seconds' => round($duration),
                 'conversion_percent' => $sessions ? round($convertingSessions / $sessions * 100, 2) : 0,

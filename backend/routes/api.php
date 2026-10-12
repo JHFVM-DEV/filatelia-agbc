@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 // Public Catalog API
 Route::post('/analytics/events', [\App\Http\Controllers\Api\AnalyticsController::class, 'record'])->middleware('throttle:120,1');
+Route::post('/site-events', [\App\Http\Controllers\Api\AnalyticsController::class, 'record'])->middleware('throttle:120,1');
 Route::get('/products', [ApiController::class, 'getProducts']);
 Route::get('/products/{slug}', [ApiController::class, 'getProductBySlug']);
 Route::get('/categories', [ApiController::class, 'getCategories']);
