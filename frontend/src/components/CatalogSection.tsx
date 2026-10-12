@@ -1,4 +1,6 @@
 'use client';
+import { PurchaseBanner, canPurchase } from './PurchaseBanner';
+import { trackSiteEvent } from '@/lib/site-analytics';
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import Image from 'next/image';
@@ -84,6 +86,7 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
       {/* Vista previa superior con Passepartout */}
       <div className="relative p-6 bg-[#FAF8F0] border-b border-[#E2DDD5] flex items-center justify-center min-h-[260px]">
         
+        <div className="absolute bottom-3 left-3 right-3 z-10"><PurchaseBanner stamp={stamp} /></div>
         {/* Badge Condición */}
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#102542] text-white shadow-sm">
@@ -169,7 +172,7 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
                   ? 'bg-amber-50/60 text-amber-800 border-amber-200'
                   : 'bg-slate-50 text-slate-600 border-slate-200'
             }`}>
-              {stamp.stock === 1 
+              {stamp.stock <= 0 ? 'Agotado' : stamp.stock === 1
                 ? 'Único ejemplar en bóveda' 
                 : stamp.stock <= 5 
                   ? `Solo ${stamp.stock} piezas en custodia` 
@@ -188,12 +191,13 @@ const CatalogCard: React.FC<CatalogCardProps> = ({
           </div>
 
           <button
+            disabled={!canPurchase(stamp)}
             onClick={() => onAddToCart(stamp)}
-            className="gold-button px-4 py-2.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform"
+            className="gold-button disabled:opacity-50 disabled:cursor-not-allowed px-4 py-2.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform"
             title="Agregar a la orden de colección"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
-            <span>Adquirir</span>
+            <span>{stamp.stock <= 0 ? 'Agotado' : stamp.is_active === false ? 'No disponible' : 'Adquirir'}</span>
           </button>
         </div>
 
@@ -212,6 +216,12 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
   initialCategory,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'all');
+  const trackedCategory = useRef('');
+  useEffect(() => {
+    if (trackedCategory.current === selectedCategory) return;
+    trackedCategory.current = selectedCategory;
+    if (selectedCategory !== 'all') trackSiteEvent('category_view', { category_slug: selectedCategory });
+  }, [selectedCategory]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCondition, setSelectedCondition] = useState<string>('all');
   const [selectedRarity, setSelectedRarity] = useState<string>('all');

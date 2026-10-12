@@ -40,7 +40,6 @@ class ApiController extends Controller
         if (!$hasCustomFilters) {
             $products = Cache::remember('public_catalog_default', 60, function () {
                 return Product::with(['category', 'emission'])
-                    ->where('is_active', true)
                     ->orderBy('id', 'desc')
                     ->get();
             });
@@ -53,7 +52,7 @@ class ApiController extends Controller
             ]);
         }
 
-        $query = Product::with(['category', 'emission'])->where('is_active', true);
+        $query = Product::with(['category', 'emission']);
 
         if ($request->filled('category')) {
             $query->whereHas('category', function ($q) use ($request) {
@@ -180,9 +179,10 @@ class ApiController extends Controller
             'city' => 'required|string|max:100',
             'department' => 'required|string|max:100',
             'payment_method' => 'required|string|in:QR_TRANSFER,CREDIT_CARD,VAULT_PICKUP',
+            'analytics_session' => 'nullable|uuid',
             'special_notes' => 'nullable|string',
             'items' => 'required|array|min:1',
-            'items.*.product_id' => 'required|exists:products,id',
+            'items.*.product_id' => 'required|distinct|exists:products,id',
             'items.*.quantity' => 'required|integer|min:1',
         ]);
 
@@ -205,8 +205,14 @@ class ApiController extends Controller
             $totalAmount = 0;
             $itemsData = [];
 
-            foreach ($validated['items'] as $item) {
-                $product = Product::findOrFail($item['product_id']);
+            foreach (collect($validated['items'])->sortBy('product_id') as $item) {
+                $product = Product::whereKey($item['product_id'])->lockForUpdate()->firstOrFail();
+                if (!$product->is_active) {
+                    throw \Illuminate\Validation\ValidationException::withMessages(['items' => "La compra de {$product->name} está deshabilitada."]);
+                }
+                if ($product->stock < $item['quantity']) {
+                    throw \Illuminate\Validation\ValidationException::withMessages(['items' => "{$product->name} está agotado o no tiene existencias suficientes."]);
+                }
                 $subtotal = $product->price * $item['quantity'];
                 $totalAmount += $subtotal;
 
@@ -218,10 +224,8 @@ class ApiController extends Controller
                     'subtotal' => $subtotal,
                 ];
 
-                // Reducir stock si aplica
-                if ($product->stock >= $item['quantity']) {
-                    $product->decrement('stock', $item['quantity']);
-                }
+                $product->stock -= $item['quantity'];
+                $product->save();
             }
 
             $orderNumber = 'BO-FIL-' . date('Y') . '-' . strtoupper(Str::random(6));
@@ -251,6 +255,7 @@ class ApiController extends Controller
                 'payment_method' => $validated['payment_method'],
                 'tracking_code' => $trackingCode,
                 'special_notes' => $validated['special_notes'] ?? null,
+                'analytics_session_hash' => !empty($validated['analytics_session']) ? AnalyticsController::sessionHash($validated['analytics_session']) : null,
             ]);
 
             foreach ($itemsData as $itemData) {

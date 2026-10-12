@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
+import { SiteVisitTracker } from './SiteVisitTracker';
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { StoreProvider, useStore } from '@/context/StoreContext';
@@ -201,6 +202,7 @@ const ShellContent: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 export const AppShell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <StoreProvider>
+      <Suspense fallback={null}><SiteVisitTracker /></Suspense>
       <ShellContent>{children}</ShellContent>
     </StoreProvider>
   );

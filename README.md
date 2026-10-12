@@ -15,6 +15,8 @@ Plataforma oficial de catalogación, peritaje numismático/filatélico, venta y 
 ## 🚀 Guía de Despliegue en Servidor de Producción
 
 **Si el sistema ya está instalado**, utiliza la [guía de actualización](docs/actualizar-produccion.md).
+
+El panel incluye [Métricas web y negocio](docs/metricas-web.md): visitas, páginas y sellos consultados, fuentes de tráfico y conversión a pedidos.
 Los pasos de inicialización que incluyen crear la base, generar `APP_KEY` y ejecutar
 el seeder completo no son pasos de actualización de una base en uso.
 

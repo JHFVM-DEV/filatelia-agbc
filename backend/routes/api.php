@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // Public Catalog API
+Route::post('/analytics/events', [\App\Http\Controllers\Api\AnalyticsController::class, 'record'])->middleware('throttle:120,1');
 Route::get('/products', [ApiController::class, 'getProducts']);
 Route::get('/products/{slug}', [ApiController::class, 'getProductBySlug']);
 Route::get('/categories', [ApiController::class, 'getCategories']);
@@ -43,6 +44,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 // Native Admin Suite API
 Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
+    Route::get('/analytics', [\App\Http\Controllers\Api\AnalyticsController::class, 'summary']);
     Route::get('/dashboard-stats', [\App\Http\Controllers\Api\AdminController::class, 'getDashboardStats']);
     
     // Pedidos & Órdenes
@@ -52,6 +54,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     // Piezas Filatélicas & Catálogo
     Route::get('/products', [\App\Http\Controllers\Api\AdminController::class, 'getProducts']);
     Route::post('/products', [\App\Http\Controllers\Api\AdminController::class, 'storeProduct']);
+    Route::patch('/products/purchase-availability', [\App\Http\Controllers\Api\AdminController::class, 'setPurchaseAvailability']);
     Route::put('/products/{id}', [\App\Http\Controllers\Api\AdminController::class, 'updateProduct']);
     Route::delete('/products/{id}', [\App\Http\Controllers\Api\AdminController::class, 'deleteProduct']);
     

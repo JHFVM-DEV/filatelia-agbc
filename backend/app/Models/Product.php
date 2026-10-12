@@ -65,11 +65,23 @@ class Product extends Model
         'price_formatted',
         'store_url',
         'badge',
+        'can_purchase',
+        'purchase_status',
     ];
 
     /**
      * URL absoluta directa para la imagen principal del sello
      */
+    public function getCanPurchaseAttribute(): bool
+    {
+        return $this->is_active && $this->stock > 0;
+    }
+
+    public function getPurchaseStatusAttribute(): string
+    {
+        return $this->stock <= 0 ? 'sold_out' : ($this->is_active ? 'available' : 'disabled');
+    }
+
     public function getImageUrlAttribute(): string
     {
         return $this->getFrontImageUrlAttribute();

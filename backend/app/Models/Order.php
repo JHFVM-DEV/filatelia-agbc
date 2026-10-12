@@ -26,6 +26,7 @@ class Order extends Model
         'payment_method',
         'tracking_code',
         'special_notes',
+        'analytics_session_hash',
     ];
 
     protected $casts = [

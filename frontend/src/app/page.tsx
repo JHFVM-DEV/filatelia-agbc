@@ -90,6 +90,7 @@ export default function Home() {
               front_image: normalizeImageUrl(p.front_image),
               back_image: normalizeImageUrl(p.back_image),
               is_featured: p.is_featured,
+              is_active: p.is_active !== false,
               description: p.description || '',
               historical_context: p.historical_context || '',
             }));

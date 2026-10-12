@@ -194,6 +194,7 @@ export default function AdminLayout({
     {
       title: 'Bóveda & Logística',
       items: [
+        { name: 'Disponibilidad de compra', href: '/admin/disponibilidad', icon: ShoppingBag, description: 'Habilitar compras por pieza o para todo el catálogo', module: 'Productos' },
         {
           name: 'Inventario & Bóveda',
           href: '/admin/inventario',
@@ -227,6 +228,7 @@ export default function AdminLayout({
     {
       title: 'Reportes & Auditoría',
       items: [
+        { name: 'Métricas web y negocio', href: '/admin/metricas', icon: BarChart3, description: 'Visitas, interés del catálogo y conversión', module: 'Reportes' },
         {
           name: 'Reportes & Estadísticas',
           href: '/admin/reportes',

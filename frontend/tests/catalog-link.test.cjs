@@ -9,12 +9,23 @@ function load(relative, overrides = {}) {
   const mod = new Module(filename);
   const originalRequire = mod.require.bind(mod);
   mod.require = name => Object.hasOwn(overrides, name) ? overrides[name] : originalRequire(name);
-  mod._compile(ts.transpileModule(fs.readFileSync(filename, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText, filename);
+  mod._compile(ts.transpileModule(fs.readFileSync(filename, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX } }).outputText, filename);
   return mod.exports;
 }
 const api = load('../src/config/api.ts');
 const { catalogPieceUrl, mapCatalogProduct } = load('../src/lib/catalog-product.ts', { '@/config/api': api });
 const slug = 'campana-filatelica-feliz-sello-postal-2001';
+const { PurchaseBanner, canPurchase } = load('../src/components/PurchaseBanner.tsx', { 'react/jsx-runtime': require('react/jsx-runtime') });
+
+test('disabled and sold-out pieces retain distinct banners and cannot be purchased', () => {
+  assert.equal(canPurchase({ stock: 5, is_active: true }), true);
+  assert.equal(canPurchase({ stock: 5, is_active: false }), false);
+  assert.equal(canPurchase({ stock: 0, is_active: true }), false);
+  assert.equal(PurchaseBanner({ stamp: { stock: 5, is_active: true } }), null);
+  assert.equal(PurchaseBanner({ stamp: { stock: 5, is_active: false } }).props.children, 'COMPRA DESHABILITADA');
+  assert.equal(PurchaseBanner({ stamp: { stock: 0, is_active: false } }).props.children, 'AGOTADO');
+  assert.equal(mapCatalogProduct({ id: 1, name: 'Inactivo', slug, price: '3.00', year: 2026, stock: 5, is_active: false }).is_active, false);
+});
 
 test('the company showcase buy link keeps both the piece and purchase action', () => {
   const url = new URL(catalogPieceUrl(slug, 'buy'), 'https://filatelia.correos.gob.bo');

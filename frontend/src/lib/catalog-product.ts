@@ -20,6 +20,7 @@ export function mapCatalogProduct(product: CatalogProduct): StampItem {
     category: product.category?.slug || 'sellos-y-series', category_name: product.category?.name || 'Sellos oficiales',
     price: Number(product.price), face_value: product.face_value || '', year: product.year, country: product.country || 'Bolivia',
     condition, condition_label: conditions[condition] || condition || 'Consultar ficha', rarity, rarity_label: rarities[rarity] || rarity,
+    is_active: product.is_active !== false,
     certified: Boolean(product.certified), stock: Number(product.stock ?? 0), perforation: product.perforation || '',
     printing_technique: product.printing_technique || '', paper_type: product.paper_type || '', gum_condition: product.gum_condition || '',
     dimensions: product.dimensions || '', front_image: normalizeImageUrl(product.front_image),

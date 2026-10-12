@@ -73,7 +73,7 @@ class ExternalIntegrationController extends Controller
     protected function formatProductCard(Product $p): array
     {
         $frontendUrl = rtrim(env('FRONTEND_URL', 'http://localhost:3000'), '/');
-        
+
         $conditionLabels = [
             'MINT_NH' => 'MINT NH — Goma Intacta Sin Charnela',
             'MINT_LH' => 'MINT LH — Goma con Rastro Leve',
@@ -124,6 +124,9 @@ class ExternalIntegrationController extends Controller
             'rarity' => $rarityLabels[$p->rarity] ?? $p->rarity,
             'rarity_code' => $p->rarity,
             'stock' => $p->stock,
+            'is_active' => $p->is_active,
+            'can_purchase' => $p->can_purchase,
+            'purchase_status' => $p->purchase_status,
             'is_in_stock' => $p->stock > 0,
             'certified' => (bool) $p->certified,
             'dimensions' => $p->dimensions,
@@ -145,10 +148,10 @@ class ExternalIntegrationController extends Controller
             return $deny;
         }
 
-        $query = Product::with(['category', 'emission'])->where('is_active', true);
+        $query = Product::with(['category', 'emission']);
 
         // Si existen piezas configuradas específicamente para la vitrina del portal
-        $hasCustomShowcase = Product::where('is_active', true)->where('is_in_showcase', true)->exists();
+        $hasCustomShowcase = Product::where('is_in_showcase', true)->exists();
 
         if ($hasCustomShowcase && !$request->has('featured') && !$request->has('category') && !$request->has('search')) {
             $query->where('is_in_showcase', true)
@@ -191,7 +194,7 @@ class ExternalIntegrationController extends Controller
         if ($products->count() < 4 && !$request->has('category') && !$request->has('search')) {
             $ids = $products->pluck('id')->toArray();
             $more = Product::with(['category', 'emission'])
-                ->where('is_active', true)
+
                 ->whereNotIn('id', $ids)
                 ->orderBy('id', 'desc')
                 ->take(4 - count($ids))
@@ -234,7 +237,7 @@ class ExternalIntegrationController extends Controller
                     $q->orWhere('id', (int) $slug);
                 }
             })
-            ->where('is_active', true)
+
             ->first();
 
         if (!$product) {
@@ -248,7 +251,7 @@ class ExternalIntegrationController extends Controller
         $related = Product::with(['category'])
             ->where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
-            ->where('is_active', true)
+
             ->take(3)
             ->get()
             ->map(fn($p) => $this->formatProductCard($p));

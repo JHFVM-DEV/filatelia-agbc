@@ -1,4 +1,6 @@
 'use client';
+import { PurchaseBanner, canPurchase } from './PurchaseBanner';
+import { trackSiteEvent } from '@/lib/site-analytics';
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
@@ -50,6 +52,13 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
 
   const stageRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
+  const trackedProduct = useRef<number | null>(null);
+  useEffect(() => {
+    if (!stamp) { trackedProduct.current = null; return; }
+    if (trackedProduct.current === stamp.id) return;
+    trackedProduct.current = stamp.id;
+    trackSiteEvent('product_view', { product_slug: stamp.slug });
+  }, [stamp]);
 
   // Cerrar con Escape y detector de pantalla completa nativa
   useEffect(() => {
@@ -379,6 +388,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                 {stamp.description}
               </p>
 
+              <PurchaseBanner stamp={stamp} />
               {/* Ficha Técnica Tabular Exhaustiva */}
               <div className="mt-4 bg-white rounded-2xl border border-[#E2DDD5] overflow-hidden text-xs shadow-xs">
                 <div className="bg-[#FAF8F0] px-4 py-2 font-bold text-[#102542] border-b border-[#E2DDD5] uppercase tracking-wider text-[10px] flex items-center justify-between">
@@ -443,11 +453,11 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                   onAddToCart(stamp);
                   onClose();
                 }}
-                disabled={stamp.stock <= 0}
+                disabled={!canPurchase(stamp)}
                 className="gold-button px-5 py-3 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 shadow-lg cursor-pointer hover:scale-105 active:scale-95 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>{stamp.stock > 0 ? 'Adquirir para Colección' : 'Sin existencias'}</span>
+                <span>{stamp.stock <= 0 ? 'Agotado' : stamp.is_active === false ? 'Compra deshabilitada' : 'Adquirir para Colección'}</span>
               </button>
             </div>
 

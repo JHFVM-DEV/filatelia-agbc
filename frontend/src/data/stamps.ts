@@ -1,4 +1,5 @@
 export interface StampItem {
+  is_active?: boolean;
   id: number;
   name: string;
   slug: string;

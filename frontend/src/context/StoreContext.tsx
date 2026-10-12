@@ -1,4 +1,6 @@
 'use client';
+import { canPurchase } from '@/components/PurchaseBanner';
+import { trackSiteEvent } from '@/lib/site-analytics';
 import { API_BASE_URL } from '@/config/api';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
@@ -222,15 +224,17 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   }, [currentUser, isLoaded]);
 
   const addToCart = (stamp: StampItem) => {
+    if (!canPurchase(stamp)) return;
     if (!currentUser) {
       setIsLoginModalOpen(true);
       return;
     }
+    trackSiteEvent('add_to_cart', { product_slug: stamp.slug });
     setCart((prev) => {
       const existing = prev.find((item) => item.stamp.id === stamp.id);
       if (existing) {
         return prev.map((item) =>
-          item.stamp.id === stamp.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.stamp.id === stamp.id ? { ...item, stamp, quantity: Math.min(item.quantity + 1, stamp.stock) } : item
         );
       }
       return [...prev, { stamp, quantity: 1 }];
@@ -244,7 +248,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         .map((item) => {
           if (item.stamp.id === stampId) {
             const newQty = item.quantity + delta;
-            return newQty > 0 ? { ...item, quantity: newQty } : null;
+            return newQty > 0 ? { ...item, quantity: Math.min(newQty, item.stamp.stock) } : null;
           }
           return item;
         })
@@ -311,15 +315,17 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   const moveToCart = (stamp: StampItem) => {
+    if (!canPurchase(stamp)) return;
     addToCart(stamp);
     setWishlist((prev) => prev.filter((id) => id !== stamp.id));
   };
 
   const moveAllWishlistToCart = (stampsToMove: StampItem[]) => {
-    stampsToMove.forEach((stamp) => {
+    const purchasable = stampsToMove.filter(canPurchase);
+    purchasable.forEach((stamp) => {
       addToCart(stamp);
     });
-    setWishlist([]);
+    setWishlist((previous) => previous.filter(id => !purchasable.some(stamp => stamp.id === id)));
     setIsWishlistOpen(false);
     setIsCartOpen(true);
   };
@@ -354,6 +360,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       openEmailVerificationModal('checkout');
       return;
     }
+    trackSiteEvent('checkout_started');
     setIsCheckoutOpen(true);
   };
 

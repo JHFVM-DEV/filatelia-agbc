@@ -41,7 +41,7 @@ function CatalogContent() {
       try {
         const response = await fetch(`${API_BASE_URL}/api/products/${encodeURIComponent(slug)}`, { signal: controller.signal });
         const json = await response.json();
-        if (!response.ok || !json.success || !json.data || json.data.is_active === false) {
+        if (!response.ok || !json.success || !json.data) {
           throw new Error(response.status === 404 || json.data?.is_active === false ? 'Esta pieza no está disponible en el catálogo.' : 'No se pudo cargar la ficha. Recarga la página para intentarlo de nuevo.');
         }
         setLinkedResult({ slug, stamp: mapCatalogProduct(json.data as CatalogProduct), error: null });
@@ -55,7 +55,7 @@ function CatalogContent() {
   }, [linkedPiece]);
 
   useEffect(() => {
-    if (action !== 'buy' || !isStoreReady || !currentUser || !linkedStamp || linkedStamp.stock <= 0 || processedBuy.current === linkedPiece) return;
+    if (action !== 'buy' || !isStoreReady || !currentUser || !linkedStamp || linkedStamp.is_active === false || linkedStamp.stock <= 0 || processedBuy.current === linkedPiece) return;
     processedBuy.current = linkedPiece;
     addToCart(linkedStamp);
   }, [action, isStoreReady, currentUser, linkedStamp, linkedPiece, addToCart]);
@@ -178,7 +178,7 @@ function CatalogContent() {
 
       {/* Stamp Inspector Modal with 10x Magnifier */}
       <StampInspectorModal
-        stamp={inspectingStamp || (linkedPiece !== dismissedPiece && !(action === 'buy' && isStoreReady && currentUser && linkedStamp && linkedStamp.stock > 0) ? linkedStamp : null)}
+        stamp={inspectingStamp || (linkedPiece !== dismissedPiece && !(action === 'buy' && isStoreReady && currentUser && linkedStamp && linkedStamp.is_active !== false && linkedStamp.stock > 0) ? linkedStamp : null)}
         onClose={() => { setInspectingStamp(null); setDismissedPiece(linkedPiece); }}
         onAddToCart={addToCart}
       />

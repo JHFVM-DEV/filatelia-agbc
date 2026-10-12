@@ -20,6 +20,7 @@ Desde `backend`:
 ```sh
 composer install --no-dev --optimize-autoloader
 php artisan migrate --path=database/migrations/2026_10_12_120000_add_customer_details_to_users.php --force
+php artisan migrate --path=database/migrations/2026_10_12_180000_create_site_analytics.php --force
 php artisan db:seed --class=DatabaseSeeder --force
 php artisan catalog:update-prices
 php artisan catalog:update-prices --apply
@@ -30,7 +31,10 @@ php artisan view:cache
 ```
 
 La migración agrega los campos de contacto y dirección. Si ya se ejecutó, no
-los vuelve a crear. El primer comando de precios muestra la comparación; el
+los vuelve a crear. La segunda migración habilita las métricas web y la relación
+anónima de visitas con pedidos. Los informes empiezan a registrar visitas con
+esta versión; consultar [Métricas web y negocio](metricas-web.md).
+El primer comando de precios muestra la comparación; el
 segundo aplica los precios, códigos y valores faciales de las piezas existentes
 y guarda un respaldo en `storage/app/private/catalog-prices`.
 El seeder limpio inicializa roles, permisos y piezas originales que falten;
@@ -61,6 +65,10 @@ Desde `frontend`:
 npm ci
 npm run build
 ```
+
+Si aparece un error interno de Turbopack al procesar CSS (observado en Windows),
+la compilación alternativa es `npm run build -- --webpack`. La descarga de las
+fuentes existentes requiere acceso a Google Fonts durante la compilación.
 
 Después, reiniciar el proceso Next.js usando el gestor que ya tiene el servidor.
 Si sigue la configuración PM2 del README, el nombre configurado es

@@ -376,6 +376,35 @@ class AdminController extends Controller
     /**
      * Create new philatelic product
      */
+    public function setPurchaseAvailability(Request $request): JsonResponse
+    {
+        if ($deny = $this->authorizeModule($request, 'Productos')) return $deny;
+        $data = $request->validate([
+            'scope' => 'required|in:all,selected',
+            'is_active' => 'required|boolean',
+            'ids' => 'required_if:scope,selected|array|min:1|max:1000',
+            'ids.*' => 'required|integer|distinct|exists:products,id',
+        ]);
+        $changed = DB::transaction(function () use ($data, $request) {
+            $query = Product::query();
+            if ($data['scope'] === 'selected') $query->whereIn('id', $data['ids']);
+            $products = $query->orderBy('id')->lockForUpdate()->get();
+            $changed = 0;
+            foreach ($products as $product) {
+                if ($product->is_active === (bool) $data['is_active']) continue;
+                $before = $product->is_active;
+                $product->update(['is_active' => $data['is_active']]);
+                AuditService::log('PURCHASE_AVAILABILITY', Product::class, $product->id, $product->name,
+                    ['is_active' => $before], ['is_active' => (bool) $data['is_active']],
+                    $data['is_active'] ? 'Compra habilitada' : 'Compra deshabilitada', null, $request->user());
+                $changed++;
+            }
+            return $changed;
+        });
+        return response()->json(['success' => true, 'updated' => $changed,
+            'message' => "Se actualizaron {$changed} piezas. Todas siguen visibles en el catálogo."]);
+    }
+
     public function storeProduct(Request $request): JsonResponse
     {
         if ($deny = $this->authorizeModule($request, 'Productos')) return $deny;

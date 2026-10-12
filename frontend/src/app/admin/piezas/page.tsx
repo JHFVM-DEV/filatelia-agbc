@@ -543,7 +543,7 @@ export default function AdminProductsPage() {
             </div>
 
             <ProductImageFields images={editImages} onChange={setEditImages} frontImage={editingProduct.front_image} backImage={editingProduct.back_image} disabled={isSubmitting} />
-            <label className="flex items-center gap-2 text-slate-300"><input type="checkbox" checked={editingProduct.is_active !== false} onChange={(event) => setEditingProduct({ ...editingProduct, is_active: event.target.checked })} />Publicar en el catálogo</label>
+            <label className="flex items-center gap-2 text-slate-300"><input type="checkbox" checked={editingProduct.is_active !== false} onChange={(event) => setEditingProduct({ ...editingProduct, is_active: event.target.checked })} />Habilitar compra (la pieza siempre se muestra en el catálogo)</label>
             <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-800">
               <button
                 type="button"

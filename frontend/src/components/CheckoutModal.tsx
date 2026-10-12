@@ -1,4 +1,5 @@
 'use client';
+import { getAnalyticsSessionId } from '@/lib/site-analytics';
 import { API_BASE_URL } from '@/config/api';
 
 import React, { useState, useEffect } from 'react';
@@ -37,6 +38,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
   const [confirmedOrder, setConfirmedOrder] = useState<{
     orderNumber: string;
     totalAmount: number;
@@ -72,6 +74,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
       return;
     }
 
+    setCheckoutError(null);
     setIsLoading(true);
 
     const token = typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
@@ -86,6 +89,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
         },
         body: JSON.stringify({
           customer_name: formData.name,
+          analytics_session: getAnalyticsSessionId(),
           customer_email: formData.email,
           customer_phone: formData.phone,
           shipping_address: formData.address,
@@ -111,42 +115,12 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           rawOrder: data.data,
         });
       } else {
-        if (res.status === 403) {
-          const errorData = await res.json().catch(() => null);
-          if (errorData?.requires_verification) {
-            setIsLoading(false);
-            onClose();
-            openEmailVerificationModal('checkout');
-            return;
-          }
+        const errorData = await res.json().catch(() => null);
+        if (res.status === 403 && errorData?.requires_verification) {
+          onClose(); openEmailVerificationModal('checkout'); return;
         }
-
-        // Fallback simulate success
-        const orderNum = `BO-FIL-2026-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
-        orderResult = {
-          order_number: orderNum,
-          customer_name: formData.name,
-          customer_email: formData.email,
-          shipping_address: formData.address,
-          city: formData.city,
-          department: formData.department,
-          total_amount: totalAmount,
-          payment_method: formData.paymentMethod,
-          status: 'VAULT_VERIFIED',
-          created_at: new Date().toISOString(),
-          items: items.map((i) => ({
-            product_name: i.stamp.name,
-            catalog_code: i.stamp.catalog_code,
-            quantity: i.quantity,
-            price: i.stamp.price,
-            condition: i.stamp.condition,
-          })),
-        };
-        setConfirmedOrder({
-          orderNumber: orderNum,
-          totalAmount,
-          rawOrder: orderResult,
-        });
+        const validation = errorData?.errors ? Object.values(errorData.errors).flat().join(' ') : '';
+        throw new Error(validation || errorData?.message || 'No se pudo registrar la compra.');
       }
 
       // Guardar en el historial local de órdenes para que aparezca en "Mis Adquisiciones"
@@ -156,40 +130,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           localStorage.setItem('filatelia_saved_orders', JSON.stringify([orderResult, ...existing]));
         } catch {}
       }
-    } catch {
-      // Offline fallback
-      const orderNum = `BO-FIL-2026-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
-      const orderResult = {
-        order_number: orderNum,
-        customer_name: formData.name,
-        customer_email: formData.email,
-        shipping_address: formData.address,
-        city: formData.city,
-        department: formData.department,
-        total_amount: totalAmount,
-        payment_method: formData.paymentMethod,
-        status: 'VAULT_VERIFIED',
-        created_at: new Date().toISOString(),
-        items: items.map((i) => ({
-          product_name: i.stamp.name,
-          catalog_code: i.stamp.catalog_code,
-          quantity: i.quantity,
-          price: i.stamp.price,
-          condition: i.stamp.condition,
-        })),
-      };
-      setConfirmedOrder({
-        orderNumber: orderNum,
-        totalAmount,
-        rawOrder: orderResult,
-      });
-
-      if (typeof window !== 'undefined') {
-        try {
-          const existing = JSON.parse(localStorage.getItem('filatelia_saved_orders') || '[]');
-          localStorage.setItem('filatelia_saved_orders', JSON.stringify([orderResult, ...existing]));
-        } catch {}
-      }
+    } catch (error) {
+      setCheckoutError(error instanceof Error ? error.message : 'No se pudo conectar con el servidor. La compra no fue registrada.');
     } finally {
       setIsLoading(false);
     }
@@ -205,6 +147,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
     <div className="fixed inset-0 z-50 overflow-y-auto bg-[#102542]/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in">
       <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-[#E2DDD5] overflow-hidden">
         
+        {checkoutError && <p role="alert" className="bg-red-50 p-4 text-sm text-red-800">{checkoutError}</p>}
         {/* Header */}
         <div className="bg-[#102542] px-6 py-4 text-white flex items-center justify-between border-b border-[#2C63AC]">
           <div className="flex items-center gap-2">

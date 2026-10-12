@@ -1,4 +1,5 @@
 'use client';
+import { PurchaseBanner } from './PurchaseBanner';
 
 import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
@@ -151,6 +152,7 @@ export function Hero({ stamps, onInspect }: HeroProps) {
                           </div>
                         </div>
 
+                        <div className="mb-3"><PurchaseBanner stamp={stamp} /></div>
                         {/* Passepartout Stamp Frame Adaptable para horizontal y vertical */}
                         <div className="bg-white p-4 rounded-2xl border border-[#E5DFC8] shadow-inner flex flex-col items-center">
                           <div className="relative w-full max-w-[280px] h-56 rounded-lg overflow-hidden bg-slate-50 border-4 border-white shadow-md flex items-center justify-center">
