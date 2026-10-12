@@ -1,6 +1,8 @@
 import { redirect } from 'next/navigation';
+import { catalogPieceUrl } from '@/lib/catalog-product';
 
-export default async function ProductCatalogLink({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ProductCatalogLink({ params, searchParams }: { params: Promise<{ slug: string }>; searchParams: Promise<{ action?: string | string[] }> }) {
   const { slug } = await params;
-  redirect(`/catalogo?pieza=${encodeURIComponent(slug)}`);
+  const { action } = await searchParams;
+  redirect(catalogPieceUrl(slug, action));
 }

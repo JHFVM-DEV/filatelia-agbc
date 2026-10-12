@@ -6,6 +6,7 @@ import { StampItem } from '@/data/stamps';
 import type { CartItem } from '@/components/CartDrawer';
 
 interface StoreContextType {
+  isStoreReady: boolean;
   cart: CartItem[];
   wishlist: number[];
   currentUser: any;
@@ -359,6 +360,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   return (
     <StoreContext.Provider
       value={{
+        isStoreReady: isLoaded,
         cart,
         wishlist,
         currentUser,

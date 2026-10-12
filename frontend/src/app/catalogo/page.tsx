@@ -1,7 +1,8 @@
 'use client';
-import { API_BASE_URL, normalizeImageUrl } from '@/config/api';
+import { API_BASE_URL } from '@/config/api';
+import { mapCatalogProduct, type CatalogProduct } from '@/lib/catalog-product';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -25,7 +26,39 @@ function CatalogContent() {
   const [stamps, setStamps] = useState<StampItem[]>(INITIAL_STAMPS);
   const [inspectingStamp, setInspectingStamp] = useState<StampItem | null>(null);
 
-  const { addToCart, toggleWishlist, wishlist } = useStore();
+  const { addToCart, toggleWishlist, wishlist, currentUser, isStoreReady } = useStore();
+  const action = searchParams.get('action');
+  const processedBuy = useRef<string | null>(null);
+  const [linkedResult, setLinkedResult] = useState<{ slug: string; stamp: StampItem | null; error: string | null } | null>(null);
+  const linkedStamp = linkedResult?.slug === linkedPiece ? linkedResult.stamp : null;
+  const linkedError = linkedResult?.slug === linkedPiece ? linkedResult.error : null;
+
+  useEffect(() => {
+    if (!linkedPiece) return;
+    const slug = linkedPiece;
+    const controller = new AbortController();
+    async function loadLinkedPiece() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/products/${encodeURIComponent(slug)}`, { signal: controller.signal });
+        const json = await response.json();
+        if (!response.ok || !json.success || !json.data || json.data.is_active === false) {
+          throw new Error(response.status === 404 || json.data?.is_active === false ? 'Esta pieza no está disponible en el catálogo.' : 'No se pudo cargar la ficha. Recarga la página para intentarlo de nuevo.');
+        }
+        setLinkedResult({ slug, stamp: mapCatalogProduct(json.data as CatalogProduct), error: null });
+      } catch (error) {
+        if (controller.signal.aborted) return;
+        setLinkedResult({ slug, stamp: null, error: error instanceof Error ? error.message : 'No se pudo cargar la ficha.' });
+      }
+    }
+    loadLinkedPiece();
+    return () => controller.abort();
+  }, [linkedPiece]);
+
+  useEffect(() => {
+    if (action !== 'buy' || !isStoreReady || !currentUser || !linkedStamp || linkedStamp.stock <= 0 || processedBuy.current === linkedPiece) return;
+    processedBuy.current = linkedPiece;
+    addToCart(linkedStamp);
+  }, [action, isStoreReady, currentUser, linkedStamp, linkedPiece, addToCart]);
 
   // Sincronizar catálogo con API de Laravel si está disponible
   useEffect(() => {
@@ -35,52 +68,7 @@ function CatalogContent() {
         if (res.ok) {
           const json = await res.json();
           if (json.data && json.data.length > 0) {
-            const mapped: StampItem[] = json.data.map((p: any) => ({
-              id: p.id,
-              name: p.name,
-              slug: p.slug,
-              catalog_code: p.catalog_code || 'CAT-BO',
-              category: p.category?.slug || 'sellos-y-series',
-              category_name: p.category?.name || 'Sellos Oficiales',
-              price: parseFloat(p.price),
-              face_value: p.face_value || '10.00 BOB',
-              year: p.year,
-              country: p.country,
-              condition: p.condition,
-              condition_label:
-                p.condition === 'MINT_NH'
-                  ? 'MINT (Goma Intacta NH)'
-                  : p.condition === 'MINT_LH'
-                    ? 'MINT (Charnela LH)'
-                    : p.condition === 'USED'
-                      ? 'Usado / Matasellado'
-                      : p.condition === 'FDC'
-                        ? 'Sobre Primer Día (FDC)'
-                        : p.condition || 'Conservación Oficial',
-              rarity: p.rarity,
-              rarity_label:
-                p.rarity === 'MUSEUM_PIECE'
-                  ? 'Pieza de Museo'
-                  : p.rarity === 'VERY_RARE'
-                    ? 'Muy Rara (Gala)'
-                    : p.rarity === 'RARE'
-                      ? 'Rara de Colección'
-                      : p.rarity === 'SCARCE'
-                        ? 'Escasa en Bóveda'
-                        : 'Emisión Conmemorativa',
-              certified: p.certified,
-              stock: p.stock,
-              perforation: p.perforation ? p.perforation.replace(/milímetros|milimetros/gi, 'mm').trim() : '13.5 x 13.5 mm',
-              printing_technique: p.printing_technique || 'Calcografía Oficial',
-              paper_type: p.paper_type || 'Papel verjurado',
-              gum_condition: p.gum_condition || 'Goma original intacta',
-              dimensions: p.dimensions || '28 x 35 mm',
-              front_image: normalizeImageUrl(p.front_image),
-              back_image: normalizeImageUrl(p.back_image),
-              is_featured: p.is_featured,
-              description: p.description || '',
-              historical_context: p.historical_context || '',
-            }));
+            const mapped: StampItem[] = json.data.map(mapCatalogProduct);
             setStamps(mapped);
           }
         }
@@ -137,6 +125,8 @@ function CatalogContent() {
         </div>
       </section>
 
+      {linkedPiece && linkedResult?.slug !== linkedPiece && <p role="status" className="mx-auto max-w-7xl px-6 py-4 text-sm">Cargando la ficha de la pieza…</p>}
+      {linkedError && <p role="alert" className="mx-auto max-w-7xl px-6 py-4 text-sm text-red-700">{linkedError}</p>}
       {/* Main Catalog with Filters & Museum Cards */}
       <CatalogSection
         stamps={stamps}
@@ -188,7 +178,7 @@ function CatalogContent() {
 
       {/* Stamp Inspector Modal with 10x Magnifier */}
       <StampInspectorModal
-        stamp={inspectingStamp || (linkedPiece !== dismissedPiece ? stamps.find((stamp) => stamp.slug === linkedPiece) ?? null : null)}
+        stamp={inspectingStamp || (linkedPiece !== dismissedPiece && !(action === 'buy' && isStoreReady && currentUser && linkedStamp && linkedStamp.stock > 0) ? linkedStamp : null)}
         onClose={() => { setInspectingStamp(null); setDismissedPiece(linkedPiece); }}
         onAddToCart={addToCart}
       />
