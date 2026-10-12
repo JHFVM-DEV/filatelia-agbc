@@ -292,6 +292,7 @@ class ApiController extends Controller
             'token' => $token,
             'user' => [
                 'id' => $user->id,
+                ...$user->only(User::CUSTOMER_FIELDS),
                 'name' => $user->name,
                 'email' => $user->email,
                 'email_verified_at' => $user->email_verified_at ? $user->email_verified_at->toISOString() : null,
@@ -340,6 +341,7 @@ class ApiController extends Controller
             'redirect_url' => $redirectUrl,
             'user' => [
                 'id' => $user->id,
+                ...$user->only(User::CUSTOMER_FIELDS),
                 'name' => $user->name,
                 'email' => $user->email,
                 'avatar' => $user->avatar,
@@ -495,6 +497,7 @@ class ApiController extends Controller
                 'redirect_url' => $redirectUrl,
                 'user' => [
                     'id' => $user->id,
+                ...$user->only(User::CUSTOMER_FIELDS),
                     'name' => $user->name,
                     'email' => $user->email,
                     'avatar' => $user->avatar,
@@ -536,6 +539,7 @@ class ApiController extends Controller
             'is_staff' => $isStaff,
             'user' => [
                 'id' => $user->id,
+                ...$user->only(User::CUSTOMER_FIELDS),
                 'name' => $user->name,
                 'email' => $user->email,
                 'avatar' => $user->avatar,
@@ -620,6 +624,7 @@ class ApiController extends Controller
             'success' => true,
             'user' => [
                 'id' => $user->id,
+                ...$user->only(User::CUSTOMER_FIELDS),
                 'name' => $user->name,
                 'email' => $user->email,
                 'avatar' => $user->avatar,
@@ -750,6 +755,7 @@ class ApiController extends Controller
         $user = $request->user();
 
         $request->validate([
+            ...User::customerRules(false, $request->input('country', $user->country ?? 'Bolivia')),
             'name' => 'required|string|max:255',
             'current_password' => 'nullable|string',
             'password' => 'nullable|string|min:8|confirmed',
@@ -771,6 +777,7 @@ class ApiController extends Controller
         }
 
         $user->name = trim($request->name);
+        $user->fill($request->only(User::CUSTOMER_FIELDS));
         $user->save();
 
         return response()->json([
@@ -778,6 +785,7 @@ class ApiController extends Controller
             'message' => 'Los datos de la cuenta se actualizaron correctamente.',
             'user' => [
                 'id' => $user->id,
+                ...$user->only(User::CUSTOMER_FIELDS),
                 'name' => $user->name,
                 'email' => $user->email,
                 'email_verified_at' => $user->email_verified_at ? $user->email_verified_at->toISOString() : null,
@@ -921,7 +929,13 @@ class ApiController extends Controller
      */
     public function register(Request $request): JsonResponse
     {
+        $request->merge([
+            'name' => trim((string) $request->input('name')),
+            'email' => strtolower(trim((string) $request->input('email'))),
+        ]);
         $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            ...User::customerRules(true, $request->input('country')),
+            'accept_terms' => 'required|accepted',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
@@ -934,6 +948,15 @@ class ApiController extends Controller
             'password.required' => 'La contraseña es obligatoria.',
             'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
             'password.confirmed' => 'La confirmación de la contraseña no coincide.',
+            'phone.required' => 'El teléfono de contacto es obligatorio.',
+            'phone.regex' => 'Ingrese un teléfono válido con al menos 7 caracteres.',
+            'country.not_in' => 'Escribe el nombre de tu país.',
+            'department.required' => 'Seleccione su departamento.',
+            'department.in' => 'Seleccione un departamento válido de Bolivia.',
+            'city.required' => 'La ciudad o localidad es obligatoria.',
+            'shipping_address.required' => 'La dirección de entrega es obligatoria.',
+            'accept_terms.accepted' => 'Debe aceptar los términos para crear su cuenta.',
+            'accept_terms.required' => 'Debe aceptar los términos para crear su cuenta.',
         ]);
 
         if ($validator->fails()) {
@@ -945,10 +968,14 @@ class ApiController extends Controller
         }
 
         $user = User::create([
+            ...$request->only(User::CUSTOMER_FIELDS),
             'name' => trim($request->name),
             'email' => trim(strtolower($request->email)),
             'password' => Hash::make($request->password),
         ]);
+
+        $user->terms_accepted_at = now();
+        $user->save();
 
         // Asignación estricta del rol de CLIENTE
         $user->assignRole('CLIENTE');
@@ -978,6 +1005,7 @@ class ApiController extends Controller
             'requires_verification' => true,
             'user' => [
                 'id' => $user->id,
+                ...$user->only(User::CUSTOMER_FIELDS),
                 'name' => $user->name,
                 'email' => $user->email,
                 'email_verified_at' => null,

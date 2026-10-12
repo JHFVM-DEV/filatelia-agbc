@@ -1,4 +1,5 @@
 'use client';
+import { CustomerDetailsFields, customerDetailsFromUser } from './CustomerDetailsFields';
 
 import React, { useState, useEffect } from 'react';
 import {
@@ -57,6 +58,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
 
   // Edit Form State
   const [editName, setEditName] = useState('');
+  const [customerDetails, setCustomerDetails] = useState(() => customerDetailsFromUser(currentUser));
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -76,6 +78,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
 
     if (currentUser?.name) {
       setEditName(currentUser.name);
+      setCustomerDetails(customerDetailsFromUser(currentUser));
     }
 
     const fetchProfile = async () => {
@@ -99,6 +102,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
           if (data.success && data.user) {
             setProfileData(data.user);
             setEditName(data.user.name);
+            setCustomerDetails(customerDetailsFromUser(data.user));
             if (Array.isArray(data.orders)) {
               setOrdersCount(data.orders.length);
               setOrdersList(data.orders);
@@ -148,6 +152,7 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
 
       const bodyData: any = {
         name: editName.trim(),
+        ...customerDetails,
       };
 
       if (newPassword) {
@@ -551,6 +556,8 @@ export const ClientProfileModal: React.FC<ClientProfileModalProps> = ({
                   El correo electrónico institucional no puede ser modificado directamente.
                 </span>
               </div>
+
+              <CustomerDetailsFields value={customerDetails} onChange={setCustomerDetails} required={false} />
 
               {/* Sección Opcional: Cambio de Contraseña */}
               <div className="pt-2 border-t border-[#E2DDD5]/70 space-y-3">

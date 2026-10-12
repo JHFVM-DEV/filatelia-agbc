@@ -1,4 +1,5 @@
 'use client';
+import { CustomerDetailsFields, EMPTY_CUSTOMER_DETAILS } from './CustomerDetailsFields';
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -32,7 +33,8 @@ export const ClientRegistrationForm: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [acceptTerms, setAcceptTerms] = useState(true);
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [customerDetails, setCustomerDetails] = useState({ ...EMPTY_CUSTOMER_DETAILS });
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -88,6 +90,8 @@ export const ClientRegistrationForm: React.FC = () => {
           email: trimmedEmail,
           password: password,
           password_confirmation: confirmPassword,
+          ...customerDetails,
+          accept_terms: acceptTerms,
         }),
       });
 
@@ -224,6 +228,8 @@ export const ClientRegistrationForm: React.FC = () => {
                   Se utilizará para notificaciones de despacho y certificados de autenticidad.
                 </p>
               </div>
+
+              <CustomerDetailsFields value={customerDetails} onChange={setCustomerDetails} />
 
               {/* Campos Contraseña y Confirmación en Cuadrícula */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

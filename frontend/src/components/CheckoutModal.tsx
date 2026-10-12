@@ -29,8 +29,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
     name: '',
     email: '',
     phone: '',
-    department: 'La Paz',
-    city: 'La Paz',
+    department: '',
+    city: '',
     address: '',
     paymentMethod: 'QR_TRANSFER',
     specialNotes: '',
@@ -48,8 +48,13 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
     if (currentUser) {
       setFormData((prev) => ({
         ...prev,
-        name: prev.name || currentUser.name || '',
-        email: prev.email || currentUser.email || '',
+        name: currentUser.name || '',
+        email: currentUser.email || '',
+        phone: currentUser.phone || '',
+        department: currentUser.department || '',
+        city: currentUser.city || '',
+        address: currentUser.shipping_address || '',
+        specialNotes: currentUser.address_reference || '',
       }));
     }
   }, [currentUser, isOpen]);
@@ -348,10 +353,12 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1">Departamento</label>
                   <select
+                    required
                     value={formData.department}
                     onChange={(e) => setFormData({ ...formData, department: e.target.value })}
                     className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#102542] text-[#102542] bg-white"
                   >
+                    <option value="">Selecciona un departamento</option>
                     <option value="La Paz">La Paz</option>
                     <option value="Santa Cruz">Santa Cruz</option>
                     <option value="Cochabamba">Cochabamba</option>
@@ -373,6 +380,11 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#102542] text-[#102542] bg-white placeholder:text-slate-400"
                   />
+                </div>
+
+                <div>
+                  <label htmlFor="checkout-city" className="block text-xs font-semibold text-slate-700 mb-1">Ciudad o localidad</label>
+                  <input id="checkout-city" type="text" autoComplete="address-level2" required maxLength={100} value={formData.city} onChange={(event) => setFormData({ ...formData, city: event.target.value })} className="w-full px-3 py-2 text-xs border border-[#E2DDD5] rounded-lg focus:outline-none focus:border-[#102542] text-[#102542] bg-white" />
                 </div>
 
                 <div className="sm:col-span-2">

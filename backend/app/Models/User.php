@@ -14,6 +14,22 @@ class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
+    public const CUSTOMER_FIELDS = ['phone', 'country', 'department', 'city', 'shipping_address', 'postal_code', 'address_reference'];
+
+    public static function customerRules(bool $required = false, mixed $country = 'Bolivia'): array
+    {
+        $presence = $required ? 'required' : 'sometimes|nullable';
+        return [
+            'phone' => "$presence|string|max:30|regex:/^\\+?(?=(?:[^0-9]*[0-9]){7})[0-9 ()-]{7,30}$/",
+            'country' => "$presence|string|max:100|not_in:Otro país,other",
+            'department' => "$presence|string|max:100" . ($country === 'Bolivia' ? '|in:La Paz,Cochabamba,Santa Cruz,Oruro,Potosí,Chuquisaca,Tarija,Beni,Pando' : ''),
+            'city' => "$presence|string|max:100",
+            'shipping_address' => "$presence|string|max:500",
+            'postal_code' => 'sometimes|nullable|string|max:20',
+            'address_reference' => 'sometimes|nullable|string|max:255',
+        ];
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +41,8 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'google_id',
         'avatar',
+        'phone', 'country', 'department', 'city', 'shipping_address',
+        'postal_code', 'address_reference',
     ];
 
     /**
@@ -47,6 +65,7 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'terms_accepted_at' => 'datetime',
         ];
     }
 

@@ -1,4 +1,5 @@
 'use client';
+import { CustomerDetailsFields, EMPTY_CUSTOMER_DETAILS } from './CustomerDetailsFields';
 import { API_BASE_URL } from '@/config/api';
 
 import React, { useState, useEffect } from 'react';
@@ -59,7 +60,8 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
   const [regConfirmPassword, setRegConfirmPassword] = useState('');
   const [showRegPassword, setShowRegPassword] = useState(false);
   const [showRegConfirmPassword, setShowRegConfirmPassword] = useState(false);
-  const [acceptTerms, setAcceptTerms] = useState(true);
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [regDetails, setCustomerDetails] = useState({ ...EMPTY_CUSTOMER_DETAILS });
 
   // Password Reset State
   const [recoveryEmail, setRecoveryEmail] = useState('');
@@ -239,6 +241,8 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
           email: trimmedEmail,
           password: regPassword,
           password_confirmation: regConfirmPassword,
+          ...regDetails,
+          accept_terms: acceptTerms,
         }),
       });
 
@@ -384,8 +388,8 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
   const activeView = normalizeView(view);
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#102542]/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl border border-[#E2DDD5] overflow-hidden">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#102542]/80 backdrop-blur-md flex items-start sm:items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-md max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)] bg-white rounded-3xl shadow-2xl border border-[#E2DDD5] overflow-y-auto">
         
         {/* Header Formal Institucional Amarillo Postal */}
         <div className="bg-[#FECC36] px-6 py-4 text-[#102542] flex items-center justify-between border-b-2 border-[#E5B728]">
@@ -720,6 +724,8 @@ export const UnifiedLoginModal: React.FC<UnifiedLoginModalProps> = ({
                   </button>
                 </div>
               </div>
+
+              <CustomerDetailsFields value={regDetails} onChange={setCustomerDetails} />
 
               <div className="pt-1">
                 <label className="flex items-start gap-2.5 text-xs text-[#5A554E] cursor-pointer leading-tight">
