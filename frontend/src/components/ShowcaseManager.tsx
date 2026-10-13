@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import {
   Store,
-  LayoutGrid,
   ArrowUp,
   ArrowDown,
   Trash2,
@@ -14,24 +13,18 @@ import {
   ExternalLink,
   RefreshCw,
   Search,
-  Filter,
-  Sparkles,
   ShoppingBag,
   Heart,
   Sliders,
   Globe,
-  Code2,
   FileJson,
   CheckCircle2,
   AlertCircle,
   Eye,
-  Info,
   Layers,
-  ChevronRight,
-  ShieldCheck,
-  Award,
 } from 'lucide-react';
-import { API_BASE_URL, normalizeImageUrl } from '@/config/api';
+import { normalizeImageUrl } from '@/config/api';
+import { readAdminResponse } from '@/lib/admin-api';
 
 interface ProductItem {
   id: number;
@@ -72,17 +65,23 @@ const BADGE_SUGGESTIONS = [
   'BICENTENARIO',
 ];
 
+function getAuthToken(): string | null {
+  return typeof window !== 'undefined' ? localStorage.getItem('filatelia_token') : null;
+}
+
 export const ShowcaseManager: React.FC = () => {
   const [showcaseItems, setShowcaseItems] = useState<ProductItem[]>([]);
   const [allProducts, setAllProducts] = useState<ProductItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [loaded, setLoaded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [saving, setSaving] = useState<boolean>(false);
   const [saveSuccess, setSaveSuccess] = useState<boolean>(false);
   const [searchCatalog, setSearchCatalog] = useState<string>('');
   const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>('all');
   const [copiedUrl, setCopiedUrl] = useState<boolean>(false);
   const [showJsonModal, setShowJsonModal] = useState<boolean>(false);
-  const [apiJsonResponse, setApiJsonResponse] = useState<any>(null);
+  const [apiJsonResponse, setApiJsonResponse] = useState<unknown>(null);
   const [loadingJson, setLoadingJson] = useState<boolean>(false);
 
   // Endpoint de integración
@@ -90,40 +89,35 @@ export const ShowcaseManager: React.FC = () => {
     ? `${window.location.origin}/api/external/showcase`
     : 'http://localhost:8000/api/external/showcase';
 
-  const getAuthToken = () => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('filatelia_token');
-    }
-    return null;
-  };
-
   // Cargar datos del backend
-  const fetchShowcaseData = async () => {
+  const fetchShowcaseData = useCallback(async () => {
     setLoading(true);
+    setErrorMessage(null);
     try {
       const token = getAuthToken();
-      const res = await fetch(`${API_BASE_URL}/api/admin/showcase`, {
+      if (!token) throw new Error('Inicia sesión para consultar la vitrina.');
+      const res = await fetch('/api/admin/showcase', {
         headers: {
           Authorization: `Bearer ${token}`,
           Accept: 'application/json',
         },
       });
 
-      if (res.ok) {
-        const data = await res.json();
-        setShowcaseItems(data.showcase_items || []);
-        setAllProducts(data.all_products || []);
-      }
+      const data = await readAdminResponse(res);
+      setShowcaseItems(data.showcase_items || []);
+      setAllProducts(data.all_products || []);
+      setLoaded(true);
     } catch (err) {
-      console.error('Error al cargar datos de vitrina:', err);
+      setErrorMessage(err instanceof Error ? err.message : 'No se pudo cargar la vitrina.');
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    fetchShowcaseData();
-  }, []);
+    const timer = setTimeout(() => { void fetchShowcaseData(); }, 0);
+    return () => clearTimeout(timer);
+  }, [fetchShowcaseData]);
 
   // Mover elemento arriba en el orden
   const handleMoveUp = (index: number) => {
@@ -187,15 +181,17 @@ export const ShowcaseManager: React.FC = () => {
   const handleSaveShowcase = async () => {
     setSaving(true);
     setSaveSuccess(false);
+    setErrorMessage(null);
     try {
       const token = getAuthToken();
+      if (!token) throw new Error('Inicia sesión para guardar la vitrina.');
       const ordered_ids = showcaseItems.map((item) => item.id);
       const badges: Record<number, string> = {};
       showcaseItems.forEach((item) => {
         badges[item.id] = item.showcase_badge || 'COLECCIÓN OFICIAL';
       });
 
-      const res = await fetch(`${API_BASE_URL}/api/admin/showcase`, {
+      const res = await fetch('/api/admin/showcase', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -208,13 +204,14 @@ export const ShowcaseManager: React.FC = () => {
         }),
       });
 
-      if (res.ok) {
-        setSaveSuccess(true);
-        setTimeout(() => setSaveSuccess(false), 3500);
-        await fetchShowcaseData();
-      }
+      const data = await readAdminResponse(res);
+      setShowcaseItems(data.showcase_items || []);
+      setAllProducts(data.all_products || []);
+      setLoaded(true);
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3500);
     } catch (err) {
-      console.error('Error al guardar vitrina:', err);
+      setErrorMessage(err instanceof Error ? err.message : 'No se pudo guardar la vitrina.');
     } finally {
       setSaving(false);
     }
@@ -226,22 +223,25 @@ export const ShowcaseManager: React.FC = () => {
       return;
     }
     setSaving(true);
+    setErrorMessage(null);
     try {
       const token = getAuthToken();
-      const res = await fetch(`${API_BASE_URL}/api/admin/showcase/reset-default`, {
+      if (!token) throw new Error('Inicia sesión para restablecer la vitrina.');
+      const res = await fetch('/api/admin/showcase/reset-default', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
           Accept: 'application/json',
         },
       });
-      if (res.ok) {
-        setSaveSuccess(true);
-        setTimeout(() => setSaveSuccess(false), 3500);
-        await fetchShowcaseData();
-      }
+      const data = await readAdminResponse(res);
+      setShowcaseItems(data.showcase_items || []);
+      setAllProducts(data.all_products || []);
+      setLoaded(true);
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3500);
     } catch (err) {
-      console.error('Error al restablecer vitrina:', err);
+      setErrorMessage(err instanceof Error ? err.message : 'No se pudo restablecer la vitrina.');
     } finally {
       setSaving(false);
     }
@@ -251,14 +251,12 @@ export const ShowcaseManager: React.FC = () => {
   const handleViewJson = async () => {
     setShowJsonModal(true);
     setLoadingJson(true);
+    setApiJsonResponse(null);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/external/showcase`);
-      if (res.ok) {
-        const json = await res.json();
-        setApiJsonResponse(json);
-      }
+      const res = await fetch('/api/external/showcase');
+      setApiJsonResponse(await readAdminResponse(res));
     } catch (err) {
-      console.error('Error al consultar API JSON:', err);
+      setApiJsonResponse({ error: err instanceof Error ? err.message : 'No se pudo consultar la vitrina pública.' });
     } finally {
       setLoadingJson(false);
     }
@@ -299,6 +297,8 @@ export const ShowcaseManager: React.FC = () => {
 
   return (
     <div className="space-y-8 pb-12">
+      {loading && <p role="status" className="text-slate-300">Cargando estampas de la vitrina…</p>}
+      {errorMessage && <div role="alert" className="rounded-xl border border-red-400/40 bg-red-950/40 p-4 text-red-200">{errorMessage}<button onClick={fetchShowcaseData} className="ml-3 underline">Volver a cargar</button></div>}
       {/* 1. Header con Banner Informativo y Controles Principales */}
       <div className="bg-[#102542] rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-white/10 relative overflow-hidden">
         
@@ -320,7 +320,7 @@ export const ShowcaseManager: React.FC = () => {
           <div className="flex flex-wrap lg:flex-col gap-3 shrink-0">
             <button
               onClick={handleSaveShowcase}
-              disabled={saving}
+              disabled={saving || loading || !loaded}
               className={`px-6 py-3 rounded-xl font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer ${
                 saveSuccess
                   ? 'bg-emerald-500 text-white'
@@ -383,7 +383,7 @@ export const ShowcaseManager: React.FC = () => {
               <span>{copiedUrl ? '¡Copiado!' : 'Copiar URL Completa'}</span>
             </button>
             <a
-              href={`${API_BASE_URL}/api/external/showcase`}
+              href="/api/external/showcase"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center gap-1.5 transition text-[11px] font-medium"
@@ -521,7 +521,7 @@ export const ShowcaseManager: React.FC = () => {
 
           <button
             onClick={handleSaveShowcase}
-            disabled={saving}
+            disabled={saving || loading || !loaded}
             className="px-4 py-2 rounded-xl text-xs font-bold bg-[#102542] text-white hover:bg-[#2C63AC] transition flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
           >
             <Check className="w-3.5 h-3.5 text-[#FECC36]" />
@@ -648,7 +648,7 @@ export const ShowcaseManager: React.FC = () => {
               </h3>
             </div>
             <p className="text-xs text-slate-500 mt-0.5">
-              Busque y active cualquier estampilla de la bóveda para incorporarla a la vitrina de Correos.
+              Seleccione cualquier estampilla de la bóveda para incorporarla a la vitrina, aunque su compra esté deshabilitada o esté agotada.
             </p>
           </div>
 

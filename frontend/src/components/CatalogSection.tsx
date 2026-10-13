@@ -4,7 +4,8 @@ import { PurchaseBanner, canPurchase } from './PurchaseBanner';
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Search, ZoomIn, ShoppingBag, Heart, Sparkles, Filter } from 'lucide-react';
-import { StampItem, CATEGORIES_LIST } from '@/data/stamps';
+import { StampItem } from '@/data/stamps';
+import { useCatalogCategories } from '@/hooks/useCatalogCategories';
 
 interface CatalogSectionProps {
   stamps: StampItem[];
@@ -216,6 +217,10 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
   initialCategory,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'all');
+  const { categories, loaded: categoriesLoaded, error: categoriesError } = useCatalogCategories();
+  const categoryFilters = [{ slug: 'all', name: 'Todo el Catálogo' }, ...categories];
+  const effectiveCategory = categoriesLoaded && !categoryFilters.some(cat => cat.slug === selectedCategory)
+    ? 'all' : selectedCategory;
   const selectCategory = (category: string) => {
     setSelectedCategory(category);
   };
@@ -250,7 +255,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
   const filteredStamps = useMemo(() => {
     return stamps.filter((item) => {
       // Category filter
-      if (selectedCategory !== 'all' && item.category !== selectedCategory) {
+      if (effectiveCategory !== 'all' && item.category !== effectiveCategory) {
         return false;
       }
       // Condition filter
@@ -279,7 +284,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
       if (sortBy === 'year_asc') return a.year - b.year;
       return (b.is_featured ? 1 : 0) - (a.is_featured ? 1 : 0);
     });
-  }, [stamps, selectedCategory, searchQuery, selectedCondition, selectedRarity, sortBy]);
+  }, [stamps, effectiveCategory, searchQuery, selectedCondition, selectedRarity, sortBy]);
 
   return (
     <section id="catalogo" className="py-16 bg-[#FAF8F0] min-h-[800px]">
@@ -305,13 +310,14 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
 
         {/* Category Filter Pills */}
         <div className="flex items-center justify-start sm:justify-center overflow-x-auto pb-4 gap-2 no-scrollbar mb-8">
-          {CATEGORIES_LIST.map((cat) => {
-            const isActive = selectedCategory === cat.id;
+          {categoryFilters.map((cat) => {
+            const isActive = effectiveCategory === cat.slug;
             return (
               <button
-                key={cat.id}
-                data-site-category={cat.id}
-                onClick={() => selectCategory(cat.id)}
+                key={cat.slug}
+                data-site-category={cat.slug}
+                aria-pressed={isActive}
+                onClick={() => selectCategory(cat.slug)}
                 className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm whitespace-nowrap transition flex items-center gap-2 border cursor-pointer ${
                   isActive
                     ? 'bg-[#FECC36] text-[#102542] font-black border-[#E5B728] shadow-sm'
@@ -323,6 +329,9 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
             );
           })}
         </div>
+
+        {categoriesError && <p role="status" className="mb-4 text-sm text-red-700">{categoriesError}</p>}
+        {!categoriesLoaded && !categoriesError && <p role="status" className="mb-4 text-sm text-slate-600">Cargando categorías…</p>}
 
         {/* Filters and Search Bar */}
         <div className="bg-white p-4 sm:p-5 rounded-2xl border border-[#E2DDD5] shadow-sm mb-10 flex flex-col md:flex-row gap-4 items-center justify-between">

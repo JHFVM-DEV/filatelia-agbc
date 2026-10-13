@@ -152,8 +152,9 @@ class ExternalIntegrationController extends Controller
 
         // Si existen piezas configuradas específicamente para la vitrina del portal
         $hasCustomShowcase = Product::where('is_in_showcase', true)->exists();
+        $isShowcase = $request->is('api/external/showcase');
 
-        if ($hasCustomShowcase && !$request->has('featured') && !$request->has('category') && !$request->has('search')) {
+        if ($isShowcase || ($hasCustomShowcase && !$request->has('featured') && !$request->has('category') && !$request->has('search'))) {
             $query->where('is_in_showcase', true)
                   ->orderBy('showcase_order', 'asc')
                   ->orderBy('id', 'asc');
@@ -191,7 +192,7 @@ class ExternalIntegrationController extends Controller
         $products = $query->take($limit)->get();
 
         // Si no hubieron piezas suficientes y no se filtró específicamente, completar
-        if ($products->count() < 4 && !$request->has('category') && !$request->has('search')) {
+        if (!$isShowcase && !$hasCustomShowcase && $products->count() < 4 && !$request->has('category') && !$request->has('search')) {
             $ids = $products->pluck('id')->toArray();
             $more = Product::with(['category', 'emission'])
 

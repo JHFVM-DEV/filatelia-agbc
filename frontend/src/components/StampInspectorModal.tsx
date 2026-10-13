@@ -449,7 +449,7 @@ export const StampInspectorModal: React.FC<StampInspectorModalProps> = ({
                 className="gold-button px-5 py-3 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 shadow-lg cursor-pointer hover:scale-105 active:scale-95 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>{stamp.stock <= 0 ? 'Agotado' : stamp.is_active === false ? 'Compra deshabilitada' : 'Adquirir para Colección'}</span>
+                <span>{stamp.stock <= 0 ? 'Agotado' : stamp.is_active === false ? 'No disponible' : 'Adquirir para Colección'}</span>
               </button>
             </div>
 

@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $invalidateProduct = function (\App\Models\Product $product): void {
+            \Illuminate\Support\Facades\Cache::forget('public_categories_list');
             \Illuminate\Support\Facades\Cache::forget('public_catalog_default');
             \Illuminate\Support\Facades\Cache::forget('product_slug_' . $product->slug);
             if ($product->getOriginal('slug')) {
@@ -31,6 +32,19 @@ class AppServiceProvider extends ServiceProvider
         };
         \App\Models\Product::saved($invalidateProduct);
         \App\Models\Product::deleted($invalidateProduct);
+
+        $invalidateCategory = function (): void {
+            \Illuminate\Support\Facades\Cache::forget('public_categories_list');
+            \Illuminate\Support\Facades\Cache::forget('public_catalog_default');
+            // Las fichas individuales incluyen el nombre y slug de la categoría.
+            \App\Models\Product::query()->select('id', 'slug')->chunkById(200, function ($products): void {
+                foreach ($products as $product) {
+                    \Illuminate\Support\Facades\Cache::forget('product_slug_' . $product->slug);
+                }
+            }, 'id');
+        };
+        \App\Models\Category::saved($invalidateCategory);
+        \App\Models\Category::deleted($invalidateCategory);
 
         // Al cerrar sesión en web o Filament, revocar todos los tokens de API de ese usuario
         \Illuminate\Support\Facades\Event::listen(\Illuminate\Auth\Events\Logout::class, function ($event) {

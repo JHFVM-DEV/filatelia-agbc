@@ -1374,11 +1374,3 @@ export const INITIAL_STAMPS: StampItem[] = [
     historical_context: "Emitida por Correos de Bolivia en coordinación con el Ministerio de Culturas, Descolonización y Despatriarcalización.",
   }
 ];
-
-export const CATEGORIES_LIST = [
-  { id: 'all', name: 'Todo el Catálogo', icon: 'Sparkles' },
-  { id: 'sellos-y-series', name: 'Sellos y Series', icon: 'Bookmark' },
-  { id: 'fauna-y-flora', name: 'Flora y Fauna', icon: 'Leaf' },
-  { id: 'dipticos-y-tripticos', name: 'Dípticos y Trípticos', icon: 'Columns' },
-  { id: 'hojitas-bloque', name: 'Hojitas Bloque', icon: 'FileText' },
-];

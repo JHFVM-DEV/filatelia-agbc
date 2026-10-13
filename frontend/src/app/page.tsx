@@ -6,7 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { 
-  Award, 
   ShieldCheck, 
   BookOpen, 
   Sparkles, 
@@ -14,7 +13,6 @@ import {
   Layers, 
   CheckCircle2, 
   Compass, 
-  ShoppingBag, 
   Landmark, 
   ScrollText, 
   Microscope, 
@@ -25,6 +23,8 @@ import { Hero } from '@/components/Hero';
 import { CollectorClub } from '@/components/CollectorClub';
 import { INITIAL_STAMPS, StampItem } from '@/data/stamps';
 import { useStore } from '@/context/StoreContext';
+import { useCatalogCategories } from '@/hooks/useCatalogCategories';
+import { mapCatalogProduct } from '@/lib/catalog-product';
 
 // Carga perezosa del modal de lupa e inspección 10x
 const StampInspectorModal = dynamic(
@@ -38,6 +38,7 @@ export default function Home() {
   const [activeAnatomy, setActiveAnatomy] = useState<number>(0);
 
   const { addToCart } = useStore();
+  const { categories, error: categoriesError } = useCatalogCategories();
 
   // Sincronizar catálogo con API de Laravel si está disponible
   useEffect(() => {
@@ -47,53 +48,7 @@ export default function Home() {
         if (res.ok) {
           const json = await res.json();
           if (json.data && json.data.length > 0) {
-            const mapped: StampItem[] = json.data.map((p: any) => ({
-              id: p.id,
-              name: p.name,
-              slug: p.slug,
-              catalog_code: p.catalog_code || 'CAT-BO',
-              category: p.category?.slug || 'sellos-y-series',
-              category_name: p.category?.name || 'Sellos Oficiales',
-              price: parseFloat(p.price),
-              face_value: p.face_value || '',
-              year: p.year,
-              country: p.country,
-              condition: p.condition,
-              condition_label:
-                p.condition === 'MINT_NH'
-                  ? 'MINT (Goma Intacta NH)'
-                  : p.condition === 'MINT_LH'
-                    ? 'MINT (Charnela LH)'
-                    : p.condition === 'USED'
-                      ? 'Usado / Matasellado'
-                      : p.condition === 'FDC'
-                        ? 'Sobre Primer Día (FDC)'
-                        : p.condition || 'Consultar ficha',
-              rarity: p.rarity,
-              rarity_label:
-                p.rarity === 'MUSEUM_PIECE'
-                  ? 'Pieza de Museo'
-                  : p.rarity === 'VERY_RARE'
-                    ? 'Muy Rara (Gala)'
-                    : p.rarity === 'RARE'
-                      ? 'Rara de Colección'
-                      : p.rarity === 'SCARCE'
-                        ? 'Escasa en Bóveda'
-                        : 'Emisión Conmemorativa',
-              certified: p.certified,
-              stock: p.stock,
-              perforation: p.perforation ? p.perforation.replace(/milímetros|milimetros/gi, 'mm').trim() : '',
-              printing_technique: p.printing_technique || 'Calcografía Oficial',
-              paper_type: p.paper_type || 'Papel verjurado',
-              gum_condition: p.gum_condition || 'Goma original intacta',
-              dimensions: p.dimensions || '28 x 35 mm',
-              front_image: normalizeImageUrl(p.front_image),
-              back_image: normalizeImageUrl(p.back_image),
-              is_featured: p.is_featured,
-              is_active: p.is_active !== false,
-              description: p.description || '',
-              historical_context: p.historical_context || '',
-            }));
+            const mapped: StampItem[] = json.data.map(mapCatalogProduct);
             setStamps(mapped);
           }
         }
@@ -139,69 +94,17 @@ export default function Home() {
     },
   ];
 
-  // Grandes Colecciones y Series Temáticas (Navegación al Catálogo)
-  const featuredCollections = [
-    {
-      id: 'bicentenario',
-      title: 'Emisión Bicentenario (1825–2025)',
-      subtitle: '200 Años de Soberanía e Historia Patria',
-      description: 'Homenaje de gala conmemorativo al Bicentenario de la República de Bolivia. Pliegos de lujo con dorados al fuego, filigrana de seguridad y hojitas bloque numeradas.',
-      image: '/images/stamps/sello-bicentenario-batalla-de-la-tablada-2017.png',
-      tag: 'Magna Emisión',
-      categorySlug: 'hojitas-bloque',
-      badgeColor: 'bg-white/[0.08] text-amber-200 border-white/10',
-    },
-    {
-      id: 'clasicos',
-      title: 'Los Cóndores y Primeros Sellos',
-      subtitle: 'El Origen de la Filatelia Boliviana',
-      description: 'La histórica tradición postal oficial soberana. Grabados al aguafuerte sobre planchas de cobre, piezas cumbres de museos internacionales.',
-      image: '/images/stamps/sello-150-anos-primer-sello-postal-boliviano-2017.png',
-      tag: 'Piezas de Museo',
-      categorySlug: 'sellos-y-series',
-      badgeColor: 'bg-white/[0.08] text-blue-200 border-white/10',
-    },
-    {
-      id: 'biodiversidad',
-      title: 'Flora, Fauna & Riqueza Andino-Amazónica',
-      subtitle: 'Patrimonio Natural y Especies Protegidas',
-      description: 'Series dedicadas a la biodiversidad del Madidi, los bosques secos de la Chiquitania, el jucumari, la paraba barba azul y orquídeas endémicas del territorio nacional.',
-      image: '/images/stamps/sello-colibri-cometa-sappho-sparganurus-potosi-2007.png',
-      tag: 'Temática Natural',
-      categorySlug: 'fauna-y-flora',
-      badgeColor: 'bg-white/[0.08] text-emerald-200 border-white/10',
-    },
-    {
-      id: 'fdc',
-      title: 'Dípticos, Trípticos & Arte Sacro',
-      subtitle: 'Documentos Postales y Arte Virreinal',
-      description: 'Ediciones polícromas de alta resolución que rescatan el acervo pictórico colonial virreinal y conmemoraciones nacionales.',
-      image: '/images/stamps/sello-navidad-arte-sacro-triptico-2007.png',
-      tag: 'Arte Sacro',
-      categorySlug: 'dipticos-y-tripticos',
-      badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-400/40',
-    },
-    {
-      id: 'soberania',
-      title: 'Soberanía Postal & Telecomunicaciones',
-      subtitle: 'Patrimonio Institucional del Estado',
-      description: 'Emisiones que certifican la soberanía postal, hitos de desarrollo nacional, tratados y telecomunicaciones bolivianas.',
-      image: '/images/stamps/sello-att-soberania-postal-y-telecomunicaciones-2015.png',
-      tag: 'Patrimonio Soberano',
-      categorySlug: 'sellos-y-series',
-      badgeColor: 'bg-amber-400/15 text-amber-200 border-amber-300/40',
-    },
-    {
-      id: 'hojitas',
-      title: 'Recursos Naturales & Aguas del Silala',
-      subtitle: 'Ediciones Especiales de Bóveda',
-      description: 'Series y pliegos dedicados a la protección de los recursos naturales soberanos y manantiales altoandinos.',
-      image: '/images/stamps/sello-manantiales-del-silala-potosi-18bs-2016.png',
-      tag: 'Pliegos de Gala',
-      categorySlug: 'sellos-y-series',
-      badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-400/40',
-    },
-  ];
+  // La portada comparte las categorías administradas con los filtros del catálogo.
+  const featuredCollections = categories.map(category => ({
+    id: category.id,
+    title: category.name,
+    subtitle: `${category.products_count} piezas en el catálogo`,
+    description: category.description || 'Explore las piezas de esta categoría.',
+    image: normalizeImageUrl(category.image || stamps.find(stamp => stamp.category === category.slug)?.front_image || '/images/FILATELIA-1.png'),
+    tag: 'Categoría oficial',
+    categorySlug: category.slug,
+    badgeColor: 'bg-white/90 text-[#102542] border-white/10',
+  }));
 
   return (
     <div className="animate-in fade-in duration-300">
@@ -425,7 +328,8 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Grid de 6 Colecciones Principales */}
+          {categoriesError && <p role="status" className="mb-4 text-sm text-red-700">{categoriesError}</p>}
+          {/* Categorías del administrador */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredCollections.map((col) => (
               <div 
@@ -472,7 +376,7 @@ export default function Home() {
                       Disponibilidad Oficial
                     </span>
                     <Link
-                      href={`/catalogo?categoria=${col.categorySlug}`}
+                      href={`/catalogo?categoria=${encodeURIComponent(col.categorySlug)}`}
                       className="text-xs font-extrabold text-[#102542] hover:text-[#8A6800] flex items-center gap-1 transition"
                     >
                       <span>Explorar Serie</span>

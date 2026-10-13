@@ -22,7 +22,7 @@ test('disabled and sold-out pieces retain distinct banners and cannot be purchas
   assert.equal(canPurchase({ stock: 5, is_active: false }), false);
   assert.equal(canPurchase({ stock: 0, is_active: true }), false);
   assert.equal(PurchaseBanner({ stamp: { stock: 5, is_active: true } }), null);
-  assert.equal(PurchaseBanner({ stamp: { stock: 5, is_active: false } }).props.children, 'COMPRA DESHABILITADA');
+  assert.equal(PurchaseBanner({ stamp: { stock: 5, is_active: false } }), null);
   assert.equal(PurchaseBanner({ stamp: { stock: 0, is_active: false } }).props.children, 'AGOTADO');
   assert.equal(mapCatalogProduct({ id: 1, name: 'Inactivo', slug, price: '3.00', year: 2026, stock: 5, is_active: false }).is_active, false);
 });

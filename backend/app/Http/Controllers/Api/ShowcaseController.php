@@ -38,7 +38,6 @@ class ShowcaseController extends Controller
 
         // Piezas en vitrina ordenadas por su posición
         $showcaseItems = Product::with(['category', 'emission'])
-            ->where('is_active', true)
             ->where('is_in_showcase', true)
             ->orderBy('showcase_order', 'asc')
             ->orderBy('id', 'asc')
@@ -46,7 +45,6 @@ class ShowcaseController extends Controller
 
         // Todas las piezas del catálogo disponibles para seleccionar
         $allProducts = Product::with(['category', 'emission'])
-            ->where('is_active', true)
             ->orderBy('id', 'asc')
             ->get();
 
@@ -88,10 +86,17 @@ class ShowcaseController extends Controller
         $items = $request->input('items', []);
         $orderedIds = $request->input('ordered_ids', []);
         $badges = $request->input('badges', []);
+        if ($request->has('ordered_ids')) {
+            $request->validate([
+                'ordered_ids' => 'present|array',
+                'ordered_ids.*' => 'required|integer|distinct|exists:products,id',
+                'badges' => 'sometimes|array', 'badges.*' => 'nullable|string|max:100',
+            ]);
+        }
 
         DB::beginTransaction();
         try {
-            if (!empty($orderedIds)) {
+            if ($request->has('ordered_ids')) {
                 // Modo lista ordenada de IDs
                 // 1. Desactivar todos los que no están en orderedIds
                 Product::whereNotIn('id', $orderedIds)
@@ -211,7 +216,7 @@ class ShowcaseController extends Controller
             ]);
 
             // Asignar los primeros 4 productos
-            $firstFour = Product::where('is_active', true)->orderBy('id', 'asc')->take(4)->get();
+            $firstFour = Product::orderBy('id', 'asc')->take(4)->get();
             $badges = [
                 'COLECCIÓN OFICIAL',
                 'PATRIMONIO CULTURAL',

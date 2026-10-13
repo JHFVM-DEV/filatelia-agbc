@@ -62,12 +62,18 @@ function CatalogContent() {
 
   // Sincronizar catálogo con API de Laravel si está disponible
   useEffect(() => {
+    let disposed = false;
+    let controller: AbortController | undefined;
     const fetchBackendProducts = async () => {
+      if (document.visibilityState === 'hidden') return;
+      controller?.abort();
+      controller = new AbortController();
+      const signal = controller.signal;
       try {
-        const res = await fetch(`${API_BASE_URL}/api/products`);
+        const res = await fetch('/api/products', { cache: 'no-store', signal });
         if (res.ok) {
           const json = await res.json();
-          if (json.data && json.data.length > 0) {
+          if (Array.isArray(json.data) && !disposed && !signal.aborted) {
             const mapped: StampItem[] = json.data.map(mapCatalogProduct);
             setStamps(mapped);
           }
@@ -78,6 +84,16 @@ function CatalogContent() {
     };
 
     fetchBackendProducts();
+    const timer = setInterval(fetchBackendProducts, 30000);
+    window.addEventListener('focus', fetchBackendProducts);
+    document.addEventListener('visibilitychange', fetchBackendProducts);
+    return () => {
+      disposed = true;
+      controller?.abort();
+      clearInterval(timer);
+      window.removeEventListener('focus', fetchBackendProducts);
+      document.removeEventListener('visibilitychange', fetchBackendProducts);
+    };
   }, []);
 
   return (

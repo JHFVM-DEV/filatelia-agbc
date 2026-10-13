@@ -123,3 +123,8 @@ El catálogo agrega piezas ausentes con stock cero y no sobrescribe el inventari
 de las piezas existentes. Los precios y códigos se sincronizan con la tabla AGBC.
 Esta limpieza del seeder no borra demostraciones que ya existan en la base;
 su retirada debe distinguirlas de pedidos, clientes e inventario reales.
+
+Para detectar y retirar registros de versiones anteriores, seguir la
+[guía de limpieza de datos de demostración](limpiar-datos-demostracion.md).
+Incluye una consulta PostgreSQL de solo lectura y un procedimiento con respaldo
+y ensayo que conserva las cuentas iniciales y el catálogo original.
